@@ -18,6 +18,11 @@ export interface Explanation {
   readonly summary: string;
   /** One sentence per weapon the checked weapon builds. */
   readonly lines: readonly string[];
+  /**
+   * One short phrase per weapon it builds, in the same order, without that weapon's name: for rows
+   * that already show the name and picture beside it. "2 copies, then Akjagara", "Already mastered".
+   */
+  readonly notes: readonly string[];
   /** Full chains from the checked weapon, e.g. "Lato → Bolto → Akbolto → Akjagara". */
   readonly chains: readonly string[];
   /** The note about levelling the weapon before selling it, when it applies. */
@@ -83,6 +88,35 @@ export function explain(verdict: Verdict, graph: RecipeGraph): Explanation {
     return `${line}.`;
   };
 
+  // The short forms, for rows that show the target's name and picture beside the note.
+  const copiesOf = (n: number) => `${n} ${plural(n, 'copy', 'copies')}`;
+  const checkNote = (target: CheckTarget): string => {
+    let note = copiesOf(target.copies);
+    if (target.chains.length > 0) note += `, then ${listOf(ends(target.chains))}`;
+    return note;
+  };
+  const targetNote = (target: TargetLine): string => {
+    switch (target.reason) {
+      case 'needs-building': {
+        let note = copiesOf(target.copiesNeeded);
+        if (target.buildsNeeded > 1) note += `, built ${target.buildsNeeded} times`;
+        if (target.chains.length > 0) note += `, on the way to ${listOf(ends(target.chains))}`;
+        if (target.statusAssumed) note += ', not marked yet';
+        return note;
+      }
+      case 'feeds-chain': {
+        const next = nextSteps(target.chains);
+        return `${copiesOf(target.copiesNeeded)}, ${listOf(next)} still ${plural(next.length, 'needs', 'need')} it`;
+      }
+      case 'mastered':
+        return 'Already mastered';
+      case 'held-unmastered':
+        return 'Owned: level it before selling that';
+    }
+  };
+  const notes =
+    verdict.kind === 'check' ? verdict.targets.map(checkNote) : verdict.targets.map(targetNote);
+
   let headline: string;
   let tone: Tone;
   let summary: string;
@@ -98,7 +132,25 @@ export function explain(verdict: Verdict, graph: RecipeGraph): Explanation {
         (target) =>
           `${name(target.slug)} (${target.copies} ${plural(target.copies, 'copy', 'copies')})`
       );
-      summary = `${weapon} is used to build ${listOf(builds)}. Mark those weapons in your arsenal to see whether you still need it.`;
+      // Phase 1 has no arsenal, so the Check has to be actionable on its own: what it builds, the
+      // condition under which it is safe, and the from-scratch number.
+      const targetNames = verdict.targets.map((target) => name(target.slug));
+      const which =
+        targetNames.length === 1
+          ? targetNames[0]!
+          : targetNames.length === 2
+            ? 'both'
+            : 'all of them';
+      const direct = verdict.targets.reduce((n, target) => n + target.copies, 0);
+      const feeders = verdict.targets
+        .filter((target) => target.chains.length > 0)
+        .map((target) => name(target.slug));
+      const n = verdict.keepIfNothingBuilt;
+      let fromScratch = `Building ${plural(targetNames.length, 'it', 'them')} from scratch takes ${n} ${plural(n, 'copy', 'copies')}`;
+      if (n > direct && feeders.length > 0) {
+        fromScratch += `, since ${listOf(feeders)} ${plural(feeders.length, 'feeds', 'feed')} further recipes`;
+      }
+      summary = `${weapon} is used to build ${listOf(builds)}. Keep it unless you have already built and mastered ${which}. ${fromScratch}.`;
       lines = verdict.targets.map(checkLine);
       chatLines = lines;
       chains = verdict.targets.flatMap((target) => fullChains(target.chains));
@@ -169,6 +221,7 @@ export function explain(verdict: Verdict, graph: RecipeGraph): Explanation {
     tone,
     summary,
     lines,
+    notes,
     chains: unique(chains),
     mastery,
     copyText: chat,

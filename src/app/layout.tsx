@@ -1,7 +1,27 @@
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
+import { Barlow, Barlow_Semi_Condensed } from 'next/font/google';
+import { HeaderSearch } from '@/components/HeaderSearch';
+import { SearchShortcut } from '@/components/SearchShortcut';
+import { ThemeToggle } from '@/components/ThemeToggle';
+import { THEME_SCRIPT } from '@/components/theme';
 import { weaponIndex } from '@/data/weapons';
 import './globals.css';
+
+// Self-hosted at build time by next/font, so no request leaves for a font service at runtime.
+const barlow = Barlow({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-barlow',
+  display: 'swap',
+});
+
+const barlowSemiCondensed = Barlow_Semi_Condensed({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  variable: '--font-barlow-sc',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -16,23 +36,20 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0b0b0c',
+  themeColor: '#0c0c0e',
 };
 
 function Footer() {
-  const refreshed = new Date(weaponIndex.generatedAt);
   return (
     <footer className="site-footer">
       <div className="container">
         <p>
           Data from <code>@wfcd/items</code> {weaponIndex.sourceVersion}, built{' '}
-          <time dateTime={weaponIndex.generatedAt}>
-            {refreshed.toISOString().slice(0, 10)}
-          </time>
-          . Newest weapon in this data: {weaponIndex.newestWeaponUpdate}. Refreshed monthly.
+          <time dateTime={weaponIndex.generatedAt}>{weaponIndex.generatedAt.slice(0, 10)}</time>.
+          Newest weapon in this data: {weaponIndex.newestWeaponUpdate}. Refreshed monthly.
         </p>
         <p>
-          Weapon data and art come from the{' '}
+          Weapon data and pictures come from the{' '}
           <a href="https://github.com/wfcd/warframe-items">Warframe Community Developers</a>.
         </p>
         <p>
@@ -46,17 +63,27 @@ function Footer() {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      data-theme="dark"
+      className={`${barlow.variable} ${barlowSemiCondensed.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body>
+        <SearchShortcut />
         <header className="site-header">
           <div className="container site-header__inner">
             <Link href="/" className="wordmark">
               Forgeline
             </Link>
-            <span className="wordmark__tag">See what every weapon becomes before you sell it</span>
+            <HeaderSearch />
             <nav className="site-nav" aria-label="Main">
-              <Link href="/ingredients">Ingredients</Link>
-              <Link href="/about">About the data</Link>
+              <Link href="/ingredients/">Ingredients</Link>
+              <Link href="/about/">About</Link>
+              <ThemeToggle />
             </nav>
           </div>
         </header>

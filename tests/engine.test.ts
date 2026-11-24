@@ -76,6 +76,8 @@ describe('fixtures from docs/verdict-rules.md', () => {
       { slug: 'akbolto', copies: 2, chains: [['akbolto', 'akjagara']] },
       { slug: 'hystrix', copies: 1, chains: [] },
     ]);
+    // Even without an arsenal, a Check knows the from-scratch number.
+    expect(v.keepIfNothingBuilt).toBe(3);
   });
 
   it('3. Bolto, nothing owned: keep 3, two for Akbolto and one for Hystrix', () => {
@@ -365,13 +367,33 @@ describe('explanations', () => {
     expect(e.lines).toContain('You already own Akbolto. Level it before selling that.');
   });
 
-  it('Check lists what it builds and asks for the arsenal', () => {
+  it('Check says what it builds, when it is safe, and the from-scratch number', () => {
     const e = say('bolto', {});
     expect(e.headline).toBe('Check');
     expect(e.summary).toBe(
-      'Bolto is used to build Akbolto (2 copies) and Hystrix (1 copy). Mark those weapons in your arsenal to see whether you still need it.'
+      'Bolto is used to build Akbolto (2 copies) and Hystrix (1 copy). Keep it unless you have already built and mastered both. Building them from scratch takes 3 copies.'
     );
     expect(e.lines).toEqual(['Akbolto: 2 copies, then Akjagara.', 'Hystrix: 1 copy.']);
+  });
+
+  it('gives short notes without the name, for rows that show it beside them', () => {
+    expect(say('bolto', {}).notes).toEqual(['2 copies, then Akjagara', '1 copy']);
+    expect(say('bolto', setUp()).notes).toEqual([
+      '2 copies, on the way to Akjagara, not marked yet',
+      '1 copy, not marked yet',
+    ]);
+    expect(say('bolto', setUp({ akbolto: s('sold'), hystrix: s('mastered') })).notes).toEqual([
+      '2 copies, Akjagara still needs it',
+      'Already mastered',
+    ]);
+    expect(say('braton', {}).notes).toEqual([]);
+  });
+
+  it('Check explains a from-scratch number larger than the recipe itself', () => {
+    const e = say('lato', {});
+    expect(e.summary).toBe(
+      'Lato is used to build Bolto (1 copy). Keep it unless you have already built and mastered Bolto. Building it from scratch takes 3 copies, since Bolto feeds further recipes.'
+    );
   });
 
   it('a weapon that builds nothing, with the mastery reminder', () => {
@@ -396,7 +418,7 @@ describe('explanations', () => {
       const evaluator = createEvaluator(graph, arsenal);
       for (const weapon of index.weapons) {
         const e = explain(evaluator.verdict(weapon.slug), graph);
-        const text = [e.headline, e.summary, ...e.lines, ...e.chains, e.mastery ?? ''].join('\n');
+        const text = [e.headline, e.summary, ...e.lines, ...e.notes, ...e.chains, e.mastery ?? ''].join('\n');
         expect(text, weapon.slug).not.toMatch(/[\u2013\u2014]/);
         expect(e.copyText, weapon.slug).toMatch(/^[\x20-\x7e]+$/);
       }

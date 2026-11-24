@@ -19,10 +19,10 @@ reads it and redeploys on each push to `main`, so nothing lives only on Vercel.
 | --- | --- |
 | Data pipeline | Working. 621 player weapons, 46 recipe ingredients, verified against a committed fixture |
 | Images | Working. 256 px and 96 px WebP for every weapon, 12 MB total |
-| Pages | Home, ingredient index, About, and a page per weapon. 626 pre-rendered pages |
-| Search | Not built yet |
+| Pages | Home, ingredient index, About, and a page per weapon. 627 pre-rendered files |
+| Search | Working. Typo tolerant, Prime aware, `/` from any page |
 | Verdict engine | Working and tested, in `src/engine/`. Rules in [docs/verdict-rules.md](docs/verdict-rules.md) |
-| Sell-check card | Not built yet. The engine is not on any page yet |
+| Sell-check card | Working on every weapon page: Check or Safe with the reason, until phase 2 adds your arsenal |
 | My Arsenal, slot sweep, build planner | Not built yet, phase 2 |
 
 See [docs/build-plan.md](docs/build-plan.md) section 11 for what comes next.

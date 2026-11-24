@@ -125,6 +125,12 @@ export interface SafeVerdict extends VerdictBase {
 export interface CheckVerdict extends VerdictBase {
   readonly kind: 'check';
   readonly targets: readonly CheckTarget[];
+  /**
+   * Copies needed if none of the recipes it feeds have been built yet: the Keep number a player who
+   * owns nothing downstream would see. Lets a Check still say something concrete before the arsenal
+   * exists, e.g. Lato needs 3 because Bolto feeds Akbolto and Hystrix.
+   */
+  readonly keepIfNothingBuilt: number;
 }
 
 export interface KeepVerdict extends VerdictBase {

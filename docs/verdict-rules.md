@@ -92,7 +92,7 @@ Evaluate in this order and stop at the first match.
 | # | Condition | Verdict | Card says |
 | --- | --- | --- | --- |
 | 1 | `usedToBuild(w)` is empty | **Safe to sell** | "This weapon isn't used in any recipe." Plus the mastery note from section 4 if relevant |
-| 2 | The arsenal is not set up: no weapon has a status other than `notOwned` | **Check** | Lists what it builds with copy counts, and invites the player to mark those weapons. Inline status buttons on the card, so the answer resolves without leaving the page |
+| 2 | The arsenal is not set up: no weapon has a status other than `notOwned` | **Check** | Lists what it builds with copy counts, says when it is safe ("Keep it unless you have already built and mastered both"), and gives the from-scratch number, `keepIfNothingBuilt` ("Building them from scratch takes 3 copies"). That keeps a Check actionable in phase 1, before the arsenal exists. From M5 the card adds inline status buttons, so the answer resolves without leaving the page |
 | 3 | `consumedByChildren(w) == 0` and every target has `masteryDone` | **Safe to sell** | "Everything this builds is already mastered." |
 | 4 | `consumedByChildren(w) == 0` and some target is held but unmastered | **Safe to sell (soft)** | "You already own Akbolto. Level it before selling that." |
 | 5a | `consumedByChildren(w) > 0` and the player holds more than that | **Safe to sell the surplus** | "You need 3 and have 5, so 2 are spare." Only reachable when quantities are tracked |

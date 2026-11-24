@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { WeaponArt } from '@/components/WeaponArt';
+import { IngredientIndex, type IngredientRow } from '@/components/IngredientIndex';
 import { ingredientWeapons, resolve } from '@/data/weapons';
-import { SLOT_LABEL } from '@/data/types';
 
 export const metadata: Metadata = {
   title: 'Ingredient weapons',
@@ -11,51 +9,31 @@ export const metadata: Metadata = {
 };
 
 export default function IngredientsPage() {
-  const ingredients = ingredientWeapons();
+  const rows: IngredientRow[] = ingredientWeapons().map((weapon) => {
+    const builds = weapon.usedToBuild.map((edge) => ({
+      slug: edge.slug,
+      name: resolve(edge.slug).name,
+      copies: edge.copies,
+    }));
+    return {
+      slug: weapon.slug,
+      name: weapon.name,
+      slot: weapon.slot,
+      image: weapon.image,
+      thumb: weapon.thumb,
+      builds,
+      totalCopies: builds.reduce((n, build) => n + build.copies, 0),
+    };
+  });
 
   return (
     <>
-      <p className="eyebrow">Ingredient index</p>
-      <h1>{ingredients.length} weapons you should think twice about selling</h1>
+      <h1 className="page-title">{rows.length} weapons you should think twice about selling</h1>
       <p className="lede">
-        Each of these is consumed by at least one other weapon&apos;s recipe. The copy count is how
-        many that single recipe needs, so a weapon feeding two recipes can be worth keeping more than
-        one of.
+        Each one is consumed by at least one other weapon&apos;s recipe. The copy count is what that
+        one recipe needs, so a weapon feeding two recipes can be worth keeping more than once.
       </p>
-
-      <div className="table-wrap section">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Weapon</th>
-              <th scope="col">Slot</th>
-              <th scope="col">Used to build</th>
-            </tr>
-          </thead>
-          <tbody>
-            {ingredients.map((weapon) => (
-              <tr key={weapon.slug}>
-                <th scope="row">
-                  <Link href={`/w/${weapon.slug}/`} className="cell-weapon">
-                    <WeaponArt weapon={weapon} />
-                    {weapon.name}
-                  </Link>
-                </th>
-                <td className="muted">{SLOT_LABEL[weapon.slot]}</td>
-                <td>
-                  {weapon.usedToBuild.map((edge, i) => (
-                    <span key={edge.slug}>
-                      {i > 0 && ', '}
-                      <Link href={`/w/${edge.slug}/`}>{resolve(edge.slug).name}</Link>
-                      <span className="copies"> ({edge.copies})</span>
-                    </span>
-                  ))}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <IngredientIndex rows={rows} />
     </>
   );
 }

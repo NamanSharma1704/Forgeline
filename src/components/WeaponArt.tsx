@@ -1,53 +1,75 @@
 'use client';
 
-import { useState } from 'react';
-import type { Weapon } from '@/data/types';
+import { useEffect, useRef, useState } from 'react';
+import type { Slot } from '@/data/types';
+import { Silhouette } from './Silhouette';
 
 /**
  * A weapon picture, served from Forgeline's own hosting (spec 5.11).
  *
- * Next's image optimiser is off because the build already produced exactly two sizes, so a plain
- * <img> with explicit dimensions is both lighter and immune to layout shift. If a file is missing or
- * fails to load, a neutral placeholder takes its place so the layout never breaks.
+ * The build already produced exactly two WebP sizes, so a plain <img> with fixed dimensions is
+ * lighter than Next's image optimiser and cannot shift the layout. Every picture carries the
+ * weapon's name as alt text, as the spec requires.
  *
- * The placeholder is deliberately plain. Per-slot silhouettes are a design task for M3.
+ * If the file is missing or fails, the slot's silhouette takes its place. An image can fail before
+ * React attaches its error handler, so the effect also checks for an already-broken image.
  */
 
-const PLACEHOLDER =
-  'data:image/svg+xml;utf8,' +
-  encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="presentation">
-       <rect width="64" height="64" fill="none"/>
-       <path d="M12 40l14-20 12 8 8-6 6 18z" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2"/>
-     </svg>`
-  );
+export type ArtSize = 'thumb' | 'medium' | 'large';
 
-type Size = 'thumb' | 'large';
+/** Display size in CSS pixels. Thumb and medium both use the 96 px file, sharp on 2x screens. */
+const PX: Record<ArtSize, number> = { thumb: 44, medium: 72, large: 224 };
 
-const DIMENSIONS: Record<Size, number> = { thumb: 48, large: 256 };
+export interface ArtWeapon {
+  readonly name: string;
+  readonly slot: Slot;
+  /** img/<slug>.webp, 256 px */
+  readonly image: string;
+  /** img/thumb/<slug>.webp, 96 px */
+  readonly thumb: string;
+}
 
 export function WeaponArt({
   weapon,
   size = 'thumb',
   priority = false,
 }: {
-  weapon: Pick<Weapon, 'name' | 'image' | 'thumb'>;
-  size?: Size;
+  weapon: ArtWeapon;
+  size?: ArtSize;
   priority?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
-  const side = DIMENSIONS[size];
-  const src = failed ? PLACEHOLDER : `/${size === 'thumb' ? weapon.thumb : weapon.image}`;
+  const ref = useRef<HTMLImageElement>(null);
+  const px = PX[size];
+
+  useEffect(() => {
+    const img = ref.current;
+    if (img && img.complete && img.naturalWidth === 0) setFailed(true);
+  }, []);
+
+  if (failed) {
+    return (
+      <span
+        className={`weapon-art weapon-art--${size} weapon-art--fallback`}
+        role="img"
+        aria-label={weapon.name}
+        style={{ width: px, height: px }}
+      >
+        <Silhouette slot={weapon.slot} />
+      </span>
+    );
+  }
 
   return (
     <img
-      className="weapon-art"
-      src={src}
+      ref={ref}
+      className={`weapon-art weapon-art--${size}`}
+      src={`/${size === 'large' ? weapon.image : weapon.thumb}`}
       alt={weapon.name}
-      width={side}
-      height={side}
+      width={px}
+      height={px}
       loading={priority ? 'eager' : 'lazy'}
-      decoding={priority ? 'sync' : 'async'}
+      decoding="async"
       fetchPriority={priority ? 'high' : 'auto'}
       onError={() => setFailed(true)}
     />

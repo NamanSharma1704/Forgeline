@@ -119,7 +119,10 @@ export function createEvaluator(graph: RecipeGraph, arsenal: Arsenal): Evaluator
         copies: edge.copies,
         chains: pathsFrom(graph, edge.slug, () => true),
       }));
-      result = { kind: 'check', targets, slug, mastery };
+      // With no statuses recorded every weapon counts as not owned, so the demand for this arsenal
+      // is exactly the from-scratch number.
+      const keepIfNothingBuilt = demand.consumedByChildren(slug);
+      result = { kind: 'check', targets, keepIfNothingBuilt, slug, mastery };
     } else {
       const targets: TargetLine[] = node.usedToBuild.map((edge) => {
         const buildsNeeded = demand.buildsNeeded(edge.slug);

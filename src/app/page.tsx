@@ -1,52 +1,37 @@
 import Link from 'next/link';
 import { WeaponArt } from '@/components/WeaponArt';
-import { allWeapons, ingredientWeapons, resolve, weaponIndex } from '@/data/weapons';
-import { SLOT_LABEL } from '@/data/types';
+import { WeaponSearch } from '@/components/WeaponSearch';
+import { ingredientWeapons, newWeapons } from '@/data/weapons';
 
-/** Weapons worth putting in front of someone who has just arrived. */
-const EXAMPLES = ['bolto', 'dual-skana', 'lato'];
-
+/** Spec 5.1: the home page is a single search box. */
 export default function HomePage() {
-  const ingredients = ingredientWeapons();
-  const newThisMonth = allWeapons().filter((weapon) => weapon.isNew);
+  const fresh = newWeapons();
+  const ingredientCount = ingredientWeapons().length;
 
   return (
-    <>
-      <p className="eyebrow">Warframe sell check</p>
-      <h1>Can I sell this?</h1>
+    <div className="home">
+      <h1 className="page-title">Can I sell this?</h1>
       <p className="lede">
-        {ingredients.length} weapons in Warframe are ingredients in another weapon&apos;s recipe, and
-        the game never warns you before you sell one. Look a weapon up here to see what it builds,
-        how many copies that recipe needs, and whether you still need it.
+        Type the weapon you are about to sell. Forgeline shows what it builds, how many copies the
+        recipe needs, and whether you can let it go.
       </p>
 
-      <ul className="stats">
-        <li className="stat">
-          <div className="stat__value">{weaponIndex.counts.weapons}</div>
-          <div className="stat__label">weapons tracked</div>
-        </li>
-        <li className="stat">
-          <div className="stat__value">{ingredients.length}</div>
-          <div className="stat__label">are recipe ingredients</div>
-        </li>
-        <li className="stat">
-          <div className="stat__value">{weaponIndex.counts.craftable}</div>
-          <div className="stat__label">built from other weapons</div>
-        </li>
-      </ul>
+      <WeaponSearch variant="hero" />
 
-      {newThisMonth.length > 0 && (
+      <p className="search-hint">
+        Try <Link href="/w/bolto/">Bolto</Link>, <Link href="/w/lato/">Lato</Link> or{' '}
+        <Link href="/w/dual-skana/">Dual Skana</Link>.
+      </p>
+
+      {fresh.length > 0 && (
         <section className="section">
-          <h2>New this month</h2>
-          <ul className="weapon-grid">
-            {newThisMonth.map((weapon) => (
+          <h2 className="section-title">New this month</h2>
+          <ul className="strip">
+            {fresh.map((weapon) => (
               <li key={weapon.slug}>
-                <Link href={`/w/${weapon.slug}/`} className="weapon-card">
-                  <WeaponArt weapon={weapon} />
-                  <span>
-                    <span className="weapon-card__name">{weapon.name}</span>
-                    <span className="weapon-card__meta"> {SLOT_LABEL[weapon.slot]}</span>
-                  </span>
+                <Link href={`/w/${weapon.slug}/`} className="tree-box shape">
+                  <WeaponArt weapon={weapon} size="medium" />
+                  <span className="tree-box__name">{weapon.name}</span>
                 </Link>
               </li>
             ))}
@@ -54,40 +39,14 @@ export default function HomePage() {
         </section>
       )}
 
-      <section className="section">
-        <h2>Start with one of these</h2>
-        <ul className="weapon-grid">
-          {EXAMPLES.map((slug) => {
-            const weapon = resolve(slug);
-            const builds = weapon.usedToBuild.map(
-              (edge) => `${resolve(edge.slug).name} (${edge.copies})`
-            );
-            return (
-              <li key={slug}>
-                <Link href={`/w/${slug}/`} className="weapon-card">
-                  <WeaponArt weapon={weapon} priority />
-                  <span>
-                    <span className="weapon-card__name">{weapon.name}</span>
-                    <br />
-                    <span className="weapon-card__meta">builds {builds.join(', ')}</span>
-                  </span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-
-      <section className="section">
-        <h2>Every ingredient weapon</h2>
-        <p className="lede">
-          The full list of weapons that feed another recipe, with what each one builds and how many
-          copies it takes.
-        </p>
+      <section className="section prose">
+        <h2>{ingredientCount} weapons feed other recipes</h2>
         <p>
-          <Link href="/ingredients/">Open the ingredient index</Link>
+          The game never warns you before you sell one, and you usually find out weeks later when a
+          blueprint asks for it. <Link href="/ingredients/">See every ingredient weapon</Link>, what
+          it builds and how many copies each recipe needs.
         </p>
       </section>
-    </>
+    </div>
   );
 }
