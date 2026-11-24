@@ -294,13 +294,41 @@ Every branch is proven locally and in 16 tests (section 8), and on GitHub: the f
 promote step was skipped; the picture recheck found nothing new, so tests, export and commit were
 skipped; no issue was opened and `main` was untouched. The first scheduled run is 1 December.
 
-### M5. Arsenal and personal verdicts (M to L)
+### M5. Arsenal and personal verdicts (M to L) - done
 
 The store with migrations, status pickers, the guided 87-weapon setup, the full checklist with
 filters and progress, export and import, starter-weapon shortcut, then the full verdict rules wired
 into the result card and the tree, then `/sweep`.
 **Done when:** marking Akbolto as mastered flips Bolto from Keep to Safe to sell with the right
 reason, and an export reimports losslessly into a cleared browser.
+
+Built:
+
+- **Store** (`src/store/arsenal.ts`, pure; `useArsenal.ts`, the hook). Versioned schema with a
+  migration slot, `notOwned` never stored, quantity kept only while held. Read through
+  `useSyncExternalStore`, so pre-rendered pages show no status rather than a wrong one, and other
+  tabs stay in step. Export file carries a `kind` marker; import refuses foreign, versionless and
+  newer files with a message, skips unknown weapons and counts them.
+- **Personal verdicts.** Pages still pre-render the empty-arsenal verdict; once anything is marked,
+  `PersonalVerdict` loads `/graph.json` (built by a force-static route, 30 KB) and runs the same
+  engine in the browser. Every recipe row on the card has a status picker, so a Check resolves in
+  place, and the weapon's own status and copy count sit in the page header. Family-tree boxes show
+  statuses once the arsenal is set up.
+- **My Arsenal** (`/arsenal`). Opens on the 87 recipe weapons; ingredients only or all 621 are one
+  chip away; filters by slot, status and name; list or picture view; mastery progress and a
+  recipe-weapons-marked count; a starter shortcut where the player taps what they picked; save to a
+  file, load a file (with an inline confirm before replacing) and clear (with an inline confirm).
+- **Slot sweep** (`/sweep`, `src/engine/sweep.ts`). Held weapons split into Safe to sell and Keep,
+  each with a one-line reason; anything not mastered stays in Keep; Mark sold on the safe ones.
+- **Ingredient index** gains "Only ones I own" and status tags.
+
+Both acceptance criteria are tested (`tests/arsenal.test.ts`) and were watched in the browser:
+on Bolto's page, Akbolto to Mastered turned Check into Keep 1, Hystrix to Mastered turned it into
+Safe to sell; a loaded file replaced the arsenal exactly, quantities included, skipping one unknown
+weapon. Checked at desktop and 375 px with no horizontal scroll and no script errors.
+
+Not built from this milestone's list: a dedicated step-by-step setup flow. The 87-weapon default
+view with the "recipe weapons marked" count does that job; a wizard can follow if players stall.
 
 ### M6. Planner, full tree, offline (M)
 
@@ -425,17 +453,17 @@ the five-second goal in section 12 is unmeasurable and should be stated as a des
 
 ## 11. Where this stands, and the next three things
 
-Done: M0 to M4, which is phase 1 of the spec. A player can search, land on a weapon's page and get
-a Check or Safe with its reason, the chain beyond and the family tree, on a phone, in either theme;
-and the data refreshes itself monthly behind a gate that cannot publish a broken recipe graph.
-81 tests, CI, and every push deployed by Vercel.
+Done: M0 to M5. Phase 1 of the spec is complete, and phase 2 is down to its last milestone: a player
+can mark their arsenal and every verdict, tree and sweep becomes about their own weapons. The data
+refreshes itself monthly behind a gate that cannot publish a broken recipe graph. 107 tests, CI,
+and every push deployed by Vercel.
 
 Next, in order:
 
-1. **Measure the five-second goal.** A throttled 4G run against the live site, so M3's last
+1. **Planner, full tree, offline (M6).** The build planner, the full-depth family tree (the
+   engine's `familyTree` already does it), and install-to-home-screen with offline support.
+2. **Measure the five-second goal.** A throttled 4G run against the live site, so M3's last
    acceptance criterion is a number rather than an assumption.
-2. **My Arsenal (M5).** The stored arsenal and the guided 87-weapon setup, which turn every Check
-   into a personal Keep or Safe. The card and engine are already built to take it.
 3. **Watch the 1 December run.** The first scheduled refresh. Expect "unchanged" unless
    `@wfcd/items` publishes a game update before then.
 

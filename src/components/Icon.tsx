@@ -54,6 +54,10 @@ const PATHS = {
   'arrow-right': <path d="M4.5 12h14M13.5 7l5 5-5 5" />,
   'arrow-down': <path d="M12 4.5v14M7 13.5l5 5 5-5" />,
   close: <path d="M6.5 6.5l11 11M17.5 6.5l-11 11" />,
+  minus: <path d="M6 12h12" />,
+  plus: <path d="M12 6v12M6 12h12" />,
+  download: <path d="M12 4.5v10.5M7.5 10.5l4.5 4.5 4.5-4.5M5 19.5h14" />,
+  upload: <path d="M12 15V4.5M7.5 9l4.5-4.5L16.5 9M5 19.5h14" />,
 } as const;
 
 export type IconName = keyof typeof PATHS;

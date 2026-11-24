@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Icon } from './Icon';
+import { StatusTag } from './StatusTag';
 import { WeaponArt, type ArtWeapon } from './WeaponArt';
 
 /**
@@ -40,6 +41,7 @@ function TreeBox({
       {then && then.length > 0 && (
         <span className="tree-box__then">then {then.join(', ')}</span>
       )}
+      <StatusTag slug={weapon.slug} />
     </>
   );
   if (self) {

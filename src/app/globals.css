@@ -199,8 +199,14 @@ kbd {
   transition: background-color 160ms var(--ease-out);
 }
 
+/*
+ * Only shapes that are themselves the focus target recolour their edge. A panel that merely
+ * contains a focused control (the verdict card with its status pickers) keeps its edge, and the
+ * control shows its own focus ring.
+ */
 a.shape:focus-visible,
-.shape:focus-within {
+button.shape:focus-visible,
+.search__field.shape:focus-within {
   outline: none;
   --shape-edge: var(--focus);
   --shape-inset: 2px;
@@ -1075,6 +1081,523 @@ a.tree-box:hover {
 
 .empty .button {
   margin-top: 14px;
+}
+
+/* ------------------------------------------------------------------ arsenal: shared controls */
+
+.muted {
+  color: var(--text-2);
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.button:disabled:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.button--quiet {
+  border-color: var(--edge-soft);
+  color: var(--text-2);
+}
+
+.button--quiet:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.button--danger {
+  border-color: var(--keep);
+  color: var(--keep);
+}
+
+.button--danger:hover {
+  background: var(--keep);
+  color: var(--surface);
+}
+
+.button--small {
+  min-height: 34px;
+  padding: 0 12px;
+}
+
+/* A segmented radio group. Selected is the emblem inverted: white fill, black text. */
+.status-picker {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  border: 1px solid var(--edge-soft);
+  background: var(--surface);
+}
+
+.status-picker__option {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-left: 1px solid var(--edge-soft);
+  background: transparent;
+  color: var(--text-2);
+  font: 500 var(--step--1) / 1 var(--font-body);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 140ms var(--ease-out),
+    color 140ms var(--ease-out);
+}
+
+.status-picker__option:first-child {
+  border-left: 0;
+}
+
+.status-picker__option:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.status-picker__option[aria-checked='true'] {
+  background: var(--text);
+  color: var(--surface);
+  font-weight: 600;
+}
+
+.status-picker__option:focus-visible {
+  outline-offset: -2px;
+}
+
+.status-picker--small .status-picker__option {
+  min-height: 32px;
+  padding: 0 9px;
+}
+
+.qty {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-2);
+  font-size: var(--step--1);
+}
+
+.qty__label {
+  margin-right: 2px;
+}
+
+.qty__button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--edge-soft);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.qty__button:hover:not(:disabled) {
+  border-color: var(--edge);
+}
+
+.qty__button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.qty__value {
+  min-width: 22px;
+  color: var(--text);
+  font-weight: 600;
+  text-align: center;
+}
+
+.status-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 7px;
+  border: 1px solid var(--edge-soft);
+  color: var(--text-2);
+  font-size: var(--step--1);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.status-tag[data-status='mastered'] {
+  border-color: var(--safe);
+  color: var(--safe);
+}
+
+.status-tag[data-status='sold'],
+.status-tag[data-status='notOwned'] {
+  color: var(--text-3);
+}
+
+.tree-box .status-tag {
+  margin: 6px 0 0;
+}
+
+/* ------------------------------------------------------------------ weapon page: own status */
+
+.weapon-status {
+  margin-top: 18px;
+}
+
+.weapon-status__label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-2);
+  font: 600 var(--step--1) / 1.2 var(--font-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.weapon-status__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+}
+
+/* ------------------------------------------------------------------ verdict card: controls */
+
+.verdict__rows--controls .verdict__row {
+  grid-template-columns: minmax(0, 13rem) minmax(0, 1fr) auto;
+  padding: 4px 0;
+}
+
+.verdict__control {
+  justify-self: end;
+}
+
+.verdict__footnote {
+  margin-top: 14px;
+  color: var(--text-2);
+  font-size: var(--step--1);
+}
+
+@media (max-width: 759px) {
+  .verdict__rows--controls .verdict__row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding-bottom: 14px;
+  }
+
+  .verdict__control {
+    justify-self: start;
+    padding-left: 56px;
+  }
+}
+
+@media (max-width: 559px) {
+  .verdict__control {
+    padding-left: 0;
+  }
+
+  .verdict__rows--controls .verdict__note {
+    margin-top: 0;
+  }
+}
+
+/* ------------------------------------------------------------------ my arsenal */
+
+.arsenal-summary {
+  margin-top: 28px;
+  max-width: 640px;
+}
+
+.progress {
+  height: 10px;
+  border: 1px solid var(--edge);
+  background: var(--surface);
+}
+
+.progress__fill {
+  display: block;
+  height: 100%;
+  background: var(--text);
+  transition: width 240ms var(--ease-out);
+}
+
+.arsenal-summary__line {
+  margin-top: 8px;
+}
+
+.panel {
+  margin-top: 24px;
+  padding: 16px 20px;
+  border: 1px solid var(--edge-soft);
+  background: var(--surface);
+}
+
+.panel__summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.panel__intro {
+  margin-top: 8px;
+}
+
+.starters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.starter {
+  --cut: 10px;
+  --shape-edge: var(--edge-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 12px 8px;
+  border: 0;
+  color: var(--text);
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.starter:hover {
+  --shape-fill: var(--surface-hover);
+}
+
+.starter[aria-pressed='true'] {
+  --shape-edge: var(--edge);
+  --shape-inset: 2px;
+}
+
+.starter__name {
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.starter__state {
+  color: var(--text-3);
+  font-size: var(--step--1);
+}
+
+.starter[aria-pressed='true'] .starter__state {
+  color: var(--text);
+}
+
+.chip__count {
+  margin-left: 4px;
+  opacity: 0.7;
+}
+
+.arsenal-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--edge-soft);
+}
+
+.arsenal-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--edge-soft);
+}
+
+.arsenal-row__weapon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.arsenal-row__name {
+  display: block;
+  font-weight: 600;
+}
+
+.arsenal-row__meta {
+  display: block;
+  color: var(--text-2);
+  font-size: var(--step--1);
+}
+
+.arsenal-row__role {
+  color: var(--check);
+}
+
+.arsenal-row__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px 14px;
+}
+
+@media (max-width: 759px) {
+  .arsenal-row {
+    grid-template-columns: 1fr;
+  }
+
+  .arsenal-row__controls {
+    justify-content: flex-start;
+  }
+}
+
+.arsenal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.arsenal-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--edge-soft);
+  background: var(--surface);
+}
+
+.arsenal-tile__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.arsenal-tile__name {
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.tile-select {
+  width: 100%;
+  min-height: 36px;
+  padding: 0 8px;
+  border: 1px solid var(--edge-soft);
+  background: var(--surface);
+  color: var(--text);
+  font: 500 var(--step--1) / 1 var(--font-body);
+}
+
+.files__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.files__status {
+  margin-top: 4px;
+}
+
+.files__message {
+  margin-top: 12px;
+}
+
+.files__message--ok {
+  color: var(--safe);
+}
+
+.files__message--error {
+  color: var(--keep);
+}
+
+.confirm {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--edge);
+}
+
+.confirm__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* ------------------------------------------------------------------ slot sweep */
+
+.sweep__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sweep--safe .sweep__title .icon {
+  color: var(--safe);
+}
+
+.sweep--keep .sweep__title .icon {
+  color: var(--keep);
+}
+
+.sweep__count {
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+.sweep__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--edge-soft);
+}
+
+.sweep-row {
+  display: grid;
+  grid-template-columns: minmax(0, 14rem) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 6px 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--edge-soft);
+}
+
+.sweep-row__weapon {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.sweep-row__name {
+  font-weight: 600;
+}
+
+.sweep-row__reason {
+  color: var(--text-2);
+}
+
+@media (max-width: 759px) {
+  .sweep-row {
+    grid-template-columns: 1fr;
+  }
+
+  .sweep-row .button {
+    justify-self: start;
+  }
+}
+
+/* ------------------------------------------------------------------ header on phones */
+
+@media (max-width: 559px) {
+  .site-nav {
+    gap: 0;
+  }
+
+  .site-nav a {
+    padding: 10px 7px;
+  }
 }
 
 /* ------------------------------------------------------------------ motion preference */

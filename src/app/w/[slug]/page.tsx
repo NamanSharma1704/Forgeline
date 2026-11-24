@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { FamilyTree, type TreeWeapon } from '@/components/FamilyTree';
-import { VerdictCard, type CardTarget } from '@/components/VerdictCard';
+import { PersonalVerdict } from '@/components/PersonalVerdict';
+import type { CardTarget } from '@/components/VerdictCard';
 import { WeaponArt } from '@/components/WeaponArt';
+import { WeaponStatus } from '@/components/WeaponStatus';
 import { recipeGraph } from '@/data/engine';
 import { SLOT_LABEL, type Weapon } from '@/data/types';
 import { allWeapons, getWeapon, resolve } from '@/data/weapons';
@@ -47,10 +49,24 @@ const toTree = (weapon: Weapon): TreeWeapon => ({
   builds: weapon.usedToBuild.map((edge) => resolve(edge.slug).name),
 });
 
-// Phase 1 has no arsenal, so every page renders the empty-arsenal verdict: Check for the 46
-// ingredients, Safe for the rest. Phase 2 re-renders the same card in the browser once the stored
-// arsenal is read.
+// Pages are pre-rendered with the empty-arsenal verdict: Check for the 46 ingredients, Safe for the
+// rest. PersonalVerdict re-renders the card in the browser once the player has an arsenal.
 const evaluator = createEvaluator(recipeGraph, {});
+
+/** Every weapon reachable forward from this one, so any personal chain can be named. */
+function descendants(slug: string): string[] {
+  const seen = new Set<string>([slug]);
+  const queue = [slug];
+  while (queue.length) {
+    for (const edge of resolve(queue.shift()!).usedToBuild) {
+      if (!seen.has(edge.slug)) {
+        seen.add(edge.slug);
+        queue.push(edge.slug);
+      }
+    }
+  }
+  return [...seen];
+}
 
 export default async function WeaponPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
@@ -60,8 +76,7 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
   const verdict = evaluator.verdict(slug);
   const explanation = explain(verdict, recipeGraph);
   const targets = verdict.targets.map((target) => toCard(resolve(target.slug)));
-  const chainSlugs = new Set<string>([slug, ...verdict.targets.flatMap((t) => t.chains.flat())]);
-  const names = Object.fromEntries([...chainSlugs].map((s) => [s, resolve(s).name]));
+  const names = Object.fromEntries(descendants(slug).map((s) => [s, resolve(s).name]));
 
   const tree = familyTree(recipeGraph, slug, { depth: 1 });
   const madeFrom = tree.madeFrom.map((node) => ({
@@ -87,10 +102,21 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
             <span>Added in {weapon.introduced}</span>
             {weapon.isNew && <span className="badge-new">New this month</span>}
           </p>
+          <WeaponStatus
+            slug={weapon.slug}
+            name={weapon.name}
+            isIngredient={weapon.usedToBuild.length > 0}
+          />
         </div>
       </header>
 
-      <VerdictCard verdict={verdict} explanation={explanation} targets={targets} names={names} />
+      <PersonalVerdict
+        slug={weapon.slug}
+        initialVerdict={verdict}
+        initialExplanation={explanation}
+        targets={targets}
+        names={names}
+      />
 
       {(madeFrom.length > 0 || usedToBuild.length > 0) && (
         <section className="section" aria-labelledby="tree-title">

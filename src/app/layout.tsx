@@ -50,7 +50,8 @@ function Footer() {
         </p>
         <p>
           Weapon data and pictures come from the{' '}
-          <a href="https://github.com/wfcd/warframe-items">Warframe Community Developers</a>.
+          <a href="https://github.com/wfcd/warframe-items">Warframe Community Developers</a>.{' '}
+          <Link href="/about/">About the data, and how to report a mistake</Link>.
         </p>
         <p>
           Forgeline is a fan-made tool and is not affiliated with or endorsed by Digital Extremes.
@@ -81,8 +82,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
             <HeaderSearch />
             <nav className="site-nav" aria-label="Main">
+              <Link href="/arsenal/">My Arsenal</Link>
+              <Link href="/sweep/">Sweep</Link>
               <Link href="/ingredients/">Ingredients</Link>
-              <Link href="/about/">About</Link>
               <ThemeToggle />
             </nav>
           </div>

@@ -22,8 +22,9 @@ reads it and redeploys on each push to `main`, so nothing lives only on Vercel.
 | Pages | Home, ingredient index, About, and a page per weapon. 627 pre-rendered files |
 | Search | Working. Typo tolerant, Prime aware, `/` from any page |
 | Verdict engine | Working and tested, in `src/engine/`. Rules in [docs/verdict-rules.md](docs/verdict-rules.md) |
-| Sell-check card | Working on every weapon page: Check or Safe with the reason, until phase 2 adds your arsenal |
-| My Arsenal, slot sweep, build planner | Not built yet, phase 2 |
+| Sell-check card | Working on every weapon page, and personal once you mark your arsenal: Keep N or Safe, with the reason |
+| My Arsenal and slot sweep | Working. Saved in the browser, with file export and import |
+| Build planner, offline support | Not built yet, phase 2 (M6) |
 
 See [docs/build-plan.md](docs/build-plan.md) section 11 for what comes next.
 

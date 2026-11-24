@@ -2,13 +2,17 @@ import Link from 'next/link';
 import type { Explanation, Tone, Verdict } from '@/engine';
 import { CopyResult } from './CopyResult';
 import { Icon, type IconName } from './Icon';
+import { StatusPicker } from './StatusPicker';
 import { WeaponArt, type ArtWeapon } from './WeaponArt';
 
 /**
  * The Sell Check result (spec 5.1 and 5.2): the verdict in icon, word and colour, the reason under
  * it, one row per weapon it builds with picture and copy count, the chain beyond, the mastery note,
- * and Copy result. Renders on the server; the engine and explainer are pure, so phase 2 can render
- * the same card in the browser once the stored arsenal is known.
+ * and Copy result.
+ *
+ * With `controls`, each row also carries the player's status for that weapon, so a Check resolves
+ * into Keep or Safe on the card itself (docs/verdict-rules.md, rule 2). PersonalVerdict renders it
+ * that way, recomputing the verdict in the browser as the statuses change.
  */
 
 export interface CardTarget extends ArtWeapon {
@@ -27,6 +31,8 @@ export function VerdictCard({
   explanation,
   targets,
   names,
+  controls = false,
+  footnote,
 }: {
   verdict: Verdict;
   explanation: Explanation;
@@ -34,6 +40,10 @@ export function VerdictCard({
   targets: readonly CardTarget[];
   /** Display names for every slug that appears in a chain. */
   names: Readonly<Record<string, string>>;
+  /** Show a status picker on each row. */
+  controls?: boolean;
+  /** One line under the rows: where the verdict comes from, or how to make it personal. */
+  footnote?: React.ReactNode;
 }) {
   const e = explanation;
 
@@ -65,7 +75,7 @@ export function VerdictCard({
       {targets.length > 0 && (
         <div className="verdict__section">
           <h3 className="verdict__label">Used to build</h3>
-          <ul className="verdict__rows">
+          <ul className={`verdict__rows${controls ? ' verdict__rows--controls' : ''}`}>
             {targets.map((target, index) => (
               <li key={target.slug} className="verdict__row">
                 <Link href={`/w/${target.slug}/`} className="verdict__target">
@@ -73,9 +83,15 @@ export function VerdictCard({
                   <span className="verdict__target-name">{target.name}</span>
                 </Link>
                 <span className="verdict__note">{e.notes[index]}</span>
+                {controls && (
+                  <span className="verdict__control">
+                    <StatusPicker slug={target.slug} name={target.name} size="small" />
+                  </span>
+                )}
               </li>
             ))}
           </ul>
+          {footnote && <p className="verdict__footnote">{footnote}</p>}
         </div>
       )}
 
