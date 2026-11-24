@@ -574,6 +574,14 @@ says so both ways round: on Lex Prime, "Aklex takes Lex, not Lex Prime"; on Lex,
 itself: Lex Prime does not count". 72 weapons get a callout. A weapon is never weighed against
 its own recipe, and no "not this one" is said where this one leads there anyway: Mutalist Cernos
 is a Cernos version and is built from Cernos.
+Community links (12.8) complete M6.5's list apart from 12.1 and 12.5. Weapon pages link to the
+weapon's Warframe Wiki page and, when it can be traded, its warframe.market page, both opening in
+a new tab with no referrer. Neither address is guessed: `npm run data:links` asks both sites once
+and commits data/links.json, so builds and the monthly refresh never depend on either site. The
+wiki's own API resolves each title (the source's address was stale for a few, such as Corvas
+Prime), and market items are matched by game id, so Founders-only Primes like Lato Prime get no
+market link. All 621 weapons have a wiki page; 208 have a market page. New weapons get links the
+next time the script runs.
 No schema bump: the flag is optional, so an old tab left open after a deploy still reads the arsenal
 rather than treating it as unreadable and writing an empty one back. What the data allows for the
 rest: build times, credit costs, vault status and the 45 Incarnon Genesis adapters are all in

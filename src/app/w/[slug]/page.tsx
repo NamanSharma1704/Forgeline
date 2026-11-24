@@ -13,6 +13,7 @@ import { SLOT_LABEL, type Weapon } from '@/data/types';
 import { variantOf } from '@/data/variants';
 import {
   allWeapons,
+  communityLinksOf,
   getWeapon,
   incarnonGenesisOf,
   recipeOf,
@@ -124,6 +125,7 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
   const variant = variantOf(weapon.name);
   const versions = versionsOf(slug);
   const callouts = versionCallouts(slug);
+  const outside = communityLinksOf(slug);
   const incarnon = incarnonGenesisOf(weapon);
 
   // Phase 2: the full depth, at most three steps each way in the current data.
@@ -196,6 +198,34 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
                 </li>
               ))}
             </ul>
+          )}
+          {(outside.wiki || outside.market) && (
+            <p className="weapon-links">
+              {outside.wiki && (
+                <a
+                  href={outside.wiki}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Drop locations, stats and notes, on the community wiki"
+                >
+                  Warframe Wiki
+                  <Icon name="external" size={14} />
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              )}
+              {outside.market && (
+                <a
+                  href={outside.market}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="What players are trading it for, on warframe.market"
+                >
+                  warframe.market
+                  <Icon name="external" size={14} />
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </a>
+              )}
+            </p>
           )}
           <WeaponStatus
             slug={weapon.slug}

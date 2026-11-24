@@ -37,6 +37,8 @@ const PATHS = {
     </>
   ),
   done: <path d="M5 12.5l4.25 4.25L19 7" />,
+  // Leaves the site: opens another site in a new tab.
+  external: <path d="M13.5 5.5h5v5M18.5 5.5l-7.5 7.5M16.5 13.5v5h-11v-11h5" />,
   // Foundry time.
   clock: (
     <>

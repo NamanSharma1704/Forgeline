@@ -7,6 +7,7 @@
  */
 
 import indexJson from '../../data/index.json';
+import linksJson from '../../data/links.json';
 import { listOf } from '../engine/explain';
 import type { RecipeSummary } from './recipe';
 import type { Slot, Weapon, WeaponIndex } from './types';
@@ -152,6 +153,21 @@ export const graphWeapons = () =>
     const incarnon = incarnonGenesisOf(weapon);
     return incarnon ? { ...weapon, incarnon } : weapon;
   });
+
+const links = linksJson as { checkedAt: string; wiki: Record<string, string>; market: Record<string, string> };
+
+/**
+ * A weapon's pages on the Warframe wiki and warframe.market (M6.5, 12.8), from data/links.json,
+ * which scripts/fetch-links.mjs checked against both sites. Absent when that check found none.
+ */
+export function communityLinksOf(slug: string): { wiki?: string; market?: string } {
+  const title = links.wiki[slug];
+  const item = links.market[slug];
+  return {
+    ...(title ? { wiki: `https://wiki.warframe.com/w/${encodeURIComponent(title.replace(/ /g, '_'))}` } : {}),
+    ...(item ? { market: `https://warframe.market/items/${item}` } : {}),
+  };
+}
 
 /** A weapon's recipe for display: names resolved, credits and Foundry time attached. */
 export const recipeOf = (weapon: Weapon): RecipeSummary => ({

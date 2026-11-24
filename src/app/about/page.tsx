@@ -61,6 +61,11 @@ export default function AboutPage() {
         Extremes&apos; game assets, used here under the non-commercial terms of the Warframe
         Content Policy.
       </p>
+      <p>
+        Weapon pages link to the Warframe Wiki and to warframe.market. Both are community sites,
+        not part of Forgeline. The links carry no tracking and earn nothing, and each was checked to
+        lead to a real page when the data was last refreshed.
+      </p>
     </div>
   );
 }

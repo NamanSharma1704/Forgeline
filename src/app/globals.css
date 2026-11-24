@@ -1008,6 +1008,27 @@ main {
   box-shadow: 0 0 12px -2px var(--focus-glow);
 }
 
+/* Outside links: quiet, and marked as leaving the site. */
+.weapon-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin-top: 10px;
+  font-size: var(--step--1);
+}
+
+.weapon-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 28px;
+  color: var(--text-2);
+}
+
+.weapon-links a:hover {
+  color: var(--text);
+}
+
 /* Which version a recipe takes, when it matters. */
 .version-callouts {
   display: grid;

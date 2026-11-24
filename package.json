@@ -17,6 +17,7 @@
     "data:verify": "node scripts/verify-source-data.mjs",
     "data:build": "node scripts/build-index.mjs",
     "data:images": "node scripts/fetch-images.mjs",
+    "data:links": "node scripts/fetch-links.mjs",
     "data:refresh": "node scripts/build-index.mjs --out data/index.next.json --previous data/index.json && node scripts/diff-index.mjs",
     "data:diff": "node scripts/diff-index.mjs",
     "data:accept": "node scripts/update-fixture.mjs"
