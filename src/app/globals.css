@@ -972,15 +972,64 @@ main {
   color: var(--text-2);
 }
 
-.weapon-versions {
+/* Versions ribbon: the weapon's family as chips, the current one lit. */
+.versions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  margin-top: 12px;
+}
+
+.versions__label {
+  color: var(--text-2);
+  font: 600 var(--step--1) / 1.2 var(--font-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.versions .chips {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip--link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  text-decoration: none;
+}
+
+.chip[aria-current='page'] {
+  background: var(--selected);
+  border-color: var(--focus);
+  color: var(--text);
+  box-shadow: 0 0 12px -2px var(--focus-glow);
+}
+
+/* Which version a recipe takes, when it matters. */
+.version-callouts {
+  display: grid;
+  gap: 6px;
   max-width: var(--measure);
-  margin: 6px 0 0;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
   color: var(--text-2);
   font-size: var(--step--1);
 }
 
-.weapon-versions a {
-  color: var(--text);
+.version-callouts li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.version-callouts .icon {
+  flex: none;
+  margin-top: 1px;
+  color: var(--focus);
 }
 
 /* Incarnon: Void cyan, the one place the focus colour also carries meaning, always with its word. */

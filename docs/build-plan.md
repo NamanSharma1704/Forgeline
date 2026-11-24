@@ -568,6 +568,12 @@ section shows the same, in full. Resource rarity is not in the data, so the Rare
 wiki's eight Rare planet resources, tested against the names the data has; Argon Crystal also
 says it decays, which its own description in the data confirms. Forma and Nitain Extract, which
 12.7 suggested tagging, have no rarity on the wiki, so they are untagged.
+Recipe callouts (12.4) finish the variant work. Each weapon page has a Versions ribbon (Normal,
+Prime, Vandal, MK1 and so on, the current one lit) and, where a recipe takes one exact version,
+says so both ways round: on Lex Prime, "Aklex takes Lex, not Lex Prime"; on Lex, "Aklex needs Lex
+itself: Lex Prime does not count". 72 weapons get a callout. A weapon is never weighed against
+its own recipe, and no "not this one" is said where this one leads there anyway: Mutalist Cernos
+is a Cernos version and is built from Cernos.
 No schema bump: the flag is optional, so an old tab left open after a deploy still reads the arsenal
 rather than treating it as unreadable and writing an empty one back. What the data allows for the
 rest: build times, credit costs, vault status and the 45 Incarnon Genesis adapters are all in

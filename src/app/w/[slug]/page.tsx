@@ -11,7 +11,15 @@ import { WeaponStatus } from '@/components/WeaponStatus';
 import { recipeGraph } from '@/data/engine';
 import { SLOT_LABEL, type Weapon } from '@/data/types';
 import { variantOf } from '@/data/variants';
-import { allWeapons, getWeapon, incarnonGenesisOf, otherVersions, recipeOf, resolve } from '@/data/weapons';
+import {
+  allWeapons,
+  getWeapon,
+  incarnonGenesisOf,
+  recipeOf,
+  resolve,
+  versionCallouts,
+  versionsOf,
+} from '@/data/weapons';
 import { createEvaluator, explain, familyTree, type TreeNode } from '@/engine';
 
 type Params = { slug: string };
@@ -114,7 +122,8 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
   });
   const names = Object.fromEntries(descendants(slug).map((s) => [s, resolve(s).name]));
   const variant = variantOf(weapon.name);
-  const versions = otherVersions(slug);
+  const versions = versionsOf(slug);
+  const callouts = versionCallouts(slug);
   const incarnon = incarnonGenesisOf(weapon);
 
   // Phase 2: the full depth, at most three steps each way in the current data.
@@ -144,7 +153,8 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
             <span>{SLOT_LABEL[weapon.slot]}</span>
             <span>Mastery rank {weapon.masteryReq}</span>
             <span>Added in {weapon.introduced}</span>
-            {variant.line && <span>{variant.line} variant</span>}
+            {/* The ribbon says it when there is one; a weapon with no other version still gets the label. */}
+            {variant.line && versions.length < 2 && <span>{variant.line} variant</span>}
             {incarnon && (
               <span className="badge-incarnon" title={`Can take the ${incarnon}`}>
                 <Icon name="incarnon" size={16} />
@@ -153,17 +163,39 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
             )}
             {weapon.isNew && <span className="badge-new">New this month</span>}
           </p>
-          {versions.length > 0 && (
-            <p className="weapon-versions">
-              Other versions:{' '}
-              {versions.map((other, i) => (
-                <span key={other.slug}>
-                  {i > 0 && ', '}
-                  <Link href={`/w/${other.slug}/`}>{other.name}</Link>
-                </span>
+          {versions.length > 1 && (
+            <nav className="versions" aria-label={`Versions of ${variant.base}`}>
+              <span className="versions__label">Versions</span>
+              <ul className="chips">
+                {versions.map((version) => {
+                  const line = variantOf(version.name).line ?? 'Normal';
+                  return (
+                    <li key={version.slug}>
+                      {version.slug === weapon.slug ? (
+                        <span className="chip chip--link" aria-current="page" title={version.name}>
+                          {line}
+                        </span>
+                      ) : (
+                        <Link href={`/w/${version.slug}/`} className="chip chip--link" title={version.name}>
+                          {line}
+                          <span className="sr-only">: {version.name}</span>
+                        </Link>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          )}
+          {callouts.length > 0 && (
+            <ul className="version-callouts">
+              {callouts.map((callout) => (
+                <li key={callout}>
+                  <Icon name="info" size={18} />
+                  <span>{callout}</span>
+                </li>
               ))}
-              . Each is its own weapon, with its own mastery and sell check.
-            </p>
+            </ul>
           )}
           <WeaponStatus
             slug={weapon.slug}
