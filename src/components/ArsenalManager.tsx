@@ -16,6 +16,7 @@ import {
   type ParsedArsenal,
 } from '@/store/arsenal';
 import { arsenalActions, useArsenal } from '@/store/useArsenal';
+import { FavouriteToggle } from './FavouriteToggle';
 import { Icon } from './Icon';
 import { QtyStepper } from './QtyStepper';
 import { StatusPicker } from './StatusPicker';
@@ -342,6 +343,7 @@ export function ArsenalManager({
               <div className="arsenal-row__controls">
                 <StatusPicker slug={row.slug} name={row.name} size="small" />
                 {isIngredient(row) && <QtyStepper slug={row.slug} name={row.name} />}
+                <FavouriteToggle slug={row.slug} name={row.name} compact />
               </div>
             </li>
           ))}

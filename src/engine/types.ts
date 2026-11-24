@@ -30,10 +30,15 @@ export interface RecipeGraph {
   get(slug: string): GraphNode;
 }
 
-/** What the player recorded for one weapon. `qty` only matters while they hold it. */
+/**
+ * What the player recorded for one weapon. `qty` only matters while they hold it. `favourite` marks
+ * a weapon they have invested in (a Catalyst, Forma, an Exilus Adapter): the sweep never suggests
+ * selling it, whatever recipes say.
+ */
 export interface ArsenalEntry {
   readonly status: OwnershipStatus;
   readonly qty?: number;
+  readonly favourite?: boolean;
 }
 
 /**

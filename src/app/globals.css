@@ -65,6 +65,8 @@
   --focus: #58c4dc;
   --focus-glow: rgba(88, 196, 220, 0.25);
   --selected: color-mix(in srgb, var(--focus) 18%, var(--surface-2));
+  /* Orokin gold: favourites, the weapons a player has invested in. */
+  --gold: #e0b973;
 
   --font-body: var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-barlow-sc), var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
@@ -124,6 +126,7 @@
   --focus: #0a5fc0;
   --focus-glow: rgba(10, 95, 192, 0.18);
   --selected: color-mix(in srgb, var(--focus) 12%, var(--surface-1));
+  --gold: #835e1a;
 
   color-scheme: light;
 }
@@ -1520,6 +1523,46 @@ a.tree-box:hover {
   text-align: center;
 }
 
+/* Favourite: a star that fills with gold. Gold is the one colour reserved for it. */
+.favourite {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0 12px 0 10px;
+  border: 1px solid var(--edge-soft);
+  background: var(--surface-2);
+  color: var(--text-2);
+  font: 500 var(--step--1) / 1 var(--font-body);
+  cursor: pointer;
+  transition:
+    color 140ms var(--ease-out),
+    border-color 140ms var(--ease-out),
+    background-color 140ms var(--ease-out);
+}
+
+.favourite:hover {
+  border-color: var(--edge);
+  color: var(--text);
+}
+
+.favourite[aria-pressed='true'] {
+  border-color: var(--edge-gold);
+  background: color-mix(in srgb, var(--gold) 12%, var(--surface-2));
+  color: var(--gold);
+}
+
+.favourite[aria-pressed='true'] .icon path {
+  fill: currentColor;
+}
+
+.favourite--compact {
+  justify-content: center;
+  width: 36px;
+  min-height: 32px;
+  padding: 0;
+}
+
 .status-tag {
   display: inline-block;
   margin-left: 8px;
@@ -1855,6 +1898,22 @@ a.tree-box:hover {
   color: var(--keep);
 }
 
+.sweep--favourites .sweep__title .icon {
+  color: var(--gold);
+}
+
+/* The verdict icon stands in for the lit rule. */
+.sweep__title::before {
+  display: none;
+}
+
+.sweep-row__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
 .sweep__count {
   color: var(--text-2);
   font-weight: 500;
@@ -1896,8 +1955,8 @@ a.tree-box:hover {
     grid-template-columns: 1fr;
   }
 
-  .sweep-row .button {
-    justify-self: start;
+  .sweep-row__actions {
+    justify-content: flex-start;
   }
 }
 

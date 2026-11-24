@@ -7,6 +7,7 @@ import {
   EMPTY_ARSENAL,
   parseArsenal,
   serialise,
+  setFavourite,
   setQty,
   setStatus,
   type StoredArsenal,
@@ -67,6 +68,8 @@ const now = () => new Date().toISOString();
 export const arsenalActions = {
   setStatus: (slug: string, status: OwnershipStatus) => commit(setStatus(snapshot(), slug, status, now())),
   setQty: (slug: string, qty: number) => commit(setQty(snapshot(), slug, qty, now())),
+  setFavourite: (slug: string, favourite: boolean) =>
+    commit(setFavourite(snapshot(), slug, favourite, now())),
   replace: (next: StoredArsenal) => commit({ ...next, updatedAt: now() }),
   clear: () => commit({ ...EMPTY_ARSENAL, updatedAt: now() }),
 };

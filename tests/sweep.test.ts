@@ -102,3 +102,32 @@ describe('the browser graph file', () => {
     expect(JSON.stringify(toGraphFile(index.weapons)).length).toBeLessThan(45_000);
   });
 });
+
+describe('favourites in the sweep (M6.5, 12.3)', () => {
+  it('protects a favourite that would otherwise be safe to sell', () => {
+    const result = sweep(graph, { braton: { status: 'mastered', favourite: true } });
+    expect(result.safe).toEqual([]);
+    expect(result.favourites.map((i) => [i.slug, i.reason])).toEqual([
+      ['braton', 'Your favourite, so it is never suggested for sale.'],
+    ]);
+  });
+
+  it('still says what a favourite is needed for, and when it is not mastered', () => {
+    const result = sweep(graph, { bolto: { status: 'owned', favourite: true } });
+    expect(result.keep).toEqual([]);
+    expect(result.favourites[0]?.reason).toBe(
+      'Your favourite, so it is never suggested for sale. Akbolto and Hystrix need it too. Not mastered yet: rank 30 is the goal.'
+    );
+  });
+
+  it('leaves everything else exactly where it was', () => {
+    const plain = sweep(graph, { braton: { status: 'mastered' }, skana: { status: 'mastered' } });
+    const withFavourite = sweep(graph, {
+      braton: { status: 'mastered' },
+      skana: { status: 'mastered', favourite: true },
+    });
+    expect(withFavourite.safe.map((i) => i.slug)).toEqual(['braton']);
+    expect(withFavourite.favourites.map((i) => i.slug)).toEqual(['skana']);
+    expect(plain.favourites).toEqual([]);
+  });
+});

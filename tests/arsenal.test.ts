@@ -12,8 +12,10 @@ import {
   ArsenalFileError,
   EMPTY_ARSENAL,
   exportFile,
+  favouriteIn,
   parseArsenal,
   qtyIn,
+  setFavourite,
   setQty,
   setStatus,
   statusIn,
@@ -139,5 +141,51 @@ describe('the M5 acceptance criterion', () => {
     const verdict = createEvaluator(graph, toEngineArsenal(done)).verdict('bolto');
     expect(verdict.kind).toBe('safe');
     expect(verdict.kind === 'safe' && verdict.basis).toBe('all-mastered');
+  });
+});
+
+describe('favourites (M6.5, 12.3)', () => {
+  const held = build(['bolto', 'mastered', 2], ['braton', 'owned']);
+
+  it('marks and unmarks a held weapon, keeping its status and copies', () => {
+    const on = setFavourite(held, 'bolto', true, NOW);
+    expect(on.entries.bolto).toEqual({ status: 'mastered', qty: 2, favourite: true });
+    expect(favouriteIn(on, 'bolto')).toBe(true);
+    const off = setFavourite(on, 'bolto', false, NOW);
+    expect(off.entries.bolto).toEqual({ status: 'mastered', qty: 2 });
+  });
+
+  it('ignores weapons not held', () => {
+    expect(setFavourite(held, 'lato', true, NOW)).toBe(held);
+    const sold = build(['lato', 'sold']);
+    expect(setFavourite(sold, 'lato', true, NOW)).toBe(sold);
+  });
+
+  it('survives owned to mastered and copy changes, and goes once sold', () => {
+    let arsenal = setFavourite(held, 'braton', true, NOW);
+    arsenal = setStatus(arsenal, 'braton', 'mastered', NOW);
+    expect(favouriteIn(arsenal, 'braton')).toBe(true);
+    arsenal = setFavourite(arsenal, 'bolto', true, NOW);
+    arsenal = setQty(arsenal, 'bolto', 1, NOW);
+    expect(arsenal.entries.bolto).toEqual({ status: 'mastered', favourite: true });
+    arsenal = setStatus(arsenal, 'braton', 'sold', NOW);
+    expect(arsenal.entries.braton).toEqual({ status: 'sold' });
+  });
+
+  it('round-trips through a file, and is dropped from entries that are not held', () => {
+    const arsenal = setFavourite(held, 'bolto', true, NOW);
+    expect(parseArsenal(JSON.parse(exportFile(arsenal, NOW)), known).arsenal.entries).toEqual(
+      arsenal.entries
+    );
+    const parsed = parseArsenal({
+      schema: 1,
+      entries: { lato: { status: 'sold', favourite: true }, bolto: { status: 'owned', favourite: 'yes' } },
+    });
+    expect(parsed.arsenal.entries).toEqual({ lato: { status: 'sold' }, bolto: { status: 'owned' } });
+  });
+
+  it('needs no schema bump: an arsenal saved before favourites existed still reads', () => {
+    const before = { schema: 1, entries: { bolto: { status: 'mastered', qty: 2 } } };
+    expect(parseArsenal(before).arsenal.entries).toEqual({ bolto: { status: 'mastered', qty: 2 } });
   });
 });

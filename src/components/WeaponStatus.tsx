@@ -1,9 +1,13 @@
 'use client';
 
+import { FavouriteToggle } from './FavouriteToggle';
 import { QtyStepper } from './QtyStepper';
 import { StatusPicker } from './StatusPicker';
 
-/** The player's own status for the weapon on its page, and copies held if it is an ingredient. */
+/**
+ * The player's own status for the weapon on its page, copies held if it is an ingredient, and the
+ * favourite mark once they hold it.
+ */
 export function WeaponStatus({
   slug,
   name,
@@ -19,6 +23,7 @@ export function WeaponStatus({
       <div className="weapon-status__controls">
         <StatusPicker slug={slug} name={name} />
         {isIngredient && <QtyStepper slug={slug} name={name} />}
+        <FavouriteToggle slug={slug} name={name} />
       </div>
     </div>
   );

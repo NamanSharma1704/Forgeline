@@ -3,7 +3,8 @@
  * Keep, each with a one-line reason. "I'm out of slots, what can I get rid of?"
  *
  * Safe to sell means mastered and not needed by anything unbuilt. A weapon that is not mastered
- * yet always lands in Keep, because selling it throws away its mastery.
+ * yet always lands in Keep, because selling it throws away its mastery. A weapon the player marked
+ * as a favourite lands in Favourites before any of that is asked: it is never suggested for sale.
  */
 
 import { listOf } from './explain';
@@ -21,6 +22,8 @@ export interface SweepItem {
 export interface SweepResult {
   readonly safe: readonly SweepItem[];
   readonly keep: readonly SweepItem[];
+  /** Held weapons the player marked as favourites. Never in `safe`, whatever the verdict. */
+  readonly favourites: readonly SweepItem[];
 }
 
 export function sweep(graph: RecipeGraph, arsenal: Arsenal): SweepResult {
@@ -28,6 +31,7 @@ export function sweep(graph: RecipeGraph, arsenal: Arsenal): SweepResult {
   const name = (slug: string) => graph.get(slug).name;
   const safe: SweepItem[] = [];
   const keep: SweepItem[] = [];
+  const favourites: SweepItem[] = [];
 
   const heldSlugs = Object.entries(arsenal)
     .filter(([slug, entry]) => entry && holds(entry.status) && graph.has(slug))
@@ -38,6 +42,19 @@ export function sweep(graph: RecipeGraph, arsenal: Arsenal): SweepResult {
     const verdict = evaluator.verdict(slug);
     const { maxRank } = graph.get(slug);
     const notMastered = `Not mastered yet. Level it to rank ${maxRank} first; the mastery stays after you sell it.`;
+
+    if (arsenal[slug]?.favourite) {
+      let reason = 'Your favourite, so it is never suggested for sale.';
+      if (verdict.kind === 'keep') {
+        const outstanding = verdict.targets
+          .filter((target) => target.copiesNeeded > 0)
+          .map((target) => name(target.slug));
+        reason += ` ${listOf(outstanding)} ${outstanding.length === 1 ? 'needs' : 'need'} it too.`;
+      }
+      if (status === 'owned') reason += ` Not mastered yet: rank ${maxRank} is the goal.`;
+      favourites.push({ slug, status, verdict, reason });
+      continue;
+    }
 
     if (verdict.kind === 'keep') {
       const outstanding = verdict.targets
@@ -76,5 +93,5 @@ export function sweep(graph: RecipeGraph, arsenal: Arsenal): SweepResult {
   }
 
   const byName = (a: SweepItem, b: SweepItem) => name(a.slug).localeCompare(name(b.slug), 'en');
-  return { safe: safe.sort(byName), keep: keep.sort(byName) };
+  return { safe: safe.sort(byName), keep: keep.sort(byName), favourites: favourites.sort(byName) };
 }

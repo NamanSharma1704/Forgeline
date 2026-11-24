@@ -11,7 +11,11 @@
  *   { schema: 1, updatedAt: "2026-11-24T...", entries: { bolto: { status: "mastered", qty: 2 } } }
  *
  * `notOwned` is the default and is never stored. `qty` is only kept while the weapon is held, and
- * only when it is more than one.
+ * only when it is more than one. `favourite: true` is only kept while the weapon is held.
+ *
+ * `favourite` arrived without a schema bump on purpose. It is optional, so older code reads an
+ * arsenal that has it and simply ignores it. A bump would make an old tab, still open after a
+ * deploy, refuse the stored arsenal, start empty, and risk writing that emptiness back.
  */
 
 import type { OwnershipStatus } from '../data/types';
@@ -25,6 +29,7 @@ export const MAX_QTY = 99;
 export interface StoredEntry {
   readonly status: Exclude<OwnershipStatus, 'notOwned'>;
   readonly qty?: number;
+  readonly favourite?: true;
 }
 
 export interface StoredArsenal {
@@ -59,13 +64,26 @@ const clampQty = (qty: unknown): number | undefined => {
   return whole > 1 ? whole : undefined;
 };
 
+/** Build an entry from its parts, leaving out whatever is at its default. */
+function entryOf(
+  status: StoredEntry['status'],
+  qty: number | undefined,
+  favourite: boolean
+): StoredEntry {
+  const count = held(status) ? clampQty(qty) : undefined;
+  return {
+    status,
+    ...(count ? { qty: count } : {}),
+    ...(favourite && held(status) ? { favourite: true as const } : {}),
+  };
+}
+
 /** One entry as stored, or null when it is the default or not valid. */
 function normaliseEntry(raw: unknown): StoredEntry | null {
   if (!raw || typeof raw !== 'object') return null;
-  const { status, qty } = raw as { status?: unknown; qty?: unknown };
+  const { status, qty, favourite } = raw as { status?: unknown; qty?: unknown; favourite?: unknown };
   if (!isStatus(status) || status === 'notOwned') return null;
-  const count = held(status) ? clampQty(qty) : undefined;
-  return count ? { status, qty: count } : { status };
+  return entryOf(status, typeof qty === 'number' ? qty : undefined, favourite === true);
 }
 
 /** The problem with a file or stored value, phrased for the person who chose it. */
@@ -132,7 +150,10 @@ export function parseArsenal(raw: unknown, knownSlugs?: ReadonlySet<string>): Pa
   };
 }
 
-/** Set one weapon's status. Not owned removes the entry; a held quantity survives owned/mastered. */
+/**
+ * Set one weapon's status. Not owned removes the entry. A held quantity and the favourite mark
+ * survive a move between owned and mastered, and are dropped once the weapon is sold.
+ */
 export function setStatus(
   arsenal: StoredArsenal,
   slug: string,
@@ -142,10 +163,7 @@ export function setStatus(
   const entries = { ...arsenal.entries };
   const previous = entries[slug];
   if (status === 'notOwned') delete entries[slug];
-  else {
-    const keep = held(status) && previous?.qty ? { qty: previous.qty } : {};
-    entries[slug] = { status, ...keep };
-  }
+  else entries[slug] = entryOf(status, previous?.qty, previous?.favourite === true);
   return { schema: ARSENAL_SCHEMA, updatedAt: nowIso, entries };
 }
 
@@ -158,10 +176,25 @@ export function setQty(
 ): StoredArsenal {
   const entry = arsenal.entries[slug];
   if (!entry || !held(entry.status)) return arsenal;
-  const count = clampQty(qty);
-  const entries = { ...arsenal.entries, [slug]: count ? { ...entry, qty: count } : { status: entry.status } };
+  const entries = { ...arsenal.entries, [slug]: entryOf(entry.status, qty, entry.favourite === true) };
   return { schema: ARSENAL_SCHEMA, updatedAt: nowIso, entries };
 }
+
+/** Mark or unmark a held weapon as a favourite. Ignored for weapons not held. */
+export function setFavourite(
+  arsenal: StoredArsenal,
+  slug: string,
+  favourite: boolean,
+  nowIso: string
+): StoredArsenal {
+  const entry = arsenal.entries[slug];
+  if (!entry || !held(entry.status)) return arsenal;
+  const entries = { ...arsenal.entries, [slug]: entryOf(entry.status, entry.qty, favourite) };
+  return { schema: ARSENAL_SCHEMA, updatedAt: nowIso, entries };
+}
+
+export const favouriteIn = (arsenal: StoredArsenal, slug: string): boolean =>
+  arsenal.entries[slug]?.favourite === true;
 
 export const statusIn = (arsenal: StoredArsenal, slug: string): OwnershipStatus =>
   arsenal.entries[slug]?.status ?? 'notOwned';

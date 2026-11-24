@@ -548,6 +548,17 @@ panel edges, verdict-coloured light inside the verdict card, cyan selection, and
 sticks from tablet width up. Every text colour was measured against every surface it sits on:
 4.5:1 or better in both themes, and the light verdict colours at 5.5:1 or better on white.
 
+M6.5 has started. Favourites (12.3) are done: a held weapon can be starred on its page, in My
+Arsenal or in the sweep, and the sweep puts it under Favourites instead of ever suggesting its sale.
+No schema bump: the flag is optional, so an old tab left open after a deploy still reads the arsenal
+rather than treating it as unreadable and writing an empty one back. What the data allows for the
+rest: build times, credit costs, vault status and the 45 Incarnon Genesis adapters are all in
+`@wfcd/items`, so 12.2, 12.6 and 12.7 need no hand-kept lists. Quest and Simaris re-acquisition
+(12.1) and "bought for credits" (the 12.5 preset) are not in it and need a curated, reviewed list.
+One correction to 12.5: marking only the 46 ingredients does not make verdicts exact, because an
+ingredient's verdict turns on whether its targets are built and mastered. The wizard should cover the
+87 recipe weapons, ingredients and targets both.
+
 Next, in order:
 
 1. **Check the worker on the live site.** After the M6 deploy: install from Chrome on a phone,

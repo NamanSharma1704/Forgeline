@@ -6,6 +6,7 @@ import { sweep, type SweepItem } from '@/engine';
 import { toEngineArsenal } from '@/store/arsenal';
 import { arsenalActions, useArsenal } from '@/store/useArsenal';
 import { useRecipeGraph } from '@/store/useRecipeGraph';
+import { FavouriteToggle } from './FavouriteToggle';
 import { Icon } from './Icon';
 import { WeaponArt } from './WeaponArt';
 
@@ -57,11 +58,14 @@ export function SlotSweep() {
         <span className="sweep-row__name">{graph.get(item.slug).name}</span>
       </Link>
       <span className="sweep-row__reason">{item.reason}</span>
-      {canSell && (
-        <button type="button" className="button button--small" onClick={() => arsenalActions.setStatus(item.slug, 'sold')}>
-          Mark sold
-        </button>
-      )}
+      <span className="sweep-row__actions">
+        {canSell && (
+          <button type="button" className="button button--small" onClick={() => arsenalActions.setStatus(item.slug, 'sold')}>
+            Mark sold
+          </button>
+        )}
+        <FavouriteToggle slug={item.slug} name={graph.get(item.slug).name} compact />
+      </span>
     </li>
   );
 
@@ -97,6 +101,21 @@ export function SlotSweep() {
           <p className="muted">Nothing you hold needs keeping.</p>
         ) : (
           <ul className="sweep__list">{result.keep.map((item) => row(item, false))}</ul>
+        )}
+      </section>
+
+      <section className="section sweep sweep--favourites" aria-labelledby="sweep-favourites">
+        <h2 id="sweep-favourites" className="section-title sweep__title">
+          <Icon name="star" />
+          Favourites <span className="sweep__count">{result.favourites.length}</span>
+        </h2>
+        {result.favourites.length === 0 ? (
+          <p className="muted">
+            None marked. Star a weapon you have put a Catalyst or Forma into, on its page or in My
+            Arsenal, and the sweep will never suggest selling it.
+          </p>
+        ) : (
+          <ul className="sweep__list">{result.favourites.map((item) => row(item, false))}</ul>
         )}
       </section>
     </>
