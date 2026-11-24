@@ -5,6 +5,7 @@
  * Spec 5.2: "The rules always explain themselves. A verdict without a reason is easy to ignore."
  */
 
+import { hardToGetSentence } from './recovery';
 import type { CheckTarget, RecipeGraph, TargetLine, Verdict } from './types';
 
 export type Tone = 'safe' | 'safe-soft' | 'check' | 'keep';
@@ -33,6 +34,11 @@ export interface Explanation {
    * recipes can still be one a player would regret selling.
    */
   readonly incarnon: string | null;
+  /**
+   * Why the weapon would be hard to get again (M6.5, 12.1), when it would be. Like the Incarnon
+   * note, it never changes the verdict; the card shows it under a Safe verdict, where it matters.
+   */
+  readonly recovery: string | null;
   /** One line of plain ASCII for pasting into in-game clan chat. */
   readonly copyText: string;
 }
@@ -226,9 +232,13 @@ export function explain(verdict: Verdict, graph: RecipeGraph): Explanation {
         : ' One more reason to keep it.')
     : null;
 
+  const hard = graph.get(verdict.slug).hardToGet;
+  const recovery = hard ? hardToGetSentence(hard) : null;
+
   const chat = [
     `${weapon}: ${headline}.`,
     ...(chatLines.length > 0 ? chatLines : [summary]),
+    ...(recovery && verdict.kind === 'safe' ? [recovery] : []),
     ...(adapter ? [`Can take the ${adapter}.`] : []),
   ]
     .join(' ')
@@ -243,6 +253,7 @@ export function explain(verdict: Verdict, graph: RecipeGraph): Explanation {
     chains: unique(chains),
     mastery,
     incarnon,
+    recovery,
     copyText: chat,
   };
 }

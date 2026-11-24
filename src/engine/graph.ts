@@ -8,7 +8,7 @@
  * same way.
  */
 
-import type { GraphNode, RecipeEdge, RecipeGraph } from './types';
+import type { GraphNode, HardToGet, RecipeEdge, RecipeGraph } from './types';
 
 export interface GraphInput {
   readonly slug: string;
@@ -17,6 +17,7 @@ export interface GraphInput {
   readonly usedToBuild: readonly RecipeEdge[];
   readonly madeFrom: readonly RecipeEdge[];
   readonly incarnon?: string;
+  readonly hardToGet?: HardToGet;
 }
 
 const bySlug = (a: RecipeEdge, b: RecipeEdge) => a.slug.localeCompare(b.slug, 'en');
@@ -74,6 +75,7 @@ export function createGraph(weapons: readonly GraphInput[]): RecipeGraph {
       usedToBuild: Object.freeze(forward.get(weapon.slug) ?? []),
       madeFrom: Object.freeze(backward.get(weapon.slug) ?? []),
       incarnon: weapon.incarnon ?? null,
+      hardToGet: weapon.hardToGet ?? null,
     });
   }
 

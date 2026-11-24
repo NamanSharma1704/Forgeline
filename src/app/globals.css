@@ -921,6 +921,33 @@ main {
   color: var(--focus);
 }
 
+/* Hard to get back, under a Safe verdict: the caution colour and its icon, never colour alone. */
+.verdict__warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: var(--measure);
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-left: 2px solid var(--check);
+  background: color-mix(in srgb, var(--check) 9%, transparent);
+  color: var(--text);
+}
+
+.verdict__warning .icon {
+  flex: none;
+  margin-top: 2px;
+  color: var(--check);
+}
+
+/* Several notes in a row read as one block: no rule between them. */
+.verdict__mastery + .verdict__recovery,
+.verdict__recovery + .verdict__incarnon {
+  margin-top: 12px;
+  padding-top: 0;
+  border-top: 0;
+}
+
 /* Two notes in a row read as one block: no second rule between them. */
 .verdict__mastery + .verdict__incarnon {
   margin-top: 12px;

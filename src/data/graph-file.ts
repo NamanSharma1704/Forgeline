@@ -7,6 +7,7 @@
  */
 
 import type { GraphInput } from '../engine/graph';
+import type { HardToGet } from '../engine/types';
 import type { Slot, Weapon } from './types';
 
 export interface GraphFileNode {
@@ -22,11 +23,33 @@ export interface GraphFileNode {
   readonly u?: readonly (readonly [string, number])[];
   /** the Incarnon Genesis it can take */
   readonly i?: string;
+  /** why it would be hard to get again: see encodeHard */
+  readonly h?: string;
+}
+
+/**
+ * HardToGet in a few characters: "vaulted", "event", "baro", or "only:simaris+stalker", with the
+ * Simaris condition after a second colon ("only:simaris:Complete The New War").
+ */
+export function encodeHard(hard: HardToGet): string {
+  if (hard.kind !== 'only') return hard.kind;
+  return `only:${hard.from.join('+')}${hard.simarisAfter ? `:${hard.simarisAfter}` : ''}`;
+}
+
+export function decodeHard(code: string): HardToGet | null {
+  if (code === 'vaulted' || code === 'event' || code === 'baro') return { kind: code };
+  const match = /^only:([a-z+]+)(?::(.*))?$/.exec(code);
+  if (!match) return null;
+  const from = match[1]!
+    .split('+')
+    .filter((source): source is 'simaris' | 'stalker' => source === 'simaris' || source === 'stalker');
+  return { kind: 'only', from, ...(match[2] ? { simarisAfter: match[2] } : {}) };
 }
 
 export function toGraphFile(
   weapons: readonly (Pick<Weapon, 'slug' | 'name' | 'slot' | 'maxRank' | 'usedToBuild'> & {
     readonly incarnon?: string;
+    readonly hardToGet?: HardToGet;
   })[]
 ): GraphFileNode[] {
   return weapons.map((w) => ({
@@ -36,6 +59,7 @@ export function toGraphFile(
     r: w.maxRank,
     ...(w.usedToBuild.length ? { u: w.usedToBuild.map((e) => [e.slug, e.copies] as const) } : {}),
     ...(w.incarnon ? { i: w.incarnon } : {}),
+    ...(w.hardToGet ? { h: encodeHard(w.hardToGet) } : {}),
   }));
 }
 
@@ -46,12 +70,16 @@ export function fromGraphFile(nodes: readonly GraphFileNode[]): GraphInput[] {
       madeFrom.set(target, [...(madeFrom.get(target) ?? []), { slug: node.s, copies }]);
     }
   }
-  return nodes.map((node) => ({
-    slug: node.s,
-    name: node.n,
-    maxRank: node.r,
-    usedToBuild: (node.u ?? []).map(([slug, copies]) => ({ slug, copies })),
-    madeFrom: madeFrom.get(node.s) ?? [],
-    ...(node.i ? { incarnon: node.i } : {}),
-  }));
+  return nodes.map((node) => {
+    const hardToGet = node.h ? decodeHard(node.h) : null;
+    return {
+      slug: node.s,
+      name: node.n,
+      maxRank: node.r,
+      usedToBuild: (node.u ?? []).map(([slug, copies]) => ({ slug, copies })),
+      madeFrom: madeFrom.get(node.s) ?? [],
+      ...(node.i ? { incarnon: node.i } : {}),
+      ...(hardToGet ? { hardToGet } : {}),
+    };
+  });
 }

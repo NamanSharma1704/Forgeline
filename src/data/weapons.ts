@@ -10,6 +10,7 @@ import indexJson from '../../data/index.json';
 import linksJson from '../../data/links.json';
 import { listOf } from '../engine/explain';
 import type { RecipeSummary } from './recipe';
+import { hardToGetOf } from './recovery';
 import type { Slot, Weapon, WeaponIndex } from './types';
 import { VARIANT_ORDER, variantOf } from './variants';
 
@@ -147,11 +148,19 @@ const genesisByBase = new Map<string, string>(
 export const incarnonGenesisOf = (weapon: Pick<Weapon, 'name' | 'incarnonGenesis'>): string | null =>
   weapon.incarnonGenesis ?? genesisByBase.get(variantOf(weapon.name).base) ?? null;
 
-/** Every weapon as the recipe graph takes it, with the Incarnon Genesis it can take. */
+/**
+ * Every weapon as the recipe graph takes it, with the Incarnon Genesis it can take and why it would
+ * be hard to get again.
+ */
 export const graphWeapons = () =>
   index.weapons.map((weapon) => {
     const incarnon = incarnonGenesisOf(weapon);
-    return incarnon ? { ...weapon, incarnon } : weapon;
+    const hardToGet = hardToGetOf(weapon);
+    return {
+      ...weapon,
+      ...(incarnon ? { incarnon } : {}),
+      ...(hardToGet ? { hardToGet } : {}),
+    };
   });
 
 const links = linksJson as { checkedAt: string; wiki: Record<string, string>; market: Record<string, string> };

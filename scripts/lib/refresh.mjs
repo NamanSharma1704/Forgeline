@@ -62,7 +62,7 @@ function diffEdges(before, after) {
 }
 
 /** Fields that change what a page shows but not what a verdict says. */
-const DISPLAY_FIELDS = ['name', 'slot', 'masteryReq', 'maxRank', 'introduced', 'introducedDate', 'isNew', 'aliases', 'materials', 'buildTime', 'buildPrice', 'blueprintPrice', 'incarnonGenesis'];
+const DISPLAY_FIELDS = ['name', 'slot', 'masteryReq', 'maxRank', 'introduced', 'introducedDate', 'isNew', 'aliases', 'materials', 'buildTime', 'buildPrice', 'blueprintPrice', 'incarnonGenesis', 'obtain'];
 
 const ingredientSlugs = (index) =>
   new Set(index.weapons.filter((w) => w.usedToBuild.length > 0).map((w) => w.slug));

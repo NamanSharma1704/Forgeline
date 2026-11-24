@@ -52,7 +52,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "acceltra-prime",
@@ -96,7 +100,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "ack-brunt",
@@ -142,7 +150,10 @@
       "buildTime": 86400,
       "buildPrice": 65000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Ack & Brunt Incarnon Genesis"
+      "incarnonGenesis": "Ack & Brunt Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "acrid",
@@ -187,7 +198,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "aegrit",
@@ -231,7 +245,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "aeolak",
@@ -275,7 +293,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "afentis",
@@ -319,7 +341,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "afentis-prime",
@@ -363,7 +389,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "afuris",
@@ -398,7 +428,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "afuris-prime",
@@ -437,7 +470,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "agkuza",
@@ -477,7 +514,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 25000,
-      "blueprintPrice": 35000
+      "blueprintPrice": 35000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "akarius",
@@ -521,7 +562,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "akarius-prime",
@@ -560,7 +605,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "akaten",
@@ -616,6 +665,9 @@
       "buildTime": 43200,
       "buildPrice": 20000,
       "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      },
       "aliases": [
         "akbo"
       ]
@@ -657,7 +709,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "akbronco",
@@ -693,6 +749,10 @@
       "buildTime": 43200,
       "buildPrice": 20000,
       "blueprintPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      },
       "aliases": [
         "akbronc"
       ]
@@ -729,7 +789,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "akjagara",
@@ -768,7 +832,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "akjagara-prime",
@@ -812,7 +879,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "aklato",
@@ -827,7 +898,10 @@
       "introducedDate": "2012-10-25",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "aklex",
@@ -862,7 +936,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "aklex-prime",
@@ -896,7 +973,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "akmagnus",
@@ -931,7 +1012,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "akmagnus-prime",
@@ -965,7 +1049,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "aksomati",
@@ -1005,7 +1093,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "aksomati-prime",
@@ -1044,7 +1135,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "aksondol",
@@ -1083,7 +1178,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "akstiletto",
@@ -1137,7 +1235,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "akstiletto-prime",
@@ -1176,7 +1277,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "akvasto",
@@ -1211,7 +1316,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "akvasto-prime",
@@ -1245,7 +1353,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "akzani",
@@ -1290,7 +1402,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "alternox",
@@ -1334,7 +1449,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "alternox-prime",
@@ -1378,7 +1497,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "amanata",
@@ -1417,7 +1540,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "ambassador",
@@ -1456,7 +1583,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "amphis",
@@ -1506,7 +1637,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "amprex",
@@ -1551,7 +1685,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "angstrum",
@@ -1597,7 +1734,10 @@
       "buildTime": 86400,
       "buildPrice": 25000,
       "blueprintPrice": 25000,
-      "incarnonGenesis": "Angstrum Incarnon Genesis"
+      "incarnonGenesis": "Angstrum Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "anku",
@@ -1643,7 +1783,10 @@
       "buildTime": 43200,
       "buildPrice": 20000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Anku Incarnon Genesis"
+      "incarnonGenesis": "Anku Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "ankyros",
@@ -1697,7 +1840,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "ankyros-prime",
@@ -1736,7 +1883,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "arbucep",
@@ -1780,7 +1931,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "arca-plasmor",
@@ -1825,7 +1980,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "arca-scisco",
@@ -1870,7 +2028,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "arca-titron",
@@ -1915,7 +2076,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 30000
+      "blueprintPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "argo-vel",
@@ -1959,7 +2123,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "argonak",
@@ -2004,7 +2171,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "artax",
@@ -2063,7 +2233,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "astilla",
@@ -2108,7 +2281,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "astilla-prime",
@@ -2152,7 +2328,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "athodai",
@@ -2191,7 +2371,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "athodai-prime",
@@ -2230,7 +2413,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "atomos",
@@ -2281,7 +2468,10 @@
       "buildTime": 86400,
       "buildPrice": 60000,
       "blueprintPrice": 30000,
-      "incarnonGenesis": "Atomos Incarnon Genesis"
+      "incarnonGenesis": "Atomos Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "atterax",
@@ -2326,7 +2516,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "attica",
@@ -2371,7 +2564,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "ax-52",
@@ -2459,7 +2655,13 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "onlyFrom": [
+          "simaris"
+        ],
+        "simarisAfter": "Unlock through Daily Tribute"
+      }
     },
     {
       "slug": "azothane",
@@ -2503,7 +2705,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "ballistica",
@@ -2549,7 +2754,11 @@
       "buildTime": 86400,
       "buildPrice": 25000,
       "blueprintPrice": 40000,
-      "incarnonGenesis": "Ballistica Incarnon Genesis"
+      "incarnonGenesis": "Ballistica Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "ballistica-prime",
@@ -2593,7 +2802,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "basmu",
@@ -2697,7 +2910,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "baza",
@@ -2742,7 +2958,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "baza-prime",
@@ -2786,7 +3005,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "bo",
@@ -2841,7 +3064,10 @@
       "buildTime": 43200,
       "buildPrice": 15000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Bo Incarnon Genesis"
+      "incarnonGenesis": "Bo Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "bo-prime",
@@ -2880,7 +3106,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "boar",
@@ -2925,7 +3155,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "incarnonGenesis": "Boar Incarnon Genesis"
+      "incarnonGenesis": "Boar Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "boar-prime",
@@ -2969,7 +3203,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "boltace",
@@ -3008,7 +3246,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "bolto",
@@ -3062,7 +3303,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "boltor",
@@ -3113,7 +3357,11 @@
       "buildTime": 86400,
       "buildPrice": 25000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Boltor Incarnon Genesis"
+      "incarnonGenesis": "Boltor Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "boltor-prime",
@@ -3157,7 +3405,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "brakk",
@@ -3196,7 +3448,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "braton",
@@ -3265,7 +3520,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "braton-vandal",
@@ -3304,7 +3563,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "broken-scepter",
@@ -3348,7 +3610,13 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "onlyFrom": [
+          "simaris"
+        ],
+        "simarisAfter": "Complete The War Within"
+      }
     },
     {
       "slug": "broken-war",
@@ -3398,6 +3666,13 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
+      "obtain": {
+        "drops": true,
+        "onlyFrom": [
+          "stalker"
+        ],
+        "simarisAfter": "Complete The Second Dream"
+      },
       "aliases": [
         "bwar"
       ]
@@ -3451,7 +3726,11 @@
       "buildTime": 43200,
       "buildPrice": 20000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Bronco Incarnon Genesis"
+      "incarnonGenesis": "Bronco Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "bronco-prime",
@@ -3495,7 +3774,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "bubonico",
@@ -3540,7 +3823,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "burst-laser",
@@ -3570,7 +3856,10 @@
       "introducedDate": "2023-03-15",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "vaulted": false
+      }
     },
     {
       "slug": "burston",
@@ -3616,7 +3905,11 @@
       "buildTime": 43200,
       "buildPrice": 25000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Burston Incarnon Genesis"
+      "incarnonGenesis": "Burston Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "burston-prime",
@@ -3660,7 +3953,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "buzlok",
@@ -3705,7 +4002,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "cadus",
@@ -3750,7 +4050,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "cantare",
@@ -3794,7 +4097,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "carmine-penta",
@@ -3833,7 +4140,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "cassowar",
@@ -3878,7 +4188,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "castanas",
@@ -3923,7 +4236,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "catabolyst",
@@ -3968,7 +4284,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "caustacyst",
@@ -4013,7 +4332,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "cedo",
@@ -4057,7 +4379,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "cedo-prime",
@@ -4101,7 +4427,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "centaur",
@@ -4141,7 +4471,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 25000,
-      "blueprintPrice": 35000
+      "blueprintPrice": 35000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "ceramic-dagger",
@@ -4231,7 +4565,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "cernos",
@@ -4281,7 +4618,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "cernos-prime",
@@ -4325,7 +4665,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "cestra",
@@ -4376,7 +4720,10 @@
       "buildTime": 86400,
       "buildPrice": 25000,
       "blueprintPrice": 20000,
-      "incarnonGenesis": "Cestra Incarnon Genesis"
+      "incarnonGenesis": "Cestra Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "ceti-lacera",
@@ -4464,7 +4811,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "cobra-crane",
@@ -4509,7 +4859,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "cobra-crane-prime",
@@ -4553,7 +4906,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "coda-bassocyst",
@@ -4793,7 +5150,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "corinth",
@@ -4838,7 +5198,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 25000
+      "blueprintPrice": 25000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "corinth-prime",
@@ -4882,7 +5245,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "cortege",
@@ -4921,7 +5288,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "corufell",
@@ -4965,7 +5335,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "corufell-prime",
@@ -5009,7 +5383,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "corvas",
@@ -5054,7 +5432,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 45000,
-      "blueprintPrice": 35000
+      "blueprintPrice": 35000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "corvas-prime",
@@ -5098,7 +5480,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 45000
+      "buildPrice": 45000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "cronus",
@@ -5137,7 +5523,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "cryotra",
@@ -5181,7 +5570,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 50000
+      "buildPrice": 50000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "cyanex",
@@ -5226,7 +5618,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "cycron",
@@ -5271,7 +5666,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "cyngas",
@@ -5316,7 +5714,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 45000,
-      "blueprintPrice": 35000
+      "blueprintPrice": 35000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "daikyu",
@@ -5361,7 +5763,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "daikyu-prime",
@@ -5405,7 +5810,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "dakra-prime",
@@ -5444,7 +5853,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "dark-dagger",
@@ -5610,7 +6023,10 @@
       "introducedDate": "2017-02-28",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "vaulted": true
+      }
     },
     {
       "slug": "dera",
@@ -5656,7 +6072,10 @@
       "buildTime": 86400,
       "buildPrice": 25000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Dera Incarnon Genesis"
+      "incarnonGenesis": "Dera Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "dera-vandal",
@@ -5740,7 +6159,12 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "incarnonGenesis": "Despair Incarnon Genesis"
+      "incarnonGenesis": "Despair Incarnon Genesis",
+      "obtain": {
+        "onlyFrom": [
+          "stalker"
+        ]
+      }
     },
     {
       "slug": "destreza",
@@ -5786,7 +6210,10 @@
       "buildTime": 43200,
       "buildPrice": 20000,
       "blueprintPrice": 25000,
-      "incarnonGenesis": "Destreza Incarnon Genesis"
+      "incarnonGenesis": "Destreza Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "destreza-prime",
@@ -5825,7 +6252,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "deth-machine-rifle",
@@ -5855,7 +6286,10 @@
       "introducedDate": "2019-10-01",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "vaulted": false
+      }
     },
     {
       "slug": "detron",
@@ -5894,7 +6328,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "dex-dakra",
@@ -5999,7 +6436,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "dragon-nikana",
@@ -6039,7 +6479,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 5000,
-      "blueprintPrice": 30000
+      "blueprintPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "drakgoon",
@@ -6089,7 +6532,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 30000
+      "blueprintPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "dread",
@@ -6134,7 +6580,12 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "incarnonGenesis": "Dread Incarnon Genesis"
+      "incarnonGenesis": "Dread Incarnon Genesis",
+      "obtain": {
+        "onlyFrom": [
+          "stalker"
+        ]
+      }
     },
     {
       "slug": "dual-cestra",
@@ -6174,7 +6625,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "dual-cleavers",
@@ -6224,7 +6678,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 25000
+      "blueprintPrice": 25000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "dual-coda-torxica",
@@ -6279,7 +6736,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 45000,
-      "blueprintPrice": 35000
+      "blueprintPrice": 35000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "dual-ether",
@@ -6324,7 +6785,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "dual-heat-swords",
@@ -6369,7 +6833,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "dual-ichor",
@@ -6415,7 +6882,10 @@
       "buildTime": 86400,
       "buildPrice": 30000,
       "blueprintPrice": 50000,
-      "incarnonGenesis": "Dual Ichor Incarnon Genesis"
+      "incarnonGenesis": "Dual Ichor Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "dual-kamas",
@@ -6455,7 +6925,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 40000
+      "blueprintPrice": 40000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "dual-kamas-prime",
@@ -6489,7 +6962,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "dual-keres",
@@ -6534,7 +7011,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 25000
+      "blueprintPrice": 25000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "dual-keres-prime",
@@ -6568,7 +7048,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "dual-raza",
@@ -6613,7 +7097,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "dual-skana",
@@ -6672,6 +7159,10 @@
       "buildTime": 43200,
       "buildPrice": 20000,
       "blueprintPrice": 25000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      },
       "aliases": [
         "dskana",
         "dual skanas"
@@ -6721,7 +7212,10 @@
       "buildTime": 86400,
       "buildPrice": 30000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Dual Toxocyst Incarnon Genesis"
+      "incarnonGenesis": "Dual Toxocyst Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "dual-viciss",
@@ -6755,7 +7249,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "dual-zoren",
@@ -6805,7 +7302,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "dual-zoren-prime",
@@ -6839,7 +7340,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "edun",
@@ -6883,7 +7388,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "efv-5-jupiter",
@@ -6922,7 +7430,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "efv-8-mars",
@@ -6961,7 +7472,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "ekhein",
@@ -7005,7 +7519,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "embolist",
@@ -7050,7 +7567,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "endura",
@@ -7095,7 +7615,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "enkaus",
@@ -7134,7 +7657,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "epitaph",
@@ -7173,7 +7700,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "epitaph-prime",
@@ -7212,7 +7743,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "ether-daggers",
@@ -7256,7 +7791,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "drops": true,
+        "simarisAfter": "Unlock through Stolen Dreams"
+      }
     },
     {
       "slug": "ether-reaper",
@@ -7301,7 +7840,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "ether-sword",
@@ -7346,7 +7888,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "euphona-prime",
@@ -7385,7 +7930,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "evensong",
@@ -7429,7 +7978,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "exergis",
@@ -7474,7 +8027,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "falcor",
@@ -7519,7 +8075,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "fang",
@@ -7564,7 +8123,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "fang-prime",
@@ -7598,7 +8161,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "felarx",
@@ -7642,7 +8209,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "ferrox",
@@ -7687,7 +8257,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "fluctus",
@@ -7732,7 +8305,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 45000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "flux-rifle",
@@ -7777,7 +8354,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "fragor",
@@ -7822,7 +8402,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "fragor-prime",
@@ -7861,7 +8445,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "fulmin",
@@ -7906,7 +8494,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "fulmin-prime",
@@ -7950,7 +8541,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 45000
+      "buildPrice": 45000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "furax",
@@ -8001,7 +8596,10 @@
       "buildTime": 43200,
       "buildPrice": 30000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Furax Incarnon Genesis"
+      "incarnonGenesis": "Furax Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "furax-wraith",
@@ -8035,7 +8633,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "furis",
@@ -8086,7 +8687,11 @@
       "buildTime": 43200,
       "buildPrice": 20000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Furis Incarnon Genesis"
+      "incarnonGenesis": "Furis Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "fusilai",
@@ -8131,7 +8736,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "galariak-prime",
@@ -8170,7 +8778,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "galatine",
@@ -8220,7 +8831,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 30000,
-      "blueprintPrice": 25000
+      "blueprintPrice": 25000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "galatine-prime",
@@ -8259,7 +8873,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "galvacord",
@@ -8304,7 +8922,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "gammacor",
@@ -8355,7 +8976,11 @@
       "buildTime": 43200,
       "buildPrice": 20000,
       "blueprintPrice": 35000,
-      "incarnonGenesis": "Gammacor Incarnon Genesis"
+      "incarnonGenesis": "Gammacor Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "gazal-machete",
@@ -8400,7 +9025,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "ghoulsaw",
@@ -8445,7 +9073,11 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "glaive",
@@ -8489,7 +9121,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "glaive-prime",
@@ -8528,7 +9163,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "glaxion",
@@ -8573,7 +9212,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "glaxion-vandal",
@@ -8633,7 +9275,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 25000,
-      "incarnonGenesis": "Gorgon Incarnon Genesis"
+      "incarnonGenesis": "Gorgon Incarnon Genesis",
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "gorgon-wraith",
@@ -8672,7 +9317,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "gotva-prime",
@@ -8687,7 +9335,10 @@
       "introducedDate": "2023-08-25",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "vaulted": true
+      }
     },
     {
       "slug": "grakata",
@@ -8737,7 +9388,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "gram",
@@ -8782,7 +9436,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "gram-prime",
@@ -8821,7 +9479,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "grattler",
@@ -8866,7 +9528,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 65000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "grimoire",
@@ -8955,7 +9620,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "guandao",
@@ -9000,7 +9668,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "guandao-prime",
@@ -9039,7 +9710,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "gunsen",
@@ -9084,7 +9759,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "gunsen-prime",
@@ -9118,7 +9796,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "haalvu",
@@ -9178,7 +9860,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "halikar-wraith",
@@ -9237,7 +9922,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "harpak",
@@ -9282,7 +9971,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 40000
+      "blueprintPrice": 40000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "hate",
@@ -9327,7 +10019,12 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "incarnonGenesis": "Hate Incarnon Genesis"
+      "incarnonGenesis": "Hate Incarnon Genesis",
+      "obtain": {
+        "onlyFrom": [
+          "stalker"
+        ]
+      }
     },
     {
       "slug": "heat-dagger",
@@ -9371,7 +10068,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "heat-sword",
@@ -9460,7 +10160,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 25000
+      "blueprintPrice": 25000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "heliocor",
@@ -9504,7 +10207,13 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "onlyFrom": [
+          "simaris"
+        ]
+      }
     },
     {
       "slug": "helstrum",
@@ -9548,7 +10257,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 50000
+      "buildPrice": 50000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "hema",
@@ -9593,7 +10305,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "hespar",
@@ -9632,7 +10347,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "higasa",
@@ -9676,7 +10395,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "hikou",
@@ -9726,7 +10449,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "hikou-prime",
@@ -9765,7 +10492,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "hind",
@@ -9810,7 +10541,11 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 40000
+      "blueprintPrice": 40000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "hirudo",
@@ -9855,7 +10590,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "hystrix",
@@ -9899,7 +10637,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 25000
+      "blueprintPrice": 25000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "hystrix-prime",
@@ -9938,7 +10679,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "ignis",
@@ -9983,7 +10728,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "ignis-wraith",
@@ -10028,7 +10776,11 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "imperator",
@@ -10072,7 +10824,13 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "onlyFrom": [
+          "simaris"
+        ],
+        "simarisAfter": "Complete The Archwing (Quest)"
+      }
     },
     {
       "slug": "imperator-vandal",
@@ -10111,7 +10869,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "innodem",
@@ -10155,7 +10916,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "jat-kittag",
@@ -10200,7 +10964,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "jat-kusar",
@@ -10245,7 +11012,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 15000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "javlok",
@@ -10290,7 +11060,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "jaw-sword",
@@ -10384,7 +11157,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 40000
+      "blueprintPrice": 40000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "karak",
@@ -10429,7 +11205,11 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 30000
+      "blueprintPrice": 30000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "karak-wraith",
@@ -10513,7 +11293,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "karyst-prime",
@@ -10552,7 +11335,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "kaszas",
@@ -10592,7 +11379,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 25000,
-      "blueprintPrice": 35000
+      "blueprintPrice": 35000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "keratinos",
@@ -10626,7 +11417,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "kesheg",
@@ -10671,7 +11466,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "kestrel",
@@ -10716,7 +11514,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "kestrel-prime",
@@ -10755,7 +11557,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "knell",
@@ -10800,7 +11606,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "knell-prime",
@@ -10839,7 +11648,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "knux",
@@ -10884,7 +11697,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "kogake",
@@ -10934,7 +11750,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "kogake-prime",
@@ -10973,7 +11793,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "kohm",
@@ -11018,7 +11842,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "kohmak",
@@ -11068,7 +11895,11 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "komorex",
@@ -11113,7 +11944,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "kompressa",
@@ -11152,7 +11986,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "kompressa-prime",
@@ -11191,7 +12029,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "korrudo",
@@ -11235,7 +12077,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "korumm",
@@ -11279,7 +12125,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "kraken",
@@ -11329,7 +12179,11 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "kreska",
@@ -11374,7 +12228,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "krohkur",
@@ -11424,7 +12281,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 20000,
-      "blueprintPrice": 25000
+      "blueprintPrice": 25000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "kronen",
@@ -11474,7 +12334,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 65000
+      "blueprintPrice": 65000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "kronen-prime",
@@ -11513,7 +12376,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "kulstar",
@@ -11558,7 +12425,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 40000
+      "blueprintPrice": 40000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "kunai",
@@ -11609,7 +12479,11 @@
       "buildTime": 43200,
       "buildPrice": 15000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Kunai Incarnon Genesis"
+      "incarnonGenesis": "Kunai Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "kuva-ayanga",
@@ -12158,7 +13032,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "lacerten",
@@ -12217,7 +13094,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "lanka",
@@ -12262,7 +13142,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "larkspur",
@@ -12307,7 +13190,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "larkspur-prime",
@@ -12351,7 +13237,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 45000
+      "buildPrice": 45000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "laser-rifle",
@@ -12411,7 +13301,10 @@
       "introducedDate": "2012-12-18",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "vaulted": true
+      }
     },
     {
       "slug": "lato-vandal",
@@ -12445,7 +13338,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "latron",
@@ -12496,7 +13392,11 @@
       "buildTime": 43200,
       "buildPrice": 20000,
       "blueprintPrice": 20000,
-      "incarnonGenesis": "Latron Incarnon Genesis"
+      "incarnonGenesis": "Latron Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "latron-prime",
@@ -12540,7 +13440,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "latron-wraith",
@@ -12624,7 +13528,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 30000
+      "blueprintPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "lenz",
@@ -12669,7 +13576,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "lesion",
@@ -12714,7 +13624,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "blueprintPrice": 25000
+      "blueprintPrice": 25000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "lex",
@@ -12735,7 +13648,10 @@
         }
       ],
       "madeFrom": [],
-      "incarnonGenesis": "Lex Incarnon Genesis"
+      "incarnonGenesis": "Lex Incarnon Genesis",
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "lex-prime",
@@ -12779,7 +13695,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "machete",
@@ -12823,7 +13743,13 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "onlyFrom": [
+          "simaris"
+        ],
+        "simarisAfter": "Unlock through Daily Tribute"
+      }
     },
     {
       "slug": "machete-wraith",
@@ -12889,7 +13815,11 @@
       "buildTime": 43200,
       "buildPrice": 25000,
       "blueprintPrice": 25000,
-      "incarnonGenesis": "Magistar Incarnon Genesis"
+      "incarnonGenesis": "Magistar Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "magnus",
@@ -12939,7 +13869,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "magnus-prime",
@@ -12983,7 +13916,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "mandonel",
@@ -13027,7 +13964,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 45000
+      "buildPrice": 45000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "mara-detron",
@@ -13087,7 +14027,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "masseter",
@@ -13132,7 +14075,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "masseter-prime",
@@ -13171,7 +14117,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "mausolon",
@@ -13231,7 +14181,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "mire",
@@ -13276,7 +14229,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "miter",
@@ -13326,7 +14282,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "incarnonGenesis": "Miter Incarnon Genesis"
+      "incarnonGenesis": "Miter Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "mk1-bo",
@@ -13470,7 +14430,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "multron",
@@ -13536,6 +14499,9 @@
       "buildTime": 43200,
       "buildPrice": 15000,
       "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      },
       "aliases": [
         "mut cernos"
       ]
@@ -13583,7 +14549,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "nagantaka",
@@ -13628,7 +14597,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 40000
+      "blueprintPrice": 40000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "nagantaka-prime",
@@ -13672,7 +14644,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "nami-skyla",
@@ -13717,7 +14693,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "nami-skyla-prime",
@@ -13756,7 +14735,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "nami-solo",
@@ -13802,7 +14785,10 @@
       "buildTime": 43200,
       "buildPrice": 20000,
       "blueprintPrice": 20000,
-      "incarnonGenesis": "Nami Solo Incarnon Genesis"
+      "incarnonGenesis": "Nami Solo Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "nataruk",
@@ -13817,7 +14803,13 @@
       "introducedDate": "2021-12-15",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "onlyFrom": [
+          "simaris"
+        ],
+        "simarisAfter": "Complete The New War"
+      }
     },
     {
       "slug": "nepheri",
@@ -13861,7 +14853,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "nikana",
@@ -13911,7 +14907,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 5000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "nikana-prime",
@@ -13950,7 +14949,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "ninkondi",
@@ -14000,7 +15003,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "ninkondi-prime",
@@ -14039,7 +15045,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "nukor",
@@ -14084,7 +15094,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "nunchasa",
@@ -14128,7 +15141,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "obex",
@@ -14174,7 +15190,10 @@
       "buildTime": 43200,
       "buildPrice": 30000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Obex Incarnon Genesis"
+      "incarnonGenesis": "Obex Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "ocucor",
@@ -14219,7 +15238,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "ogris",
@@ -14264,7 +15286,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "ohma",
@@ -14309,7 +15334,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 55000
+      "blueprintPrice": 55000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "okina",
@@ -14355,7 +15383,10 @@
       "buildTime": 43200,
       "buildPrice": 20000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Okina Incarnon Genesis"
+      "incarnonGenesis": "Okina Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "okina-prime",
@@ -14394,7 +15425,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "onorix",
@@ -14434,7 +15469,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 25000,
-      "blueprintPrice": 35000
+      "blueprintPrice": 35000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "onos",
@@ -14478,7 +15517,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "opticor",
@@ -14523,7 +15566,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "opticor-vandal",
@@ -14583,7 +15629,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "orthos-prime",
@@ -14622,7 +15672,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "orvius",
@@ -14666,7 +15720,14 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "drops": true,
+        "onlyFrom": [
+          "simaris"
+        ],
+        "simarisAfter": "Complete The War Within"
+      }
     },
     {
       "slug": "pandero",
@@ -14711,7 +15772,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "pandero-prime",
@@ -14750,7 +15814,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "pangolin-prime",
@@ -14789,7 +15857,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "pangolin-sword",
@@ -14877,7 +15949,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "panthera-prime",
@@ -14921,7 +15996,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "paracesis",
@@ -15013,7 +16092,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "paris",
@@ -15059,7 +16141,10 @@
       "buildTime": 43200,
       "buildPrice": 15000,
       "blueprintPrice": 20000,
-      "incarnonGenesis": "Paris Incarnon Genesis"
+      "incarnonGenesis": "Paris Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "paris-prime",
@@ -15103,7 +16188,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "pathocyst",
@@ -15142,7 +16231,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "pennant",
@@ -15186,7 +16278,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "penta",
@@ -15231,7 +16327,11 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 30000
+      "blueprintPrice": 30000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "perigale",
@@ -15275,7 +16375,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "perigale-prime",
@@ -15319,7 +16423,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "phaedra",
@@ -15364,7 +16472,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 45000,
-      "blueprintPrice": 35000
+      "blueprintPrice": 35000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "phage",
@@ -15409,7 +16521,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "phantasma",
@@ -15454,7 +16569,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 25000
+      "blueprintPrice": 25000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "phantasma-prime",
@@ -15498,7 +16616,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "phenmor",
@@ -15542,7 +16664,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "plasma-sword",
@@ -15631,7 +16756,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "pox",
@@ -15676,7 +16804,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "praedos",
@@ -15720,7 +16851,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "pride",
@@ -15754,7 +16888,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "prime-laser-rifle",
@@ -15830,7 +16967,10 @@
       "isNew": false,
       "usedToBuild": [],
       "madeFrom": [],
-      "blueprintPrice": 35000
+      "blueprintPrice": 35000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "prisma-gorgon",
@@ -16041,6 +17181,9 @@
       "buildTime": 43200,
       "buildPrice": 15000,
       "blueprintPrice": 30000,
+      "obtain": {
+        "market": true
+      },
       "aliases": [
         "prob cernos"
       ]
@@ -16088,7 +17231,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "prova-vandal",
@@ -16148,7 +17294,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "pupacyst",
@@ -16193,7 +17342,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "purgator-1",
@@ -16232,7 +17384,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "pyrana",
@@ -16277,7 +17432,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "pyrana-prime",
@@ -16316,7 +17474,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "quanta",
@@ -16361,7 +17523,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "quanta-vandal",
@@ -16420,7 +17585,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "quassus",
@@ -16464,7 +17633,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "quassus-prime",
@@ -16498,7 +17671,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "quatz",
@@ -16543,7 +17720,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 40000
+      "blueprintPrice": 40000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "quellor",
@@ -16587,7 +17767,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "rakta-ballistica",
@@ -16602,7 +17786,10 @@
       "introducedDate": "2014-11-27",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "rakta-cernos",
@@ -16617,7 +17804,10 @@
       "introducedDate": "2015-09-02",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "rakta-dark-dagger",
@@ -16632,7 +17822,10 @@
       "introducedDate": "2016-09-15",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "rathbone",
@@ -16677,7 +17870,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 25000,
-      "blueprintPrice": 35000
+      "blueprintPrice": 35000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "rauta",
@@ -16721,7 +17918,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "reaper-prime",
@@ -16760,7 +17960,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "reconifex",
@@ -16799,7 +18003,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "redeemer",
@@ -16838,7 +18046,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "redeemer-prime",
@@ -16877,7 +18088,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "riot-848",
@@ -16921,7 +18136,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "ripkas",
@@ -16965,7 +18184,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 40000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "rubico",
@@ -17010,7 +18232,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "rubico-prime",
@@ -17054,7 +18279,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "rumblejack",
@@ -17069,7 +18298,13 @@
       "introducedDate": "2021-12-15",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "onlyFrom": [
+          "simaris"
+        ],
+        "simarisAfter": "Complete The New War"
+      }
     },
     {
       "slug": "ruvox",
@@ -17103,7 +18338,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "sagek-prime",
@@ -17142,7 +18381,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "sampotes",
@@ -17186,7 +18428,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "sancti-castanas",
@@ -17201,7 +18446,10 @@
       "introducedDate": "2014-11-27",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "sancti-magistar",
@@ -17216,7 +18464,10 @@
       "introducedDate": "2016-09-15",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "sancti-tigris",
@@ -17231,7 +18482,10 @@
       "introducedDate": "2015-09-02",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "sarofang",
@@ -17270,7 +18524,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "sarofang-prime",
@@ -17309,7 +18567,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "sarpa",
@@ -17354,7 +18616,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "scindo",
@@ -17399,7 +18664,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "scindo-prime",
@@ -17438,7 +18707,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "scoliac",
@@ -17483,7 +18756,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "scourge",
@@ -17528,7 +18804,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "scourge-prime",
@@ -17572,7 +18851,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "scyotid",
@@ -17611,7 +18894,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "secura-dual-cestra",
@@ -17626,7 +18912,10 @@
       "introducedDate": "2014-11-27",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "secura-lecta",
@@ -17641,7 +18930,10 @@
       "introducedDate": "2016-09-15",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "secura-penta",
@@ -17656,7 +18948,10 @@
       "introducedDate": "2015-09-02",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "seer",
@@ -17695,7 +18990,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "sepulcrum",
@@ -17734,7 +19032,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "serro",
@@ -17779,7 +19080,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "shaku",
@@ -17824,7 +19128,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "shedu",
@@ -17868,7 +19175,14 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "drops": true,
+        "onlyFrom": [
+          "simaris"
+        ],
+        "simarisAfter": "Complete Erra (Quest)"
+      }
     },
     {
       "slug": "sheev",
@@ -17948,7 +19262,10 @@
       "buildTime": 43200,
       "buildPrice": 30000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Sibear Incarnon Genesis"
+      "incarnonGenesis": "Sibear Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "sicarus",
@@ -18003,7 +19320,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "sigma-octantis",
@@ -18047,7 +19368,13 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "onlyFrom": [
+          "simaris"
+        ],
+        "simarisAfter": "Unlock through Daily Tribute"
+      }
     },
     {
       "slug": "silva-aegis",
@@ -18092,7 +19419,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "silva-aegis-prime",
@@ -18136,7 +19466,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "simulor",
@@ -18180,7 +19514,13 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "onlyFrom": [
+          "simaris"
+        ]
+      }
     },
     {
       "slug": "skana",
@@ -18226,7 +19566,11 @@
       "buildTime": 43200,
       "buildPrice": 15000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Skana Incarnon Genesis"
+      "incarnonGenesis": "Skana Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "skana-prime",
@@ -18241,7 +19585,10 @@
       "introducedDate": "2012-12-18",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "vaulted": true
+      }
     },
     {
       "slug": "skiajati",
@@ -18329,7 +19676,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "snipetron",
@@ -18373,7 +19724,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "snipetron-vandal",
@@ -18457,7 +19811,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 25000
+      "blueprintPrice": 25000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "soma",
@@ -18503,7 +19860,10 @@
       "buildTime": 43200,
       "buildPrice": 15000,
       "blueprintPrice": 50000,
-      "incarnonGenesis": "Soma Incarnon Genesis"
+      "incarnonGenesis": "Soma Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "soma-prime",
@@ -18547,7 +19907,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "sonicor",
@@ -18592,7 +19956,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "spectra",
@@ -18637,7 +20005,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "spectra-vandal",
@@ -18676,7 +20047,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "spinnerex",
@@ -18715,7 +20089,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "spira",
@@ -18760,7 +20137,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "spira-prime",
@@ -18799,7 +20179,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "sporothrix",
@@ -18843,7 +20227,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "stahlta",
@@ -18882,7 +20269,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "staticor",
@@ -18927,7 +20318,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "steflos",
@@ -18971,7 +20365,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "steflos-prime",
@@ -19015,7 +20413,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "stinger",
@@ -19075,7 +20477,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "stradavar-prime",
@@ -19119,7 +20524,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "stropha",
@@ -19163,7 +20572,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "strun",
@@ -19179,7 +20592,10 @@
       "isNew": false,
       "usedToBuild": [],
       "madeFrom": [],
-      "incarnonGenesis": "Strun Incarnon Genesis"
+      "incarnonGenesis": "Strun Incarnon Genesis",
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "strun-prime",
@@ -19223,7 +20639,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "strun-wraith",
@@ -19306,7 +20726,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "stug",
@@ -19352,7 +20776,11 @@
       "buildTime": 86400,
       "buildPrice": 20000,
       "blueprintPrice": 20000,
-      "incarnonGenesis": "Stug Incarnon Genesis"
+      "incarnonGenesis": "Stug Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "sun-moon",
@@ -19396,7 +20824,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "supra",
@@ -19441,7 +20872,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "supra-vandal",
@@ -19486,7 +20920,10 @@
       "introducedDate": "2015-07-07",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "vaulted": true
+      }
     },
     {
       "slug": "syam",
@@ -19530,7 +20967,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "sybaris",
@@ -19576,7 +21016,10 @@
       "buildTime": 43200,
       "buildPrice": 20000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Sybaris Incarnon Genesis"
+      "incarnonGenesis": "Sybaris Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "sybaris-prime",
@@ -19620,7 +21063,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "sydon",
@@ -19665,7 +21112,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "synapse",
@@ -19710,7 +21160,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 50000
+      "blueprintPrice": 50000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "synoid-gammacor",
@@ -19725,7 +21178,10 @@
       "introducedDate": "2014-11-27",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "synoid-heliocor",
@@ -19740,7 +21196,10 @@
       "introducedDate": "2016-09-15",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "synoid-simulor",
@@ -19755,7 +21214,10 @@
       "introducedDate": "2015-09-02",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "tak-lug",
@@ -19794,7 +21256,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "talons",
@@ -19839,7 +21305,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "tatsu",
@@ -19884,7 +21353,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 5000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "tatsu-prime",
@@ -19923,7 +21395,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "tazicor",
@@ -19967,7 +21443,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 50000
+      "buildPrice": 50000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "tekko",
@@ -20012,7 +21491,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 25000
+      "blueprintPrice": 25000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "tekko-prime",
@@ -20051,7 +21533,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "telos-akbolto",
@@ -20066,7 +21552,10 @@
       "introducedDate": "2014-11-27",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "telos-boltace",
@@ -20081,7 +21570,10 @@
       "introducedDate": "2016-09-15",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "telos-boltor",
@@ -20096,7 +21588,10 @@
       "introducedDate": "2015-09-02",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "tenet-agendus",
@@ -20530,7 +22025,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "tenora-prime",
@@ -20574,7 +22072,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "tetra",
@@ -20619,7 +22121,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 30000
+      "blueprintPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "thalys",
@@ -20752,7 +22257,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "tiberon-prime",
@@ -20796,7 +22304,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "tigris",
@@ -20841,7 +22353,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 25000,
-      "blueprintPrice": 40000
+      "blueprintPrice": 40000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "tigris-prime",
@@ -20885,7 +22400,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "tipedo",
@@ -20934,7 +22453,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "tipedo-prime",
@@ -20973,7 +22495,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "tonbo",
@@ -21018,7 +22544,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "tonkkatt",
@@ -21052,7 +22581,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "tonkor",
@@ -21097,7 +22630,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 60000,
-      "blueprintPrice": 30000
+      "blueprintPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "torid",
@@ -21143,7 +22679,10 @@
       "buildTime": 86400,
       "buildPrice": 30000,
       "blueprintPrice": 15000,
-      "incarnonGenesis": "Torid Incarnon Genesis"
+      "incarnonGenesis": "Torid Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "trumna",
@@ -21187,7 +22726,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "trumna-prime",
@@ -21231,7 +22773,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "twin-basolk",
@@ -21270,7 +22816,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "twin-grakatas",
@@ -21306,6 +22855,9 @@
       "buildTime": 43200,
       "buildPrice": 30000,
       "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      },
       "aliases": [
         "twin grak"
       ]
@@ -21352,7 +22904,11 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 25000
+      "buildPrice": 25000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "twin-kohmak",
@@ -21386,7 +22942,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "twin-krohkur",
@@ -21426,7 +22986,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "twin-rogga",
@@ -21471,7 +23034,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 30000
+      "blueprintPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "twin-vipers",
@@ -21506,7 +23072,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "twin-vipers-wraith",
@@ -21590,7 +23159,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 30000
+      "blueprintPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "vadarya-prime",
@@ -21634,7 +23206,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "vastilok",
@@ -21704,7 +23280,10 @@
       "buildTime": 43200,
       "buildPrice": 30000,
       "blueprintPrice": 30000,
-      "incarnonGenesis": "Vasto Incarnon Genesis"
+      "incarnonGenesis": "Vasto Incarnon Genesis",
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "vasto-prime",
@@ -21748,7 +23327,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "vaykor-hek",
@@ -21763,7 +23346,10 @@
       "introducedDate": "2015-09-02",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "vaykor-marelok",
@@ -21778,7 +23364,10 @@
       "introducedDate": "2014-11-27",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "vaykor-sydon",
@@ -21793,7 +23382,10 @@
       "introducedDate": "2016-09-15",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "vectis",
@@ -21839,7 +23431,11 @@
       "buildTime": 86400,
       "buildPrice": 25000,
       "blueprintPrice": 40000,
-      "incarnonGenesis": "Vectis Incarnon Genesis"
+      "incarnonGenesis": "Vectis Incarnon Genesis",
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "vectis-prime",
@@ -21883,7 +23479,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "veldt",
@@ -21928,7 +23528,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "velocitus",
@@ -21973,7 +23576,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 30000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "velox",
@@ -22013,7 +23620,11 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 25000
+      "blueprintPrice": 25000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "velox-prime",
@@ -22052,7 +23663,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "venato",
@@ -22097,7 +23712,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "venato-prime",
@@ -22136,7 +23754,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": false
+      }
     },
     {
       "slug": "venka",
@@ -22181,7 +23803,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "venka-prime",
@@ -22220,7 +23845,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "verdilac",
@@ -22264,7 +23893,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "verglas",
@@ -22294,7 +23927,10 @@
       "introducedDate": "2024-08-21",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "vaulted": false
+      }
     },
     {
       "slug": "vericres",
@@ -22392,7 +24028,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     },
     {
       "slug": "vinquibus",
@@ -22436,7 +24076,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "viper",
@@ -22490,7 +24133,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "viper-wraith",
@@ -22549,7 +24195,13 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "onlyFrom": [
+          "simaris"
+        ],
+        "simarisAfter": "Defeat the Glassmaker"
+      }
     },
     {
       "slug": "volnus",
@@ -22594,7 +24246,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "volnus-prime",
@@ -22633,7 +24288,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "vulcax",
@@ -22677,7 +24336,10 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 50000
+      "buildPrice": 50000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "vulkar",
@@ -22722,7 +24384,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "vulkar-wraith",
@@ -22796,7 +24461,12 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "onlyFrom": [
+          "stalker"
+        ]
+      }
     },
     {
       "slug": "war-prime",
@@ -22811,7 +24481,10 @@
       "introducedDate": "2026-06-17",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "obtain": {
+        "vaulted": false
+      }
     },
     {
       "slug": "wolf-sledge",
@@ -22855,7 +24528,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "wrath",
@@ -22889,7 +24565,10 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "drops": true
+      }
     },
     {
       "slug": "xoris",
@@ -22928,7 +24607,14 @@
         }
       ],
       "buildTime": 30,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "drops": true,
+        "onlyFrom": [
+          "simaris"
+        ],
+        "simarisAfter": "Unlock through The Deadlock Protocol"
+      }
     },
     {
       "slug": "zakti",
@@ -22973,7 +24659,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 15000,
-      "blueprintPrice": 15000
+      "blueprintPrice": 15000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "zakti-prime",
@@ -23012,7 +24701,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "zarr",
@@ -23057,7 +24750,10 @@
       ],
       "buildTime": 86400,
       "buildPrice": 30000,
-      "blueprintPrice": 30000
+      "blueprintPrice": 30000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "zenistar",
@@ -23101,7 +24797,13 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "onlyFrom": [
+          "simaris"
+        ],
+        "simarisAfter": "Unlock through Daily Tribute"
+      }
     },
     {
       "slug": "zenith",
@@ -23145,7 +24847,13 @@
         }
       ],
       "buildTime": 86400,
-      "buildPrice": 30000
+      "buildPrice": 30000,
+      "obtain": {
+        "onlyFrom": [
+          "simaris"
+        ],
+        "simarisAfter": "Unlock through Daily Tribute"
+      }
     },
     {
       "slug": "zhuge",
@@ -23190,7 +24898,10 @@
       ],
       "buildTime": 43200,
       "buildPrice": 20000,
-      "blueprintPrice": 20000
+      "blueprintPrice": 20000,
+      "obtain": {
+        "market": true
+      }
     },
     {
       "slug": "zhuge-prime",
@@ -23234,7 +24945,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "zylok",
@@ -23289,7 +25004,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 15000
+      "buildPrice": 15000,
+      "obtain": {
+        "relics": true,
+        "vaulted": true
+      }
     },
     {
       "slug": "zymos",
@@ -23323,7 +25042,11 @@
         }
       ],
       "buildTime": 43200,
-      "buildPrice": 20000
+      "buildPrice": 20000,
+      "obtain": {
+        "market": true,
+        "drops": true
+      }
     }
   ]
 }

@@ -10,6 +10,21 @@ import type { OwnershipStatus, RecipeEdge } from '../data/types';
 export type { OwnershipStatus, RecipeEdge };
 
 /** One weapon as the engine sees it: only what the arithmetic and the explanations need. */
+/**
+ * Why a weapon would be hard to get again (M6.5, 12.1). Never changes a verdict: a weapon that
+ * builds nothing is still Safe for recipes. It is said alongside, so a player thinks twice.
+ */
+export type HardToGet =
+  | { readonly kind: 'vaulted' }
+  | {
+      readonly kind: 'only';
+      readonly from: readonly ('simaris' | 'stalker')[];
+      /** Cephalon Simaris's condition, when Simaris is one of them. */
+      readonly simarisAfter?: string;
+    }
+  | { readonly kind: 'event' }
+  | { readonly kind: 'baro' };
+
 export interface GraphNode {
   readonly slug: string;
   readonly name: string;
@@ -18,6 +33,8 @@ export interface GraphNode {
   readonly madeFrom: readonly RecipeEdge[];
   /** The Incarnon Genesis it can take, or null. Never changes a verdict; it is said alongside. */
   readonly incarnon: string | null;
+  /** Why it would be hard to get again, or null. Never changes a verdict either. */
+  readonly hardToGet: HardToGet | null;
 }
 
 /**

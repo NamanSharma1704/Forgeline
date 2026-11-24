@@ -8,6 +8,7 @@
  */
 
 import { listOf } from './explain';
+import { hardToGetSentence } from './recovery';
 import { holds, statusOf } from './status';
 import type { Arsenal, RecipeGraph, Verdict } from './types';
 import { createEvaluator } from './verdict';
@@ -89,7 +90,10 @@ export function sweep(graph: RecipeGraph, arsenal: Arsenal): SweepResult {
         reason = `Mastered, and you hold ${verdict.have - verdict.keep} more than recipes need.`;
         break;
     }
-    // Safe for recipes, but a weapon with an Incarnon Genesis is one a player may regret selling.
+    // Safe for recipes, but a weapon hard to get back, or one with an Incarnon Genesis, is one a
+    // player may regret selling.
+    const hard = graph.get(slug).hardToGet;
+    if (hard) reason += ` ${hardToGetSentence(hard)}`;
     const adapter = graph.get(slug).incarnon;
     if (adapter) reason += ` It can take the ${adapter}: keep it if you might use that.`;
     safe.push({ slug, status, verdict, reason });

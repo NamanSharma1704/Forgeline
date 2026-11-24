@@ -50,6 +50,7 @@ export function VerdictCard({
   footnote?: React.ReactNode;
 }) {
   const e = explanation;
+  const safe = e.tone === 'safe' || e.tone === 'safe-soft';
 
   // Chains that reach past the first step; one step is already the row itself.
   const seen = new Set<string>();
@@ -73,6 +74,13 @@ export function VerdictCard({
             {e.headline}
           </h2>
           <p className="verdict__summary">{e.summary}</p>
+          {/* Where selling is the next move, the reason to think twice sits right under it. */}
+          {e.recovery && safe && (
+            <p className="verdict__warning">
+              <Icon name="check" size={18} />
+              <span>{e.recovery}</span>
+            </p>
+          )}
         </div>
       </div>
 
@@ -144,6 +152,13 @@ export function VerdictCard({
         <p className="verdict__mastery">
           <Icon name="info" size={20} />
           <span>{e.mastery}</span>
+        </p>
+      )}
+
+      {e.recovery && !safe && (
+        <p className="verdict__mastery verdict__recovery">
+          <Icon name="info" size={20} />
+          <span>{e.recovery}</span>
         </p>
       )}
 

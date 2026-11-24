@@ -207,6 +207,63 @@ const materialsOf = (weapon) => {
   return [...totals.values()].map(({ name, kind, count }) => ({ name, kind, count }));
 };
 
+// ---------------------------------------------------------------- where it comes from
+
+/**
+ * Where a weapon can be had again (M6.5, 12.1), as the source states it: the Market, relics (and
+ * whether they are vaulted), Cephalon Simaris, the Stalker, or other drops. Drop tables sit on the
+ * weapon, on its components, and on the same components in Components.json. Only facts are
+ * recorded here; which of them warrants a warning is decided in src/data/recovery.ts.
+ */
+const componentDrops = new Map();
+{
+  const walk = (item) => {
+    if (item?.uniqueName && item.drops?.length) {
+      componentDrops.set(item.uniqueName, [...(componentDrops.get(item.uniqueName) ?? []), ...item.drops]);
+    }
+    for (const component of item?.components ?? []) walk(component);
+  };
+  for (const item of JSON.parse(fs.readFileSync(path.join(dataDir, 'Components.json'), 'utf8'))) walk(item);
+}
+
+const sourceOf = (location) =>
+  / Relic\b/.test(location)
+    ? 'relics'
+    : /^Cephalon Simaris/.test(location)
+      ? 'simaris'
+      : /Stalker|Hunhow/.test(location)
+        ? 'stalker'
+        : 'drops';
+
+function obtainOf(weapon) {
+  // One list of drop locations per part (and one for the weapon itself), so a part that can only
+  // come from Simaris or the Stalker is seen as the bottleneck even when its other parts drop freely.
+  const parts = [
+    weapon.drops ?? [],
+    ...(weapon.components ?? []).map((c) => [...(c.drops ?? []), ...(componentDrops.get(c.uniqueName) ?? [])]),
+  ]
+    .map((drops) => drops.map((drop) => drop.location ?? '').filter(Boolean))
+    .filter((locations) => locations.length > 0);
+  const all = parts.flat();
+  const onlyFrom = new Set();
+  for (const locations of parts) {
+    const sources = new Set(locations.map(sourceOf));
+    if (!sources.has('drops') && !sources.has('relics')) sources.forEach((source) => onlyFrom.add(source));
+  }
+  const simaris = all.find((l) => sourceOf(l) === 'simaris');
+  const obtain = {
+    ...(weapon.bpCost > 0 || weapon.marketCost > 0 ? { market: true } : {}),
+    ...(all.some((l) => sourceOf(l) === 'relics') ? { relics: true } : {}),
+    ...(weapon.isPrime && typeof weapon.vaulted === 'boolean' ? { vaulted: weapon.vaulted } : {}),
+    ...(all.some((l) => sourceOf(l) === 'drops') ? { drops: true } : {}),
+    // Sources some part can come from and nowhere else: what getting it back depends on.
+    ...(onlyFrom.size ? { onlyFrom: [...onlyFrom].sort() } : {}),
+    // "Cephalon Simaris, Complete The War Within": the condition after the comma, if any.
+    ...(simaris !== undefined && simaris.includes(',') ? { simarisAfter: simaris.replace(/^Cephalon Simaris,\s*/, '') } : {}),
+  };
+  return Object.keys(obtain).length ? obtain : null;
+}
+
 // ---------------------------------------------------------------- incarnon
 
 /**
@@ -242,6 +299,7 @@ const fresh = newSlugs(
 const weapons = players.map((weapon) => {
   const slug = slugByUnique.get(weapon.uniqueName);
   const materials = materialsOf(weapon);
+  const obtain = obtainOf(weapon);
   return {
     slug,
     name: weapon.name,
@@ -266,6 +324,7 @@ const weapons = players.map((weapon) => {
     ...(weapon.buildPrice > 0 ? { buildPrice: weapon.buildPrice } : {}),
     ...(weapon.bpCost > 0 ? { blueprintPrice: weapon.bpCost } : {}),
     ...(genesisByName.has(weapon.name) ? { incarnonGenesis: genesisByName.get(weapon.name) } : {}),
+    ...(obtain ? { obtain } : {}),
     ...(aliases[slug] ? { aliases: aliases[slug] } : {}),
   };
 });

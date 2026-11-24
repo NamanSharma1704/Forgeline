@@ -15,6 +15,25 @@ export interface Material {
   count: number;
 }
 
+/**
+ * Where a weapon can be had again, as the source states it (M6.5, 12.1). Facts only; which of them
+ * call for a warning is decided in recovery.ts.
+ */
+export interface Obtain {
+  /** The Market sells its blueprint for credits, or the weapon for platinum. */
+  market?: true;
+  /** Some part drops from relics. */
+  relics?: true;
+  /** For a Prime: whether its relics are vaulted. */
+  vaulted?: boolean;
+  /** Some part drops somewhere farmable: missions, bosses, open worlds, syndicates. */
+  drops?: true;
+  /** Sources some part can come from and nowhere else. */
+  onlyFrom?: ('simaris' | 'stalker')[];
+  /** Cephalon Simaris's condition: "Complete The New War", "Unlock through Daily Tribute". */
+  simarisAfter?: string;
+}
+
 /** An edge in the recipe graph. `copies` is how many of the referenced weapon one build consumes. */
 export interface RecipeEdge {
   slug: string;
@@ -60,6 +79,8 @@ export interface Weapon {
    * exists. The weapon's other versions can take it too: see incarnonGenesisOf in weapons.ts.
    */
   incarnonGenesis?: string;
+  /** Where it can be had again; absent when the source says nothing. */
+  obtain?: Obtain;
   /** Community shorthand folded into search. */
   aliases?: string[];
 }

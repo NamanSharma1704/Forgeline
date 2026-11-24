@@ -14,6 +14,7 @@ export { createEvaluator, computeVerdict, type Evaluator } from './verdict';
 export { explain, listOf, type Explanation, type Tone } from './explain';
 export { familyTree, type FamilyTree, type TreeNode, type TreeOptions } from './tree';
 export { sweep, type SweepItem, type SweepResult } from './sweep';
+export { hardToGetSentence } from './recovery';
 export {
   foundryTime,
   planBuild,
