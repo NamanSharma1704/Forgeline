@@ -1,0 +1,37 @@
+{
+  "name": "forgeline",
+  "version": "0.1.0",
+  "private": true,
+  "description": "See what every weapon becomes before you sell it. A Warframe sell-check tool.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve out",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "data:verify": "node scripts/verify-source-data.mjs",
+    "data:build": "node scripts/build-index.mjs",
+    "data:images": "node scripts/fetch-images.mjs",
+    "data:refresh": "npm run data:build && npm run data:images && npm run test"
+  },
+  "dependencies": {
+    "fuse.js": "^7.5.0",
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@wfcd/items": "^1.1276.51",
+    "sharp": "^0.35.5",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.12"
+  }
+}

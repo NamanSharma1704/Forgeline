@@ -1,0 +1,4293 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-11-24T15:10:01.761Z",
+  "sources": {
+    "1999EntHybridPistol.png": {
+      "sha256": "b06a00b6722bc69f0e1d98807b780c2eba18555335442e1637e33b3de2066cd3",
+      "bytes": 37867,
+      "slugs": [
+        "riot-848"
+      ]
+    },
+    "1999InfShotgunWeapon.png": {
+      "sha256": "853a0581a9a5a2214645378c399bcf0a5738b9d20771d179895e0c69b1e8c9f7",
+      "bytes": 45817,
+      "slugs": [
+        "coda-bassocyst"
+      ]
+    },
+    "1999InfSporePistolWeapon.png": {
+      "sha256": "b3db3586a6bb660667b0d7a8f1a2897e560d720d4279462dc20e95c24a95bae8",
+      "bytes": 38285,
+      "slugs": [
+        "dual-coda-torxica"
+      ]
+    },
+    "AcceltraPrime.png": {
+      "sha256": "87b7d691cf2584d75d6c28e1538999d5bf375f71504b1ca66e457dfda6498102",
+      "bytes": 27993,
+      "slugs": [
+        "acceltra-prime"
+      ]
+    },
+    "AckAndBrunt.png": {
+      "sha256": "3e151a5bbd105aa5ef53f92f32a3ac71087efc8aa2f21233772d9d6fff50c6da",
+      "bytes": 79993,
+      "slugs": [
+        "ack-brunt"
+      ]
+    },
+    "Acrid.png": {
+      "sha256": "9c982bc5c845bc943ab5f61b18ae193a2f350f1664185d85f6c8e99fd9f03481",
+      "bytes": 41714,
+      "slugs": [
+        "acrid"
+      ]
+    },
+    "AfentisPrime.png": {
+      "sha256": "d91b1f4670c649a19c44be149229e32d3444c0cbc58a1d6100af7ceb797342c3",
+      "bytes": 11950,
+      "slugs": [
+        "afentis-prime"
+      ]
+    },
+    "Afuris.png": {
+      "sha256": "aaf5d697228feb7b51598fd051f55a73272db740ccf7d4600b4c2504df2f3cf4",
+      "bytes": 48023,
+      "slugs": [
+        "afuris"
+      ]
+    },
+    "AfurisPrime.png": {
+      "sha256": "6bba8fc6d791a1710df5d2de9f0d7eab6ed44a174ae6d79848b218f2a83e1358",
+      "bytes": 69144,
+      "slugs": [
+        "afuris-prime"
+      ]
+    },
+    "Agkuza.png": {
+      "sha256": "726879c9b4fa965126e818c291da3a6a23444cf217b77479093807cd71b6c01a",
+      "bytes": 13958,
+      "slugs": [
+        "agkuza"
+      ]
+    },
+    "AK47Weapon.png": {
+      "sha256": "91131e94d995d906e137375ddac3d9394d4924a2228508307e8aecc3bebaf0de",
+      "bytes": 26037,
+      "slugs": [
+        "ax-52"
+      ]
+    },
+    "AkariusPrime.png": {
+      "sha256": "66da2623b08897185911fca2fc949c808e3e65e40a90c4a94c419d5f8c0e2d9a",
+      "bytes": 66283,
+      "slugs": [
+        "akarius-prime"
+      ]
+    },
+    "Akbolto.png": {
+      "sha256": "7d1ee80bfd2dce1fe93054f67d112c657f0c948660142de1f06335287a440256",
+      "bytes": 36877,
+      "slugs": [
+        "akbolto"
+      ]
+    },
+    "AkboltoPrime.png": {
+      "sha256": "946a70fd3dc9cc8b10fa02da72eb8b014e18dff23669d85342dbe420ef5f3242",
+      "bytes": 47161,
+      "slugs": [
+        "akbolto-prime"
+      ]
+    },
+    "Akbronco.png": {
+      "sha256": "a151c5e791c7c79e96e81124a38fe931bcef11fe1b86e893cd9f4e404de58f36",
+      "bytes": 36773,
+      "slugs": [
+        "akbronco"
+      ]
+    },
+    "AkbroncoPrime.png": {
+      "sha256": "cc46ba333a988de1802ba0455d9a0a0b4217ac8b764d338218fdf9712ce2faef",
+      "bytes": 53486,
+      "slugs": [
+        "akbronco-prime"
+      ]
+    },
+    "Akjagara.png": {
+      "sha256": "0d4c4937875b87c69477fe4b281b3a8ec3e1e93c002fbf7a5f9f657795a2f35a",
+      "bytes": 42303,
+      "slugs": [
+        "akjagara"
+      ]
+    },
+    "AkjagaraPrime.png": {
+      "sha256": "10b5968ed922c8a48cd32605cafde853150f34f302599b8c0ab96ff2b3256714",
+      "bytes": 39817,
+      "slugs": [
+        "akjagara-prime"
+      ]
+    },
+    "Aklato.png": {
+      "sha256": "5f041a21cbdfa4445fc58c67195694b17745bec2d4d6048d7dd03f03a6bfebd5",
+      "bytes": 45986,
+      "slugs": [
+        "aklato"
+      ]
+    },
+    "Aklex.png": {
+      "sha256": "c605170dcb68027a4be05eaa6944957b3d888cbf97aeaa60cbd969d46b2e0b62",
+      "bytes": 33172,
+      "slugs": [
+        "aklex"
+      ]
+    },
+    "AklexPrime.png": {
+      "sha256": "5f309d7c1163da10a86e3de362545a54988a6b4128e56a00e9b0ff2f6b6e29db",
+      "bytes": 54800,
+      "slugs": [
+        "aklex-prime"
+      ]
+    },
+    "Akmagnus.png": {
+      "sha256": "1efdbbc02bf2d08cc330a00a8f967bb34b52b2aa9432c82382c740701df7f116",
+      "bytes": 45485,
+      "slugs": [
+        "akmagnus"
+      ]
+    },
+    "AkmagnusPrime.png": {
+      "sha256": "ea277a4ac5d8f3f8346f3090ae2338318e77e4dac43676318908b2466c20f0a6",
+      "bytes": 56497,
+      "slugs": [
+        "akmagnus-prime"
+      ]
+    },
+    "Aksomati.png": {
+      "sha256": "7332f4b80700da4970cff68ed555f847901a4e9ef4f78552f49faed2180a9e51",
+      "bytes": 38954,
+      "slugs": [
+        "aksomati"
+      ]
+    },
+    "AksomatiPrime.png": {
+      "sha256": "76163110f6256b7db8eb4222589624025151a783029aa5b3285042aa63d3aa5c",
+      "bytes": 61241,
+      "slugs": [
+        "aksomati-prime"
+      ]
+    },
+    "Akstileto.png": {
+      "sha256": "eef9cdd767cabbfe0690281e76f0977582fb40593d7072e48eaf6dfb39648e2e",
+      "bytes": 39675,
+      "slugs": [
+        "akstiletto"
+      ]
+    },
+    "AkstiletoPrime.png": {
+      "sha256": "94efc779c4f4781b12da4e7f94e5f03ba51d20baba6feceedcb69671ab847b68",
+      "bytes": 60358,
+      "slugs": [
+        "akstiletto-prime"
+      ]
+    },
+    "Akvasto.png": {
+      "sha256": "cc1fa3addec44f0e3795d1d8a219f7d04f02a2249c90b07df3ef27a1d1375981",
+      "bytes": 42610,
+      "slugs": [
+        "akvasto"
+      ]
+    },
+    "AkvastoPrime.png": {
+      "sha256": "b2dd388986b01d620df2f9d3d311aeac1be147b6ec5e636bdae3eb544f4ad1ed",
+      "bytes": 48334,
+      "slugs": [
+        "akvasto-prime"
+      ]
+    },
+    "Akzani.png": {
+      "sha256": "f291795154e1ca1de0700f07c629679da0f1deee46f793067a1af31975ecc6db",
+      "bytes": 48978,
+      "slugs": [
+        "akzani"
+      ]
+    },
+    "AlternoxPrime.png": {
+      "sha256": "e75a173818967ec8546fe09f694161948c93b1ccf5ee139c27a5e1a573290993",
+      "bytes": 47638,
+      "slugs": [
+        "alternox-prime"
+      ]
+    },
+    "Amphis.png": {
+      "sha256": "234d00911159ea42008bd680addd10c798c793ac4516e9806799ed639f7d086e",
+      "bytes": 49347,
+      "slugs": [
+        "quatz"
+      ]
+    },
+    "AmphisMelee.png": {
+      "sha256": "7e5609be61ea700df828104f70c0efac6d8e3a85cec2f80e6655ae6108a66bb7",
+      "bytes": 9103,
+      "slugs": [
+        "amphis"
+      ]
+    },
+    "Amprex.png": {
+      "sha256": "42645b9df57b8584282026c610927643afb29962062dd77a70457619dde8846b",
+      "bytes": 21694,
+      "slugs": [
+        "amprex"
+      ]
+    },
+    "Angstrum.png": {
+      "sha256": "14bec75506a812be5aab0782ff8cd551e5660ab29997f417878433312cf12abb",
+      "bytes": 29459,
+      "slugs": [
+        "angstrum"
+      ]
+    },
+    "Anku.png": {
+      "sha256": "749fe0361f925de76a73dbcc2385f2282ca4f81c405409df1fbb3fddfdb5182b",
+      "bytes": 21079,
+      "slugs": [
+        "anku"
+      ]
+    },
+    "Ankyros.png": {
+      "sha256": "116d128e5a9d6f0b8dd4f4a9b43fc9883ec747b3e5dba2419db7566273752efb",
+      "bytes": 64447,
+      "slugs": [
+        "ankyros"
+      ]
+    },
+    "AnkyrosPrime.png": {
+      "sha256": "c7cbdc97d90ed9aae3dec24dce976f9f0c0540e3c60ece03c05ba71a0b921406",
+      "bytes": 76553,
+      "slugs": [
+        "ankyros-prime"
+      ]
+    },
+    "ArcaPlasmor.png": {
+      "sha256": "e5427e3729d8302d13af52bc0f9ef3a6d532230a8b36bab54badcad24517a039",
+      "bytes": 35436,
+      "slugs": [
+        "arca-plasmor"
+      ]
+    },
+    "ArcaScisco.png": {
+      "sha256": "faf431439351abef22c20a12ab49f7b33308fb988c4f054b19159fec7fb11e28",
+      "bytes": 46326,
+      "slugs": [
+        "arca-scisco"
+      ]
+    },
+    "ArcaTitron.png": {
+      "sha256": "0621770e61b05b64009167d945a190884f779fa9ab2083839f07e02827792313",
+      "bytes": 22954,
+      "slugs": [
+        "arca-titron"
+      ]
+    },
+    "ArchonDualDaggers.png": {
+      "sha256": "24938b850a3aad6e07d92d8caf4ad404e462485bb41006d82c983b3d1d088cbd",
+      "bytes": 58650,
+      "slugs": [
+        "nepheri"
+      ]
+    },
+    "ArchonTrident.png": {
+      "sha256": "c2ed13c6f88f870d3b0d278b324f45f77080958291babb59836f63bb03054bc0",
+      "bytes": 16514,
+      "slugs": [
+        "korumm"
+      ]
+    },
+    "ArchonWhip.png": {
+      "sha256": "96ce951082e2980f5e696fa2684f9a14f8eb84a01d28edbba56653a58a03455b",
+      "bytes": 17720,
+      "slugs": [
+        "verdilac"
+      ]
+    },
+    "Argonak.png": {
+      "sha256": "fda6bb2eb8479d6db7d91ae6dca33d82841194d8bd3e30f7708422a39384972d",
+      "bytes": 19710,
+      "slugs": [
+        "argonak"
+      ]
+    },
+    "Artax.png": {
+      "sha256": "ce4ce0538c26ac3ad48ca08a06047aedc656f9286ac161045a44063bb5b4c429",
+      "bytes": 41062,
+      "slugs": [
+        "artax"
+      ]
+    },
+    "Astilla.png": {
+      "sha256": "0bf2cf380fd40bf8e3c8d59fc5965d1f7110aeea6d4e9a863b77a3cd01ce13a1",
+      "bytes": 21649,
+      "slugs": [
+        "astilla"
+      ]
+    },
+    "AstillaPrime.png": {
+      "sha256": "d8fa0e7a7e48dc642040ba28903ab343aab66972ce7167633225c15d18235f2c",
+      "bytes": 31700,
+      "slugs": [
+        "astilla-prime"
+      ]
+    },
+    "AthodaiPrime.png": {
+      "sha256": "de366988e4b06eba443e7e2bfb0423f57d3a5c90971589d6b48a2f9cea441bd7",
+      "bytes": 54679,
+      "slugs": [
+        "athodai-prime"
+      ]
+    },
+    "Atomos.png": {
+      "sha256": "f2aeb953ae3e4ee1368834908835b21d675f6868bc32a2f8f592901149024ab1",
+      "bytes": 64416,
+      "slugs": [
+        "atomos"
+      ]
+    },
+    "Atterax.png": {
+      "sha256": "22e5c2e448d37e5265214f6c776dd834caea482eb3c6a373df7c770324e07ea8",
+      "bytes": 20217,
+      "slugs": [
+        "atterax"
+      ]
+    },
+    "Attica.png": {
+      "sha256": "4d8841d0acb1d8d8c71b407c729a17e80aff139f39c3e043988d466a1cd59f7e",
+      "bytes": 20487,
+      "slugs": [
+        "attica"
+      ]
+    },
+    "Azima.png": {
+      "sha256": "169d39c4324aa369a7613bc0c8b06be7dfb897863467b03234283de126faf592",
+      "bytes": 23674,
+      "slugs": [
+        "azima"
+      ]
+    },
+    "BallasSword.png": {
+      "sha256": "5e4e7cbdb11e65f3f6ff468fd041d46176dbe68c7b32d8c77a1bc53a6dca68a2",
+      "bytes": 13339,
+      "slugs": [
+        "paracesis"
+      ]
+    },
+    "Ballistica.png": {
+      "sha256": "bd979ee88c8e1674cf89d863a86d6da158eeb76bf8721a82b15467070e377b66",
+      "bytes": 28362,
+      "slugs": [
+        "ballistica"
+      ]
+    },
+    "BallisticaPrime.png": {
+      "sha256": "5b998c270131ee1adcb90700042ac94aa54726a17b60d0ef888e463c35487a4b",
+      "bytes": 43735,
+      "slugs": [
+        "ballistica-prime"
+      ]
+    },
+    "Baza.png": {
+      "sha256": "af8069d0b40f1f2aec41428ae7e049423ed6fc70fc0b09049011f5e22a71e162",
+      "bytes": 24880,
+      "slugs": [
+        "baza"
+      ]
+    },
+    "BazaPrime.png": {
+      "sha256": "09004f93dcaa0992b1313ecc3d41087d6fcc25d2f35b56a662aa0d2420008f12",
+      "bytes": 33950,
+      "slugs": [
+        "baza-prime"
+      ]
+    },
+    "Bo.png": {
+      "sha256": "56944c01b7b32196689076ca7fec8543369eda045c3b24c49146925fb5474378",
+      "bytes": 5560,
+      "slugs": [
+        "bo",
+        "mk1-bo"
+      ]
+    },
+    "Boar.png": {
+      "sha256": "0d69bd5552e03f8a94084850a6a3774644f7684ec7667d1586090b21d652a34d",
+      "bytes": 30743,
+      "slugs": [
+        "boar"
+      ]
+    },
+    "BoarPrime.png": {
+      "sha256": "03a34905033c8aafc9f250fa3046472bdcb79ecfa0cbfc04b3a5411682dd0436",
+      "bytes": 32182,
+      "slugs": [
+        "boar-prime"
+      ]
+    },
+    "Boltace.png": {
+      "sha256": "adfec2ea801d34587d8e1435dae1047ae81a6d9c492cf7e7e471e45ac2cb4e3e",
+      "bytes": 33619,
+      "slugs": [
+        "boltace",
+        "telos-boltace"
+      ]
+    },
+    "Bolto.png": {
+      "sha256": "739a35b62cc14b09d4452f4754ce984e117f4328b40c28f0b9708955d1f0b0fb",
+      "bytes": 30096,
+      "slugs": [
+        "bolto"
+      ]
+    },
+    "Boltor.png": {
+      "sha256": "3ecc72b142c61c99089ff4928311f1860f9f2b990b49beba54efda7052397728",
+      "bytes": 29464,
+      "slugs": [
+        "boltor"
+      ]
+    },
+    "BoltorPrime.png": {
+      "sha256": "15b588867813ec9869c209bc329a69560fd54713ebde2fb96597b568b05a02dc",
+      "bytes": 27672,
+      "slugs": [
+        "boltor-prime"
+      ]
+    },
+    "BoPrime.png": {
+      "sha256": "f8c47a619179458387d80430ba334cb83635d10a9d499922d5f9404b2ddcff27",
+      "bytes": 10448,
+      "slugs": [
+        "bo-prime"
+      ]
+    },
+    "Brakk.png": {
+      "sha256": "586ba8bc3021c5b3ef50ec6f03e74047fb640445a93a94e0b6b1731990734e37",
+      "bytes": 50060,
+      "slugs": [
+        "brakk"
+      ]
+    },
+    "Braton.png": {
+      "sha256": "4064d845c187fdff2df14defb3765445b2f38fefc41acc46e38b80e17431f6b4",
+      "bytes": 47568,
+      "slugs": [
+        "braton",
+        "mk1-braton"
+      ]
+    },
+    "BratonPrime.png": {
+      "sha256": "606372c8e73afa858449cb034dda1ba9f4eeb9645fed43fb6101500c465d92e3",
+      "bytes": 33802,
+      "slugs": [
+        "braton-prime"
+      ]
+    },
+    "BratonVandal.png": {
+      "sha256": "fc4649bea5927ff53a87ac90abf7e2ce36c8018689df263ea5815440ea372e91",
+      "bytes": 39604,
+      "slugs": [
+        "braton-vandal"
+      ]
+    },
+    "BrokenFrameWarfan.png": {
+      "sha256": "2d2a535b860a304d758955820b8933434cc31db23ee5be241e03f237118052aa",
+      "bytes": 45689,
+      "slugs": [
+        "quassus"
+      ]
+    },
+    "BrokenScepter.png": {
+      "sha256": "e9ff8962f049f2b4622c17e03169cb19e39b5756543db2c290b1793f4d9c4b6a",
+      "bytes": 5929,
+      "slugs": [
+        "broken-scepter"
+      ]
+    },
+    "BrokenWar.png": {
+      "sha256": "d151468153d1e54bde332346b4e9d88af4e69a894b4e4fc455f0a4405c8bc583",
+      "bytes": 15041,
+      "slugs": [
+        "broken-war"
+      ]
+    },
+    "Bronco.png": {
+      "sha256": "0eb03efaa644afe216e4cf9636f07706f51d500f3467d79df7473f905b3ea32a",
+      "bytes": 37375,
+      "slugs": [
+        "bronco"
+      ]
+    },
+    "BroncoPrime.png": {
+      "sha256": "09dd66220835a579b34ecbed375b193b90986363b954712ea9c065ff01d1c018",
+      "bytes": 54538,
+      "slugs": [
+        "bronco-prime"
+      ]
+    },
+    "BurstLaser.png": {
+      "sha256": "f2b030c85dd16aee1e0965f55d9f166469947d63b5b1934006b4e8a9ef96263f",
+      "bytes": 39696,
+      "slugs": [
+        "burst-laser"
+      ]
+    },
+    "Burston.png": {
+      "sha256": "1e692b85717f6ce87a35a235755bf9dff021ebfa8b288be68efa5f02e81e8a5c",
+      "bytes": 27218,
+      "slugs": [
+        "burston"
+      ]
+    },
+    "BurstonPrime.png": {
+      "sha256": "525324ec4b4accfa289f9007afc03179de9746d2b74d563969d5c1f74b231f95",
+      "bytes": 21772,
+      "slugs": [
+        "burston-prime"
+      ]
+    },
+    "Buzlok.png": {
+      "sha256": "37b5e77afe09dfae9ef97696e247e9148b4b4da311312d630a1cb2e07df9d462",
+      "bytes": 15862,
+      "slugs": [
+        "buzlok"
+      ]
+    },
+    "Cadus.png": {
+      "sha256": "61df3a91628902f66c3be2e62ebf06d899736a8b0fb2ae54d408057ff162f081",
+      "bytes": 5816,
+      "slugs": [
+        "cadus"
+      ]
+    },
+    "Cassowar.png": {
+      "sha256": "f7aa1d43405dd0565526ae0a084d02b7f4848baf32fab5de52841ffaed1eece0",
+      "bytes": 10077,
+      "slugs": [
+        "cassowar"
+      ]
+    },
+    "Castanas.png": {
+      "sha256": "02eed364ebf9cf880eb74b0c082eaf32ec14e0aaf15e0c4cec9feb5fb4c9f753",
+      "bytes": 25261,
+      "slugs": [
+        "castanas"
+      ]
+    },
+    "Caustacyst.png": {
+      "sha256": "d42973290a0bfc2e5f966228cfff44ce2651ef2f724e440c11b9082be6965ea1",
+      "bytes": 22293,
+      "slugs": [
+        "caustacyst"
+      ]
+    },
+    "Cedo.png": {
+      "sha256": "6686a74bf5bc832d71ccec8c6839c1e3b17326a43e8ac5738ce3a27ab62585e3",
+      "bytes": 27983,
+      "slugs": [
+        "cedo"
+      ]
+    },
+    "CedoPrime.png": {
+      "sha256": "41b567e3189cf58365cbdc9ac573e0326c1934e61753c9fba2c8610b08dc20f2",
+      "bytes": 27893,
+      "slugs": [
+        "cedo-prime"
+      ]
+    },
+    "Centaur.png": {
+      "sha256": "354f51a3fc12f334443e797634aa5e150865a7c91c795ed2f58e990214723aaa",
+      "bytes": 21857,
+      "slugs": [
+        "centaur"
+      ]
+    },
+    "CeramicDagger.png": {
+      "sha256": "ae7385943981028b42ffcf283d8db94540d9e20b745a6b3579482d790592ac05",
+      "bytes": 18796,
+      "slugs": [
+        "ceramic-dagger"
+      ]
+    },
+    "Cerata.png": {
+      "sha256": "5ef4bf0c96c573cdba039a786ddc8d3aedc30f0e6ae1388af99568ef80035258",
+      "bytes": 52469,
+      "slugs": [
+        "cerata"
+      ]
+    },
+    "Cernos.png": {
+      "sha256": "498883c355b02456f8120e1b07eb10faa3f97ff7feb7cf0c2bdf3e7f345bbf53",
+      "bytes": 21126,
+      "slugs": [
+        "cernos"
+      ]
+    },
+    "CernosPrime.png": {
+      "sha256": "3fa2c10e19e70fb98fb1f868d4595b3f4444b449a8af707d66c82a23a6dbd93a",
+      "bytes": 30043,
+      "slugs": [
+        "cernos-prime"
+      ]
+    },
+    "Cestra.png": {
+      "sha256": "7a5f12a3c2caba2559735625e0d4f2d1c8cbfd41f3eb512cde0864f49bfd82bc",
+      "bytes": 44328,
+      "slugs": [
+        "cestra"
+      ]
+    },
+    "CobraCranePrime.png": {
+      "sha256": "02e15814e56946e735c96812c510c60d808dfb0295d04080b46612224a816bca",
+      "bytes": 45577,
+      "slugs": [
+        "cobra-crane-prime"
+      ]
+    },
+    "CodaBubonico.png": {
+      "sha256": "63d840ce9495f772fbaa555c7691ee6de1cdc825de5ad409d0209189f9e7ceb8",
+      "bytes": 34794,
+      "slugs": [
+        "coda-bubonico"
+      ]
+    },
+    "CodaCatabolyst.png": {
+      "sha256": "e87c0e4a55629fad63ca8fdb4960a450b18eb3fa5b369306e609f238b6bf51fd",
+      "bytes": 38324,
+      "slugs": [
+        "coda-catabolyst"
+      ]
+    },
+    "CodaCaustacyst.png": {
+      "sha256": "e7b6720bdf517456660c249456d5842cab374098cf87b53ea5c89fb35a1bff5c",
+      "bytes": 21827,
+      "slugs": [
+        "coda-caustacyst"
+      ]
+    },
+    "CodaHema.png": {
+      "sha256": "13e186899b60d3f9442fa97cd4b62c8056bdab844b96570c7aa2f186e2f172f3",
+      "bytes": 42723,
+      "slugs": [
+        "coda-hema"
+      ]
+    },
+    "CodaHirudo.png": {
+      "sha256": "25a716c96786f2cc1787f1e234c562d500d013a30a55da757d41e8cb7c43a3a0",
+      "bytes": 58210,
+      "slugs": [
+        "coda-hirudo"
+      ]
+    },
+    "CodaMire.png": {
+      "sha256": "d755c3483bfb22e2e59d86fde7b533a1a454f62f0bff7c7136107bfb5cb34f3b",
+      "bytes": 22991,
+      "slugs": [
+        "coda-mire"
+      ]
+    },
+    "CodaPathocyst.png": {
+      "sha256": "bfcfe64e3710e4215bfec8a20b0f144abfcd646259cb84fa9c4d20c3009dff9d",
+      "bytes": 40322,
+      "slugs": [
+        "coda-pathocyst"
+      ]
+    },
+    "CodaPox.png": {
+      "sha256": "64212c23c146dba56010d341ab6910d0ba96e70b3ff53da745c2076fedaa0931",
+      "bytes": 23400,
+      "slugs": [
+        "coda-pox"
+      ]
+    },
+    "CodaSporothrix.png": {
+      "sha256": "5bb29ddfd5794fb3aa610f803a14c568e577fbefb06b79e17ac4904d41b18af6",
+      "bytes": 23712,
+      "slugs": [
+        "coda-sporothrix"
+      ]
+    },
+    "CodaSynapse.png": {
+      "sha256": "95af8d08798ee55b66dca24b217dddccbdd2514797bdc5597d73cfaac3010ba9",
+      "bytes": 25702,
+      "slugs": [
+        "coda-synapse"
+      ]
+    },
+    "CodaTysis.png": {
+      "sha256": "b77b20a007a004d87fd94d4e05bb852f0742fcbbf22d1752401b658c1750e0d7",
+      "bytes": 34061,
+      "slugs": [
+        "coda-tysis"
+      ]
+    },
+    "ConclaveLeverPistol.png": {
+      "sha256": "a2813c6bbab552921720e74ea7e55b8f186a5e54651e1f18a45bfe0cee964f7a",
+      "bytes": 27903,
+      "slugs": [
+        "zylok"
+      ]
+    },
+    "Convectrix.png": {
+      "sha256": "8be37315678f84e332664d0a55e4ac819d06a73c4f8307c4b53832eaafa420d2",
+      "bytes": 35353,
+      "slugs": [
+        "convectrix"
+      ]
+    },
+    "Corinth.png": {
+      "sha256": "3f95ff45292c9f4b398196b78f5e95ef3775dd58282a962ddd37e9074135ce91",
+      "bytes": 23300,
+      "slugs": [
+        "corinth"
+      ]
+    },
+    "CorinthPrime.png": {
+      "sha256": "53e9e3c0db8e7a2607a4c271b4c035eed73bdccc18a46ac79e678afca113342f",
+      "bytes": 40375,
+      "slugs": [
+        "corinth-prime"
+      ]
+    },
+    "CorpusLaserPistolVandal.png": {
+      "sha256": "0e9cebc000e859d55445beade22900d1530bc13e237211725219cf9de2bfbb8c",
+      "bytes": 33166,
+      "slugs": [
+        "spectra-vandal"
+      ]
+    },
+    "CorufellPrime.png": {
+      "sha256": "e82a40c2e3dbe6818f60a1a2abe4aab35c03c09a3fc56c6e27c553feff8766e7",
+      "bytes": 21576,
+      "slugs": [
+        "corufell-prime"
+      ]
+    },
+    "Corvas.png": {
+      "sha256": "9c0293d7bc34033c9af4895e1e5e3df3ee79524a331d92ee99bb612514d8cc1e",
+      "bytes": 41061,
+      "slugs": [
+        "corvas"
+      ]
+    },
+    "CorvasPrime.png": {
+      "sha256": "149888518f53b2ad295bab1d9e4b5c1f147ee959b560051ce5ba6c4882c45d1f",
+      "bytes": 62998,
+      "slugs": [
+        "corvas-prime"
+      ]
+    },
+    "Cronus.png": {
+      "sha256": "c1cb1fb2300923260b1344f37de99b14ae546b9019f3a2935df667eaf9a54ca3",
+      "bytes": 7813,
+      "slugs": [
+        "cronus"
+      ]
+    },
+    "CrpArSniper.png": {
+      "sha256": "2dc7bc8ec0e71fb04ff72a9fc167edaf827bf7b0e017c0c25cf024bad0ca82d2",
+      "bytes": 37928,
+      "slugs": [
+        "ambassador"
+      ]
+    },
+    "CrpBEArcaPlasmor.png": {
+      "sha256": "602fd96be1b36d7ab3634ce8be60b3176944e5a6124f7866bc88b94b81b1078d",
+      "bytes": 45719,
+      "slugs": [
+        "tenet-arca-plasmor"
+      ]
+    },
+    "CrpBECycron.png": {
+      "sha256": "22aee42fd06de787f086f59ecacbda3b124d8437828338bfa5b5acdebd322088",
+      "bytes": 39393,
+      "slugs": [
+        "tenet-cycron"
+      ]
+    },
+    "CrpBEDetron.png": {
+      "sha256": "d6104c5281b8ff03c3014678360ae715d232fd44d9a9753c67e3412c7e419003",
+      "bytes": 49542,
+      "slugs": [
+        "tenet-detron"
+      ]
+    },
+    "CrpBEFluxRifle.png": {
+      "sha256": "b267cd75786523921ae4c9de8a2423288a63f159c267ffdfedf2347126990a89",
+      "bytes": 42363,
+      "slugs": [
+        "tenet-flux-rifle"
+      ]
+    },
+    "CrpBEGlaxion.png": {
+      "sha256": "8262d87afa02509c2d3d369e6d70daa7285b032f662c7bdb36a8f5d9431be5d1",
+      "bytes": 24941,
+      "slugs": [
+        "tenet-glaxion"
+      ]
+    },
+    "CrpBETetra.png": {
+      "sha256": "ebdf1e71854d03612a4c3e75a775b2974adb04fd97d4e6b58ba2323cf29f548d",
+      "bytes": 38769,
+      "slugs": [
+        "tenet-tetra"
+      ]
+    },
+    "CrpBigSlash.png": {
+      "sha256": "8ed8ac7afc17057c3e6d97a465f12d68584ae973f8db1117579bbf51775cb27f",
+      "bytes": 19753,
+      "slugs": [
+        "tenet-exec"
+      ]
+    },
+    "CrpBlastorWeapon.png": {
+      "sha256": "d18a1317d9ea53172c0d66cf46d5dab975a190665de40e8dba1a4099efe8efec",
+      "bytes": 38197,
+      "slugs": [
+        "plinx"
+      ]
+    },
+    "CrpBriefcase2HKatana.png": {
+      "sha256": "5df4e26bb899b98b5d6d46d3975edb894e3b9e7cc7f061bc9d17c1e2f20c8492",
+      "bytes": 10311,
+      "slugs": [
+        "tenet-livia"
+      ]
+    },
+    "CrpBriefcaseAkimboGun.png": {
+      "sha256": "83bf040b830f8771809150bc91a26a451bd9368f3a10738f5c48275b169f8c94",
+      "bytes": 64661,
+      "slugs": [
+        "tenet-diplos"
+      ]
+    },
+    "CrpBriefcaseLauncher.png": {
+      "sha256": "fdf815effd8613034e528a687fccc6fa2f8dace6a1dd14ca7987500bfaca93b7",
+      "bytes": 41721,
+      "slugs": [
+        "tenet-envoy"
+      ]
+    },
+    "CrpBriefcaseScythe.png": {
+      "sha256": "2657f65eafb61b6c750c437bef8076007481ded21ebf5b7eb107430247831b90",
+      "bytes": 18586,
+      "slugs": [
+        "tenet-grigori"
+      ]
+    },
+    "CrpFreezeRayVandal.png": {
+      "sha256": "c2b8611d2fdef6c0e0f2e4844d9a29ed0c2019a26f30afc36e0edccb2d738265",
+      "bytes": 26094,
+      "slugs": [
+        "glaxion-vandal"
+      ]
+    },
+    "CrpGlaive.png": {
+      "sha256": "12f4a1ca8990c2f25c17f3b9ec2f29064806765f3eda84a94f281e9583426180",
+      "bytes": 58491,
+      "slugs": [
+        "falcor"
+      ]
+    },
+    "CrpGunBladeWeapon.png": {
+      "sha256": "78016a439e2980aab8ee921e41cb24a4b0cb4cb94da21c5f0a45b42cd40fbaea",
+      "bytes": 31553,
+      "slugs": [
+        "stropha"
+      ]
+    },
+    "CrpHammerShield.png": {
+      "sha256": "af5e3ddb4476962bfff620db06de923f27045155764c33f8964171e9602a296f",
+      "bytes": 67846,
+      "slugs": [
+        "tenet-agendus"
+      ]
+    },
+    "CrpIgniterPistol.png": {
+      "sha256": "a91bfd15b51d4cd514dda55ef0ffcfbd3ea97665d12e16d36f991a590946db43",
+      "bytes": 52995,
+      "slugs": [
+        "tenet-spirex"
+      ]
+    },
+    "CrpRubanRifle.png": {
+      "sha256": "c3f355a4f7dd8b57c0db4f34cb70f7c2ad79a5a1c6799f4565cf11c771a0fd34",
+      "bytes": 19763,
+      "slugs": [
+        "stahlta"
+      ]
+    },
+    "CrpSentAmalgPistol.png": {
+      "sha256": "291da2bc3c6bb43811e589e033660f410de86dc1eccf98232d38b199ce6d11c8",
+      "bytes": 40763,
+      "slugs": [
+        "cyanex"
+      ]
+    },
+    "CrpSentAmalgSniper.png": {
+      "sha256": "f537438cb56ed1d639821dcd183ef9a1ade2e9f7bf61ec90ae236184ff07e117",
+      "bytes": 31390,
+      "slugs": [
+        "komorex"
+      ]
+    },
+    "CrpSentExperimentPistol.png": {
+      "sha256": "00c6fba187db1755e0d8af739bf6e5265366524cc03cfcb97379cd29486cb11f",
+      "bytes": 49047,
+      "slugs": [
+        "ocucor"
+      ]
+    },
+    "CrpSentExperimentRifle.png": {
+      "sha256": "4638c175861b7e69ac03a9ac3f661084f443688b26f5b1177a300b7f7be821bd",
+      "bytes": 26205,
+      "slugs": [
+        "battacor"
+      ]
+    },
+    "CrpShapeBlastShotgun.png": {
+      "sha256": "0630a92c77cbc7c460ab6e746bf297956ce8632a1be0b3bab258795532b7b619",
+      "bytes": 38523,
+      "slugs": [
+        "exergis"
+      ]
+    },
+    "CrpShockWhip.png": {
+      "sha256": "3d8d0c34f089061fdaa5c2dee2e69865e9315d454f86fd7dec9c55876edee5e6",
+      "bytes": 14549,
+      "slugs": [
+        "galvacord"
+      ]
+    },
+    "CrpVenusHatchet.png": {
+      "sha256": "c2fe695f8ebee147304756d5730d76a5f8c330b8469f9a58bcc809dccdc89d69",
+      "bytes": 26600,
+      "slugs": [
+        "kreska"
+      ]
+    },
+    "Cryotra.png": {
+      "sha256": "168bd8f393a980f46bcf3431f8942eebaeeea56c60cd3d54d09337d73b7ae49e",
+      "bytes": 28806,
+      "slugs": [
+        "cryotra"
+      ]
+    },
+    "Cycron.png": {
+      "sha256": "6d0d7ecaca467c0b5ba22a303ca28cd2cd9c39359e63a6297097d2a33f1a3b3f",
+      "bytes": 37145,
+      "slugs": [
+        "cycron"
+      ]
+    },
+    "Cyngas.png": {
+      "sha256": "93f0edbe1942ac403da5468540ff1758be42c59c66ebb68ca5d027ea29f706fd",
+      "bytes": 28561,
+      "slugs": [
+        "cyngas"
+      ]
+    },
+    "Daikyu.png": {
+      "sha256": "a3f6ea22e5b70e8529aaf8578bc585f19a9629d63ee2e021ccf45f3b7829a180",
+      "bytes": 19440,
+      "slugs": [
+        "daikyu"
+      ]
+    },
+    "DaikyuPrime.png": {
+      "sha256": "2530bcc8e6986ce01903a7df7febfe2b3b2a2a37d36ddc5080dc5d2bcb96bf2c",
+      "bytes": 20380,
+      "slugs": [
+        "daikyu-prime"
+      ]
+    },
+    "DakraPrime.png": {
+      "sha256": "e81651ff622e58f2d2641dd335df4ec71378c5cebbeea2bd407b52e8a47c7dd5",
+      "bytes": 13164,
+      "slugs": [
+        "dakra-prime"
+      ]
+    },
+    "DarkDagger.png": {
+      "sha256": "e7f7f0e2881c332af6e0ebf0cec362aba783e6c352b13dc5d84d1c2b84e9f881",
+      "bytes": 10946,
+      "slugs": [
+        "dark-dagger"
+      ]
+    },
+    "DarkSplitSwordHybrid.png": {
+      "sha256": "0ee5b234bdc33606f503a8b5e17718793ba485ec92050fea2bf7ed6655f79239",
+      "bytes": 13148,
+      "slugs": [
+        "dark-split-sword"
+      ]
+    },
+    "DarkSword.png": {
+      "sha256": "8897df2798444d2a3c761cbff832591f16879d7ac44b4be836eb5c70933ff819",
+      "bytes": 7866,
+      "slugs": [
+        "dark-sword"
+      ]
+    },
+    "DaxDuviriAsymmetricalLongBow.png": {
+      "sha256": "36d70dfbcfb816424709573436eec908937c153adfd43c204d3c2b0a34186107",
+      "bytes": 17926,
+      "slugs": [
+        "cinta"
+      ]
+    },
+    "DaxDuviriHammer.png": {
+      "sha256": "3ce284f4172f186c64647d56ed8cdf54d958e2b0cfddc8aa6cafe976b70ae43f",
+      "bytes": 26212,
+      "slugs": [
+        "sampotes"
+      ]
+    },
+    "DaxDuviriKatana.png": {
+      "sha256": "45e517275aa6050e6b52b50bd5e72ccf9ba6a9f86359e98d523807400de509d2",
+      "bytes": 15296,
+      "slugs": [
+        "syam"
+      ]
+    },
+    "DaxDuviriMaceShieldWeapon.png": {
+      "sha256": "ae936f243864281c91be502aee44932a88761a8d29d6e668b5fb06c513fce55f",
+      "bytes": 27096,
+      "slugs": [
+        "argo-vel"
+      ]
+    },
+    "DaxDuviriPolearm.png": {
+      "sha256": "63d3238a5c92634619df73574638ca24d2d525f15cd5ee0f847b538eb87f71cd",
+      "bytes": 12489,
+      "slugs": [
+        "edun"
+      ]
+    },
+    "DaxDuviriTwoHandedKatana.png": {
+      "sha256": "87cb65249e78e938d55d5d6f6aa8361c1abeff1cfd7c8526820d0e004a5d5a32",
+      "bytes": 10155,
+      "slugs": [
+        "azothane"
+      ]
+    },
+    "Deconstructor.png": {
+      "sha256": "aea207ca5c2d419176e40412b068edfc6958390c9c734cd85b81d3d2e4808510",
+      "bytes": 39460,
+      "slugs": [
+        "deconstructor"
+      ]
+    },
+    "DeconstructorPrime.png": {
+      "sha256": "98c4fe0d3818019c11b2319a1557944525cf91d93365facb3aacfb6f20246322",
+      "bytes": 42946,
+      "slugs": [
+        "deconstructor-prime"
+      ]
+    },
+    "Dera.png": {
+      "sha256": "f4278f62948b7758731fb023b35af46c4d50bdefe977568dae632e9dec2677c7",
+      "bytes": 30022,
+      "slugs": [
+        "dera"
+      ]
+    },
+    "DeraVandal.png": {
+      "sha256": "48491c6fb09dbe11ed05c1116db3c7de4dc67a6aec8fa8edd4efe10caf61d13f",
+      "bytes": 30330,
+      "slugs": [
+        "dera-vandal"
+      ]
+    },
+    "DerelictCernos.png": {
+      "sha256": "31637ae3750bd2708367dcaaa78849b7fc3d27106aa8c6969a3cf270c952d350",
+      "bytes": 48022,
+      "slugs": [
+        "proboscis-cernos"
+      ]
+    },
+    "Despair.png": {
+      "sha256": "e36a862acc927d03849eb5cf240c13557c5b7263f1c5d8c6e93be3b57fc9092e",
+      "bytes": 16002,
+      "slugs": [
+        "despair"
+      ]
+    },
+    "Destreza.png": {
+      "sha256": "37f462fbb898c8292473296538e14809839ee594dc6b17232e388d3b80db15fb",
+      "bytes": 9363,
+      "slugs": [
+        "destreza"
+      ]
+    },
+    "DestrezaPrime.png": {
+      "sha256": "47c7c11a9ca235b0f3137f6052d0903addaf210b649839f081b8e097eb3ad570",
+      "bytes": 11348,
+      "slugs": [
+        "destreza-prime"
+      ]
+    },
+    "DethMachineRifle.png": {
+      "sha256": "6391483222a7be81ed9cd25859766ba8ef437bad1f921c0fb9cfb43728c2cab1",
+      "bytes": 39825,
+      "slugs": [
+        "deth-machine-rifle"
+      ]
+    },
+    "DethMachineRiflePrime.png": {
+      "sha256": "69c19d7d3266f9399962f1bdce6d475e278c341f69fb49bc7473550cedda9bca",
+      "bytes": 38227,
+      "slugs": [
+        "deth-machine-rifle-prime"
+      ]
+    },
+    "Detron.png": {
+      "sha256": "e67c3d742d1bbe4d9e06c09acdae0ec013d702ab518c81956d88c18e9df9c0b8",
+      "bytes": 40215,
+      "slugs": [
+        "detron"
+      ]
+    },
+    "Dex2023Nikana.png": {
+      "sha256": "98b9f14480753785d1553bdcdda5b00f9633e3e569f290677f104b1519a68512",
+      "bytes": 13278,
+      "slugs": [
+        "dex-nikana"
+      ]
+    },
+    "DexDakra.png": {
+      "sha256": "ee12b78ee97d435d343f14e5acd194db720675fc403d2b36fe11635442260fff",
+      "bytes": 21554,
+      "slugs": [
+        "dex-dakra"
+      ]
+    },
+    "DexFuris.png": {
+      "sha256": "0d5d8cd197d50e14bd631682e019386071cd6d48e0c1bc3c53d390a6ff8cb3df",
+      "bytes": 50138,
+      "slugs": [
+        "dex-furis"
+      ]
+    },
+    "DexSybaris.png": {
+      "sha256": "ba55433a7ac5be65e42215f085830b8487064967b366a40b0687bc692bed0ad0",
+      "bytes": 13545,
+      "slugs": [
+        "dex-sybaris"
+      ]
+    },
+    "Dorrclave.png": {
+      "sha256": "4f7203df3ec186b36763ed967ef5e6d718b60de4466a1f1a6e51fdc28b6b3536",
+      "bytes": 24273,
+      "slugs": [
+        "dorrclave"
+      ]
+    },
+    "DragonNikana.png": {
+      "sha256": "541918db02460fcbcab03289bfe778ddf32c9bb6e663947d1c61a7f105b4b736",
+      "bytes": 12149,
+      "slugs": [
+        "dragon-nikana"
+      ]
+    },
+    "Drakgoon.png": {
+      "sha256": "812513941c23a1f10b6e13cec0b334b1b5aa9f51fe8048b7129a81ac3a07b729",
+      "bytes": 53549,
+      "slugs": [
+        "drakgoon"
+      ]
+    },
+    "Dread.png": {
+      "sha256": "f746c0ca98c8d4198f42951651956f71a3d37e6ece172d9a54c5e568f8dd10fc",
+      "bytes": 56649,
+      "slugs": [
+        "dread"
+      ]
+    },
+    "DrifterTazer.png": {
+      "sha256": "70c91de40363baa570a4ef7cb2f65f5d8f9364ca45dc8c2c9caab634c148cc7c",
+      "bytes": 18402,
+      "slugs": [
+        "rumblejack"
+      ]
+    },
+    "DualCestras.png": {
+      "sha256": "26dd2504eea7acc3e8b51b217a90f2adc69eb394ab0462fe25ae332d7d910ed0",
+      "bytes": 55320,
+      "slugs": [
+        "dual-cestra"
+      ]
+    },
+    "DualCleavers.png": {
+      "sha256": "52710b80b00ea42f4330de4238ca117b5ed05200f7d6bd78b9e50c4381b507e9",
+      "bytes": 49069,
+      "slugs": [
+        "dual-cleavers"
+      ]
+    },
+    "DualDecurion.png": {
+      "sha256": "64e2d58898f24056cdfe3d89f427f7dd852bd02612f23d923c1f894ef9a1b19a",
+      "bytes": 47295,
+      "slugs": [
+        "dual-decurion"
+      ]
+    },
+    "DualEther.png": {
+      "sha256": "ea89431a8c02476d38a29fe4387270771006a2885e9153542c3ac3ca7ca0d3fd",
+      "bytes": 15021,
+      "slugs": [
+        "dual-ether"
+      ]
+    },
+    "DualHeatSwords.png": {
+      "sha256": "54a443bfbe5edd28de48a315d6b8c494d04d69045662cec247e5d304c240cf37",
+      "bytes": 18498,
+      "slugs": [
+        "dual-heat-swords"
+      ]
+    },
+    "DualIchor.png": {
+      "sha256": "3dd3f7df6a6cdfe300f43a9c0a0aa689480993c41c5da676e6d9fbea3c2ab6a8",
+      "bytes": 42796,
+      "slugs": [
+        "dual-ichor"
+      ]
+    },
+    "DualKamas.png": {
+      "sha256": "b45a93ee1127527b167740b39675575283aaa8178e517d59b41846613749d572",
+      "bytes": 26015,
+      "slugs": [
+        "dual-kamas"
+      ]
+    },
+    "DualKamasPrime.png": {
+      "sha256": "31616637a42900fbc86b8851c767e7277a7365381a4f69e3e4b1ed16b388c57c",
+      "bytes": 36018,
+      "slugs": [
+        "dual-kamas-prime"
+      ]
+    },
+    "DualKeres.png": {
+      "sha256": "9e8ce9d0df582b80a3cd33e032788a347b18f58192643eb1ffffd7c81e4c91ff",
+      "bytes": 29187,
+      "slugs": [
+        "dual-keres"
+      ]
+    },
+    "DualKeresPrime.png": {
+      "sha256": "8c1f6d0394c013e90bd8903ec8666720990365fa72772a45af337b3e4b7569ba",
+      "bytes": 37487,
+      "slugs": [
+        "dual-keres-prime"
+      ]
+    },
+    "DualRaza.png": {
+      "sha256": "3d634e1e5b0c0a179a018d8f228ab65a5a4bc498b0a713d110fba7dcff224caf",
+      "bytes": 38633,
+      "slugs": [
+        "dual-raza"
+      ]
+    },
+    "DualSkanas.png": {
+      "sha256": "00bb55a8c3b6be49066508e770c23289abdf11e2a163658d210bc3ad75553545",
+      "bytes": 12383,
+      "slugs": [
+        "dual-skana"
+      ]
+    },
+    "DualToxocyst.png": {
+      "sha256": "305bd0d59a79ea27a56a0c4e530eb87cee21b33327569d84676bff08e73f295e",
+      "bytes": 58650,
+      "slugs": [
+        "dual-toxocyst"
+      ]
+    },
+    "DualZoren.png": {
+      "sha256": "f5af07323eb20985c4d524bddd267d155ee8c1a571a593153bdafeab375cb6de",
+      "bytes": 32728,
+      "slugs": [
+        "dual-zoren"
+      ]
+    },
+    "DualZorenPrime.png": {
+      "sha256": "384e4365de76afcc094b010adb54517072b5c17217e0a3a370fd64541deddd8c",
+      "bytes": 32413,
+      "slugs": [
+        "dual-zoren-prime"
+      ]
+    },
+    "DuelistBow.png": {
+      "sha256": "bf038894e2ab127e83ffe77ec24a22d8fc57d09abc8afcdf8cdffbb79858a401",
+      "bytes": 32451,
+      "slugs": [
+        "nunchasa"
+      ]
+    },
+    "DuelistPistols.png": {
+      "sha256": "f078d030756c9071f7e62dcc1fe58251d9c4bcdc06f0ab75fe1db7be8c36cd99",
+      "bytes": 32780,
+      "slugs": [
+        "aksondol"
+      ]
+    },
+    "DuviriHeavyScythe.png": {
+      "sha256": "eadb4e39d7643f80c1c46560f2361f7529d71542f8e913a49ad70d768f2d4285",
+      "bytes": 23936,
+      "slugs": [
+        "hespar"
+      ]
+    },
+    "Embolist.png": {
+      "sha256": "c1d9a5767fe35b9b878c5ad026cc9bd857b9a456f9241b631e5368e2f824f4e6",
+      "bytes": 35202,
+      "slugs": [
+        "embolist"
+      ]
+    },
+    "Endura.png": {
+      "sha256": "299daec96ff35ba554c1cd72e51e23129671c3932fa73041ecbddc69a915cf47",
+      "bytes": 10981,
+      "slugs": [
+        "endura"
+      ]
+    },
+    "EntFistIncarnon.png": {
+      "sha256": "81ea229b9e52208ee468cd61fc477421c9602efd4d9bc726d18828dee0ee8768",
+      "bytes": 60982,
+      "slugs": [
+        "ruvox"
+      ]
+    },
+    "EntratiWristGun.png": {
+      "sha256": "dc5a76686d0a51d2e9618ae116bdf543f9100ddbb25be20e1a4ad3f5b49e2232",
+      "bytes": 38359,
+      "slugs": [
+        "onos"
+      ]
+    },
+    "EntSphereHammer.png": {
+      "sha256": "ef525c9c7cfa7499839ff3306659f9e827401fc36f1b76bf3a1803f83a72c1b7",
+      "bytes": 18514,
+      "slugs": [
+        "ekhein"
+      ]
+    },
+    "EpitaphPrime.png": {
+      "sha256": "708fd8bd30e33cb9b864c20a2e4ba191800dfc4f7c3876cd3536a2029a4e4b29",
+      "bytes": 34172,
+      "slugs": [
+        "epitaph-prime"
+      ]
+    },
+    "EtherDaggers.png": {
+      "sha256": "6bde5ab23833d4dcd2ad99a8375c49bbe38bf10c3d618c9b2a4d8ce1a22600fa",
+      "bytes": 15547,
+      "slugs": [
+        "ether-daggers"
+      ]
+    },
+    "EtherReaper.png": {
+      "sha256": "582c9cc4a38e9565385136d9abb118a134ee376f14bcb587d25272f48922b00e",
+      "bytes": 14986,
+      "slugs": [
+        "ether-reaper"
+      ]
+    },
+    "EtherSword.png": {
+      "sha256": "8aeb41fa2692637abb38fa6679a10fc859c2ec2fbf52ef3c939220c59bdfc65e",
+      "bytes": 9725,
+      "slugs": [
+        "ether-sword"
+      ]
+    },
+    "EuphonaPrime.png": {
+      "sha256": "fb3b885f5dadca9ba0d3db3e7e73cd6158a0dd4f5a7d2e1275a5170e29ec8e5b",
+      "bytes": 38882,
+      "slugs": [
+        "euphona-prime"
+      ]
+    },
+    "ExaltedAWScytheWeapon.png": {
+      "sha256": "75767546b62d0d7184b5330025f78de1a621efc8a26df421fdc822f9d54ec663",
+      "bytes": 26796,
+      "slugs": [
+        "corufell"
+      ]
+    },
+    "Fang.png": {
+      "sha256": "1e8f4cc870095d5add33f6043a97bef01a4e97c31f6a5512b9f642ead6de16bb",
+      "bytes": 15744,
+      "slugs": [
+        "fang"
+      ]
+    },
+    "FangPrime.png": {
+      "sha256": "e6c28f7e93d3e9e83c89ed7f8a0193aff44d904fbb3398ba704a25f4e5e757e4",
+      "bytes": 30546,
+      "slugs": [
+        "fang-prime"
+      ]
+    },
+    "Ferrox.png": {
+      "sha256": "640c203be382368ba12e48ee0162ea3c7867e6cbabe8f9172626a54c7d8cc4a2",
+      "bytes": 7530,
+      "slugs": [
+        "ferrox"
+      ]
+    },
+    "Fluctus.png": {
+      "sha256": "012d86e962fe2147860e17d5ccc6f022995c61efd02b54fe6b005e5d31ca419f",
+      "bytes": 34464,
+      "slugs": [
+        "fluctus"
+      ]
+    },
+    "FluxRifle.png": {
+      "sha256": "de4d0683e48f16f4e9a0714fbb899fd04bb58045408e8487a1a6ab37d396d823",
+      "bytes": 29443,
+      "slugs": [
+        "flux-rifle"
+      ]
+    },
+    "Fragor.png": {
+      "sha256": "d1cf2de11f885d75fe145147c9e59360853802ba9dacf786fd243bdc3ac04968",
+      "bytes": 39870,
+      "slugs": [
+        "fragor"
+      ]
+    },
+    "FragorPrime.png": {
+      "sha256": "924245758af28726de7e270642f894f0cb9a5a506a5cde43dc28e1e71c5005c6",
+      "bytes": 41922,
+      "slugs": [
+        "fragor-prime"
+      ]
+    },
+    "FulminPrime.png": {
+      "sha256": "fc81a16973e609544bf3e0909ba770bb704edad0bd5e3f6389ec97ea970ce0ee",
+      "bytes": 26570,
+      "slugs": [
+        "fulmin-prime"
+      ]
+    },
+    "Furax.png": {
+      "sha256": "38956300ace447231adcf8c0214391c5e3571a668ac0542e9b9382ee63bac5da",
+      "bytes": 49281,
+      "slugs": [
+        "furax",
+        "mk1-furax"
+      ]
+    },
+    "FuraxWraith.png": {
+      "sha256": "ef0f0b59b86739960a66dd689e87a882d9707b6d22719768b3fe199e3d3512b1",
+      "bytes": 58966,
+      "slugs": [
+        "furax-wraith"
+      ]
+    },
+    "Furis.png": {
+      "sha256": "e64edf74b81c7774362c19578a0a0ad457c022c8a32c4003af8f9d4ccdaa7df4",
+      "bytes": 46696,
+      "slugs": [
+        "furis",
+        "mk1-furis"
+      ]
+    },
+    "Fusilai.png": {
+      "sha256": "f7df4de8946b9f62dc3ed06e0382c32b2aa9dc6defeb2096d697142915aa2cd9",
+      "bytes": 48460,
+      "slugs": [
+        "fusilai"
+      ]
+    },
+    "Galatine.png": {
+      "sha256": "a527a8e6571bcbbb71b5a8166ff67b8337c934a1b63bcb76b584ec7fc3aa6903",
+      "bytes": 10084,
+      "slugs": [
+        "galatine"
+      ]
+    },
+    "GalatinePrime.png": {
+      "sha256": "d1e0778568a6ffd8b68c0908e34f1ffea0730f9cf0539931edc1d2d162fcd263",
+      "bytes": 12241,
+      "slugs": [
+        "galatine-prime"
+      ]
+    },
+    "Gammacor.png": {
+      "sha256": "f2c5755d9fa7ec9f07ef87a63a7cebafce1f686823abbbc832baa8437b3e7534",
+      "bytes": 43709,
+      "slugs": [
+        "gammacor"
+      ]
+    },
+    "GarudaCrossbow.png": {
+      "sha256": "a5df7e71c30941584e4469df9a4749fe448d691af6ddb4456a2ad2f10e13e011",
+      "bytes": 40556,
+      "slugs": [
+        "nagantaka"
+      ]
+    },
+    "GazalMachete.png": {
+      "sha256": "387ac3d9b4f96af6df1e60dfb8ac711490dafb02dc956cc74a17b914d53e8b78",
+      "bytes": 13807,
+      "slugs": [
+        "gazal-machete"
+      ]
+    },
+    "Glaive.png": {
+      "sha256": "8fc999eb581c171468ba54d6bea4fbd0faa5777f1f8a299518c74a9955cc69a2",
+      "bytes": 20057,
+      "slugs": [
+        "glaive"
+      ]
+    },
+    "GlaivePrime.png": {
+      "sha256": "ddc072f4678be58d45567828fe6a72d14a5f8792f5e6bab48965136d0ecc49d8",
+      "bytes": 54224,
+      "slugs": [
+        "glaive-prime"
+      ]
+    },
+    "Glaxion.png": {
+      "sha256": "5e6378f4654ea9c6ab95ce01bacec118f430fdc338b42ee3b04192e516d9a306",
+      "bytes": 21160,
+      "slugs": [
+        "glaxion"
+      ]
+    },
+    "Gorgon.png": {
+      "sha256": "47c5d27b7a29b972ba183d46de008f964a5b3528924ba295292ab56ea6186ea6",
+      "bytes": 20259,
+      "slugs": [
+        "gorgon"
+      ]
+    },
+    "GorgonWraith.png": {
+      "sha256": "5050f26bfb010d0303711521c89c210544a25aa9de98bac122d4f1b07680fd63",
+      "bytes": 24065,
+      "slugs": [
+        "gorgon-wraith"
+      ]
+    },
+    "Grakata.png": {
+      "sha256": "ddba97395516780e9f9fe071188248c1c5a12dac6cac7707b93e63b46120926d",
+      "bytes": 32151,
+      "slugs": [
+        "grakata"
+      ]
+    },
+    "Gram.png": {
+      "sha256": "e275687abddafbb3c9f6915c66a4c4bfe552f8dc4a3d3db7ef81a709e8b1b744",
+      "bytes": 17231,
+      "slugs": [
+        "gram"
+      ]
+    },
+    "GramPrime.png": {
+      "sha256": "f8b057e68217222b0be8a2f4f5258819b00cfa9db422aec4be6829e6cf35ca5f",
+      "bytes": 20852,
+      "slugs": [
+        "gram-prime"
+      ]
+    },
+    "Grattler.png": {
+      "sha256": "6fc69cafea806f9e9417b116c6289f5dc411eb20b6fc34bca2dac2fc8040f225",
+      "bytes": 21370,
+      "slugs": [
+        "grattler"
+      ]
+    },
+    "Grimoire.png": {
+      "sha256": "a3a36d1420e7d12712b94c6789d85c5d8a9681126afb805f1c4af6801667f4e2",
+      "bytes": 62902,
+      "slugs": [
+        "grimoire"
+      ]
+    },
+    "Grinlok.png": {
+      "sha256": "c1bff7ff52f4816a0f32ac9b52375f90d9ae9fcb5260469f145fb3cecd416d76",
+      "bytes": 12978,
+      "slugs": [
+        "grinlok"
+      ]
+    },
+    "GrnChainSawTonfa.png": {
+      "sha256": "4441779ace520d9634fdb4a4c095afad87e22cb86c40b1fccd4f612b76f2c818",
+      "bytes": 45507,
+      "slugs": [
+        "tonkkatt"
+      ]
+    },
+    "GrnDrillScythe.png": {
+      "sha256": "b64d6abffaded02e7af6a46e2cac16db229b10543932fae3f69b509d902665b5",
+      "bytes": 15305,
+      "slugs": [
+        "galariak-prime"
+      ]
+    },
+    "GrnGhoulSawWeapon.png": {
+      "sha256": "d6d1a1fbcf2a8a8b912b3ea9bc7cc5a991caa51af4d37332888590b7bfccdeaa",
+      "bytes": 59477,
+      "slugs": [
+        "ghoulsaw"
+      ]
+    },
+    "GrnGunblade.png": {
+      "sha256": "893326d0a09f0bb2c887bc743d154dbf9b7575ea3247af1124dfdd07a2606926",
+      "bytes": 51858,
+      "slugs": [
+        "vastilok"
+      ]
+    },
+    "GrnHeavyGrenadeLauncher.png": {
+      "sha256": "5fdbd2e1ea1fb2d4666fb83021021bbfdb4431a77402d540a9e1ae8fafbd8577",
+      "bytes": 22601,
+      "slugs": [
+        "kuva-ayanga"
+      ]
+    },
+    "GrnKuvaLichRifleWeapon.png": {
+      "sha256": "20d81510cb4cca45a0175ec84febbb1f51b2691c9090c161d362322b0ab86dd4",
+      "bytes": 24102,
+      "slugs": [
+        "kuva-chakkhurr"
+      ]
+    },
+    "GrnKuvaLichScytheWeapon.png": {
+      "sha256": "dbbc52c4fe57d1b979646b78e69a9cc93efb73e7463ac424a170aa7fa35f6359",
+      "bytes": 16703,
+      "slugs": [
+        "kuva-shildeg"
+      ]
+    },
+    "GrnOrokinPistol.png": {
+      "sha256": "e5a4a2f68b03f8299e43d3f9033665849fe2d04128cb7881dc0e01d1db582a92",
+      "bytes": 43265,
+      "slugs": [
+        "sagek-prime"
+      ]
+    },
+    "GrnOrokinRifle.png": {
+      "sha256": "a487793d86e82e220f45c9e97c4dfaafdd3c710d2d81adfb8722c75f2b6fe072",
+      "bytes": 28098,
+      "slugs": [
+        "gotva-prime"
+      ]
+    },
+    "GrnSharbolaWeapon.png": {
+      "sha256": "44c0eea8c5288ade85ef5a354af1f78129f81d6535731741fde39c364343c618",
+      "bytes": 29369,
+      "slugs": [
+        "slaytra"
+      ]
+    },
+    "GrnSpiderSparring.png": {
+      "sha256": "d3636d802ceda27089d96e274884bbddda93338b0fa892d7fc7746f694d6ac86",
+      "bytes": 69816,
+      "slugs": [
+        "korrudo"
+      ]
+    },
+    "GrnVorStickyBomb.png": {
+      "sha256": "3a287587c6e5d9fcc5a06201ded13be1a886ad27a9e972011bad7002292fb422",
+      "bytes": 27314,
+      "slugs": [
+        "aegrit"
+      ]
+    },
+    "Guandao.png": {
+      "sha256": "3cfe72c2e5173b22057e497f084c4e35e85fff2416dc4f7340270aca785bd7cb",
+      "bytes": 10483,
+      "slugs": [
+        "guandao"
+      ]
+    },
+    "GuandaoPrime.png": {
+      "sha256": "87fb79d7d657d798f46dcc516b146fcb0cd65477c205610225d6beb21e703107",
+      "bytes": 12627,
+      "slugs": [
+        "guandao-prime"
+      ]
+    },
+    "GunbrellaWeapon.png": {
+      "sha256": "7920ef1fd722b3226f0b5e1fc70537414dd6a55ab3a9917822ea9a3a7a3798b7",
+      "bytes": 22745,
+      "slugs": [
+        "higasa"
+      ]
+    },
+    "Gunsen.png": {
+      "sha256": "82aa46231f808a46d36d08e3670a2d14a21f67f1664384c81c3455c678e8335e",
+      "bytes": 30667,
+      "slugs": [
+        "gunsen"
+      ]
+    },
+    "GunsenPrime.png": {
+      "sha256": "d49609b53b82f0d760760f76ef6cd4372cd76198e49cb327dc32c7942eda2aaf",
+      "bytes": 51844,
+      "slugs": [
+        "gunsen-prime"
+      ]
+    },
+    "GyreRifleWeapon.png": {
+      "sha256": "61e7909dbf8060f45b752b60e98b4e203ea8b9126842d47d97f0651f67e4831d",
+      "bytes": 47213,
+      "slugs": [
+        "alternox"
+      ]
+    },
+    "Halikar.png": {
+      "sha256": "da226ca910d3f328a6fff3e6d260d4b63475716a4ef0842c9a63bea13fcf39de",
+      "bytes": 39155,
+      "slugs": [
+        "halikar"
+      ]
+    },
+    "HalikarWraith.png": {
+      "sha256": "4ab7a2ee8553baec9d8fafe5a941f17c4ba450ec986defeac2a821047db8b5d2",
+      "bytes": 44244,
+      "slugs": [
+        "halikar-wraith"
+      ]
+    },
+    "Harpak.png": {
+      "sha256": "ff4e2cc9d4c0f4387c3a2368188dd8ae5f33c2895ee2d5d241873bf35db6bcfc",
+      "bytes": 33581,
+      "slugs": [
+        "harpak"
+      ]
+    },
+    "Hate.png": {
+      "sha256": "b5435aa215a4aa83b64e371be03a618a66d06470560f0c0b24b64ae626a989b3",
+      "bytes": 15937,
+      "slugs": [
+        "hate"
+      ]
+    },
+    "HeatDagger.png": {
+      "sha256": "3a266fbef0e8b6ad367cb64bf496a5630f05fc166260642bfe65643db950b088",
+      "bytes": 14078,
+      "slugs": [
+        "heat-dagger"
+      ]
+    },
+    "HeatSword.png": {
+      "sha256": "8f09f4d8c4799c1699333d1ecf85b6d99b952d6258541af023a820c43a631b39",
+      "bytes": 11542,
+      "slugs": [
+        "heat-sword"
+      ]
+    },
+    "Hek.png": {
+      "sha256": "32deb08dc5107c9cb28f2f2a3170a4d09ff8fb4e3ef5ed2df8b26b8998d0b734",
+      "bytes": 28315,
+      "slugs": [
+        "hek"
+      ]
+    },
+    "Heliocor.png": {
+      "sha256": "1cc5c4f3cb5f03751615fc37d5697db6de04d78040fafdacf1b44fa8c800f2f0",
+      "bytes": 32746,
+      "slugs": [
+        "heliocor",
+        "synoid-heliocor"
+      ]
+    },
+    "Helstrum.png": {
+      "sha256": "44452d77f44a73f41819b992f7912a79b77494dcaa3109e5165feddb9d44ae20",
+      "bytes": 38674,
+      "slugs": [
+        "helstrum"
+      ]
+    },
+    "Hema.png": {
+      "sha256": "bdfc4febcde67cb8fe2d0136f8d3078d983a3739d4fc9ba4da410bdeee775037",
+      "bytes": 33854,
+      "slugs": [
+        "hema"
+      ]
+    },
+    "Hikou.png": {
+      "sha256": "2bc8525041f5e2e7932934cc0ebefa8a166086509d0f0628611b807aa01301ab",
+      "bytes": 33126,
+      "slugs": [
+        "hikou"
+      ]
+    },
+    "HikouPrime.png": {
+      "sha256": "6d09d572ceef148183ffc2260f35442b64df759e25b45153ba16925bb906d35e",
+      "bytes": 32749,
+      "slugs": [
+        "hikou-prime"
+      ]
+    },
+    "Hind.png": {
+      "sha256": "eefafdd92a48dff2f0ed137afd4f6624e187fd5beb6c8f6e274d593cd787dc2c",
+      "bytes": 33935,
+      "slugs": [
+        "hind"
+      ]
+    },
+    "Hirudo.png": {
+      "sha256": "e2c2714d43294247cb4dd3152e311f7bd4c973067590ba555c0e8ac39a46751f",
+      "bytes": 55442,
+      "slugs": [
+        "hirudo"
+      ]
+    },
+    "Hystrix.png": {
+      "sha256": "be1a4798b10f32b73940107f2f564a05d7f8d3db613efc584c519f94c10610de",
+      "bytes": 46497,
+      "slugs": [
+        "hystrix"
+      ]
+    },
+    "HystrixPrime.png": {
+      "sha256": "3f0d8ce641faef8b4cc169170911d19ae5fb2658b85f95445cf919fb2739fa86",
+      "bytes": 67213,
+      "slugs": [
+        "hystrix-prime"
+      ]
+    },
+    "Ignis.png": {
+      "sha256": "732df6f07bb248f8ede0c7767d7df2736bc110ec06b33b9e914bc562cd64b104",
+      "bytes": 22211,
+      "slugs": [
+        "ignis"
+      ]
+    },
+    "IgnisWraith.png": {
+      "sha256": "a08d798cd446b47fb74ceae6ca9be7086e74b91ca351da4a0d30d5ce28ec29c5",
+      "bytes": 25394,
+      "slugs": [
+        "ignis-wraith"
+      ]
+    },
+    "Imperator.png": {
+      "sha256": "c9202ab9aee5c409b738c430fc9d44de955f9873c0ee0c90feeb79b467901c69",
+      "bytes": 25383,
+      "slugs": [
+        "imperator"
+      ]
+    },
+    "ImperatorVandal.png": {
+      "sha256": "6a72af8999807bde1d820401d45d978fd2c9dfee933ecb527e7cb88dc0bd090c",
+      "bytes": 28033,
+      "slugs": [
+        "imperator-vandal"
+      ]
+    },
+    "InfArmCannon.png": {
+      "sha256": "7314b0483dd63a3f6a895ad2271154c3d948c5e34b5e33b47b5e029e8c849eae",
+      "bytes": 29820,
+      "slugs": [
+        "bubonico"
+      ]
+    },
+    "InfBeamPistol.png": {
+      "sha256": "5b5dd45b8cdc44305e424a090aa08e2defba198758a4f9544a7b5f920d8d49ca",
+      "bytes": 45993,
+      "slugs": [
+        "catabolyst"
+      ]
+    },
+    "InfBoomerang.png": {
+      "sha256": "938c090fd310909e1865a055612c5f06d1bfc2ae5f17ed6375a07f47cc93b8c2",
+      "bytes": 50050,
+      "slugs": [
+        "pathocyst"
+      ]
+    },
+    "InfLichHammerWeapon.png": {
+      "sha256": "7efbfe7801bd5bc519117df637b379b16cd48389cc3c4c06f16b416ae1f3fa85",
+      "bytes": 24383,
+      "slugs": [
+        "coda-motovore"
+      ]
+    },
+    "InfNunchuck.png": {
+      "sha256": "1958fc3a8158cfa032d4e820f8f19595327a7134f842e96633ca431b6ad38547",
+      "bytes": 41933,
+      "slugs": [
+        "pulmonars"
+      ]
+    },
+    "InfSniperRifle.png": {
+      "sha256": "3ae25cf3a6c19fdd4447498755a40d8b6ad43cfb2527718c77cdd3ef223fea20",
+      "bytes": 28195,
+      "slugs": [
+        "sporothrix"
+      ]
+    },
+    "InfStaff.png": {
+      "sha256": "4794323bb3b62749485b8b22ad906a10e0691307e0b722ee8df41afbd49b18ac",
+      "bytes": 11860,
+      "slugs": [
+        "pupacyst"
+      ]
+    },
+    "InfTransformClaws.png": {
+      "sha256": "b1a6d4addded4ee197be8e9596bf9130e506ba7e906b3eb0972d942b8e6bf7db",
+      "bytes": 37432,
+      "slugs": [
+        "keratinos"
+      ]
+    },
+    "InfUziWeapon.png": {
+      "sha256": "219de7452a980ef99e045ce47e04be7c62806d1ab98a1c93a8f4b7dd4855a66f",
+      "bytes": 39206,
+      "slugs": [
+        "zymos"
+      ]
+    },
+    "InfWarfanWeapon.png": {
+      "sha256": "ade244341fadb21c7fe6b8693735860886b67d984eb548166248258517c35ee3",
+      "bytes": 57605,
+      "slugs": [
+        "arum-spinosa"
+      ]
+    },
+    "JatKittag.png": {
+      "sha256": "decc259a94d9acb7b2f4b81ee437ead044ef8c2c42933dab8afb0569d88a0c59",
+      "bytes": 15191,
+      "slugs": [
+        "jat-kittag"
+      ]
+    },
+    "JatKusar.png": {
+      "sha256": "b312881eef27eabe3fd2c5e454f899b5e04d1c8a4b6094c441395cd4f707470f",
+      "bytes": 37823,
+      "slugs": [
+        "jat-kusar"
+      ]
+    },
+    "Javlok.png": {
+      "sha256": "84ecfe295556d1fcb16478d5275fb839e4f09dd3271cc69ae4fdd03dd495aa6c",
+      "bytes": 7176,
+      "slugs": [
+        "javlok"
+      ]
+    },
+    "JawSword.png": {
+      "sha256": "ba304f69b7225169e86ed9a96fdbc7331eaa052bf5941d044e396d1f5011f099",
+      "bytes": 9470,
+      "slugs": [
+        "jaw-sword"
+      ]
+    },
+    "Kama.png": {
+      "sha256": "b825939283a68d0ec78999c644333998a84a2e26f2c74342905840aff0a85431",
+      "bytes": 19494,
+      "slugs": [
+        "kama"
+      ]
+    },
+    "Karak.png": {
+      "sha256": "c527caddb8f8aa4b22c4172952e7ba33ffddee37aa1846570e1241c3929bec36",
+      "bytes": 21945,
+      "slugs": [
+        "karak"
+      ]
+    },
+    "KarakWraith.png": {
+      "sha256": "a93db62fbd4a9db5f79f58163f6a7d8efede872d6d6ae10c5f166450311367e7",
+      "bytes": 24027,
+      "slugs": [
+        "karak-wraith"
+      ]
+    },
+    "Karyst.png": {
+      "sha256": "716fee7d51dc4a8ede62987998a4d75d637f0a3b8f945ce0dd2920a8d39f6563",
+      "bytes": 12313,
+      "slugs": [
+        "karyst"
+      ]
+    },
+    "KarystPrime.png": {
+      "sha256": "276fa1ae4554be8c0a17daa50c04be4676be6ca760cfb73bbbcb5df18239650a",
+      "bytes": 27064,
+      "slugs": [
+        "karyst-prime"
+      ]
+    },
+    "Kaszas.png": {
+      "sha256": "85032918af2b581cad0977e3cc85cf39318f193720cd5ca04bd5c6556103a423",
+      "bytes": 10561,
+      "slugs": [
+        "kaszas"
+      ]
+    },
+    "Kesheg.png": {
+      "sha256": "3c74d58efaa85198b4f1a8fc0497ecd061d98a9ea3f72697759b16cb5bc8657c",
+      "bytes": 5989,
+      "slugs": [
+        "kesheg"
+      ]
+    },
+    "Kestrel.png": {
+      "sha256": "fe4ae3b998041df53147744fc87feee7ac265674c8013ae4c14704ca71e63d4e",
+      "bytes": 18450,
+      "slugs": [
+        "kestrel"
+      ]
+    },
+    "KestrelPrime.png": {
+      "sha256": "ba4eac3394302347dead06e1f52a64be75f7e93bf0ff2413e3c574a5c272f26b",
+      "bytes": 23782,
+      "slugs": [
+        "kestrel-prime"
+      ]
+    },
+    "Knell.png": {
+      "sha256": "4e0bbb0fca50c22a342f32eb734e9afa32ee7da5d2b3f2b4aa5209378879d559",
+      "bytes": 36242,
+      "slugs": [
+        "knell"
+      ]
+    },
+    "KnellPrime.png": {
+      "sha256": "99ebadbfa3a89a81c50287050dc6d81f6603632eb6b04ac93ae1182b2dfe5360",
+      "bytes": 39176,
+      "slugs": [
+        "knell-prime"
+      ]
+    },
+    "Knux.png": {
+      "sha256": "4f9086244924110c3f99dc416ec535b371d43520b548922440c0eaa0c0025be6",
+      "bytes": 37226,
+      "slugs": [
+        "knux"
+      ]
+    },
+    "Kogake.png": {
+      "sha256": "7f77d2d9a84ac964896bfd6a34e05c68725477b6ee5077bed4e362f09662863b",
+      "bytes": 53074,
+      "slugs": [
+        "kogake"
+      ]
+    },
+    "KogakePrime.png": {
+      "sha256": "36a16fab5e698d0e02561e0e5cb4de8809c92b50e9f28b2ac58309e5d211f970",
+      "bytes": 66293,
+      "slugs": [
+        "kogake-prime"
+      ]
+    },
+    "Kohm.png": {
+      "sha256": "be29981e3a1fa10cfc7245b326ecf29cb7c2f7bd3d9d52d8ba9f74cf0f66e847",
+      "bytes": 33759,
+      "slugs": [
+        "kohm"
+      ]
+    },
+    "Kohmak.png": {
+      "sha256": "88b721aa8b91541391ed355d863faa69f5523254061490904fb2cfa9423672d5",
+      "bytes": 42329,
+      "slugs": [
+        "kohmak"
+      ]
+    },
+    "KompressaPrime.png": {
+      "sha256": "d7cac2932cf0398967188daa09a83344e449026dab77deee6d5a056645498aae",
+      "bytes": 71607,
+      "slugs": [
+        "kompressa-prime"
+      ]
+    },
+    "Kraken.png": {
+      "sha256": "28c5ef5587ec3133c81a6ec4e35c5830a3761c1244a4a01471661cbc6373d458",
+      "bytes": 47030,
+      "slugs": [
+        "kraken"
+      ]
+    },
+    "Krohkur.png": {
+      "sha256": "a8e01fc44290bfcd844ea5bc744504a9e3c4ad447447e37b9c73d28bc50c399e",
+      "bytes": 11557,
+      "slugs": [
+        "krohkur"
+      ]
+    },
+    "Kronen.png": {
+      "sha256": "a150c48dfa1ad8e2505d75ff080133a22884646dac104374f3ebfef2dfe01f24",
+      "bytes": 17054,
+      "slugs": [
+        "kronen"
+      ]
+    },
+    "KronenPrime.png": {
+      "sha256": "8b268a31f3b5e6ec388620e00ab41a91b06e63f2bf308a3a20c574cd2c5c84a6",
+      "bytes": 32554,
+      "slugs": [
+        "kronen-prime"
+      ]
+    },
+    "Kulstar.png": {
+      "sha256": "d0f443b4208c5061677c11b468b851ce0ba9611dab84b757e8cd20f37efeab66",
+      "bytes": 39935,
+      "slugs": [
+        "kulstar"
+      ]
+    },
+    "Kunai.png": {
+      "sha256": "acaffc522248bcd7daf26ddb5638a3bd0719d22d7634c3281fc71d45160a8002",
+      "bytes": 22290,
+      "slugs": [
+        "kunai",
+        "mk1-kunai"
+      ]
+    },
+    "KuvaGhoulSaw.png": {
+      "sha256": "d94ffb406a56f0025a84243c76971792dc8893217bcb85e301115590726fe3ae",
+      "bytes": 54624,
+      "slugs": [
+        "kuva-ghoulsaw"
+      ]
+    },
+    "KuvaGrattler.png": {
+      "sha256": "21af1f86f3f2c1b7993aa86fa773385c3be01434875546f5081aa03ee041e012",
+      "bytes": 30653,
+      "slugs": [
+        "kuva-grattler"
+      ]
+    },
+    "KuvaGrnBow.png": {
+      "sha256": "0754de6af8347b4424c95268754b83fbaa165abf8ba7150e9b6426430403dd5c",
+      "bytes": 26244,
+      "slugs": [
+        "kuva-bramma"
+      ]
+    },
+    "KuvaHek.png": {
+      "sha256": "0652fcc3679778313b54e342be4779d0859cc80e2c8213ca3421e7c7a8daa776",
+      "bytes": 29508,
+      "slugs": [
+        "kuva-hek"
+      ]
+    },
+    "KuvaHind.png": {
+      "sha256": "a55f3627a314bcc67edc1e5aedb2f87f0ecd33ab3b706eaf8d818b91fac31ee4",
+      "bytes": 37224,
+      "slugs": [
+        "kuva-hind"
+      ]
+    },
+    "KuvaLichBrakkSkin.png": {
+      "sha256": "63cc927c04da61031b3f68fdd34630a7b9f576ed81c356e0a7a0c5312d322cf3",
+      "bytes": 59662,
+      "slugs": [
+        "kuva-brakk"
+      ]
+    },
+    "KuvaLichDrakgoonSkin.png": {
+      "sha256": "74abed80137310c3b7c2307634f8d2f9cddeea9ec38d4c4d64c649bb975895dd",
+      "bytes": 50930,
+      "slugs": [
+        "kuva-drakgoon"
+      ]
+    },
+    "KuvaLichKarakSkin.png": {
+      "sha256": "eb03d916e0a7d3866d9e25a62a03fbca7a3e96d966e7ffcd20fb97e019444de9",
+      "bytes": 23969,
+      "slugs": [
+        "kuva-karak"
+      ]
+    },
+    "KuvaLichKohmSkin.png": {
+      "sha256": "9c020616c89b3eccabf22b03d29183c669255327bb80241c1980c9644003c938",
+      "bytes": 38339,
+      "slugs": [
+        "kuva-kohm"
+      ]
+    },
+    "KuvaLichKrakenSkin.png": {
+      "sha256": "e8e4f696a2a58f0605c2609be9f0c0d37e136f9fcbba98b4d882dc663bbfcf9c",
+      "bytes": 53985,
+      "slugs": [
+        "kuva-kraken"
+      ]
+    },
+    "KuvaLichOgrisSkin.png": {
+      "sha256": "5ad142f96357eb25ba6b8cc3fe7b5831a69720ddb7b21c2b9e958ba7a6df139f",
+      "bytes": 25178,
+      "slugs": [
+        "kuva-ogris"
+      ]
+    },
+    "KuvaLichQuartakkSkin.png": {
+      "sha256": "f42616bc206a4d22bedff7283c81b3f007c7aad0c08cf9e48cd6fad9d4cd89fe",
+      "bytes": 30880,
+      "slugs": [
+        "kuva-quartakk"
+      ]
+    },
+    "KuvaLichSeerSkin.png": {
+      "sha256": "48c00fd4ea5fbee01c27fa835aa4fe833514cdbdc5ae6cef9641f0ba2718b1fa",
+      "bytes": 48499,
+      "slugs": [
+        "kuva-seer"
+      ]
+    },
+    "KuvaLichStubbaSkin.png": {
+      "sha256": "61986a6da0a4bf0fe8ea06dafbab3007e2e8a19abf0e568177a3f0b864770ce7",
+      "bytes": 39063,
+      "slugs": [
+        "kuva-twin-stubbas"
+      ]
+    },
+    "KuvaLichTonkorSkin.png": {
+      "sha256": "ad63111f93420aaeada0bd1ddd9b33ad79c4b913031991dfef77be04e75239f9",
+      "bytes": 32607,
+      "slugs": [
+        "kuva-tonkor"
+      ]
+    },
+    "KuvaNukor.png": {
+      "sha256": "e967c8554120e5c98db35e48478dab1e7dc97fec54ba5d116b057f1cf0c3c092",
+      "bytes": 53417,
+      "slugs": [
+        "kuva-nukor"
+      ]
+    },
+    "KuvaSobek.png": {
+      "sha256": "5552db6570e67294d330e87e5f04dd1bf99caa7ee53dc6458d0e8a64574de164",
+      "bytes": 23352,
+      "slugs": [
+        "kuva-sobek"
+      ]
+    },
+    "KuvaZarr.png": {
+      "sha256": "5e6d3dd6f4fe254982a16e5b36f4b998817368d10d51373fefe2904c561023d7",
+      "bytes": 27400,
+      "slugs": [
+        "kuva-zarr"
+      ]
+    },
+    "Lacera.png": {
+      "sha256": "fbebd96a75039b40dfdff2727335ce5d9ac765c631d2c670d8bdff1eaeba129f",
+      "bytes": 20137,
+      "slugs": [
+        "lacera"
+      ]
+    },
+    "Lanka.png": {
+      "sha256": "049463751b914832faa2466948d52253c40d8973ca03729cdbac1efa7788500b",
+      "bytes": 17269,
+      "slugs": [
+        "lanka"
+      ]
+    },
+    "LarkspurPrime.png": {
+      "sha256": "f2f256732424aeef5fa4c5e4dbb77a3801a24a123fc5fb78ac5d37c2d32d4e2d",
+      "bytes": 70957,
+      "slugs": [
+        "larkspur-prime"
+      ]
+    },
+    "LaserRifle.png": {
+      "sha256": "4d61b42fb94ca03f892eb16766f5cd5a2283f6bf9bfdca32202abfdb92fc4c35",
+      "bytes": 39989,
+      "slugs": [
+        "laser-rifle"
+      ]
+    },
+    "LasGooAK.png": {
+      "sha256": "29cc7e796d33d972ea889dadca910c541daee7eb197131f08067b0b2128271dc",
+      "bytes": 22621,
+      "slugs": [
+        "efv-5-jupiter"
+      ]
+    },
+    "LasGooPistolWeapon.png": {
+      "sha256": "a3351c3c389afe915724227c57cf05c126f30a4fc9e8868b9cb43e0cbdf1b865",
+      "bytes": 36392,
+      "slugs": [
+        "efv-8-mars"
+      ]
+    },
+    "LasGooSickle.png": {
+      "sha256": "4716bd32ec08f56873f40b00a57eb97806cdaf7d14a06821e421aaca6278a285",
+      "bytes": 33161,
+      "slugs": [
+        "dual-viciss"
+      ]
+    },
+    "LasrianNox.png": {
+      "sha256": "7f2576c57aa014a806a6355fc8aa9a66c1a493fcd046d8dd96969725e22d913e",
+      "bytes": 35409,
+      "slugs": [
+        "purgator-1"
+      ]
+    },
+    "LasSilencedPistolWeapon.png": {
+      "sha256": "d3eb0e204b975f38c1108bf5fbe5c59a455f30363cb21dec1001a3bd818ca22e",
+      "bytes": 25824,
+      "slugs": [
+        "vesper-77"
+      ]
+    },
+    "Lato.png": {
+      "sha256": "2beb4d645fe61d34139932c0e79d685c28a721a62ad0ef154b97be8502ce509d",
+      "bytes": 36650,
+      "slugs": [
+        "lato"
+      ]
+    },
+    "LatoPrime.png": {
+      "sha256": "a5c3e4aeec4ad6af63189603fc37f4b69a5417ce21d90c326677be32aa73a865",
+      "bytes": 28446,
+      "slugs": [
+        "lato-prime"
+      ]
+    },
+    "LatoVandal.png": {
+      "sha256": "a07ab860d2fde3562f32492ce94173e45f28ecd2470c27a9074259bd383cb557",
+      "bytes": 50761,
+      "slugs": [
+        "lato-vandal"
+      ]
+    },
+    "Latron.png": {
+      "sha256": "98438fa7229808e41b0eda6aaca29e1531a15c8e6223b7b0765a9612c9bfd43f",
+      "bytes": 17513,
+      "slugs": [
+        "latron"
+      ]
+    },
+    "LatronPrime.png": {
+      "sha256": "9decd35265049bed0db44f9e2db4803c309f2ff3628a1bed4015cf1330fae05c",
+      "bytes": 20010,
+      "slugs": [
+        "latron-prime"
+      ]
+    },
+    "LatronWraith.png": {
+      "sha256": "6422fd3f51876a35e63722e4b34d392d6ec764df831978a4623ae2e692096398",
+      "bytes": 24311,
+      "slugs": [
+        "latron-wraith"
+      ]
+    },
+    "Lecta.png": {
+      "sha256": "d1b20120a75b70af099770bb45d6c4e6e99086920af1d924833feaccb771ea14",
+      "bytes": 9368,
+      "slugs": [
+        "lecta"
+      ]
+    },
+    "Lenz.png": {
+      "sha256": "25fc04dd11ad5b824c35c1cd3baf9696f2e952fbaf47170934f6b91a7c505eb2",
+      "bytes": 23906,
+      "slugs": [
+        "lenz"
+      ]
+    },
+    "Lesion.png": {
+      "sha256": "570386509a4c4bf7af2e9659c71ed8ece45e9b65145a9c30e2d54bb8e452a1df",
+      "bytes": 12694,
+      "slugs": [
+        "lesion"
+      ]
+    },
+    "Lex.png": {
+      "sha256": "e1afb15dba9d9c864d9731b5ebbde5a6054d50375494e04256dafcd9ff48cc0b",
+      "bytes": 38187,
+      "slugs": [
+        "lex"
+      ]
+    },
+    "LexPrime.png": {
+      "sha256": "bb751595b9ee77a8c7da40050960c1a66ae73020f41f6707a23c3fec6b4d64fe",
+      "bytes": 33379,
+      "slugs": [
+        "lex-prime"
+      ]
+    },
+    "Machete.png": {
+      "sha256": "977e4c7424cc207b2738024cbbdbb78e24318fb15a9f0ae05fb60b11f980a51e",
+      "bytes": 16418,
+      "slugs": [
+        "machete"
+      ]
+    },
+    "MacheteWraith.png": {
+      "sha256": "c7b117a28bffe425a7e5f3438059fd888bec71be26ff2aee598ac74176e7cfca",
+      "bytes": 17585,
+      "slugs": [
+        "machete-wraith"
+      ]
+    },
+    "Magistar.png": {
+      "sha256": "ad8009e7243d419dfe5f804ed9539c012ccb59ddd96b259053430dbed2a1506a",
+      "bytes": 16127,
+      "slugs": [
+        "magistar"
+      ]
+    },
+    "Magnus.png": {
+      "sha256": "9a550a4f5ee384a0f22d023ddf9b7b98febc507ff4cc3067da6bea78f37db38b",
+      "bytes": 33738,
+      "slugs": [
+        "magnus"
+      ]
+    },
+    "MagnusPrime.png": {
+      "sha256": "f232d76acce203ccd6bb84ebdc00f9b9d10cd3561a771c5750ae4e27d52830ff",
+      "bytes": 33751,
+      "slugs": [
+        "magnus-prime"
+      ]
+    },
+    "MaraDetron.png": {
+      "sha256": "7fdb0476ee28eaaf5f74a07725d85c29353f0ab207da1aee6c5ecf99b3076a71",
+      "bytes": 33445,
+      "slugs": [
+        "mara-detron"
+      ]
+    },
+    "Marelok.png": {
+      "sha256": "3322f879d4d1d12fa9209803f50a565780c99113fed6a70368ed6ea3cc6e52d1",
+      "bytes": 30315,
+      "slugs": [
+        "marelok"
+      ]
+    },
+    "MasseterPrime.png": {
+      "sha256": "47d19b1e2cad59d8c1c5829b78900e7a971151c9a0fc15b5e8603d1c5e898bf9",
+      "bytes": 16408,
+      "slugs": [
+        "masseter-prime"
+      ]
+    },
+    "Mios.png": {
+      "sha256": "56de528821361e31a1e7eee9de3b10e8d2d40c28a47e5530f511cde8a37c7643",
+      "bytes": 23138,
+      "slugs": [
+        "mios"
+      ]
+    },
+    "Mire.png": {
+      "sha256": "077e1b5c3b16d208710fc33b58d88c3c61ae7e8a6c5184e2ebd1d0fd94a8f5c0",
+      "bytes": 30396,
+      "slugs": [
+        "mire"
+      ]
+    },
+    "Miter.png": {
+      "sha256": "84a725d7502beae4cc0fa09099987342461d0afffca53ef2a1792176cdd3e1ed",
+      "bytes": 32824,
+      "slugs": [
+        "miter"
+      ]
+    },
+    "MK1-Strun.png": {
+      "sha256": "e83f3d1a734cf5d5ba790e9a49bd9dfca9262ad587f24b23d49bed26c7ba80c6",
+      "bytes": 22405,
+      "slugs": [
+        "mk1-strun"
+      ]
+    },
+    "ModQuestRifle.png": {
+      "sha256": "28fa72c3ddbae10686342d182eff64387367b99c7adf835523cde1c6bc960ad7",
+      "bytes": 25341,
+      "slugs": [
+        "thornbak"
+      ]
+    },
+    "MoonWarfan.png": {
+      "sha256": "cdc9928f68589e0f948ac0bcdef47a6cfa1314ae467dc3f3b41991112ec2ca45",
+      "bytes": 67410,
+      "slugs": [
+        "vericres"
+      ]
+    },
+    "MortiforShieldAndSword.png": {
+      "sha256": "fccfa71d5332ed0f9de12330aac5643d73b2e27bf0d59b6c4a71cbfc561d1c4d",
+      "bytes": 44315,
+      "slugs": [
+        "tak-lug"
+      ]
+    },
+    "Multron.png": {
+      "sha256": "d3a65f513a2d01475d19bfd1de6c91df5bfdddce8335427ea8fa793a12e8cc28",
+      "bytes": 30498,
+      "slugs": [
+        "multron"
+      ]
+    },
+    "MutalistCernos.png": {
+      "sha256": "6f9b02d5a474366a2e55c303fd887fdbc043c8a80f771157941e307c89833891",
+      "bytes": 28845,
+      "slugs": [
+        "mutalist-cernos"
+      ]
+    },
+    "MutalistQuanta.png": {
+      "sha256": "623be6d2578a4476360bf9d522ebd462376a5eae7d0a64a44f304afed4502634",
+      "bytes": 23713,
+      "slugs": [
+        "mutalist-quanta"
+      ]
+    },
+    "NagantakaPrime.png": {
+      "sha256": "971eedeeb7b95c40ba254178573c7ee19c1a009ba674aba066e1a2a86209b9d3",
+      "bytes": 36526,
+      "slugs": [
+        "nagantaka-prime"
+      ]
+    },
+    "NaginataWeapon.png": {
+      "sha256": "06b308505949eb92babefbce9cc05cfe55e518f9319b2b86a289a5c0c00a0125",
+      "bytes": 8889,
+      "slugs": [
+        "amanata"
+      ]
+    },
+    "NamiSkyla.png": {
+      "sha256": "ff93b2df45472dad1fcd82786765e539ac85133f8b1c8bb36770dd1781f817b4",
+      "bytes": 16509,
+      "slugs": [
+        "nami-skyla"
+      ]
+    },
+    "NamiSkylaPrime.png": {
+      "sha256": "554fa1ab9bcf5c6e067a2c195e2fe8891ef050ad740e45fa44918f7310816198",
+      "bytes": 19787,
+      "slugs": [
+        "nami-skyla-prime"
+      ]
+    },
+    "NamiSolo.png": {
+      "sha256": "84f9400fdd57109ea021ebc4ab9e0b33c187bc1f98bceaa7f40a6553ef01ae94",
+      "bytes": 12004,
+      "slugs": [
+        "nami-solo"
+      ]
+    },
+    "Nikana.png": {
+      "sha256": "38217172b8bd0bebce2d91446914f5e955d0b1aaa68411bc8375de4d9cee82f8",
+      "bytes": 9742,
+      "slugs": [
+        "nikana"
+      ]
+    },
+    "NikanaPrime.png": {
+      "sha256": "94d346b5e81600d75f5fe18b706482846f79d18b876d49de591cb539dc1accb9",
+      "bytes": 12396,
+      "slugs": [
+        "nikana-prime"
+      ]
+    },
+    "Ninkondi.png": {
+      "sha256": "a5de21e4729d45218a4285193fe8362ad05ef840cd4405eb3dbd948ef5d2dd1a",
+      "bytes": 23972,
+      "slugs": [
+        "ninkondi"
+      ]
+    },
+    "NinkondiPrime.png": {
+      "sha256": "e18b113888a8bfcb9691749d283e32fea6f89518a74cd41509d3ead9cac6eddb",
+      "bytes": 27869,
+      "slugs": [
+        "ninkondi-prime"
+      ]
+    },
+    "NokkoArchGun.png": {
+      "sha256": "4f875eb2ebbc5ec10c7421a959939f570e49f5d53b4e8c192307126e6f5d1ee4",
+      "bytes": 63351,
+      "slugs": [
+        "arbucep"
+      ]
+    },
+    "Nukor.png": {
+      "sha256": "90caf099e5021e4dfaff833d88243d9263648c8ebff4efffd2df0366d03db580",
+      "bytes": 51777,
+      "slugs": [
+        "nukor"
+      ]
+    },
+    "NWOrokinSword.png": {
+      "sha256": "109fc81ff48463c34776a60b4039e8619a21f8185c24504a038475ac1df30652",
+      "bytes": 18888,
+      "slugs": [
+        "vitrica"
+      ]
+    },
+    "Obex.png": {
+      "sha256": "e0c1eb3c359a80c5f23cfc8f1a5cad42812ed8c56fc4dc87913a7cae0a5c6615",
+      "bytes": 27824,
+      "slugs": [
+        "obex"
+      ]
+    },
+    "OdaliskSmgWeapon.png": {
+      "sha256": "e88929dde24de8ef2ab2485bac6408157bf1b518905218b5b815288a8ce6b828",
+      "bytes": 47511,
+      "slugs": [
+        "velox"
+      ]
+    },
+    "Ogris.png": {
+      "sha256": "6bef147c592b900d0b451e52ed10f7412e59ff48ea2a18e6d7a12bcd1acc2608",
+      "bytes": 21886,
+      "slugs": [
+        "ogris"
+      ]
+    },
+    "Ohma.png": {
+      "sha256": "6a4c37d9fdd0713a9a7967f731a738f13c7e67179afba7e9a29eb8a08f1b6e08",
+      "bytes": 25750,
+      "slugs": [
+        "ohma"
+      ]
+    },
+    "Okina.png": {
+      "sha256": "97ff68cdb69558b265719979c772dd22a94a2b44c4a7b909bda526470bd5bd70",
+      "bytes": 22130,
+      "slugs": [
+        "okina"
+      ]
+    },
+    "OkinaPrime.png": {
+      "sha256": "1c02d445af75081ca48655ea65f67eb5ada8a6e964585476ba0179c06c50986d",
+      "bytes": 23154,
+      "slugs": [
+        "okina-prime"
+      ]
+    },
+    "OmicrusBow.png": {
+      "sha256": "acb7eb3d45b12be7ddb21769dff7fc7a30d0849c983250b93f389b4758aef0f9",
+      "bytes": 24578,
+      "slugs": [
+        "nataruk"
+      ]
+    },
+    "Onorix.png": {
+      "sha256": "d41d233c0a510cabbba534179c97431802cb971b546edcd59e5ac2dd1f65e73f",
+      "bytes": 30948,
+      "slugs": [
+        "onorix"
+      ]
+    },
+    "OperationsLacera.png": {
+      "sha256": "2cd1a3d84f4db996cc9b8abcd7306a66b0053afd8e31d2996bf9cbe8d5b23790",
+      "bytes": 20465,
+      "slugs": [
+        "ceti-lacera"
+      ]
+    },
+    "Opticor.png": {
+      "sha256": "eb97004cc6152186630738a4f531878bbbeec7a67a42abe384b2d2b07ab5b3d4",
+      "bytes": 33452,
+      "slugs": [
+        "opticor"
+      ]
+    },
+    "OpticorVandal.png": {
+      "sha256": "e685f0eed65f54a0f193538ab73b3b699a3421e95105811a9905beee036e27c4",
+      "bytes": 42331,
+      "slugs": [
+        "opticor-vandal"
+      ]
+    },
+    "Orthos.png": {
+      "sha256": "a7f997e06ecfad0b9cea94d5d92b87b3785cef11fa383b36333cd7f1c8c0d1c5",
+      "bytes": 7082,
+      "slugs": [
+        "orthos"
+      ]
+    },
+    "OrthosPrime.png": {
+      "sha256": "f979da7894bf63ddf6635d20acdbe27ed7b232efd17059631a814f623299d024",
+      "bytes": 8500,
+      "slugs": [
+        "orthos-prime"
+      ]
+    },
+    "Orvius.png": {
+      "sha256": "c9210dac25d78651e1885579782ad95d8964ced027e0bea9517a656a6c2950e9",
+      "bytes": 82378,
+      "slugs": [
+        "orvius"
+      ]
+    },
+    "PacifistShieldSword.png": {
+      "sha256": "8b18f82b649c7b2cc05beb9d42d74a27c2ef0d9eed7992ef3ea17fd139c0f253",
+      "bytes": 32730,
+      "slugs": [
+        "cobra-crane"
+      ]
+    },
+    "Pandero.png": {
+      "sha256": "d9c89305bc6c41e213adf8d44dbc77f51e0664adde8bdb25dff98fbb746e59b9",
+      "bytes": 43696,
+      "slugs": [
+        "pandero"
+      ]
+    },
+    "PanderoPrime.png": {
+      "sha256": "5e19455b2920170b0891402b88109fe9c7a4fe164fd163f2bb98c12f23e0b8d6",
+      "bytes": 53039,
+      "slugs": [
+        "pandero-prime"
+      ]
+    },
+    "PangolinPrime.png": {
+      "sha256": "7f19111a9d830d1300be9138105861dc97741cf0a0b3dbdc942ab7a50392b160",
+      "bytes": 17779,
+      "slugs": [
+        "pangolin-prime"
+      ]
+    },
+    "PangolinSword.png": {
+      "sha256": "5a017b56625737e037ad2b8b0f211fee7b64744ecece20cc4bd685dc541d6a5f",
+      "bytes": 8660,
+      "slugs": [
+        "pangolin-sword"
+      ]
+    },
+    "Panthera.png": {
+      "sha256": "8ffa1183b7c2792696c0d8f919c0485cdbb5efd9662e866a1a196ef7ea086081",
+      "bytes": 23238,
+      "slugs": [
+        "panthera"
+      ]
+    },
+    "PantheraPrime.png": {
+      "sha256": "bd65faf5338263107736a965c155a5be2782450f849a5fe66fe68dcbfc216944",
+      "bytes": 28387,
+      "slugs": [
+        "panthera-prime"
+      ]
+    },
+    "Paracyst.png": {
+      "sha256": "b12152be9677651e09e61177bde58d2b75b28819d2b7813d111e8abd08de61be",
+      "bytes": 36730,
+      "slugs": [
+        "paracyst"
+      ]
+    },
+    "Paris.png": {
+      "sha256": "46135ac879d84b7431634cdeb94bed840b1ede8882912052f86714e5163838e4",
+      "bytes": 16937,
+      "slugs": [
+        "mk1-paris",
+        "paris"
+      ]
+    },
+    "ParisPrime.png": {
+      "sha256": "10595c9ba7cef3fea8006039f5395c506216b3847f6546f762a2ef249574aea5",
+      "bytes": 20756,
+      "slugs": [
+        "paris-prime"
+      ]
+    },
+    "PaxDuviricusShotgun.png": {
+      "sha256": "6a9e0781aeace2829919f501e040b7ea57c4342d35d6a9b2104ff7f12767ac46",
+      "bytes": 33381,
+      "slugs": [
+        "rauta"
+      ]
+    },
+    "Penta.png": {
+      "sha256": "05471852b99d2b2611a1cd3c57693db776a6f75b65d0e621becff0dd823f7cc9",
+      "bytes": 34512,
+      "slugs": [
+        "penta"
+      ]
+    },
+    "PentaCarmine.png": {
+      "sha256": "c2ddc4cffe363811a4dde8cceaa82aa9dbce88350f0dca2ddecdf5cbf272a99c",
+      "bytes": 49647,
+      "slugs": [
+        "carmine-penta"
+      ]
+    },
+    "PerigalePrime.png": {
+      "sha256": "e90ea1dcce083956f881e913552b83bb60f0d476a1f19fea7f83612a09451073",
+      "bytes": 26649,
+      "slugs": [
+        "perigale-prime"
+      ]
+    },
+    "Phaedra.png": {
+      "sha256": "e6daa4482fea69ef36fd09104b2bd2715e911db9e07baea7cb18c1e9a2a50a0d",
+      "bytes": 22046,
+      "slugs": [
+        "phaedra"
+      ]
+    },
+    "Phage.png": {
+      "sha256": "2dfb462e95b5c4eaca9c4761f22aa05387a2220eb3a3ad1fab049f6914a55471",
+      "bytes": 29689,
+      "slugs": [
+        "phage"
+      ]
+    },
+    "Phantasma.png": {
+      "sha256": "c3c05285788c431836b341ced6544ff3149f4854348ccf1058dab94f9c243a7a",
+      "bytes": 49553,
+      "slugs": [
+        "phantasma"
+      ]
+    },
+    "PhantasmaPrime.png": {
+      "sha256": "95f639db9ce93682dc9da7452bb3491d7283dd52f25f2b516be1fbd2d481d5f4",
+      "bytes": 53406,
+      "slugs": [
+        "phantasma-prime"
+      ]
+    },
+    "PlasmaSword.png": {
+      "sha256": "9b1216ac1d0dd86a3b77f33dbcf612f809aeb6699c98a1f62dba2620a1164abb",
+      "bytes": 11553,
+      "slugs": [
+        "plasma-sword"
+      ]
+    },
+    "Pox.png": {
+      "sha256": "b2b6a1a6d09169138b563f8c6a6b7a780bd13d72042c48f118142e168379a7fa",
+      "bytes": 23600,
+      "slugs": [
+        "pox"
+      ]
+    },
+    "PrimeLaserRifle.png": {
+      "sha256": "886c64ae4b0e208710e8f17a75b92e59d612dd1e9a81fa8bfab7d4677fd6258c",
+      "bytes": 48044,
+      "slugs": [
+        "burst-laser-prime",
+        "prime-laser-rifle"
+      ]
+    },
+    "PrismaAngstrum.png": {
+      "sha256": "f3b0ecc46fabdb5b6ae4836700a320deacddafa8b3212b7dec5fd3232e54c837",
+      "bytes": 38511,
+      "slugs": [
+        "prisma-angstrum"
+      ]
+    },
+    "PrismaBurstLaser.png": {
+      "sha256": "0afca0c0c803bbe27b2e523ade0a86c1c54df0c2c697397cc3b9b7777e863b3b",
+      "bytes": 39977,
+      "slugs": [
+        "prisma-burst-laser"
+      ]
+    },
+    "PrismaDualCleavers.png": {
+      "sha256": "53995023c7ef027b59b41140a6f0d659aa6a7d00cfb936cf716640609818adce",
+      "bytes": 54785,
+      "slugs": [
+        "prisma-dual-cleavers"
+      ]
+    },
+    "PrismaDualDecurion.png": {
+      "sha256": "4f666955681c873aa589c48fd507e2714fd37361f6d0d20e8c5c410920b0e155",
+      "bytes": 33156,
+      "slugs": [
+        "prisma-dual-decurions"
+      ]
+    },
+    "PrismaGorgon.png": {
+      "sha256": "7318320d5db4d864b0f21853f1c015cdc79852b8780fbd290ea93d169ace2c44",
+      "bytes": 20637,
+      "slugs": [
+        "prisma-gorgon"
+      ]
+    },
+    "PrismaGrakata.png": {
+      "sha256": "a1fcb697f8d0507803d2930c24b65045d28c27393989e109b3c3c9ff4aceab31",
+      "bytes": 34354,
+      "slugs": [
+        "prisma-grakata"
+      ]
+    },
+    "PrismaGrinlok.png": {
+      "sha256": "bfbe78bc95c9a7e6ff7b262d1609807d99c1cfac6cd5f41f0c95c64fe4dded08",
+      "bytes": 14874,
+      "slugs": [
+        "prisma-grinlok"
+      ]
+    },
+    "PrismaLenz.png": {
+      "sha256": "edbf96febd5ae7026c697de2148bf464b829f4555b03b74613130ac4248cf52f",
+      "bytes": 32188,
+      "slugs": [
+        "prisma-lenz"
+      ]
+    },
+    "PrismaMachete.png": {
+      "sha256": "97c2c824dad9c31e1394d3accac9125ac5f5813951a87aee23d5e4bcb782ade5",
+      "bytes": 15634,
+      "slugs": [
+        "prisma-machete"
+      ]
+    },
+    "PrismaObex.png": {
+      "sha256": "de2febe39d7bb78f1d263f3b552cb1f2cf69a51c2e04b2af9498e0d5bae73e19",
+      "bytes": 38385,
+      "slugs": [
+        "prisma-obex"
+      ]
+    },
+    "PrismaOhma.png": {
+      "sha256": "d4f27fca4a9d746fe2409a28e973cb712dddca81c60cde642c4d81669be7dc4c",
+      "bytes": 26812,
+      "slugs": [
+        "prisma-ohma"
+      ]
+    },
+    "PrismaSkana.png": {
+      "sha256": "1e70e68138f06d5188e3b65f2a7164548ca1ce78eb83182bd2437bf813636893",
+      "bytes": 9144,
+      "slugs": [
+        "prisma-skana"
+      ]
+    },
+    "PrismaTetra.png": {
+      "sha256": "cb06c5a09dd3dcf180230ceb63722ebd2358be807ab712282d3f7c73dd7704db",
+      "bytes": 25528,
+      "slugs": [
+        "prisma-tetra"
+      ]
+    },
+    "PrismaTwinGremlins.png": {
+      "sha256": "801a9dec2d03c47af1a30656a8bbc75d1a148ff72020613f44998ead5ffd2ccb",
+      "bytes": 71247,
+      "slugs": [
+        "prisma-twin-gremlins"
+      ]
+    },
+    "PrismaVeritux.png": {
+      "sha256": "6f1f7b4cc38c200c057af1f427098aeffe111904a9db27313ebffa64c2d66d3b",
+      "bytes": 19310,
+      "slugs": [
+        "prisma-veritux"
+      ]
+    },
+    "ProteaPolarizerCrpGlaive.png": {
+      "sha256": "efdb01b159f89720be2548e8b1cbc22f66193e92c9da4d59de465a338ef570d4",
+      "bytes": 52670,
+      "slugs": [
+        "xoris"
+      ]
+    },
+    "Prova.png": {
+      "sha256": "1d183c501602f6ed9e163ff113e0a98a19d95aee5c5003ca397aa878d9117514",
+      "bytes": 15655,
+      "slugs": [
+        "prova"
+      ]
+    },
+    "ProvaVandal.png": {
+      "sha256": "c041d0c250b3dd68632104de367ee9dcfa134ea448b48b4be5615fec01c819c3",
+      "bytes": 15538,
+      "slugs": [
+        "prova-vandal"
+      ]
+    },
+    "Pyrana.png": {
+      "sha256": "53791e9fbfd4af0eb4c241f5bf446920c7e4c614b81a726ca85b961ec16bae49",
+      "bytes": 32991,
+      "slugs": [
+        "pyrana"
+      ]
+    },
+    "PyranaPrime.png": {
+      "sha256": "542af4a7b575c537388c4b8d63f6ec57bc79d5a4629338eb110027dda1d9c98f",
+      "bytes": 37321,
+      "slugs": [
+        "pyrana-prime"
+      ]
+    },
+    "Quanta.png": {
+      "sha256": "e3b9dbff7b3f578f9b5b3848f2f57048eedba6b50cf1de4efd1ae430f6d0b96c",
+      "bytes": 20463,
+      "slugs": [
+        "quanta"
+      ]
+    },
+    "QuantaVandal.png": {
+      "sha256": "1b7499f08c5a18ed03282eb8c6178762bad7e977dbdd7b6138855e1e6789f610",
+      "bytes": 23757,
+      "slugs": [
+        "quanta-vandal"
+      ]
+    },
+    "Quartakk.png": {
+      "sha256": "564a97a8e32772f8092cb3733dc21fd59f9495789630c660fc4abe935aedaf26",
+      "bytes": 29636,
+      "slugs": [
+        "quartakk"
+      ]
+    },
+    "QuassusPrime.png": {
+      "sha256": "5589d3f84b7c19be397acf2f9d03413cb14d26d589e05ab3ce40922d499a3c6b",
+      "bytes": 44548,
+      "slugs": [
+        "quassus-prime"
+      ]
+    },
+    "RailjackRifle.png": {
+      "sha256": "c677c84fdb1273d4463c8f61b959bc9706b1a8c2e05a217d132f328c05e8ee18",
+      "bytes": 23245,
+      "slugs": [
+        "quellor"
+      ]
+    },
+    "RaktaBallistica.png": {
+      "sha256": "93b6d44edcd0fbf14f516766d645e8455c5f45939db4dd39b45396ed8b7fdb3b",
+      "bytes": 38279,
+      "slugs": [
+        "rakta-ballistica"
+      ]
+    },
+    "RaktaCernos.png": {
+      "sha256": "0acf95cd1e19d9a9bf327b0ee02fc228abcb97a35024e1f04554a7ae8a7fb1fe",
+      "bytes": 31437,
+      "slugs": [
+        "rakta-cernos"
+      ]
+    },
+    "RaktaDarkDagger.png": {
+      "sha256": "1d2b3e7f3fd3f3eb198e3eb8cb8ced914f0abe1838819dfb52e5e881882ffe6f",
+      "bytes": 12351,
+      "slugs": [
+        "rakta-dark-dagger"
+      ]
+    },
+    "Rathbone.png": {
+      "sha256": "88852e7bbe964bb61cda8923de976574b5cbb721ce7eaecc7dc652761f67cc9c",
+      "bytes": 35057,
+      "slugs": [
+        "rathbone"
+      ]
+    },
+    "ReaperPrime.png": {
+      "sha256": "fc4dadeaf52d278f6a8f3fbf510955de29b101e047ed014e65186bc8d21d287d",
+      "bytes": 24634,
+      "slugs": [
+        "reaper-prime"
+      ]
+    },
+    "Redeemer.png": {
+      "sha256": "e49581d571128448caa11c9f1c8310273a3c32331420a02097d3d0414007b548",
+      "bytes": 41968,
+      "slugs": [
+        "redeemer"
+      ]
+    },
+    "RedeemerPrime.png": {
+      "sha256": "7a5dab04ea17c51a300f66bb13e31c8794f87c97f0419f6620d322d0e7f96da1",
+      "bytes": 46775,
+      "slugs": [
+        "redeemer-prime"
+      ]
+    },
+    "Ripkas.png": {
+      "sha256": "c243a85c6934d123b0b06426137659798aad18cf4de775f3dabbd3c35a1bd191",
+      "bytes": 59567,
+      "slugs": [
+        "ripkas"
+      ]
+    },
+    "Rubico.png": {
+      "sha256": "53b2c0bb29029469438aa36ccad7762adcec91a79a5e1f4037ae1249d6a814d3",
+      "bytes": 20364,
+      "slugs": [
+        "rubico"
+      ]
+    },
+    "RubicoPrime.png": {
+      "sha256": "097a138949f89701e2dd14bf08abebdc61f88ba63c9269d75aae81767db1d8d4",
+      "bytes": 25900,
+      "slugs": [
+        "rubico-prime"
+      ]
+    },
+    "SanctiCastanas.png": {
+      "sha256": "cb8f4805b0c132bd68947f06717b2470c27dda8c565136b8b368cc4c87af86c3",
+      "bytes": 25887,
+      "slugs": [
+        "sancti-castanas"
+      ]
+    },
+    "SanctiMagistar.png": {
+      "sha256": "4d969c0aa73786b5f419daf86869af4c5b50aeb505a4539afef7894ecfd385f4",
+      "bytes": 15648,
+      "slugs": [
+        "sancti-magistar"
+      ]
+    },
+    "SanctiTigris.png": {
+      "sha256": "c051f55090062aa8064f407b11f42536c3eb973ff69b3ccbbde4a57e88857b39",
+      "bytes": 28005,
+      "slugs": [
+        "sancti-tigris"
+      ]
+    },
+    "SapientPistol.png": {
+      "sha256": "276cdb582bb397b0cc2e2c2f0c5d6dd47018b7e53982903893c4bbfa71045274",
+      "bytes": 53745,
+      "slugs": [
+        "akarius"
+      ]
+    },
+    "SapientPrimaryWeapon.png": {
+      "sha256": "2a000bab9b24331dc5d691310885a289c343ceb3c2d5cb28e5aa9dd911dcf3e1",
+      "bytes": 34528,
+      "slugs": [
+        "acceltra"
+      ]
+    },
+    "SarofangPrime.png": {
+      "sha256": "a3e438309a16f322c40c59004d59fe52e1f924fad0cfd38e6bcb86c184201470",
+      "bytes": 19954,
+      "slugs": [
+        "sarofang-prime"
+      ]
+    },
+    "Sarpa.png": {
+      "sha256": "ba8c535b9887d2c3960f6bdd4b2e74946f6afc290aaea0daebe040199953e7a3",
+      "bytes": 21771,
+      "slugs": [
+        "sarpa"
+      ]
+    },
+    "Scindo.png": {
+      "sha256": "906ff8b946e37591b69973162f20139a948342f21fab382a7d4b4161ea83036e",
+      "bytes": 21426,
+      "slugs": [
+        "scindo"
+      ]
+    },
+    "ScindoPrime.png": {
+      "sha256": "8a68a3d28e97d63d5dd078466cf0c0d7cc32e34552262df193f688dd10563d4a",
+      "bytes": 25442,
+      "slugs": [
+        "scindo-prime"
+      ]
+    },
+    "Scoliac.png": {
+      "sha256": "ba4c1e63250354b6acc52a66cdd92d68645062c3ce93cf66de5ac93201d84445",
+      "bytes": 26844,
+      "slugs": [
+        "scoliac"
+      ]
+    },
+    "Scourge.png": {
+      "sha256": "fa202f49ab6749e49340d921dbcfd99b3cb180f771dedc55c5143dd1815cc761",
+      "bytes": 10337,
+      "slugs": [
+        "scourge"
+      ]
+    },
+    "ScourgePrime.png": {
+      "sha256": "32d9394bf3c0441b1b59ece7194f894df2a94cfd3aedcda6a67d17f02ac24740",
+      "bytes": 13106,
+      "slugs": [
+        "scourge-prime"
+      ]
+    },
+    "SecuraDualCestra.png": {
+      "sha256": "b12af9a08611e415af7f9d24a0d50957f84b3c26c31c47560008db2ee07da8c3",
+      "bytes": 60581,
+      "slugs": [
+        "secura-dual-cestra"
+      ]
+    },
+    "SecuraLecta.png": {
+      "sha256": "b8a3459ede526da4b803936206be0f0577be15e02615fa05c15a9eb983816b2f",
+      "bytes": 10834,
+      "slugs": [
+        "secura-lecta"
+      ]
+    },
+    "SecuraPenta.png": {
+      "sha256": "b55e06dcb1f8ce796a017dfb9881df34c46d3d745f5bbbb367c2ec5d0053640b",
+      "bytes": 43676,
+      "slugs": [
+        "secura-penta"
+      ]
+    },
+    "Seer.png": {
+      "sha256": "3469094af1392e9c9f25042559f4deb1326ba5b065c46230561dc5b183c1bd8b",
+      "bytes": 48564,
+      "slugs": [
+        "seer"
+      ]
+    },
+    "SentinelFreezeRayRifle.png": {
+      "sha256": "8cf7c9663e0dcbe302393b19a61e5cd9926a768fd1ac6f79e25a671881301290",
+      "bytes": 43941,
+      "slugs": [
+        "verglas"
+      ]
+    },
+    "SentJointedScytheWeapon.png": {
+      "sha256": "843388c8d1826f287a15d66a85494afdb2fd0f491f41f3893c50a7cff6fc89c8",
+      "bytes": 15706,
+      "slugs": [
+        "venato"
+      ]
+    },
+    "SentRifleNewWarGun.png": {
+      "sha256": "918f9383968f0f834133559e8d22c26b88406e5ac79b0040eaaae65f4e304aef",
+      "bytes": 27987,
+      "slugs": [
+        "basmu"
+      ]
+    },
+    "Serro.png": {
+      "sha256": "86e520e27b44a9eda52a39d3c4adc32de328a57f4ac0f19f9b188a5792d72b2d",
+      "bytes": 9548,
+      "slugs": [
+        "serro"
+      ]
+    },
+    "Shaku.png": {
+      "sha256": "cf2cd89e6a075a1ce88cca4dd4925b766f35da3aacd74b8e4172ac5e4882d2f9",
+      "bytes": 24830,
+      "slugs": [
+        "shaku"
+      ]
+    },
+    "Shedu.png": {
+      "sha256": "d3deab9c6dbaefd287bff6c4cd9db3a8b662a28351e5246115dd58ccde11c035",
+      "bytes": 29670,
+      "slugs": [
+        "shedu"
+      ]
+    },
+    "Sheev.png": {
+      "sha256": "7a39a415a5c07adb1815f8301e758c0be4b1e3f0bbf4cccd8fd49b6cf4cf4ca3",
+      "bytes": 22386,
+      "slugs": [
+        "sheev"
+      ]
+    },
+    "ShieldFrameArchGun.png": {
+      "sha256": "57119cad887fdf0fa86d6032bb0221a381847338772b4b196e04b6ef7bb87561",
+      "bytes": 61445,
+      "slugs": [
+        "larkspur"
+      ]
+    },
+    "Sibear.png": {
+      "sha256": "4894243f90a5ff2c83f87d94e733d8b1d5ad2a12c45f72f580895c2b5a0004b5",
+      "bytes": 17609,
+      "slugs": [
+        "sibear"
+      ]
+    },
+    "Sicarus.png": {
+      "sha256": "86013ec1a8c2f82ef468db6460ffb50b7472f7083bac2af7cc8b877a2cb60d37",
+      "bytes": 35420,
+      "slugs": [
+        "sicarus"
+      ]
+    },
+    "SicarusPrime.png": {
+      "sha256": "dbbd79acf8a9429cbe291966a18ff009e2582585924be911e8a510fceb5113c7",
+      "bytes": 47512,
+      "slugs": [
+        "sicarus-prime"
+      ]
+    },
+    "SigmaOctantis.png": {
+      "sha256": "78527d3d5f09f94e11515a7f9db2b5d6a1410ce9ee398bd321770910c8a341dd",
+      "bytes": 35362,
+      "slugs": [
+        "sigma-octantis"
+      ]
+    },
+    "SilvaAegis.png": {
+      "sha256": "02f9f1fabc568d65b9e9cb34093c178624012d319b13c525b9fa6632cba16dca",
+      "bytes": 53262,
+      "slugs": [
+        "silva-aegis"
+      ]
+    },
+    "SilvaAegisPrime.png": {
+      "sha256": "444efd16d770fda95833f71340995a0765d25de9534bd27fbeeacbab13506288",
+      "bytes": 57319,
+      "slugs": [
+        "silva-aegis-prime"
+      ]
+    },
+    "Simulor.png": {
+      "sha256": "e42cbf44c2c37618248dc0d6f99a4900dd709958a9f627ce0f1a414e647c4881",
+      "bytes": 26994,
+      "slugs": [
+        "simulor"
+      ]
+    },
+    "Skana.png": {
+      "sha256": "55a59cdcacc30619718d04a7fbe1170e7060df78c902232e316e1ba4e8559030",
+      "bytes": 7370,
+      "slugs": [
+        "skana"
+      ]
+    },
+    "SkanaPrime.png": {
+      "sha256": "08ba7f38cbd93ce00b164d751081da3358efbfc96014b4e2e5f7c9ccf6c2b9fd",
+      "bytes": 10009,
+      "slugs": [
+        "skana-prime"
+      ]
+    },
+    "Skiajati.png": {
+      "sha256": "695b7f019dd44c812d945fa5980a6131cbcd4c1ea7c738abdf21c5f2c69b68e4",
+      "bytes": 9362,
+      "slugs": [
+        "skiajati"
+      ]
+    },
+    "Snipetron.png": {
+      "sha256": "049463751b914832faa2466948d52253c40d8973ca03729cdbac1efa7788500b",
+      "bytes": 17269,
+      "slugs": [
+        "snipetron"
+      ]
+    },
+    "SnipetronVandal.png": {
+      "sha256": "abd00cdcaf1e2c0a134404b870f5f67ff35f83ac4ccb604b6483b6d2a5e4fbbf",
+      "bytes": 16685,
+      "slugs": [
+        "snipetron-vandal"
+      ]
+    },
+    "Sobek.png": {
+      "sha256": "875b4320856fc10a06fc00416f42317bb0bb9fe15a4541dcb284eab48b3b65d7",
+      "bytes": 22786,
+      "slugs": [
+        "sobek"
+      ]
+    },
+    "Soma.png": {
+      "sha256": "622ffa6da4b2ab442384d9dffe65d6140b15f7804f0c1159fa481aaa9c2536d4",
+      "bytes": 23819,
+      "slugs": [
+        "soma"
+      ]
+    },
+    "SomaPrime.png": {
+      "sha256": "371995c0d4fe7f191b50af93ebc3189a73568cece695d660bcc8106c665e09ff",
+      "bytes": 24466,
+      "slugs": [
+        "soma-prime"
+      ]
+    },
+    "Sonicor.png": {
+      "sha256": "cc604ce8a9ad6c1e1b99207bcaf1070e4d6f34eed1cf5f2f0669930a1bed0af6",
+      "bytes": 33600,
+      "slugs": [
+        "sonicor"
+      ]
+    },
+    "Spectra.png": {
+      "sha256": "73084bcba89fa42039a21ebe6b2eef80070a341b305ebefd99756535d3334496",
+      "bytes": 43918,
+      "slugs": [
+        "spectra"
+      ]
+    },
+    "SpiderWhip.png": {
+      "sha256": "dd3bdc6f9f6a2d6ab050e6afbe658e68a5d7054669face23a7ee6e72932c134c",
+      "bytes": 21525,
+      "slugs": [
+        "spinnerex"
+      ]
+    },
+    "Spira.png": {
+      "sha256": "8d11a5a46e976d33c4d70e70ab41210b79312b65313ed0c87b9133bdf8fa3545",
+      "bytes": 19320,
+      "slugs": [
+        "spira"
+      ]
+    },
+    "SpiraPrime.png": {
+      "sha256": "eb2f0eb279bfdb7f6b3ceee1711efece6d5622a0dff20305f07a87e0aefa0e3a",
+      "bytes": 17043,
+      "slugs": [
+        "spira-prime"
+      ]
+    },
+    "Staticor.png": {
+      "sha256": "6637b93bd406bae1c395b8781fd7cf03552a5df7751dee03148b0286eeb707fa",
+      "bytes": 42053,
+      "slugs": [
+        "staticor"
+      ]
+    },
+    "SteflosPrime.png": {
+      "sha256": "a5963793a0241209260eeee2d0808a346356038ebc6c2adf62804105730c28d1",
+      "bytes": 39542,
+      "slugs": [
+        "steflos-prime"
+      ]
+    },
+    "Stinger.png": {
+      "sha256": "15a9fd52bac29c5a82650b6b53833d2541c8fcdaf78e8e8e268f503840797f8b",
+      "bytes": 40071,
+      "slugs": [
+        "stinger"
+      ]
+    },
+    "Stradavar.png": {
+      "sha256": "a1d485e59b71cbda470dcca06098a590f364465054560aba4c31d77100ba628a",
+      "bytes": 19607,
+      "slugs": [
+        "stradavar"
+      ]
+    },
+    "StradavarPrime.png": {
+      "sha256": "7685789e5e2572dc3886844dab47d3b20ce8cac13f23e142d4a1933897ff6a7e",
+      "bytes": 24680,
+      "slugs": [
+        "stradavar-prime"
+      ]
+    },
+    "Strun.png": {
+      "sha256": "e83f3d1a734cf5d5ba790e9a49bd9dfca9262ad587f24b23d49bed26c7ba80c6",
+      "bytes": 22405,
+      "slugs": [
+        "strun"
+      ]
+    },
+    "StrunPrime.png": {
+      "sha256": "2f7c4c7c5cbdb0505c0b1f6a2d1ace11149332c451ed0b07660858e617d3aeaa",
+      "bytes": 47774,
+      "slugs": [
+        "strun-prime"
+      ]
+    },
+    "StrunWraith.png": {
+      "sha256": "b137394ff36bda7a92a63596e67a48621556e809b600460ffe9b5448b88675ec",
+      "bytes": 31784,
+      "slugs": [
+        "strun-wraith"
+      ]
+    },
+    "Stubba.png": {
+      "sha256": "af85989977367c980a6b7f8b1dcf6bd8db6c6950fdd001508e63319a1c91857f",
+      "bytes": 42806,
+      "slugs": [
+        "stubba"
+      ]
+    },
+    "Stug.png": {
+      "sha256": "cbc87273ce85e4d1be0b54b60cac4e010b28b36a11b56a5ed633f3dfa3ff3e1c",
+      "bytes": 19837,
+      "slugs": [
+        "stug"
+      ]
+    },
+    "Supra.png": {
+      "sha256": "5ca5fc7874459cee7f1ab348a084008c1ffffaf095f18701da4f27dbd9318b7b",
+      "bytes": 27781,
+      "slugs": [
+        "supra"
+      ]
+    },
+    "SupraVandal.png": {
+      "sha256": "930424ffea7a7c66e68c0cce5278358e754a77ba21697f0b6518dc55c1205ed1",
+      "bytes": 28065,
+      "slugs": [
+        "supra-vandal"
+      ]
+    },
+    "Sweeper.png": {
+      "sha256": "b3995fa9130c09dbe337ebd1b41daa8a995c1b73af0b27569e39e7eb148a63d0",
+      "bytes": 36188,
+      "slugs": [
+        "sweeper"
+      ]
+    },
+    "SweeperPrime.png": {
+      "sha256": "7718bab96cb524af338eef6769b4bbb116fd5ca24131b803ff1b4e4fc2f559ee",
+      "bytes": 50561,
+      "slugs": [
+        "sweeper-prime"
+      ]
+    },
+    "Sybaris.png": {
+      "sha256": "8def6e692bd20df72dc252a3d0394c73c90a2e86758235a4ad4909a3cce3ef59",
+      "bytes": 14904,
+      "slugs": [
+        "sybaris"
+      ]
+    },
+    "SybarisPrime.png": {
+      "sha256": "a509f5890d155821c107922a351cd96e87ed12711b6abfd7c259a505f6878bf7",
+      "bytes": 22625,
+      "slugs": [
+        "sybaris-prime"
+      ]
+    },
+    "Sydon.png": {
+      "sha256": "09342e55fb72245ee8eb1faa67e57e2abd8ea939f41df42e674a238580d04ea0",
+      "bytes": 11051,
+      "slugs": [
+        "sydon",
+        "vaykor-sydon"
+      ]
+    },
+    "Synapse.png": {
+      "sha256": "14b3792a8ed9c4b8cc8027f116192c1ae424ec54264c31e726dde8b700acec14",
+      "bytes": 21721,
+      "slugs": [
+        "synapse"
+      ]
+    },
+    "SynoidGammacor.png": {
+      "sha256": "3739ce6dc657ea0bc948825e8c281af3da100c3c6bfe17efba2508fd8092301e",
+      "bytes": 46521,
+      "slugs": [
+        "synoid-gammacor"
+      ]
+    },
+    "SynoidSimulor.png": {
+      "sha256": "e49532cd589d88ebe6f4b396df25abe816ee7f132e245f4a34b1a3a2b8c7496b",
+      "bytes": 27160,
+      "slugs": [
+        "synoid-simulor"
+      ]
+    },
+    "Talons.png": {
+      "sha256": "68bc7b45500601a7a57cec2d65cc366e078ed715da1871bc2a6d01ab1a32a3fc",
+      "bytes": 31504,
+      "slugs": [
+        "talons"
+      ]
+    },
+    "TatsuPrime.png": {
+      "sha256": "e6f5610a02069c6bc8cb97e06458655967c22de178c8602e8b28b5e8a1caa8e5",
+      "bytes": 12291,
+      "slugs": [
+        "tatsu-prime"
+      ]
+    },
+    "Tazicor.png": {
+      "sha256": "f22e2efb4eb6e5e66e1db794e3c6c1ec07893c22e4abc3273cfaf44ca55b4687",
+      "bytes": 35459,
+      "slugs": [
+        "tazicor"
+      ]
+    },
+    "Tekko.png": {
+      "sha256": "3f5271083c71be7d7b38d504914b0bdec62c03ef5807f3db1101ca30ed68d973",
+      "bytes": 79609,
+      "slugs": [
+        "tekko"
+      ]
+    },
+    "TekkoPrime.png": {
+      "sha256": "053ff1e85520c0d2c6a3dd150d8df6c32816d85f4671cff121f1555ee62f7edd",
+      "bytes": 60091,
+      "slugs": [
+        "tekko-prime"
+      ]
+    },
+    "TelosAkbolto.png": {
+      "sha256": "8d928c22392da402c045c814b6daffbceb41aade7545ff5434449462dfcfc99c",
+      "bytes": 36878,
+      "slugs": [
+        "telos-akbolto"
+      ]
+    },
+    "TelosBoltor.png": {
+      "sha256": "df6f06f4a6aa4d4a29073af5e9b3a853079589265fb69f065d3022781dfe052e",
+      "bytes": 31593,
+      "slugs": [
+        "telos-boltor"
+      ]
+    },
+    "TenetFerrox.png": {
+      "sha256": "ada94bf6a9229d416b70855dbec1b19caeb5abe676721ac1af1ebf6cc7315855",
+      "bytes": 11487,
+      "slugs": [
+        "tenet-ferrox"
+      ]
+    },
+    "TenetPlinx.png": {
+      "sha256": "f4864bc131f405f6368ab68c374cd48ec7047936a5c3233eb9160f37d041ad44",
+      "bytes": 41883,
+      "slugs": [
+        "tenet-plinx"
+      ]
+    },
+    "TenetQuanta.png": {
+      "sha256": "f2df89fe6c9f39c2701ba535e24b280ff61e669c9d0e455e0ede8ae346c06684",
+      "bytes": 28243,
+      "slugs": [
+        "tenet-quanta"
+      ]
+    },
+    "Tenora.png": {
+      "sha256": "618dbc2fa271cb278dad74a0339e8823804cb7e4e02b77c4a54eced87e34f42e",
+      "bytes": 17184,
+      "slugs": [
+        "tenora"
+      ]
+    },
+    "TenoraPrime.png": {
+      "sha256": "2804a268151229c8787a66f7c7236611a9270bb63dff487e9ad8c7fef5f4878e",
+      "bytes": 29584,
+      "slugs": [
+        "tenora-prime"
+      ]
+    },
+    "TeshinDualSwords.png": {
+      "sha256": "7f5387fe270937f356e6a559e3afceff2572022f591cf5f84dd1c180471cc169",
+      "bytes": 10327,
+      "slugs": [
+        "sun-moon"
+      ]
+    },
+    "Tetra.png": {
+      "sha256": "21102e3b02251a26bc89f94127ff42f3bc397752049d488c39f588c4155fc3ba",
+      "bytes": 29624,
+      "slugs": [
+        "tetra"
+      ]
+    },
+    "ThanotechArchGun.png": {
+      "sha256": "0389e4668a35356b518ffcdce89175493b705e879ae076d5f9184e0b8bd6cf25",
+      "bytes": 48076,
+      "slugs": [
+        "cortege"
+      ]
+    },
+    "ThanoTechGrenadeLauncher.png": {
+      "sha256": "48ef30ad66a85acffb68b9436ce7d3cec58ac281c789edb8b05561aa0304319f",
+      "bytes": 35392,
+      "slugs": [
+        "morgha"
+      ]
+    },
+    "ThanotechLongGun.png": {
+      "sha256": "1380e15a7d6b1bfa7ec61b132855afdb43478771fb443ceb4a6fce2ef3433c9e",
+      "bytes": 27031,
+      "slugs": [
+        "mausolon"
+      ]
+    },
+    "ThanotechPistol.png": {
+      "sha256": "489a8b3d7d1e55ba0f244a7f55d9e7cc57404aabd1751cc21d01b1e809749e4d",
+      "bytes": 36493,
+      "slugs": [
+        "sepulcrum"
+      ]
+    },
+    "ThanotechRifle.png": {
+      "sha256": "ff4cca490e7acb948108f4a422d1b60ad99f23208179417f0082fbbc5b0ac880",
+      "bytes": 29658,
+      "slugs": [
+        "trumna"
+      ]
+    },
+    "Tiberon.png": {
+      "sha256": "f5e2f8d0a560bf55f127f5d20fa7e0e68426807cee04afe1465d901dd8d73d84",
+      "bytes": 11968,
+      "slugs": [
+        "tiberon"
+      ]
+    },
+    "TiberonPrime.png": {
+      "sha256": "46ea43325d0cfd23ac5860d2e2bda6f3b6b1ca66495886df3579c0aa47b2f778",
+      "bytes": 19927,
+      "slugs": [
+        "tiberon-prime"
+      ]
+    },
+    "Tigris.png": {
+      "sha256": "d4351f5ecf762bc8597088181b730e860a38efae9f5e1315cf9a1c47b0b10f29",
+      "bytes": 18937,
+      "slugs": [
+        "tigris"
+      ]
+    },
+    "TigrisPrime.png": {
+      "sha256": "b1159f3e794920b1b3654fc3640c0acf6f56309db6b7c803616892b2c28e3a9d",
+      "bytes": 32375,
+      "slugs": [
+        "tigris-prime"
+      ]
+    },
+    "Tipedo.png": {
+      "sha256": "83c0859037a33fd52ec3bdb699111b101ee76064610f2f40e61fcb4f65be5be6",
+      "bytes": 8412,
+      "slugs": [
+        "tipedo"
+      ]
+    },
+    "TipedoPrime.png": {
+      "sha256": "0ff72800fb8a0020ffa85cf4db8b2a01b75f4a015f19e1d94a3cec2c4a32c709",
+      "bytes": 11421,
+      "slugs": [
+        "tipedo-prime"
+      ]
+    },
+    "TnBayonetRifle.png": {
+      "sha256": "c155f43a4579401354f5593fcf6d849156b264eae9812cb4d14c2d70774df9a9",
+      "bytes": 11847,
+      "slugs": [
+        "vinquibus"
+      ]
+    },
+    "TnBeltFedRifle.png": {
+      "sha256": "d5b8c5809450ca5daceb61f4f4c4621ac4abeb798ffc7f66a036040d3aba581f",
+      "bytes": 25692,
+      "slugs": [
+        "reconifex"
+      ]
+    },
+    "TnChiselKanabo.png": {
+      "sha256": "ca0b8c794fa39da8d630271251f570d7a6b9a5f5246d8ee056e237e8fec6fdcd",
+      "bytes": 12563,
+      "slugs": [
+        "masseter"
+      ]
+    },
+    "TnChoirBow.png": {
+      "sha256": "1e89aaa2a1d1459e02234dfde98d3bcb9ec434358aea95bbed07a6ed16288644",
+      "bytes": 33141,
+      "slugs": [
+        "evensong"
+      ]
+    },
+    "TnChoirframeKunai.png": {
+      "sha256": "61ee49ccfdf38362556f08b11da9e2d03e3e6ac917280d1234a5c2602a9b6a2d",
+      "bytes": 12385,
+      "slugs": [
+        "cantare"
+      ]
+    },
+    "TnChoirScythe.png": {
+      "sha256": "8107033fd7fec7e3c509003e399831d652f4f93a8b3d88d27000e29699f89d8d",
+      "bytes": 23404,
+      "slugs": [
+        "harmony"
+      ]
+    },
+    "TnConcreteArchgun.png": {
+      "sha256": "b5e209d8ca36393eed848e88dd8cf41086db1d1e39470fd949133540ce9bdefb",
+      "bytes": 37546,
+      "slugs": [
+        "mandonel"
+      ]
+    },
+    "TnHopliteSpear.png": {
+      "sha256": "8e93ffc63fcbe84cfd6ad72b7e624e2ea20321be6f657036c2ebde2a840d5e98",
+      "bytes": 10602,
+      "slugs": [
+        "afentis"
+      ]
+    },
+    "TnInkRifleWeapon.png": {
+      "sha256": "122b3102771b5f45519b4364b24e6bc047bbdd2458a07b3b8e77c2040495cfd7",
+      "bytes": 20230,
+      "slugs": [
+        "enkaus"
+      ]
+    },
+    "TnJetTurbinePistolWeapon.png": {
+      "sha256": "e83992308b14fa169c15de545bf11e900b38cc6cd245ca5fa1d781217cdcdc8c",
+      "bytes": 38845,
+      "slugs": [
+        "athodai"
+      ]
+    },
+    "TnoLotusPodShotgun.png": {
+      "sha256": "dbbf91be7ef947fa7b6ec10afe5c8ca7268fa3883ac3b5a7ebf4f1098fd8cd0d",
+      "bytes": 55803,
+      "slugs": [
+        "steflos"
+      ]
+    },
+    "TnoOctaMiniGun.png": {
+      "sha256": "98bcb0a34171c29c0d8494e7d459b9ee0879a1e276b885b12dbf13eb535fb158",
+      "bytes": 35194,
+      "slugs": [
+        "haalvu"
+      ]
+    },
+    "TnOraxiaFlechette.png": {
+      "sha256": "69fa1db395d098b4ffe36bbfb71eeb2effba2895b3627cd71bf34218220d8560",
+      "bytes": 40635,
+      "slugs": [
+        "scyotid"
+      ]
+    },
+    "TnOrionScytheWeapon.png": {
+      "sha256": "41380dd3a80305cab3c24461176115cf51c8b45355e7e8cd37f8cec963061aee",
+      "bytes": 15617,
+      "slugs": [
+        "wrath"
+      ]
+    },
+    "TnQuadSniperRifle.png": {
+      "sha256": "a55e11d6747b99d81edc5c26da5e64479bfa6a5aa882ed9bc12cb32bd0625a8a",
+      "bytes": 24234,
+      "slugs": [
+        "perigale"
+      ]
+    },
+    "TnRailjackGreatKatana.png": {
+      "sha256": "a4566dfd9008a0ae6410f46fb5accc82c03dec94b2c35fe9962b8be56525cb71",
+      "bytes": 23942,
+      "slugs": [
+        "pennant"
+      ]
+    },
+    "TnRifleErsatzWeapon.png": {
+      "sha256": "8b865b6585adb9da48d3e5b755f86a6a7ea37bb7985e7486947b6379d184ec54",
+      "bytes": 26518,
+      "slugs": [
+        "aeolak"
+      ]
+    },
+    "TnSiriusScytheWeapon.png": {
+      "sha256": "32faa65cedb9a443cbd63f50112a7b69e0b7d0a5a8c9ff05055e0c9d08b2b507",
+      "bytes": 17310,
+      "slugs": [
+        "pride"
+      ]
+    },
+    "TnTwoHandedKatana.png": {
+      "sha256": "0930325575bd3f49fa6116568d6ecefa8824a7d0442cb3046d616762a374eb36",
+      "bytes": 11424,
+      "slugs": [
+        "tatsu"
+      ]
+    },
+    "TnWispRifle.png": {
+      "sha256": "67b75e691f26e272bdc4e79ce31c74ac039a92556fe889dbc0ec658df9e9a042",
+      "bytes": 17078,
+      "slugs": [
+        "fulmin"
+      ]
+    },
+    "TnWraithSidearmWeapon.png": {
+      "sha256": "f257c1b2d625620b2e0b9b382442b5f64b7cd59e4dfe8ac84551176bcb3fab0f",
+      "bytes": 18920,
+      "slugs": [
+        "epitaph"
+      ]
+    },
+    "Tonbo.png": {
+      "sha256": "6d869c8d5e9b538133c7b7fd00acc73634a6b1e53177ab2c0db409a391486919",
+      "bytes": 9217,
+      "slugs": [
+        "tonbo"
+      ]
+    },
+    "Tonkor.png": {
+      "sha256": "4d9cddca5109a73602893f46bb972e2e1cb36fddb47f123ea0268ffb824cde17",
+      "bytes": 32250,
+      "slugs": [
+        "tonkor"
+      ]
+    },
+    "Torid.png": {
+      "sha256": "cfe1b6e58423c4653bf88705c2db89157361c51e5a637e005912dd2c618b9736",
+      "bytes": 24952,
+      "slugs": [
+        "torid"
+      ]
+    },
+    "TrumnaPrime.png": {
+      "sha256": "e7692bcd19b67f99d7983f647b1db2d771f297ef632b2dcd28f6ff89ae0d519b",
+      "bytes": 35365,
+      "slugs": [
+        "trumna-prime"
+      ]
+    },
+    "TwinBasolk.png": {
+      "sha256": "37183b85447f6b43a6f088789fe78cb2c0adb3da28a6e6dfd74a98a750a22ce1",
+      "bytes": 42862,
+      "slugs": [
+        "twin-basolk"
+      ]
+    },
+    "TwinGrakatas.png": {
+      "sha256": "3478fd36f6d5be4a0855bc49f22e41dcd8cfd14156475be82d854fb0cb74d17a",
+      "bytes": 41764,
+      "slugs": [
+        "twin-grakatas"
+      ]
+    },
+    "TwinGremlin.png": {
+      "sha256": "f875c41026786939378e264ab45212af9b29df0acba70497c0bd6e28f05cd971",
+      "bytes": 59863,
+      "slugs": [
+        "twin-gremlins"
+      ]
+    },
+    "TwinKohmak.png": {
+      "sha256": "3f19e9e46f33271e2d5b5ef2ebbb8eaebf78b40bb78538f3606889c95eda369d",
+      "bytes": 58933,
+      "slugs": [
+        "twin-kohmak"
+      ]
+    },
+    "TwinKrohkur.png": {
+      "sha256": "dc7335fa3ab2bc0d75a579142fe8f72ee49ffc8a9d90c66af85733f11d319f05",
+      "bytes": 24450,
+      "slugs": [
+        "twin-krohkur"
+      ]
+    },
+    "TwinRogga.png": {
+      "sha256": "1bf80f92c9ea1ff17d9f4ba80849287a5db37c1aa52bba1e95597ed144fdef84",
+      "bytes": 39201,
+      "slugs": [
+        "twin-rogga"
+      ]
+    },
+    "TwinVipers.png": {
+      "sha256": "5727bfc454aa09b185694e7a10d6f761c6092ed34dd7fc1a37b415ffc9e6e928",
+      "bytes": 57314,
+      "slugs": [
+        "twin-vipers"
+      ]
+    },
+    "TwinViperWraith.png": {
+      "sha256": "79281e0fe9d9f649b934cd0fa93dfa865b54a2e810e034898ce2fb2685b8e1ba",
+      "bytes": 71939,
+      "slugs": [
+        "twin-vipers-wraith"
+      ]
+    },
+    "Tysis.png": {
+      "sha256": "c8b297c6bb6c4169fc3628c10d93a9ef53ad927b678b25004dccad9e845f9ffb",
+      "bytes": 27252,
+      "slugs": [
+        "tysis"
+      ]
+    },
+    "VadaryaPrime.png": {
+      "sha256": "860a8bc8e3ff1df02c8f8a6fe726d4d9415d2b5351ed4004405535669ddcdd18",
+      "bytes": 17584,
+      "slugs": [
+        "vadarya-prime"
+      ]
+    },
+    "Vasto.png": {
+      "sha256": "c9fbc7ee2d1404e5578c061e79b7e80c685454bcd021e6141d3d871128c472fa",
+      "bytes": 32421,
+      "slugs": [
+        "vasto"
+      ]
+    },
+    "VastoPrime.png": {
+      "sha256": "f632fce3c3a92d585d427cbbfb5c586aeb43fdfae89cd7d0361386f7a9feffe0",
+      "bytes": 34615,
+      "slugs": [
+        "vasto-prime"
+      ]
+    },
+    "VaykorHek.png": {
+      "sha256": "ec8b869c98b7c63f8ca2ad4c0eeb53c6e11ed70280d16f393d892e8e92b5c54c",
+      "bytes": 22093,
+      "slugs": [
+        "vaykor-hek"
+      ]
+    },
+    "VaykorMarelok.png": {
+      "sha256": "cf97a86793a3717aa0961bba8b4167aa0e0bdfa9fdacce86a0f509b9dbe5e989",
+      "bytes": 31971,
+      "slugs": [
+        "vaykor-marelok"
+      ]
+    },
+    "Vectis.png": {
+      "sha256": "f5980fde1de054ad4b5b0bd359621bbaf456bbcd636d0912accb1a97756bf565",
+      "bytes": 14306,
+      "slugs": [
+        "vectis"
+      ]
+    },
+    "VectisPrime.png": {
+      "sha256": "3e287709c87a0260c0d9bf101685ad0c538587ae519edbe46a1f7e14a63474f7",
+      "bytes": 19562,
+      "slugs": [
+        "vectis-prime"
+      ]
+    },
+    "Veldt.png": {
+      "sha256": "60e2b40adc3588c43a6c5cc91a6c7a2c4ad37065b4c8887a8a8c038c1a6ae500",
+      "bytes": 19190,
+      "slugs": [
+        "veldt"
+      ]
+    },
+    "Velocitus.png": {
+      "sha256": "aab6a2fa96953448e5178f39e6d18f178bb407bc88e9d8fe0e1ceb31439fb1d2",
+      "bytes": 15327,
+      "slugs": [
+        "velocitus"
+      ]
+    },
+    "VeloxPrime.png": {
+      "sha256": "39ba343d90bdfc6e063b258affe57f8ab6829065ea4d48d68e478651e2db1046",
+      "bytes": 43374,
+      "slugs": [
+        "velox-prime"
+      ]
+    },
+    "VenatoPrime.png": {
+      "sha256": "b024bbfd988cf25bba06db80391d529fe0d47295a73c3c30c0faf8717ee11ec0",
+      "bytes": 26643,
+      "slugs": [
+        "venato-prime"
+      ]
+    },
+    "Venka.png": {
+      "sha256": "a5b26415948949c32ef168d5a0821887856d2b192ca6115814c0b69d18029773",
+      "bytes": 30468,
+      "slugs": [
+        "venka"
+      ]
+    },
+    "VenkaPrime.png": {
+      "sha256": "b6ce6c82e82eedb35c7061180fd5e7f89abf008704f58852ed71d1a1474393d8",
+      "bytes": 54558,
+      "slugs": [
+        "venka-prime"
+      ]
+    },
+    "VerglasPrime.png": {
+      "sha256": "c0bd3b70adafe19fab842b943059179fbe9e2ceeea5df44bc814928e7f0fbd6c",
+      "bytes": 41007,
+      "slugs": [
+        "verglas-prime"
+      ]
+    },
+    "Veritux.png": {
+      "sha256": "5c2e5a452c2e45e31ccccbbf75215ee6a094b4b0957bae8a88f438441857cea8",
+      "bytes": 16209,
+      "slugs": [
+        "veritux"
+      ]
+    },
+    "Viper.png": {
+      "sha256": "c63c6d8e24b641b2ef8d3d0fe93b33f932371c3df8d46fde08837088d207b7b9",
+      "bytes": 51914,
+      "slugs": [
+        "viper"
+      ]
+    },
+    "ViperWraith.png": {
+      "sha256": "571ad4c6508d857eed0cd83c300e36bf1b2a24cec58ece8a846d03bd6110769a",
+      "bytes": 64367,
+      "slugs": [
+        "viper-wraith"
+      ]
+    },
+    "Volnus.png": {
+      "sha256": "1c0724a6ed7cdcc198919ce7c715be8a7cad7168458020c53628dc9d76576566",
+      "bytes": 61488,
+      "slugs": [
+        "volnus"
+      ]
+    },
+    "VolnusPrime.png": {
+      "sha256": "834c6f0408ca7541215922ef308345bc34d9b3bde32ddfe4ca15205358e01f28",
+      "bytes": 21857,
+      "slugs": [
+        "volnus-prime"
+      ]
+    },
+    "Vulcax.png": {
+      "sha256": "b741f3d3496949ef3990f9cc1621058558db23711126db4ff469667bb500addf",
+      "bytes": 29410,
+      "slugs": [
+        "vulcax"
+      ]
+    },
+    "Vulkar.png": {
+      "sha256": "a9952e82190ce4b0a87cf3713725485e129a1ae866001004b2d2d956dac99282",
+      "bytes": 14274,
+      "slugs": [
+        "vulkar"
+      ]
+    },
+    "VulkarWraith.png": {
+      "sha256": "d8893dc0b71c9ac413f1d1f2f6bdca3111550407d5bf670004393249a8138c3e",
+      "bytes": 15083,
+      "slugs": [
+        "vulkar-wraith"
+      ]
+    },
+    "Vulklok.png": {
+      "sha256": "c22221d57b7bcc6fcecddcb09e4c74c9a957e0d7023eb3277124a87ffef60668",
+      "bytes": 48406,
+      "slugs": [
+        "vulklok"
+      ]
+    },
+    "War.png": {
+      "sha256": "532198c451fda692e63ae15878b07e4c5d772b72fb3371a868c2cacddcd244e9",
+      "bytes": 23424,
+      "slugs": [
+        "war"
+      ]
+    },
+    "WarPrime.png": {
+      "sha256": "40aecf158ccc9673ca3b9ed453be6d12116836f5fdde1169f8621da97a3b333b",
+      "bytes": 18998,
+      "slugs": [
+        "war-prime"
+      ]
+    },
+    "WolfFrameAxeWeapon.png": {
+      "sha256": "4d8524f36f1ff2c6d5ca4193aac7fb838863d996da7d15eabe6628e08ab1a9fe",
+      "bytes": 18810,
+      "slugs": [
+        "sarofang"
+      ]
+    },
+    "WolfHammerSkin.png": {
+      "sha256": "e7053bf06b6e7a77fcc677efa94eb840d7dc09192e70a95aeb1f8161bb452f33",
+      "bytes": 13775,
+      "slugs": [
+        "wolf-sledge"
+      ]
+    },
+    "YareliPistol.png": {
+      "sha256": "0df683ab15ffc4bdc2d4c8207e069c84f0157ff6576257691f2e812ce30548dc",
+      "bytes": 58317,
+      "slugs": [
+        "kompressa"
+      ]
+    },
+    "Zakti.png": {
+      "sha256": "bc3c49194e8da5663faa915b611df4a9eed27b76de2d1396d87c831aef260a9b",
+      "bytes": 39572,
+      "slugs": [
+        "zakti"
+      ]
+    },
+    "ZaktiPrime.png": {
+      "sha256": "7a1bf55f4c7856baae85dbcd3d9e1d8a3e26d510c21137095600c00b768ba868",
+      "bytes": 51434,
+      "slugs": [
+        "zakti-prime"
+      ]
+    },
+    "ZanukaPetMeleeWeaponIP.png": {
+      "sha256": "315275614606be3adb3d5609630702a82918628a5a3820a4cce7263c5583a658",
+      "bytes": 27734,
+      "slugs": [
+        "batoten"
+      ]
+    },
+    "ZanukaPetMeleeWeaponIS.png": {
+      "sha256": "9e176bb82d0e1aa1c7d311c5e53656a91cb1336e736c2a6340032c02854e1074",
+      "bytes": 23377,
+      "slugs": [
+        "lacerten"
+      ]
+    },
+    "ZanukaPetMeleeWeaponPS.png": {
+      "sha256": "500f23dd4062de69b09b3163f408748af3edfc0c13f6dddc4fa8135c3c879788",
+      "bytes": 23502,
+      "slugs": [
+        "akaten"
+      ]
+    },
+    "ZarimanDaggerWeapon.png": {
+      "sha256": "83c8874cdfcc715829253f3446884bbb009025b310e0e7bf6a91eded9fdf8a03",
+      "bytes": 22388,
+      "slugs": [
+        "innodem"
+      ]
+    },
+    "ZarimanHeavyPistol.png": {
+      "sha256": "162c326ad18fb74cf4b2ec20846d637090e345fa21723d45099973079e9f1015",
+      "bytes": 37984,
+      "slugs": [
+        "laetum"
+      ]
+    },
+    "ZarimanHeavyScythe.png": {
+      "sha256": "fc17037d8629a7f80def2938ab287cd54c9a8e79974c4a8ec85c85dba9ad3c02",
+      "bytes": 17688,
+      "slugs": [
+        "thalys"
+      ]
+    },
+    "ZarimanPumpShotgun.png": {
+      "sha256": "02e7a541a3a040cc562a58ee8a9eda24c2d751ece175ea81f56330250bb7b12e",
+      "bytes": 35637,
+      "slugs": [
+        "felarx"
+      ]
+    },
+    "ZarimanSemiAutoRifle.png": {
+      "sha256": "a6eeb9cecb55e7602f9a74dab88db67674b595b4696246e96637a4f16302f3f2",
+      "bytes": 29605,
+      "slugs": [
+        "phenmor"
+      ]
+    },
+    "ZarimanTonfa.png": {
+      "sha256": "ed16753a8aad0e99f6667345d349279a71087f2110fbb050571bac5093df2521",
+      "bytes": 36276,
+      "slugs": [
+        "praedos"
+      ]
+    },
+    "Zarr.png": {
+      "sha256": "64412ddd3bee4c96a751a0fbb99550d1c2b773a342f2572f72185e4b086cf376",
+      "bytes": 22302,
+      "slugs": [
+        "zarr"
+      ]
+    },
+    "Zenistar.png": {
+      "sha256": "8dc999f11f8f8439c3b72eb2cb96f2dec18cf3132a9f19bea39bed4aa989f533",
+      "bytes": 30292,
+      "slugs": [
+        "zenistar"
+      ]
+    },
+    "Zenith.png": {
+      "sha256": "74962c70e1232c648938174d4b97b33153ac8a00fc196376c117b6c0b7f9d0b0",
+      "bytes": 22946,
+      "slugs": [
+        "zenith"
+      ]
+    },
+    "Zhuge.png": {
+      "sha256": "9c3243e150aa5db85edcdf9540463bdcf47efdf2d7a344d0d18c8b6f4c9c32f0",
+      "bytes": 41147,
+      "slugs": [
+        "zhuge"
+      ]
+    },
+    "ZhugePrime.png": {
+      "sha256": "379c36ef1ceb41770587f035e06a49fc1c57b881183e1264f141a2a83cf77d59",
+      "bytes": 51252,
+      "slugs": [
+        "zhuge-prime"
+      ]
+    },
+    "ZylokPrime.png": {
+      "sha256": "49df4912bb973222b474305bc014c54fc2acb0136c9ece6ba1ceb197657458a3",
+      "bytes": 44596,
+      "slugs": [
+        "zylok-prime"
+      ]
+    }
+  }
+}

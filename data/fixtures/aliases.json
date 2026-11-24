@@ -1,0 +1,12 @@
+{
+  "$comment": "Community shorthand, keyed by weapon slug, folded into the search index alongside the real name. Typo tolerance is Fuse.js's job; this file is for names players use that are not typos, such as abbreviations. Add sparingly and only for weapons players actually ask about by nickname.",
+  "akbolto": ["akbo"],
+  "akbronco": ["akbronc"],
+  "dual-skana": ["dskana", "dual skanas"],
+  "dark-split-sword": ["dss", "split sword"],
+  "mutalist-cernos": ["mut cernos"],
+  "proboscis-cernos": ["prob cernos"],
+  "twin-grakatas": ["twin grak"],
+  "broken-war": ["bwar"],
+  "paracesis": ["para"]
+}

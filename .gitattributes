@@ -1,0 +1,8 @@
+# Normalise line endings so the repository is identical whatever platform commits to it.
+* text=auto eol=lf
+
+# Generated assets and data: binary or large, never diffed by hand.
+*.webp binary
+*.png binary
+data/index.json linguist-generated=true
+data/images.manifest.json linguist-generated=true

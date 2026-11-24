@@ -1,0 +1,376 @@
+/*
+ * Forgeline base styles.
+ *
+ * Spec section 8: black shapes, thin white edges, mid-grey panels, one accent colour per verdict.
+ * Dark is the default, light is available. These are foundations only: the design pass belongs to
+ * milestone M3, when the verdict card and search exist and there is something real to shape.
+ */
+
+:root {
+  --bg: #0b0b0c;
+  --panel: #141416;
+  --panel-raised: #1c1c1f;
+  --edge: rgba(255, 255, 255, 0.14);
+  --edge-strong: rgba(255, 255, 255, 0.28);
+  --text: #ededf0;
+  --text-muted: #9b9ba3;
+  --text-faint: #6f6f77;
+
+  /* Verdicts. Never used alone: each pairs with a word and an icon. */
+  --safe: #46b95a;
+  --check: #d79b22;
+  --keep: #ef5350;
+
+  --radius: 4px;
+  --tile: #000;
+  --measure: 68ch;
+  --container: 1040px;
+
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg: #f4f4f5;
+  --panel: #ffffff;
+  --panel-raised: #fafafa;
+  --edge: rgba(0, 0, 0, 0.14);
+  --edge-strong: rgba(0, 0, 0, 0.3);
+  --text: #16161a;
+  --text-muted: #55555e;
+  --text-faint: #7c7c86;
+  --safe: #1f7a31;
+  --check: #8a6200;
+  --keep: #c0392b;
+  --tile: #e8e8ea;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    --bg: #f4f4f5;
+    --panel: #ffffff;
+    --panel-raised: #fafafa;
+    --edge: rgba(0, 0, 0, 0.14);
+    --edge-strong: rgba(0, 0, 0, 0.3);
+    --text: #16161a;
+    --text-muted: #55555e;
+    --text-faint: #7c7c86;
+    --safe: #1f7a31;
+    --check: #8a6200;
+    --keep: #c0392b;
+    --tile: #e8e8ea;
+
+    color-scheme: light;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--edge-strong);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ---------------------------------------------------------------- shell */
+
+.site-header {
+  border-bottom: 1px solid var(--edge);
+  background: var(--panel);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 20px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.wordmark {
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.wordmark__tag {
+  color: var(--text-faint);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-weight: 400;
+}
+
+.site-nav {
+  margin-left: auto;
+  display: flex;
+  gap: 18px;
+  font-size: 0.9rem;
+}
+
+main {
+  flex: 1;
+  padding: 28px 0 56px;
+}
+
+.site-footer {
+  border-top: 1px solid var(--edge);
+  background: var(--panel);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 20px 0 28px;
+}
+
+.site-footer p {
+  margin: 0 0 6px;
+  max-width: var(--measure);
+}
+
+/* ---------------------------------------------------------------- text */
+
+.lede {
+  color: var(--text-muted);
+  max-width: var(--measure);
+  font-size: 1.05rem;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--text-faint);
+}
+
+.section {
+  margin-top: 40px;
+}
+
+.section > h2 {
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+}
+
+/* ---------------------------------------------------------------- panels */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-top: 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.stat {
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+  background: var(--panel);
+  padding: 14px 16px;
+}
+
+.stat__value {
+  font-size: 1.7rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.stat__label {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+/* ---------------------------------------------------------------- weapon images */
+
+.weapon-art {
+  background: var(--tile);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+  display: block;
+  object-fit: contain;
+}
+
+/* ---------------------------------------------------------------- weapon lists */
+
+.weapon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.weapon-card {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+  background: var(--panel);
+  padding: 10px 12px;
+  text-decoration: none;
+}
+
+.weapon-card:hover {
+  border-color: var(--edge-strong);
+  background: var(--panel-raised);
+}
+
+.weapon-card__name {
+  font-weight: 550;
+}
+
+.weapon-card__meta {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* ---------------------------------------------------------------- tables */
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.92rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--edge);
+  vertical-align: middle;
+}
+
+thead th {
+  background: var(--panel-raised);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.cell-weapon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.copies {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+/* ---------------------------------------------------------------- weapon page */
+
+.weapon-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.weapon-head__text h1 {
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.badge {
+  border: 1px solid var(--edge);
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.badge--new {
+  border-color: var(--check);
+  color: var(--check);
+}
+
+.chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.chain__arrow {
+  color: var(--text-faint);
+}

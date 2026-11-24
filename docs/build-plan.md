@@ -19,6 +19,26 @@ Three constraints drive every technical choice:
 3. **The data refresh must be unable to publish bad data.** A silent half-break that turns Keep into
    Safe to sell is worse than a failed build.
 
+### Stack: Next.js and React, not Vite
+
+Spec section 9 suggests Vite with React. The build uses **Next.js 16 with the App Router, React 19
+and TypeScript**, exporting a fully static site (`output: 'export'`).
+
+What that buys, beyond preference:
+
+- **Every weapon page is pre-rendered HTML.** 621 pages come out of the build with their recipe
+  content already in the markup, so "what does Bolto build?" is answered by the first byte, with no
+  client fetch and no JavaScript needed to read it. Google indexes each weapon page, which is the
+  realistic way a player finds the site at the moment they are about to sell something. A Vite SPA
+  would have shipped one shell and rendered the answer client side.
+- **File-based routing matches the page table in spec section 7** with no router wiring.
+- **`output: 'export'` is a guard, not just a setting.** The build fails if a page ever reaches for a
+  request-time feature, which keeps the no-server constraint honest while the site stays static.
+
+What it costs: a heavier dev dependency than Vite, and the discipline of keeping client-only code
+(localStorage, Fuse.js search, the arsenal store) behind `'use client'`. Next's image optimiser is
+switched off, since the build already produces exactly the two sizes the site serves.
+
 ## 1. Architecture
 
 ```
@@ -33,10 +53,10 @@ Three constraints drive every technical choice:
   scripts/diff-index.mjs -------> data/changelog.json  + publish gate (pass / block)
         |
         v
-  vite build  ------------------> static bundle  ------> Cloudflare Pages
-        |
+  next build (output: export) --> out/  621 pre-rendered weapon pages  --> static host
+        |                               + /, /ingredients, /about
         v
-  browser:  index.json  +  localStorage arsenal  ->  src/engine (pure)  ->  pages
+  browser:  trimmed search index  +  localStorage arsenal  ->  src/engine (pure)  ->  UI
 ```
 
 The engine is a pure TypeScript module with no React and no I/O. The UI only renders what the engine
@@ -44,32 +64,36 @@ returns. That is what makes the fixtures in verdict-rules.md meaningful.
 
 ## 2. Repository layout
 
+What exists today is marked `[x]`.
+
 ```
 forgeline/
-  Forgeline_Website_Spec.md
-  docs/                      spec-review.md, verdict-rules.md, build-plan.md
+  [x] Forgeline_Website_Spec.md
+  [x] docs/                      spec-review.md, verdict-rules.md, build-plan.md
   data/
-    index.json               generated, committed
-    images.manifest.json     generated, committed: source name -> sha, bytes, slugs
-    changelog.json            generated, committed: added, changed, image updates
+    [x] index.json               generated, committed (238 KB pretty-printed, 16.5 KB gzipped)
+    [x] images.manifest.json     generated, committed: source name -> sha256, bytes, slugs
+        changelog.json           generated, committed: added, changed, image updates (M4)
     fixtures/
-      verified-recipes.json  hand-checked against the wiki, asserted by tests
-      exclusions.json        entries to drop, e.g. the Doppelganger Grimoire
-      aliases.json           community shorthand for search: akbo, dsword, tonk
-  public/img/                {slug}.webp and thumb/{slug}.webp, generated, committed
+    [x] verified-recipes.json    the 46 ingredients, asserted by tests, wiki check pending
+    [x] exclusions.json          entries to drop, with a reason each
+    [x] aliases.json             community shorthand for search: akbo, dss, bwar
+  [x] public/img/                {slug}.webp (256 px) and thumb/{slug}.webp (96 px), committed
   scripts/
-    verify-source-data.mjs   read-only audit of the upstream package
-    build-index.mjs          the Section 6 pipeline
-    fetch-images.mjs         manifest-driven download and WebP conversion
-    diff-index.mjs           changelog plus publish gate
+    [x] verify-source-data.mjs   read-only audit of the upstream package
+    [x] build-index.mjs          the section 6 pipeline, deterministic output
+    [x] fetch-images.mjs         manifest-driven download and WebP conversion
+        diff-index.mjs           changelog plus publish gate (M4)
   src/
-    engine/                  demand.ts, verdict.ts, tree.ts, planner.ts  (pure, unit-tested)
-    data/                    index loader, types, slug lookup
-    store/                   arsenal store, schema version, migrations, export and import
-    features/               search, sellcheck, arsenal, sweep, planner, ingredients
-    components/              WeaponImage, VerdictBanner, StatusPicker, CopyResult, ...
-    routes/                  /, /w/:slug, /ingredients, /arsenal, /sweep, /plan, /about
-  .github/workflows/         ci.yml, refresh-data.yml
+    [x] app/                     App Router: layout, page, ingredients/, about/, w/[slug]/
+    [x] components/              WeaponArt, and the verdict and search components to come
+    [x] data/                    types.ts, weapons.ts (build-time index access and graph walks)
+        engine/                  demand.ts, verdict.ts, tree.ts, planner.ts (pure, M2)
+        store/                   arsenal store, schema version, migrations, export and import (M5)
+        features/                search, sellcheck, arsenal, sweep, planner (M3, M5, M6)
+  [x] tests/index.test.ts        index integrity and the recipe fixture
+  [x] .github/workflows/ci.yml   typecheck, tests, static export
+      .github/workflows/refresh-data.yml   the monthly job (M4)
 ```
 
 ## 3. Data contract
@@ -153,6 +177,19 @@ Ship the file as `index.<contenthash>.json` so the service worker can tell build
 | `/sweep` | 2 | Owned weapons split into safe and keep |
 | `/plan` | 2 | Target weapon, full transitive requirement, still-to-get list |
 
+Server and client split, which is the one thing the App Router makes you decide up front:
+
+- **Server components by default.** Pages import `data/index.json` directly, so the recipe content is
+  baked into the HTML at build time and the browser downloads no data to read a weapon page.
+- **`'use client'` only where the browser is genuinely needed:** the search box (Fuse.js), the
+  arsenal store (localStorage), status pickers, the theme toggle, and `WeaponArt`, which needs an
+  error handler for the missing-image fallback.
+- **Verdicts render twice over the site's life:** statically as Check (no arsenal known at build
+  time), then re-rendered in the browser once the stored arsenal is read. The engine is the same pure
+  module in both passes, so there is one implementation of the rules and no server round trip.
+- **The client gets a trimmed index**, not the build-time one: slug, name, thumb, aliases and both
+  graph directions, which is what search, the arsenal and the verdicts need.
+
 State: one `arsenal` store (`{ schema, statuses: Record<slug, {status, qty?}>, updatedAt }`) in
 localStorage, written through a versioned module with migrations from day one. Export and import is
 the same JSON plus a `kind: "forgeline-arsenal"` marker, so a malformed import can be rejected
@@ -166,13 +203,18 @@ and full keyboard navigation in the dropdown. 600 entries is trivial for Fuse.
 Each milestone is shippable on its own and ends with something verifiable. Sizes are relative:
 S is a sitting, M is a day or two, L is several days.
 
-### M0. Foundations (S)
+### M0. Foundations (S) - done, except the hosting account
 
-Git repository (this folder is not one yet), Vite plus React plus TypeScript, Vitest, ESLint,
-Prettier, the hosting account, and CI that runs typecheck plus tests on every push.
-**Done when:** a blank page deploys from a push to main.
+Git repository, Next.js 16 with the App Router, React 19, TypeScript in strict mode with
+`noUncheckedIndexedAccess`, Vitest, and CI that runs typecheck, tests and the static export on every
+push.
+**Done when:** a page deploys from a push to main.
 
-### M1. Data pipeline and validated index (M) <- highest value
+Built: the repository, the toolchain, `.github/workflows/ci.yml`, and a working static export of
+626 pages. Outstanding: a linter (ESLint with `eslint-config-next`, plus Prettier) and the hosting
+account, which is open decision 1.
+
+### M1. Data pipeline and validated index (M) - done, except the monthly diff
 
 `verify-source-data.mjs`, `build-index.mjs`, `fetch-images.mjs`, `diff-index.mjs`, the schema
 validation, and the committed artifacts.
@@ -181,9 +223,14 @@ counts; a test asserts that against `fixtures/verified-recipes.json`; `public/im
 for every weapon at roughly 9 MB; re-running the build with unchanged input produces a byte-identical
 index.
 
-The audit half of this milestone is already done: [verify-source-data.mjs](../scripts/verify-source-data.mjs)
-reproduces the graph, checks the closure, reports the problem entries and compares against the
-committed fixture, and it currently exits clean.
+Built and verified on the real data: 621 player weapons, 46 ingredients matching the fixture exactly,
+1,242 WebP files totalling 12 MB from an 18.4 MB download, a byte-identical rebuild, and 12 passing
+integrity tests. `diff-index.mjs` and the changelog are the remaining piece and belong with M4, which
+is the only consumer of them.
+
+One measured surprise: 611 source images cover 621 weapons, because MK1 and some signature variants
+share art with their base weapon (MK1-Braton uses `Braton.png`). Downloads dedupe by source, outputs
+are written per slug.
 
 ### M2. Engine (S to M)
 
@@ -191,10 +238,17 @@ committed fixture, and it currently exits clean.
 property test over all 46 ingredients.
 **Done when:** all 14 fixtures pass and the property test passes against the live index.
 
-### M3. Phase 1 site (M to L)
+### M3. Phase 1 site (M to L) - partly standing
 
 Shell, dark theme, search, result card, weapon page with one level of tree, ingredient index, About,
 footer provenance, New badges, image component with lazy loading and silhouette fallback.
+
+Standing already, as the scaffold that proved the pipeline: the shell with dark and light themes, the
+footer provenance line, the About page, the ingredient index, 621 weapon pages with both recipe
+directions and the forward chain, and `WeaponArt` with lazy loading and a fallback. Still missing,
+and this is where the milestone's real work is: **the search box and the verdict card**, which are
+the actual product, plus the design pass (the pages are plain by intent, not by accident) and the
+per-slot silhouettes.
 **Done when:** a cold visit on a phone answers "what does Bolto build?" in under five seconds on a
 throttled 4G profile, and every verdict on the page is a Check or Safe with a stated reason.
 
@@ -239,6 +293,7 @@ Spec phases map as: phase 1 is M0 to M4, phase 2 is M5 to M6, phase 3 is M7.
 | Lighthouse on `/` | Performance at least 95 mobile, Accessibility 100 |
 | Verdict presentation | Icon plus word plus colour, never colour alone, contrast at least 4.5:1 on both themes |
 | Alt text | Every weapon image carries the weapon name |
+| Static export | `next build` succeeds with `output: 'export'`, so no page has crept into needing a server |
 
 ## 8. The monthly refresh, in detail
 
@@ -266,10 +321,14 @@ as a fallback source behind a flag, not as a live dependency.
 
 ## 9. Hosting and deploy
 
-Cloudflare Pages, free tier, deployed by GitHub Actions. It is fast worldwide, caches the WebP set
-well, supports a custom domain and needs no server. GitHub Pages works too but has a 1 GB soft limit
-and slower cache behaviour. Either is reversible. The domain is not, so register it before the About
-copy is written, and keep "Warframe" out of it.
+The build produces a plain `out/` directory of HTML, CSS, JS and WebP, so the host is a detail rather
+than a commitment. Recommended: **Cloudflare Pages**, free tier, deployed by GitHub Actions. It is
+fast worldwide, has no bandwidth cap to worry about with 12 MB of images, supports a custom domain
+and needs no server. GitHub Pages works too but has a 1 GB soft limit and slower cache behaviour.
+Vercel is the zero-configuration option for a Next.js project and would also serve this export
+happily. All three are reversible; `trailingSlash: true` is already set so the directory-style URLs
+work the same on each. The domain is not reversible, so register it before the About copy is
+finalised, and keep "Warframe" out of it.
 
 Cookieless Cloudflare Web Analytics is the only measurement that fits the no-accounts,
 non-commercial posture. Without it, the five-second goal in section 12 is unmeasurable and should be
@@ -283,15 +342,23 @@ stated as a design intent instead.
 - No 668-weapon mastery tracker before the 87-weapon verdict-relevant flow works.
 - No graph library. Maximum chain depth is 3, so the tree is a handful of nested boxes.
 
-## 11. The first three things to do
+## 11. Where this stands, and the next three things
 
-1. `git init`, push to GitHub, scaffold Vite plus React plus TypeScript plus Vitest, and point a
-   Cloudflare Pages project at it (M0).
-2. Port `scripts/verify-source-data.mjs` into `build-index.mjs` and commit the first `index.json`,
-   plus the image fetch (M1). The audit script already reproduces Appendix A exactly, so this is
-   mostly plumbing and validation.
-3. Write the engine against the fixtures in verdict-rules.md before any component exists (M2).
+Done: M0 and M1, plus the scaffold that proves them. The repository builds 626 static pages from a
+validated index of 621 weapons and 1,242 committed images, with 12 integrity tests and CI.
 
-Open decisions that block nothing yet, but should be settled before M3 ships: the domain, the
-branding line, and whether analytics exist at all. The recommendations are in section 5 of
-spec-review.md.
+Next, in order:
+
+1. **The engine (M2).** `demand.ts`, `verdict.ts` and `tree.ts` as pure modules, written against the
+   14 fixtures in [verdict-rules.md](verdict-rules.md) before any component consumes them. This is
+   the part that must not be wrong, so it gets written test first and in isolation.
+2. **Search and the verdict card (M3).** The two things that make the site the product described in
+   the spec rather than a browsable data dump: the typo-tolerant search box with `/` focus, and the
+   result card with its verdict banner, copy counts and reason text. The design pass belongs here
+   too, since there is finally something to shape.
+3. **The monthly refresh (M4).** `diff-index.mjs`, the changelog, the publish gate and
+   `refresh-data.yml`, with a failure opening an issue rather than deploying.
+
+Open decisions that block nothing yet, but should be settled before M3 ships: the domain and hosting
+account, the branding line, and whether analytics exist at all. The recommendations are in section 5
+of [spec-review.md](spec-review.md).

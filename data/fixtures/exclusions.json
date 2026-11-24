@@ -1,0 +1,12 @@
+{
+  "$comment": "Entries present in the upstream weapon files that should not appear on the site. Modular parts and masterable:false entries are filtered by rule in scripts/build-index.mjs; this file is only for cases that need a human decision. Keep it short, and give every entry a reason.",
+  "schema": 1,
+  "exclude": [
+    {
+      "uniqueName": "/Lotus/Weapons/Tenno/Grimoire/TnDoppelgangerGrimoire",
+      "name": "Grimoire",
+      "reason": "Duplicate display name with /Lotus/Weapons/Tenno/Grimoire/TnGrimoire, which is the player weapon. This entry appears to be the doppelganger variant rather than something a player owns, so it would put a second unobtainable Grimoire in search results.",
+      "needsVerification": true
+    }
+  ]
+}

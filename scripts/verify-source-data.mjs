@@ -38,12 +38,25 @@ const SLOT_BY_PRODUCT_CATEGORY = {
   SentinelWeapons: 'companion',
 };
 
+/**
+ * `require.resolve('@wfcd/items/package.json')` fails: the package's `exports` map does not expose
+ * its own package.json. Resolve the entry point and walk up to the nearest package.json instead.
+ */
+function packageRoot(name) {
+  const require = createRequire(path.join(ROOT, 'package.json'));
+  let dir = path.dirname(require.resolve(name));
+  while (dir !== path.dirname(dir)) {
+    if (fs.existsSync(path.join(dir, 'package.json'))) return dir;
+    dir = path.dirname(dir);
+  }
+  throw new Error(`cannot locate the ${name} package`);
+}
+
 function resolveDataDir() {
   const flag = process.argv.indexOf('--data');
   if (flag !== -1 && process.argv[flag + 1]) return process.argv[flag + 1];
   try {
-    const require = createRequire(path.join(ROOT, 'package.json'));
-    return path.join(path.dirname(require.resolve('@wfcd/items/package.json')), 'data', 'json');
+    return path.join(packageRoot('@wfcd/items'), 'data', 'json');
   } catch {
     console.error('Could not resolve @wfcd/items. Run `npm i @wfcd/items` or pass --data <dir>.');
     process.exit(2);
