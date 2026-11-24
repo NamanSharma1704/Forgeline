@@ -168,6 +168,9 @@ const weapons = players.map((weapon) => {
     name: weapon.name,
     slot: SLOT_BY_PRODUCT_CATEGORY[weapon.productCategory] ?? 'primary',
     masteryReq: weapon.masteryReq ?? 0,
+    // Most weapons cap at rank 30; Kuva, Tenet, Coda and a few others reach 40. Weapons give 100
+    // mastery per rank, so this is what the "level it before you sell it" note quotes.
+    maxRank: weapon.maxLevelCap ?? 30,
     image: `img/${slug}.webp`,
     thumb: `img/thumb/${slug}.webp`,
     imageSource: weapon.imageName,

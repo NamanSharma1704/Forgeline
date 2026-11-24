@@ -17,6 +17,8 @@ export interface Weapon {
   name: string;
   slot: Slot;
   masteryReq: number;
+  /** Highest rank the weapon levels to: 30 for most, 40 for Kuva, Tenet, Coda and a few others. */
+  maxRank: number;
   /** Path relative to the site root, 256 px WebP. */
   image: string;
   /** Path relative to the site root, 96 px WebP, displayed at 48 px. */

@@ -232,11 +232,21 @@ One measured surprise: 611 source images cover 621 weapons, because MK1 and some
 share art with their base weapon (MK1-Braton uses `Braton.png`). Downloads dedupe by source, outputs
 are written per slug.
 
-### M2. Engine (S to M)
+### M2. Engine (S to M) - done
 
 `demand.ts`, `verdict.ts`, `tree.ts` as pure modules, plus every fixture in verdict-rules.md and the
 property test over all 46 ingredients.
 **Done when:** all 14 fixtures pass and the property test passes against the live index.
+
+Built in `src/engine/`: `graph.ts` (acyclic by construction), `status.ts` (the 2 x 2 model),
+`demand.ts`, `verdict.ts`, `explain.ts` (every sentence the card and the Copy button will show) and
+`tree.ts`. 40 tests: the 14 fixtures, four property tests including a seeded random walk, wording
+tests that also forbid em and en dashes in every explanation for every weapon, graph-construction
+edge cases and the family tree. Three deliberate mutations of the arithmetic were each caught.
+
+Writing the fixtures as tests found three errors in the first draft of verdict-rules.md (fixture 9's
+number, an unstated "set up" condition, and a false property), all now corrected there. The index
+also gained `maxRank`, so the mastery note quotes 4,000 for the 52 weapons that level to 40.
 
 ### M3. Phase 1 site (M to L) - partly standing
 
@@ -344,14 +354,15 @@ stated as a design intent instead.
 
 ## 11. Where this stands, and the next three things
 
-Done: M0 and M1, plus the scaffold that proves them. The repository builds 626 static pages from a
-validated index of 621 weapons and 1,242 committed images, with 12 integrity tests and CI.
+Done: M0, M1 and M2. The repository builds 626 static pages from a validated index of 621 weapons
+and 1,242 committed images, and the verdict engine is complete and tested in isolation: 52 tests in
+all, with CI.
 
 Next, in order:
 
-1. **The engine (M2).** `demand.ts`, `verdict.ts` and `tree.ts` as pure modules, written against the
-   14 fixtures in [verdict-rules.md](verdict-rules.md) before any component consumes them. This is
-   the part that must not be wrong, so it gets written test first and in isolation.
+1. **Read the bundled Next 16 docs** (`node_modules/next/dist/docs/`, as the generated `AGENTS.md`
+   asks) before writing client components. The static pages built cleanly, but search, the stored
+   arsenal and the re-rendered verdict are where changed APIs would bite.
 2. **Search and the verdict card (M3).** The two things that make the site the product described in
    the spec rather than a browsable data dump: the typo-tolerant search box with `/` focus, and the
    result card with its verdict banner, copy counts and reason text. The design pass belongs here

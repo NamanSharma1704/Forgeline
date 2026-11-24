@@ -55,6 +55,7 @@ describe('index shape', () => {
       expect(weapon.imageSource, weapon.name).toBeTruthy();
       expect(weapon.introduced, weapon.name).toBeTruthy();
       expect(weapon.masteryReq, weapon.name).toBeGreaterThanOrEqual(0);
+      expect([30, 40], weapon.name).toContain(weapon.maxRank);
     }
   });
 });

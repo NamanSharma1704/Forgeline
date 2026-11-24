@@ -18,7 +18,8 @@ and committed, so a deploy never depends on an upstream server being awake.
 | Images | Working. 256 px and 96 px WebP for every weapon, 12 MB total |
 | Pages | Home, ingredient index, About, and a page per weapon. 626 pre-rendered pages |
 | Search | Not built yet |
-| Sell-check verdicts | Not built yet. The rules are specified in [docs/verdict-rules.md](docs/verdict-rules.md) |
+| Verdict engine | Working and tested, in `src/engine/`. Rules in [docs/verdict-rules.md](docs/verdict-rules.md) |
+| Sell-check card | Not built yet. The engine is not on any page yet |
 | My Arsenal, slot sweep, build planner | Not built yet, phase 2 |
 
 See [docs/build-plan.md](docs/build-plan.md) section 11 for what comes next.

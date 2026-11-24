@@ -92,10 +92,29 @@ Evaluate in this order and stop at the first match.
 | # | Condition | Verdict | Card says |
 | --- | --- | --- | --- |
 | 1 | `usedToBuild(w)` is empty | **Safe to sell** | "This weapon isn't used in any recipe." Plus the mastery note from section 4 if relevant |
-| 2 | The arsenal is untouched (no status set anywhere) | **Check** | Lists what it builds with copy counts, and invites the player to mark those weapons. Inline status buttons on the card, so the answer resolves without leaving the page |
+| 2 | The arsenal is not set up: no weapon has a status other than `notOwned` | **Check** | Lists what it builds with copy counts, and invites the player to mark those weapons. Inline status buttons on the card, so the answer resolves without leaving the page |
 | 3 | `consumedByChildren(w) == 0` and every target has `masteryDone` | **Safe to sell** | "Everything this builds is already mastered." |
 | 4 | `consumedByChildren(w) == 0` and some target is held but unmastered | **Safe to sell (soft)** | "You already own Akbolto. Level it before selling that." |
-| 5 | `consumedByChildren(w) > 0` | **Keep N**, N = `consumedByChildren(w)` | One line per outstanding target with its subtotal and reason, plus the forward chain when the reason is transitive |
+| 5a | `consumedByChildren(w) > 0` and the player holds more than that | **Safe to sell the surplus** | "You need 3 and have 5, so 2 are spare." Only reachable when quantities are tracked |
+| 5b | `consumedByChildren(w) > 0` otherwise | **Keep N**, N = `consumedByChildren(w)` | One line per target with its subtotal and reason, plus the forward chain when the reason is transitive |
+
+Rule 2 is defined by values rather than by "anything stored", so the engine gives the same answer
+whether or not the store keeps explicit `notOwned` entries. Every status in a 2 x 2 cell either
+equals the default or records progress.
+
+Each target line carries one of four reasons, which is what the card's wording hangs off:
+
+| Reason | When | Line reads |
+| --- | --- | --- |
+| `needs-building` | Target is `notOwned`, so it must be built at least once | "2 for Akbolto, on the way to Akjagara." |
+| `feeds-chain` | Target's own mastery is covered, but something below it still consumes copies | "2 for Akbolto, which Akjagara still needs." |
+| `mastered` | Target is mastered or sold and nothing below it is outstanding | "Hystrix is already mastered." |
+| `held-unmastered` | Target is held and unlevelled, and nothing needs another copy | "You already own Akbolto. Level it before selling that." |
+
+A useful consequence of the arithmetic, and the property the random-walk test enforces: for any one
+weapon, `buildsNeeded` is ordered **notOwned >= sold >= owned = mastered**. Recording progress can
+therefore never make any verdict stricter, and a Safe can never turn back into a Keep because the
+player marked something.
 
 Rules that apply to every verdict:
 
@@ -112,12 +131,19 @@ Rules that apply to every verdict:
 
 Independent of the recipe verdict, attach a note when `!masteryDone(w)`:
 
-- Held and unmastered: "You haven't mastered this yet. Levelling it to 30 is worth 3,000 mastery, and
-  mastery sticks after you sell."
-- Not held and unmastered: no note, there is nothing to lose.
+- `owned` (held, unmastered): "You haven't mastered Bolto yet. Levelling it to rank 30 is worth 3,000
+  mastery, and that stays after you sell it."
+- `notOwned` or unrecorded: a conditional note, "If Bolto isn't rank 30 yet, level it before you sell
+  it: that's 3,000 mastery, and it stays after you sell." The player is asking about selling it, so
+  they hold one, whatever the arsenal says. What we cannot know is whether it is levelled.
+- `mastered` or `sold`: no note.
 
-This is the most common real mistake a mastery grinder makes, and it applies to all 634 masterable
-weapons, not just the 46 ingredients.
+The numbers come from the data, not a constant. Weapons give 100 mastery per rank, and 52 of them
+(Kuva, Tenet, Coda, Paracesis and a few others) level to 40 rather than 30, so the build reads
+`maxLevelCap` into the index as `maxRank` and the note quotes 3,000 or 4,000 accordingly.
+
+This is the most common real mistake a mastery grinder makes, and it applies to all 621 weapons on
+the site, not just the 46 ingredients.
 
 ## 5. Edge cases the engine must handle
 
@@ -129,30 +155,51 @@ weapons, not just the 46 ingredients.
 | Non-weapon components in a recipe (blueprints, Orokin Cells) | Ignored by the graph. Listed as information on the weapon page, never tracked |
 | Modular parts and non-masterable entries | Excluded from the index entirely, so they never reach a verdict |
 | `qty` greater than what is needed | Safe to sell the surplus: "you need 2, you have 3" |
-| A future recipe cycle | Cycle guard returns a partial result and logs a build-time warning |
+| A future recipe cycle | Graph construction drops the edge that closes the loop (and its mirror), records a warning, and every later walk runs over a guaranteed DAG. Better than a guard inside the arithmetic, which would memoise partial results in an order-dependent way |
 
 ## 6. Test fixtures
 
-These belong in the repository as the engine's unit tests. Every row uses the real graph. Statuses not
-listed are `notOwned`.
+These are the engine's unit tests, in [tests/engine.test.ts](../tests/engine.test.ts). Every row uses
+the real graph. Statuses not listed are `notOwned`.
+
+Rows that say "nothing owned" also mark **Braton** as `mastered`. Braton builds nothing and is built
+from nothing, so it sets the arsenal up (rule 2) without touching any recipe in the table. Without
+it, an arsenal of nothing but defaults is a Check, not a Keep: an ambiguity in the first draft of this
+table that the tests caught.
 
 | # | Weapon | Arsenal state | Expected verdict | Expected number and reason |
 | --- | --- | --- | --- | --- |
 | 1 | Braton | empty arsenal | Safe to sell | Not an ingredient |
 | 2 | Bolto | empty arsenal | Check | Builds Akbolto (2) and Hystrix (1) |
-| 3 | Bolto | all `notOwned` | Keep | 3: two for Akbolto, one for Hystrix |
+| 3 | Bolto | nothing owned | Keep | 3: two for Akbolto, one for Hystrix |
 | 4 | Bolto | Akbolto `mastered`, Hystrix `mastered` | Safe to sell | Everything it builds is mastered |
 | 5 | Bolto | Akbolto `owned`, Hystrix `mastered`, Akjagara `notOwned` | Safe to sell (soft) | Own Akbolto, level it first |
 | 6 | Bolto | Akbolto `sold`, Hystrix `mastered`, Akjagara `notOwned` | Keep | 2 for Akbolto, needed again for Akjagara |
-| 7 | Lato | all `notOwned` | Keep | 3, through Bolto |
+| 7 | Lato | nothing owned | Keep | 3, through Bolto |
 | 8 | Lato | Bolto `mastered`, Akbolto `mastered`, Hystrix `mastered`, Akjagara `mastered` | Safe to sell | Whole chain complete |
-| 9 | Dual Skana | Akjagara `mastered`, Dark Split-Sword `notOwned`, Redeemer `sold` | Keep | 2: one for Dark Split-Sword, one to rebuild Redeemer. Three reasons listed, one satisfied |
+| 9 | Dual Skana | Akjagara `mastered`, Dark Split-Sword `notOwned`, Redeemer `sold` | Keep | 1, for Dark Split-Sword. Three lines listed, two satisfied. (The first draft said 2, "one to rebuild Redeemer", which contradicts section 2: Redeemer is sold, so its mastery is done, and it builds nothing, so nothing needs it rebuilt) |
 | 10 | Viper | Hystrix `notOwned`, Twin Vipers `mastered` | Keep | 1 for Hystrix |
 | 11 | Lex Prime | Aklex `mastered`, Aklex Prime `notOwned` | Keep | 2 for Aklex Prime. Proves Prime separation: the non-Prime status must not satisfy it |
 | 12 | Mutalist Cernos | Proboscis Cernos `notOwned`, status `owned` qty 1 | Keep | 1 for Proboscis Cernos, "you have 1" |
-| 13 | Cernos | Mutalist Cernos `notOwned`, Proboscis Cernos `notOwned` | Keep | 1, chain shown: Cernos, Mutalist Cernos, Proboscis Cernos |
+| 13 | Cernos | nothing owned | Keep | 1, chain shown: Cernos, Mutalist Cernos, Proboscis Cernos |
 | 14 | Any weapon | arsenal with one unrelated status set | Not Check | Unset targets count as `notOwned`, so the verdict resolves rather than falling back to Check |
 
-Add a property test over the whole graph: for every one of the 46 ingredients, with every target set
-to `mastered`, the verdict must be Safe to sell, and with every target `notOwned` it must be Keep with
-`N >= 1`. That catches graph-shape regressions after a monthly refresh.
+Property tests run the rules over all 46 ingredients at once, which is what catches graph-shape
+regressions after a monthly refresh:
+
+- **Empty arsenal:** every ingredient is Check and every other weapon is Safe.
+- **Everything mastered:** every ingredient is Safe.
+- **Nothing owned:** every ingredient is Keep with `N >= 1`, and N agrees three ways: the verdict,
+  `consumedByChildren`, and the sum of the target lines.
+- **Progress never makes a verdict stricter:** a seeded random walk over the 87 verdict-relevant
+  weapons (300 rounds) moves one weapon one step up `notOwned, sold, owned, mastered` and checks that
+  no ingredient's N rises and no Safe becomes a Keep.
+
+The first draft proposed "with every *direct* target mastered, every ingredient is Safe". That is
+false, and correctly so: with Bolto mastered (one copy held) but Akbolto and Hystrix not owned, those
+two still consume three Boltos, so Lato is Keep 2. Direct targets are not the whole story whenever a
+target is itself an ingredient.
+
+Each of these was checked against a deliberately broken engine. Replacing the sum over recipes with
+the spec's original "highest single recipe" fails 8 tests, letting mastery add a copy fails 11, and
+ignoring held copies fails 5 including the random walk.
