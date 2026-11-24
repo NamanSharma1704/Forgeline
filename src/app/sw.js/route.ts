@@ -6,60 +6,50 @@
  * data." So:
  *
  *   - Install precaches the core pages, the three data files, the offline page, and the pages of
- *     the 87 recipe weapons (the ones whose verdict needs the engine), plus the scripts and styles
- *     the build emitted. About 1.1 MB over the wire, fetched in the background once per build.
+ *     the 87 recipe weapons (the ones whose verdict needs the engine), plus the scripts, styles
+ *     and fonts those pages name. About 1.1 MB over the wire, fetched in the background once per
+ *     build.
  *   - Pages and data are network first: online, the player always gets the live build; offline,
  *     the last copy. Hashed assets and pictures are cache first.
- *   - Any other weapon page offline falls back to /offline.html, which can still answer: a weapon
+ *   - Any other weapon page offline falls back to /offline/, which can still answer: a weapon
  *     that feeds no recipe is Safe to sell, and the recipe data says which those are.
  *   - VERSION changes with every build, so a deploy installs a new worker that waits; the page
  *     offers "Reload" (ServiceWorkerManager) and only then does it take over.
  */
 
-import { readdirSync } from 'node:fs';
-import { join } from 'node:path';
 import { allWeapons, weaponIndex } from '@/data/weapons';
 
 export const dynamic = 'force-static';
 
-/**
- * Every script and stylesheet the build emitted. Most are named in the pages' HTML, but the router
- * also loads a few chunks lazily, and those must be saved too or a page offline can stall. The
- * compile step writes them before pages are rendered, so they are on disk when this runs.
- */
-function buildChunks(): string[] {
-  try {
-    return readdirSync(join(process.cwd(), '.next', 'static', 'chunks'), { recursive: true })
-      .map((file) => String(file).split('\\').join('/'))
-      .filter((file) => /\.(js|css)$/.test(file))
-      .map((file) => `/_next/static/chunks/${file}`);
-  } catch {
-    return [];
-  }
-}
-
 const VERSION = `${weaponIndex.sourceVersion}-${process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? 'local'}-${new Date().toISOString()}`;
 
 const CORE_PAGES = ['/', '/arsenal/', '/sweep/', '/plan/', '/ingredients/', '/about/'];
-const DATA = ['/search-index.json', '/graph.json', '/materials.json', '/offline.html'];
+const DATA = ['/search-index.json', '/graph.json', '/materials.json'];
 const RECIPE_PAGES = allWeapons()
   .filter((weapon) => weapon.usedToBuild.length > 0 || weapon.madeFrom.length > 0)
   .map((weapon) => `/w/${weapon.slug}/`);
 
-function worker(version: string, pages: string[], data: string[], chunks: string[]) {
+function worker(version: string, pages: string[], data: string[]) {
   return `/* Forgeline service worker, generated at build time. Version ${version}. */
 const VERSION = ${JSON.stringify(version)};
 const CACHE = 'forgeline-' + VERSION;
 const PAGES = ${JSON.stringify(pages)};
 const DATA = ${JSON.stringify(data)};
-const CHUNKS = ${JSON.stringify(chunks)};
 
-// Fonts and anything else a page names that is not in CHUNKS.
-const ASSET_PATTERN = /\\/_next\\/static\\/[^"'\\s)]+/g;
+// public/offline/index.html. Hosts differ on whether a folder's index answers at the folder
+// (Vercel strips .html), so try both and keep whichever works under one key.
+const OFFLINE = '/offline/';
+const OFFLINE_SOURCES = ['/offline/', '/offline/index.html'];
+
+// Every script, stylesheet and font a page loads is named in its HTML, including the router
+// payload inlined there. Read from the pages rather than the build folder, because hosts lay that
+// out differently (Vercel serves it under /_next/static/immutable/). The backslash is excluded
+// because the inlined payload is escaped JSON.
+const ASSET_PATTERN = /\\/_next\\/static\\/[^"'\\s)\\\\]+/g;
 
 async function precache() {
   const cache = await caches.open(CACHE);
-  const assets = new Set(CHUNKS);
+  const assets = new Set();
   await Promise.allSettled(
     [...PAGES, ...DATA].map(async (url) => {
       const response = await fetch(url, { cache: 'no-cache' });
@@ -72,6 +62,13 @@ async function precache() {
       await cache.put(url, response);
     })
   );
+  for (const url of OFFLINE_SOURCES) {
+    const response = await fetch(url, { cache: 'no-cache' }).catch(() => null);
+    if (response && response.ok && !response.redirected) {
+      await cache.put(OFFLINE, response);
+      break;
+    }
+  }
   await Promise.allSettled(
     [...assets].map(async (url) => {
       if (await cache.match(url)) return;
@@ -135,7 +132,7 @@ self.addEventListener('fetch', (event) => {
 
   if (request.mode === 'navigate') {
     event.respondWith(
-      networkFirst(request, async () => (await caches.match('/offline.html')) ?? Response.error())
+      networkFirst(request, async () => (await caches.match(OFFLINE)) ?? Response.error())
     );
     return;
   }
@@ -148,7 +145,7 @@ self.addEventListener('fetch', (event) => {
 }
 
 export function GET() {
-  return new Response(worker(VERSION, [...CORE_PAGES, ...RECIPE_PAGES], DATA, buildChunks()), {
+  return new Response(worker(VERSION, [...CORE_PAGES, ...RECIPE_PAGES], DATA), {
     headers: { 'Content-Type': 'application/javascript; charset=utf-8' },
   });
 }

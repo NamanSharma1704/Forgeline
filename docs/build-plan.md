@@ -352,9 +352,10 @@ rather than silently serving stale data.
   branches shown once with both captions. A Recipe section sits under it on every weapon page.
 - **Installable and offline.** A web app manifest and icons (`scripts/make-icons.mjs`), and a
   service worker generated at build time (`/sw.js`). One visit saves the core pages, the 87 recipe
-  weapons' pages, the three data files and every build chunk: about 1.1 MB over the wire. Pages and
-  data are network first, so online always means the live build; hashed files and pictures are
-  cache first. Any other weapon page offline gets `/offline.html`, which still answers from the
+  weapons' pages, the three data files and every script, style and font those pages name (read
+  from their HTML, since hosts lay the build folder out differently): about 1.1 MB over the wire.
+  Pages and data are network first, so online always means the live build; hashed files and
+  pictures are cache first. Any other weapon page offline gets `/offline/`, which still answers from the
   recipe graph: a weapon that feeds no recipe is Safe to sell.
 - **Update prompt.** Every build is a new worker version. It installs in the background and waits;
   the page shows "Forgeline has new weapon data or features" with Reload, and only that click swaps
@@ -493,7 +494,7 @@ push deployed by Vercel.
 Next, in order:
 
 1. **Check the worker on the live site.** After the M6 deploy: install from Chrome on a phone,
-   confirm `/sw.js` and `/offline.html` are served as they are locally, and that the next deploy
+   confirm `/sw.js` and `/offline/` are served as they are locally, and that the next deploy
    shows the Reload bar.
 2. **Measure the five-second goal.** A throttled 4G run against the live site, so M3's last
    acceptance criterion is a number rather than an assumption. Repeat visits are now served from
