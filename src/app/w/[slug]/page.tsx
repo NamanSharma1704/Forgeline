@@ -8,7 +8,8 @@ import { WeaponArt } from '@/components/WeaponArt';
 import { WeaponStatus } from '@/components/WeaponStatus';
 import { recipeGraph } from '@/data/engine';
 import { SLOT_LABEL, type Weapon } from '@/data/types';
-import { allWeapons, getWeapon, resolve } from '@/data/weapons';
+import { variantOf } from '@/data/variants';
+import { allWeapons, getWeapon, otherVersions, resolve } from '@/data/weapons';
 import { createEvaluator, explain, familyTree, type TreeNode } from '@/engine';
 
 type Params = { slug: string };
@@ -107,6 +108,8 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
   const explanation = explain(verdict, recipeGraph);
   const targets = verdict.targets.map((target) => toCard(resolve(target.slug)));
   const names = Object.fromEntries(descendants(slug).map((s) => [s, resolve(s).name]));
+  const variant = variantOf(weapon.name);
+  const versions = otherVersions(slug);
 
   // Phase 2: the full depth, at most three steps each way in the current data.
   const tree = familyTree(recipeGraph, slug);
@@ -147,8 +150,21 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
             <span>{SLOT_LABEL[weapon.slot]}</span>
             <span>Mastery rank {weapon.masteryReq}</span>
             <span>Added in {weapon.introduced}</span>
+            {variant.line && <span>{variant.line} variant</span>}
             {weapon.isNew && <span className="badge-new">New this month</span>}
           </p>
+          {versions.length > 0 && (
+            <p className="weapon-versions">
+              Other versions:{' '}
+              {versions.map((other, i) => (
+                <span key={other.slug}>
+                  {i > 0 && ', '}
+                  <Link href={`/w/${other.slug}/`}>{other.name}</Link>
+                </span>
+              ))}
+              . Each is its own weapon, with its own mastery and sell check.
+            </p>
+          )}
           <WeaponStatus
             slug={weapon.slug}
             name={weapon.name}

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { IngredientIndex, type IngredientRow } from '@/components/IngredientIndex';
+import { variantOf } from '@/data/variants';
 import { ingredientWeapons, resolve } from '@/data/weapons';
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function IngredientsPage() {
     return {
       slug: weapon.slug,
       name: weapon.name,
+      variant: variantOf(weapon.name).variant,
       slot: weapon.slot,
       image: weapon.image,
       thumb: weapon.thumb,

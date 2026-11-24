@@ -369,6 +369,50 @@ the offline answer. After a rebuild, the next visit showed the Reload bar, and R
 to the new version's cache. The planner and tree were checked at 1200 and 390 px with no horizontal
 page scroll. 117 tests.
 
+### M6.5. Player Safety & Warframe Nuance (Player-Centric Expansion)
+
+Addresses real player failure modes beyond pure recipe mathematics: selling hard-to-recover quest
+weapons, ditching Incarnon-compatible meta weapons, accidentally sweeping potatoed/Forma'd favorites,
+and setup fatigue across 621 weapons.
+
+**Done when:** checking Broken War warns against selling despite building nothing; Torid surfaces its
+Incarnon Genesis compatibility; favorited weapons are protected from the slot sweep; and a new player
+can mark the 46 ingredients in a 2-minute express wizard.
+
+Planned deliverables:
+
+- **Re-acquisition difficulty and quest protection.** Not all weapons are equal to re-acquire. Market
+  credit weapons (Braton, Lato) cost 25k credits and 0 craft time; quest weapons (Broken War, Xoris)
+  cost weeks of Cephalon Simaris standing or rare drops. Weapons carry an acquisition tier:
+  `market-credits` (trivial), `market-blueprint` / `clan-dojo` (standard), `quest` / `simaris` / `baro` /
+  `invasion` (hard). A "Safe to sell" verdict on a hard-to-recover weapon carries a clear warning banner:
+  "Hard to re-acquire: quest reward or expensive Simaris standing."
+- **Incarnon Genesis compatibility badge.** Weapons with Steel Path Circuit Incarnon Genesis adapters
+  (Torid, Dual Toxocyst, Bo, Furis, Lato, Lex, Angstrum, Miter, etc.) are flagged (`isIncarnonCompatible`).
+  Even if all recipe targets are mastered, the verdict card reminds the player: "Incarnon Genesis
+  compatible in Steel Path Circuit: high endgame power."
+- **Favorite / "Potatoed" protection in Arsenal & Sweep.** Add an `invested` / `favorited` toggle (star
+  or catalyst icon) to the arsenal store schema. In `/sweep`, favorited weapons are pinned to a
+  protected "Keep (Invested)" tier and never suggested for sale, preventing accidental disposal of 5-Forma
+  gear to free a slot.
+- **Variant family & sibling links.** Display variant chips (e.g. `Normal`, `Prime`, `Kuva`, `Tenet`,
+  `Prisma`, `Wraith`, `Vandal`) with contextual recipe distinctions (e.g. Lex builds Aklex, but Lex Prime
+  builds Aklex Prime).
+- **Express 46 Onboarding Wizard.** Replace the intimidation of a 621-item checklist with a 2-minute
+  focused flow in `/arsenal`: quick-mark *only* the 46 ingredient weapons with single-tap controls,
+  plus a "Mark all Market credit weapons as Mastered" bulk shortcut.
+- **Foundry crafting duration in Build Planner.** Add cumulative build hours (and concurrent stages) to
+  `/plan` (e.g., Akjagara: 72h total foundry time across 3 sequential stages) so players can queue
+  ingredients effectively.
+- **Target Recipe Resource Breakdown & Foundry Ingredients.** When the Sell Check card says
+  "Used to build: Akbolto (2 copies)", players shouldn't have to leave the page or guess what else
+  Akbolto requires. Add an expandable/direct **Blueprint Requirements peek** on the verdict row and
+  weapon view showing the non-weapon crafting ingredients (e.g., `1x Orokin Cell`, `20,000 Credits`,
+  `Akbolto Blueprint`), with visual rarity tags for bottleneck materials (Forma, Orokin Cells,
+  Argon Crystals, Tellurium, Nitain Extract).
+- **Direct community links.** Discreet external links on each weapon page to the Official Warframe Wiki
+  (for drop locations/farming tables) and warframe.market (for tradeable Prime sets).
+
 ### M7. Phase 3 (L, only after the core is proven)
 
 Share links and the clan page on Supabase, non-weapon ingredients (Warframe, companion and Archwing
@@ -488,8 +532,14 @@ the five-second goal in section 12 is unmeasurable and should be stated as a des
 Done: M0 to M6. Phases 1 and 2 of the spec are complete: a player can mark their arsenal and every
 verdict, tree, sweep and build plan becomes about their own weapons, on a phone home screen and
 offline. The data refreshes itself monthly behind a gate that cannot publish a broken recipe graph,
-and each refresh reaches players as a Reload prompt rather than silently. 117 tests, CI, and every
+and each refresh reaches players as a Reload prompt rather than silently. 138 tests, CI, and every
 push deployed by Vercel.
+
+Since M6, variants are separated. Each weapon is classed as Normal, Prime, Kuva/Tenet/Coda,
+Vandal/Wraith, Prisma, Syndicate or another variant line (MK1, Dex, Mutalist and a few singles),
+read from its name in `src/data/variants.ts`, since the source has no field for it. My Arsenal and
+the ingredient list filter by variant, and each weapon page links its other versions (Braton to
+Braton Prime, Braton Vandal and Mk1-Braton), because each is a separate weapon to master and sell.
 
 Next, in order:
 
@@ -501,8 +551,11 @@ Next, in order:
    the cache, so measure a first visit.
 3. **Watch the 1 December run.** The first scheduled refresh. Expect "unchanged" unless
    `@wfcd/items` publishes a game update before then.
+4. **Implement M6.5 (Player-Centric Expansion).** Deliver re-acquisition warnings (quest/Simaris
+   protection), Incarnon Genesis compatibility flags, favorited weapon protection in Slot Sweep,
+   variant links, and the 2-minute Express 46 onboarding wizard.
 
-M7 (phase 3) waits until the core has been used by real players.
+M7 (phase 3) waits until the core and M6.5 have been used by real players.
 
 Hosting is settled (section 9). Open decisions that block nothing yet, but should be settled before
 M3 ships: the domain, the branding line, and whether analytics exist at all. The recommendations are

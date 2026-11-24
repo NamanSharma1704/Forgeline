@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ArsenalManager, type ArsenalRow, type RecipeRole } from '@/components/ArsenalManager';
 import type { Weapon } from '@/data/types';
+import { variantOf } from '@/data/variants';
 import { allWeapons, getWeapon } from '@/data/weapons';
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ const toRow = (weapon: Weapon): ArsenalRow => ({
   image: weapon.image,
   thumb: weapon.thumb,
   role: role(weapon),
+  variant: variantOf(weapon.name).variant,
 });
 
 export default function ArsenalPage() {

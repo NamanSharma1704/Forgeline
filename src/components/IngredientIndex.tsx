@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useId, useMemo, useState } from 'react';
 import { SLOT_LABEL, type Slot } from '@/data/types';
+import { VARIANT_LABEL, VARIANT_ORDER, type Variant } from '@/data/variants';
 import { normalise } from '@/search/rank';
 import { STATUS_LABEL, statusIn } from '@/store/arsenal';
 import { useArsenal } from '@/store/useArsenal';
@@ -15,6 +16,7 @@ import { WeaponArt, type ArtWeapon } from './WeaponArt';
 
 export interface IngredientRow extends ArtWeapon {
   readonly slug: string;
+  readonly variant: Variant;
   readonly builds: readonly { slug: string; name: string; copies: number }[];
   /** Copies its recipes need in total, for sorting. */
   readonly totalCopies: number;
@@ -27,6 +29,7 @@ const SLOT_ORDER: Slot[] = ['primary', 'secondary', 'melee', 'arch-gun', 'arch-m
 export function IngredientIndex({ rows }: { rows: readonly IngredientRow[] }) {
   const id = useId();
   const [slot, setSlot] = useState<Slot | 'all'>('all');
+  const [variant, setVariant] = useState<Variant | 'all'>('all');
   const [sort, setSort] = useState<SortKey>('name');
   const [text, setText] = useState('');
   const [mine, setMine] = useState(false);
@@ -41,11 +44,21 @@ export function IngredientIndex({ rows }: { rows: readonly IngredientRow[] }) {
     [rows]
   );
 
+  const variants = useMemo(
+    () =>
+      VARIANT_ORDER.flatMap((candidate) => {
+        const count = rows.filter((row) => row.variant === candidate).length;
+        return count > 0 ? [{ variant: candidate, count }] : [];
+      }),
+    [rows]
+  );
+
   const visible = useMemo(() => {
     const needle = normalise(text);
     const filtered = rows.filter(
       (row) =>
         (slot === 'all' || row.slot === slot) &&
+        (variant === 'all' || row.variant === variant) &&
         (!mine || (ready && holds(row.slug))) &&
         (!needle ||
           normalise(row.name).includes(needle) ||
@@ -61,10 +74,11 @@ export function IngredientIndex({ rows }: { rows: readonly IngredientRow[] }) {
     });
     // `holds` reads the arsenal, so the arsenal is the real dependency.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [rows, slot, sort, text, mine, ready, arsenal]);
+  }, [rows, slot, variant, sort, text, mine, ready, arsenal]);
 
   const reset = () => {
     setSlot('all');
+    setVariant('all');
     setText('');
     setMine(false);
   };
@@ -93,6 +107,29 @@ export function IngredientIndex({ rows }: { rows: readonly IngredientRow[] }) {
             </button>
           ))}
         </div>
+        {variants.length > 1 && (
+          <div className="chips" role="group" aria-label="Filter by variant">
+            <button
+              type="button"
+              className="chip"
+              aria-pressed={variant === 'all'}
+              onClick={() => setVariant('all')}
+            >
+              Any variant
+            </button>
+            {variants.map(({ variant: candidate, count }) => (
+              <button
+                key={candidate}
+                type="button"
+                className="chip"
+                aria-pressed={variant === candidate}
+                onClick={() => setVariant(candidate)}
+              >
+                {VARIANT_LABEL[candidate]} <span className="chip__count">{count}</span>
+              </button>
+            ))}
+          </div>
+        )}
         <button
           type="button"
           className="chip"

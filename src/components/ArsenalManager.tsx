@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useId, useMemo, useRef, useState } from 'react';
 import { SLOT_LABEL, type OwnershipStatus, type Slot } from '@/data/types';
+import { VARIANT_LABEL, VARIANT_ORDER, type Variant } from '@/data/variants';
 import { normalise } from '@/search/rank';
 import {
   ArsenalFileError,
@@ -30,6 +31,7 @@ export type RecipeRole = 'ingredient' | 'target' | 'both' | 'none';
 export interface ArsenalRow extends ArtWeapon {
   readonly slug: string;
   readonly role: RecipeRole;
+  readonly variant: Variant;
 }
 
 type Scope = 'recipe' | 'ingredients' | 'all';
@@ -110,6 +112,7 @@ export function ArsenalManager({
   const { ready, arsenal } = useArsenal();
   const [scope, setScope] = useState<Scope>('recipe');
   const [slot, setSlot] = useState<Slot | 'all'>('all');
+  const [variant, setVariant] = useState<Variant | 'all'>('all');
   const [status, setStatus] = useState<OwnershipStatus | 'any'>('any');
   const [text, setText] = useState('');
   const [view, setView] = useState<'list' | 'grid'>('list');
@@ -130,10 +133,25 @@ export function ArsenalManager({
   const recipeMarked = rows.filter((row) => row.role !== 'none' && arsenal.entries[row.slug]).length;
   const masteredShare = rows.length ? totals.masteryDone / rows.length : 0;
 
+  // Variant counts follow the scope, so "Prime 8" means eight Primes among the weapons shown. A
+  // variant with none in scope is hidden, unless it is the one selected.
+  const variantCounts = useMemo(() => {
+    const counts = new Map<Variant, number>();
+    for (const row of rows) {
+      if (inScope(row, scope)) counts.set(row.variant, (counts.get(row.variant) ?? 0) + 1);
+    }
+    return counts;
+  }, [rows, scope]);
+  const variantCount = (candidate: Variant) => variantCounts.get(candidate) ?? 0;
+  const variants = VARIANT_ORDER.filter(
+    (candidate) => variantCount(candidate) > 0 || candidate === variant
+  );
+
   const needle = normalise(text);
   const visible = rows.filter(
     (row) =>
       inScope(row, scope) &&
+      (variant === 'all' || row.variant === variant) &&
       (slot === 'all' || row.slot === slot) &&
       (status === 'any' || (ready && statusIn(arsenal, row.slug) === status)) &&
       (!needle || normalise(row.name).includes(needle))
@@ -217,6 +235,27 @@ export function ArsenalManager({
             </button>
           ))}
         </div>
+        <div className="chips" role="group" aria-label="Filter by variant">
+          <button
+            type="button"
+            className="chip"
+            aria-pressed={variant === 'all'}
+            onClick={() => setVariant('all')}
+          >
+            Any variant
+          </button>
+          {variants.map((candidate) => (
+            <button
+              key={candidate}
+              type="button"
+              className="chip"
+              aria-pressed={variant === candidate}
+              onClick={() => setVariant(candidate)}
+            >
+              {VARIANT_LABEL[candidate]} <span className="chip__count">{variantCount(candidate)}</span>
+            </button>
+          ))}
+        </div>
         <div className="chips" role="group" aria-label="Filter by slot">
           <button type="button" className="chip" aria-pressed={slot === 'all'} onClick={() => setSlot('all')}>
             Any slot
@@ -278,6 +317,7 @@ export function ArsenalManager({
             className="button"
             onClick={() => {
               setSlot('all');
+              setVariant('all');
               setStatus('any');
               setText('');
             }}

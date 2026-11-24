@@ -27,6 +27,7 @@ reads it and redeploys on each push to `main`, so nothing lives only on Vercel.
 | Build planner | Working. Every weapon down the chain, what is left to build, and the resources it costs |
 | Family tree | Full depth on every weapon page, with the recipe underneath |
 | Install and offline | Installable, and one visit saves the recipe weapons, arsenal, sweep and planner for offline use. A new build asks before it reloads |
+| Variants | Normal, Prime, Kuva/Tenet/Coda, Vandal/Wraith, Prisma and Syndicate weapons filter apart in My Arsenal and the ingredient list, and each weapon page links its other versions |
 
 See [docs/build-plan.md](docs/build-plan.md) section 11 for what comes next.
 
