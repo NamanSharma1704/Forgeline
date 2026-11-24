@@ -1,0 +1,549 @@
+{
+  "$comment": "Snapshot of the ingredient graph, taken from Appendix A of Forgeline_Website_Spec.md 1.1 and confirmed on 2026-11-24 to match the graph derived from @wfcd/items 1.1276.51. The monthly refresh compares against this file and blocks a publish on any disagreement. Flip verifiedAgainstWiki to true per row as rows are hand-checked against the WARFRAME Wiki.",
+  "schema": 1,
+  "sourceVersion": "1.1276.51",
+  "capturedAt": "2026-11-24",
+  "counts": {
+    "ingredients": 46
+  },
+  "ingredients": [
+    {
+      "name": "Akbolto",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Akjagara",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Akstiletto",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Aksomati",
+          "copies": 1
+        },
+        {
+          "name": "Sarpa",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Amphis",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Sydon",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Ankyros",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Ripkas",
+          "copies": 1
+        },
+        {
+          "name": "Tekko",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Atomos",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Twin Basolk",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Bo",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Cadus",
+          "copies": 1
+        },
+        {
+          "name": "Tipedo",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Bolto",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Akbolto",
+          "copies": 2
+        },
+        {
+          "name": "Hystrix",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Boltor",
+      "slot": "primary",
+      "usedToBuild": [
+        {
+          "name": "Boltace",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Broken War",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "War",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Bronco",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Akbronco",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Bronco Prime",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Akbronco Prime",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Cernos",
+      "slot": "primary",
+      "usedToBuild": [
+        {
+          "name": "Mutalist Cernos",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Cestra",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Dual Cestra",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Drakgoon",
+      "slot": "primary",
+      "usedToBuild": [
+        {
+          "name": "Zarr",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Dual Cleavers",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Ripkas",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Dual Kamas",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Dual Raza",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Dual Skana",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Akjagara",
+          "copies": 1
+        },
+        {
+          "name": "Dark Split-Sword",
+          "copies": 1
+        },
+        {
+          "name": "Redeemer",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Dual Zoren",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Twin Basolk",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Furax",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Knux",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Furis",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Afuris",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Galatine",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Paracesis",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Gammacor",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Heliocor",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Grakata",
+      "slot": "primary",
+      "usedToBuild": [
+        {
+          "name": "Twin Grakatas",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Hikou",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Panthera",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Kama",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Dual Kamas",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Kogake",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Hirudo",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Kohmak",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Twin Kohmak",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Kraken",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Kulstar",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Krohkur",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Twin Krohkur",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Kronen",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Boltace",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Kunai",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Tipedo",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Lato",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Bolto",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Latron",
+      "slot": "primary",
+      "usedToBuild": [
+        {
+          "name": "Tiberon",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Lex",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Aklex",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Lex Prime",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Aklex Prime",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Magistar",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Sibear",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Magnus",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Akmagnus",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Magnus Prime",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Akmagnus Prime",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Miter",
+      "slot": "primary",
+      "usedToBuild": [
+        {
+          "name": "Panthera",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Mutalist Cernos",
+      "slot": "primary",
+      "usedToBuild": [
+        {
+          "name": "Proboscis Cernos",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Nikana",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Dragon Nikana",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Ninkondi",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Shaku",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Tipedo",
+      "slot": "melee",
+      "usedToBuild": [
+        {
+          "name": "Lesion",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Vasto",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Akvasto",
+          "copies": 2
+        },
+        {
+          "name": "Redeemer",
+          "copies": 1
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Vasto Prime",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Akvasto Prime",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    },
+    {
+      "name": "Viper",
+      "slot": "secondary",
+      "usedToBuild": [
+        {
+          "name": "Hystrix",
+          "copies": 1
+        },
+        {
+          "name": "Twin Vipers",
+          "copies": 2
+        }
+      ],
+      "verifiedAgainstWiki": false
+    }
+  ]
+}

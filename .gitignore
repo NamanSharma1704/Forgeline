@@ -1,0 +1,32 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# next
+.next/
+out/
+next-env.d.ts
+
+# build and test output
+coverage/
+*.tsbuildinfo
+
+# environment
+.env
+.env.local
+.env.*.local
+
+# editors and os
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# logs
+*.log
+npm-debug.log*
+
+# Generated data and images are committed on purpose: see docs/build-plan.md section 0.
+# data/index.json, data/images.manifest.json and public/img are part of the deploy.
