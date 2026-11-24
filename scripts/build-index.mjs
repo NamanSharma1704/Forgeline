@@ -261,6 +261,10 @@ const weapons = players.map((weapon) => {
     ...(materials.length ? { materials } : {}),
     // Foundry time for one build, in seconds (M6.5, 12.6). A few weapons have none in the source.
     ...(weapon.buildTime > 0 ? { buildTime: weapon.buildTime } : {}),
+    // Credits the Foundry charges per build, and the blueprint's Market price in credits when the
+    // Market sells it (M6.5, 12.7).
+    ...(weapon.buildPrice > 0 ? { buildPrice: weapon.buildPrice } : {}),
+    ...(weapon.bpCost > 0 ? { blueprintPrice: weapon.bpCost } : {}),
     ...(genesisByName.has(weapon.name) ? { incarnonGenesis: genesisByName.get(weapon.name) } : {}),
     ...(aliases[slug] ? { aliases: aliases[slug] } : {}),
   };

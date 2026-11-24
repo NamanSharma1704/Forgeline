@@ -51,6 +51,10 @@ export interface Weapon {
   materials?: Material[];
   /** Foundry time for one build, in seconds. Absent when the source has none (Lex, for one). */
   buildTime?: number;
+  /** Credits the Foundry charges for one build. */
+  buildPrice?: number;
+  /** Credits for the blueprint in the in-game Market, when the Market sells it. */
+  blueprintPrice?: number;
   /**
    * The Incarnon Genesis adapter made for this exact weapon ("Torid Incarnon Genesis"), when one
    * exists. The weapon's other versions can take it too: see incarnonGenesisOf in weapons.ts.

@@ -7,6 +7,7 @@
  */
 
 import indexJson from '../../data/index.json';
+import type { RecipeSummary } from './recipe';
 import type { Slot, Weapon, WeaponIndex } from './types';
 import { VARIANT_ORDER, variantOf } from './variants';
 
@@ -77,6 +78,17 @@ export const graphWeapons = () =>
     const incarnon = incarnonGenesisOf(weapon);
     return incarnon ? { ...weapon, incarnon } : weapon;
   });
+
+/** A weapon's recipe for display: names resolved, credits and Foundry time attached. */
+export const recipeOf = (weapon: Weapon): RecipeSummary => ({
+  slug: weapon.slug,
+  name: weapon.name,
+  weapons: weapon.madeFrom.map((edge) => ({ slug: edge.slug, name: resolve(edge.slug).name, copies: edge.copies })),
+  materials: weapon.materials ?? [],
+  ...(weapon.buildPrice ? { buildPrice: weapon.buildPrice } : {}),
+  ...(weapon.blueprintPrice ? { blueprintPrice: weapon.blueprintPrice } : {}),
+  ...(weapon.buildTime ? { buildTime: weapon.buildTime } : {}),
+});
 
 /** Weapons added since the previous monthly refresh, for the "New this month" strip. */
 export const newWeapons = (): Weapon[] => index.weapons.filter((weapon) => weapon.isNew);

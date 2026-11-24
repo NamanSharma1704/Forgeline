@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import type { RecipeSummary } from '@/data/recipe';
 import type { Explanation, Tone, Verdict } from '@/engine';
 import { CopyResult } from './CopyResult';
 import { Icon, type IconName } from './Icon';
+import { RecipeList } from './RecipeList';
 import { StatusPicker } from './StatusPicker';
 import { WeaponArt, type ArtWeapon } from './WeaponArt';
 
@@ -17,6 +19,8 @@ import { WeaponArt, type ArtWeapon } from './WeaponArt';
 
 export interface CardTarget extends ArtWeapon {
   readonly slug: string;
+  /** What one build of it takes, for the row's peek. */
+  readonly recipe?: RecipeSummary;
 }
 
 const ICON: Record<Tone, IconName> = {
@@ -87,6 +91,21 @@ export function VerdictCard({
                   <span className="verdict__control">
                     <StatusPicker slug={target.slug} name={target.name} size="small" />
                   </span>
+                )}
+                {target.recipe && (
+                  <details className="recipe-peek">
+                    <summary>
+                      <Icon name="arrow-right" size={14} className="recipe-peek__chevron" />
+                      What {target.name} takes
+                    </summary>
+                    <div className="recipe-peek__body">
+                      <RecipeList recipe={target.recipe} compact />
+                      <Link href={`/plan/?w=${target.slug}`} className="recipe-peek__plan">
+                        Plan a full build of {target.name}
+                        <Icon name="arrow-right" size={16} />
+                      </Link>
+                    </div>
+                  </details>
                 )}
               </li>
             ))}

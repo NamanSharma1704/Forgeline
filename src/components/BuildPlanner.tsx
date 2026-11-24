@@ -11,6 +11,7 @@ import { useStaticJson } from '@/store/useStaticJson';
 import { Icon } from './Icon';
 import { QtyStepper } from './QtyStepper';
 import { StatusPicker } from './StatusPicker';
+import { longTime, shortTime } from '@/format/time';
 import { WeaponArt } from './WeaponArt';
 import { WeaponSearch } from './WeaponSearch';
 
@@ -24,25 +25,6 @@ import { WeaponSearch } from './WeaponSearch';
 const SUGGESTED = ['akjagara', 'redeemer', 'proboscis-cernos', 'dual-raza', 'lesion', 'twin-basolk'];
 
 const plural = (n: number, one: string, many: string) => (n === 1 ? one : many);
-
-const tidy = (n: number) => Number(n.toFixed(1));
-
-/** A step's own time: "12 h", "1 min". */
-const shortTime = (seconds: number) =>
-  seconds < 3600 ? `${Math.max(1, Math.round(seconds / 60))} min` : `${tidy(seconds / 3600)} h`;
-
-/** A plan's total: "48 hours (2 days)". */
-function longTime(seconds: number) {
-  if (seconds < 3600) {
-    const minutes = Math.max(1, Math.round(seconds / 60));
-    return `${minutes} ${plural(minutes, 'minute', 'minutes')}`;
-  }
-  const hours = tidy(seconds / 3600);
-  const days = tidy(seconds / 86400);
-  return hours >= 24
-    ? `${hours} hours (${days} ${plural(days, 'day', 'days')})`
-    : `${hours} ${plural(hours, 'hour', 'hours')}`;
-}
 
 /** What a stage heading says about when it can start. */
 function stageLabel(number: number, last: number) {

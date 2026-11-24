@@ -1165,6 +1165,101 @@ a.tree-box:hover {
   font-weight: 600;
 }
 
+/* Credits and Foundry time under a recipe. */
+.recipe-costs {
+  margin-top: 10px;
+  color: var(--text-2);
+  font-size: var(--step--1);
+}
+
+/* Small uppercase tags on a resource: Rare is plain and firm, Decays carries the caution colour. */
+.tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 6px;
+  border: 1px solid var(--edge);
+  color: var(--text);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  vertical-align: 0.1em;
+}
+
+.tag--decays {
+  border-color: var(--check);
+  color: var(--check);
+}
+
+/* The peek on a verdict row: what that weapon takes, folded away until asked for. */
+.verdict__row .recipe-peek {
+  grid-column: 1 / -1;
+  margin: 2px 0 6px;
+}
+
+.recipe-peek summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  color: var(--text-2);
+  font-size: var(--step--1);
+  cursor: pointer;
+  list-style: none;
+}
+
+.recipe-peek summary::-webkit-details-marker {
+  display: none;
+}
+
+.recipe-peek summary:hover {
+  color: var(--text);
+}
+
+.recipe-peek__chevron {
+  transition: transform 160ms var(--ease-out);
+}
+
+.recipe-peek[open] .recipe-peek__chevron {
+  transform: rotate(90deg);
+}
+
+.recipe-peek__body {
+  margin: 4px 0 4px 6px;
+  padding: 10px 0 4px 16px;
+  border-left: 1px solid var(--edge-glow);
+}
+
+.recipe-peek__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--step--1);
+}
+
+.recipe-peek__list li[data-kind='weapon'] {
+  font-weight: 600;
+}
+
+.recipe-peek__count {
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.recipe-peek__plan {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  color: var(--focus);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
 /* ------------------------------------------------------------------ build planner */
 
 .planner-search {

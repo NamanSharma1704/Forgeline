@@ -561,6 +561,13 @@ planner groups what is left into stages, and gives two totals: the fastest, with
 started as soon as its ingredients are ready (the Foundry runs any number at once, so only the
 slowest chain counts), and one build at a time. Akjagara from nothing is 48 hours at best and 84
 one at a time, not the 72 hours in 12.6's example: every step in it takes 12 hours.
+The recipe peek (12.7) is done. Each row of a verdict card can open to show what that weapon takes:
+its weapon ingredients, blueprint, parts and resources, what one build costs in credits and Foundry
+time, the blueprint's Market price, and a link to plan the full build. The weapon page's Recipe
+section shows the same, in full. Resource rarity is not in the data, so the Rare tag uses the
+wiki's eight Rare planet resources, tested against the names the data has; Argon Crystal also
+says it decays, which its own description in the data confirms. Forma and Nitain Extract, which
+12.7 suggested tagging, have no rarity on the wiki, so they are untagged.
 No schema bump: the flag is optional, so an old tab left open after a deploy still reads the arsenal
 rather than treating it as unreadable and writing an empty one back. What the data allows for the
 rest: build times, credit costs, vault status and the 45 Incarnon Genesis adapters are all in

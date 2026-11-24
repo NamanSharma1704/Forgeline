@@ -51,7 +51,8 @@
           "count": 925
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000
     },
     {
       "slug": "acceltra-prime",
@@ -94,7 +95,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "ack-brunt",
@@ -138,6 +140,8 @@
         }
       ],
       "buildTime": 86400,
+      "buildPrice": 65000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Ack & Brunt Incarnon Genesis"
     },
     {
@@ -181,7 +185,9 @@
           "count": 6000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "aegrit",
@@ -224,7 +230,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "aeolak",
@@ -267,7 +274,8 @@
           "count": 50
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "afentis",
@@ -310,7 +318,8 @@
           "count": 3500
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "afentis-prime",
@@ -353,7 +362,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "afuris",
@@ -386,7 +396,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "afuris-prime",
@@ -424,7 +436,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "agkuza",
@@ -462,7 +475,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000,
+      "blueprintPrice": 35000
     },
     {
       "slug": "akarius",
@@ -505,7 +520,8 @@
           "count": 1600
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 20000
     },
     {
       "slug": "akarius-prime",
@@ -543,7 +559,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "akaten",
@@ -597,6 +614,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000,
       "aliases": [
         "akbo"
       ]
@@ -637,7 +656,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "akbronco",
@@ -671,6 +691,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000,
       "aliases": [
         "akbronc"
       ]
@@ -706,7 +728,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "akjagara",
@@ -743,7 +766,9 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "akjagara-prime",
@@ -786,7 +811,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "aklato",
@@ -834,7 +860,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "aklex-prime",
@@ -867,7 +895,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "akmagnus",
@@ -900,7 +929,9 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "akmagnus-prime",
@@ -933,7 +964,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "aksomati",
@@ -971,7 +1003,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "aksomati-prime",
@@ -1009,7 +1043,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "aksondol",
@@ -1047,7 +1082,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "akstiletto",
@@ -1099,7 +1135,9 @@
           "count": 800
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "akstiletto-prime",
@@ -1137,7 +1175,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "akvasto",
@@ -1170,7 +1209,9 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "akvasto-prime",
@@ -1203,7 +1244,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "akzani",
@@ -1246,7 +1288,9 @@
           "count": 1500
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "alternox",
@@ -1289,7 +1333,8 @@
           "count": 600
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "alternox-prime",
@@ -1332,7 +1377,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "amanata",
@@ -1370,7 +1416,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000
     },
     {
       "slug": "ambassador",
@@ -1408,7 +1455,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "amphis",
@@ -1456,7 +1504,9 @@
           "count": 500
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "amprex",
@@ -1499,7 +1549,9 @@
           "count": 600
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "angstrum",
@@ -1543,6 +1595,8 @@
         }
       ],
       "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 25000,
       "incarnonGenesis": "Angstrum Incarnon Genesis"
     },
     {
@@ -1587,6 +1641,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Anku Incarnon Genesis"
     },
     {
@@ -1639,7 +1695,9 @@
           "count": 900
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "ankyros-prime",
@@ -1677,7 +1735,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "arbucep",
@@ -1720,7 +1779,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "arca-plasmor",
@@ -1763,7 +1823,9 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "arca-scisco",
@@ -1806,7 +1868,9 @@
           "count": 12500
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "arca-titron",
@@ -1849,7 +1913,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 30000
     },
     {
       "slug": "argo-vel",
@@ -1892,7 +1958,8 @@
           "count": 20
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "argonak",
@@ -1935,7 +2002,9 @@
           "count": 700
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "artax",
@@ -1993,7 +2062,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "astilla",
@@ -2036,7 +2106,9 @@
           "count": 4
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "astilla-prime",
@@ -2079,7 +2151,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "athodai",
@@ -2117,7 +2190,8 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "athodai-prime",
@@ -2155,7 +2229,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "atomos",
@@ -2204,6 +2279,8 @@
         }
       ],
       "buildTime": 86400,
+      "buildPrice": 60000,
+      "blueprintPrice": 30000,
       "incarnonGenesis": "Atomos Incarnon Genesis"
     },
     {
@@ -2247,7 +2324,9 @@
           "count": 1500
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "attica",
@@ -2290,7 +2369,9 @@
           "count": 200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "ax-52",
@@ -2333,7 +2414,8 @@
           "count": 5
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "azima",
@@ -2376,7 +2458,8 @@
           "count": 2750
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "azothane",
@@ -2419,7 +2502,8 @@
           "count": 40
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "ballistica",
@@ -2463,6 +2547,8 @@
         }
       ],
       "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 40000,
       "incarnonGenesis": "Ballistica Incarnon Genesis"
     },
     {
@@ -2506,7 +2592,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "basmu",
@@ -2549,7 +2636,8 @@
           "count": 1500
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000
     },
     {
       "slug": "batoten",
@@ -2607,7 +2695,9 @@
           "count": 20
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "baza",
@@ -2650,7 +2740,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "baza-prime",
@@ -2693,7 +2785,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "bo",
@@ -2746,6 +2839,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Bo Incarnon Genesis"
     },
     {
@@ -2784,7 +2879,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "boar",
@@ -2828,6 +2924,7 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
       "incarnonGenesis": "Boar Incarnon Genesis"
     },
     {
@@ -2871,7 +2968,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "boltace",
@@ -2908,7 +3006,9 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "bolto",
@@ -2960,7 +3060,9 @@
           "count": 800
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "boltor",
@@ -3009,6 +3111,8 @@
         }
       ],
       "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Boltor Incarnon Genesis"
     },
     {
@@ -3052,7 +3156,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "brakk",
@@ -3090,7 +3195,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "braton",
@@ -3114,6 +3220,7 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 25000,
       "incarnonGenesis": "Braton Incarnon Genesis"
     },
     {
@@ -3157,7 +3264,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "braton-vandal",
@@ -3195,7 +3303,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "broken-scepter",
@@ -3238,7 +3347,8 @@
           "count": 2500
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000
     },
     {
       "slug": "broken-war",
@@ -3287,6 +3397,7 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
       "aliases": [
         "bwar"
       ]
@@ -3338,6 +3449,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Bronco Incarnon Genesis"
     },
     {
@@ -3381,7 +3494,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "bubonico",
@@ -3424,7 +3538,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "burst-laser",
@@ -3498,6 +3614,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Burston Incarnon Genesis"
     },
     {
@@ -3541,7 +3659,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "buzlok",
@@ -3584,7 +3703,9 @@
           "count": 5000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "cadus",
@@ -3627,7 +3748,9 @@
           "count": 3000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "cantare",
@@ -3670,7 +3793,8 @@
           "count": 600
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "carmine-penta",
@@ -3708,7 +3832,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "cassowar",
@@ -3751,7 +3876,9 @@
           "count": 5700
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "castanas",
@@ -3794,7 +3921,9 @@
           "count": 800
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "catabolyst",
@@ -3837,7 +3966,9 @@
           "count": 10
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "caustacyst",
@@ -3880,7 +4011,9 @@
           "count": 4000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "cedo",
@@ -3923,7 +4056,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "cedo-prime",
@@ -3966,7 +4100,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "centaur",
@@ -4004,7 +4139,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000,
+      "blueprintPrice": 35000
     },
     {
       "slug": "ceramic-dagger",
@@ -4048,6 +4185,7 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
       "incarnonGenesis": "Ceramic Dagger Incarnon Genesis"
     },
     {
@@ -4091,7 +4229,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "cernos",
@@ -4139,7 +4279,9 @@
           "count": 600
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "cernos-prime",
@@ -4182,7 +4324,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "cestra",
@@ -4231,6 +4374,8 @@
         }
       ],
       "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 20000,
       "incarnonGenesis": "Cestra Incarnon Genesis"
     },
     {
@@ -4274,7 +4419,8 @@
           "count": 8150
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000
     },
     {
       "slug": "cinta",
@@ -4317,7 +4463,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "cobra-crane",
@@ -4360,7 +4507,9 @@
           "count": 4000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "cobra-crane-prime",
@@ -4403,7 +4552,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "coda-bassocyst",
@@ -4641,7 +4791,9 @@
           "count": 900
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "corinth",
@@ -4684,7 +4836,9 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 25000
     },
     {
       "slug": "corinth-prime",
@@ -4727,7 +4881,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "cortege",
@@ -4765,7 +4920,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "corufell",
@@ -4808,7 +4964,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "corufell-prime",
@@ -4851,7 +5008,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "corvas",
@@ -4894,7 +5052,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 45000,
+      "blueprintPrice": 35000
     },
     {
       "slug": "corvas-prime",
@@ -4937,7 +5097,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 45000
     },
     {
       "slug": "cronus",
@@ -4975,7 +5136,8 @@
           "count": 75
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "cryotra",
@@ -5018,7 +5180,8 @@
           "count": 10
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 50000
     },
     {
       "slug": "cyanex",
@@ -5061,7 +5224,9 @@
           "count": 8750
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "cycron",
@@ -5104,7 +5269,9 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "cyngas",
@@ -5147,7 +5314,9 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 45000,
+      "blueprintPrice": 35000
     },
     {
       "slug": "daikyu",
@@ -5190,7 +5359,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "daikyu-prime",
@@ -5233,7 +5404,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "dakra-prime",
@@ -5271,7 +5443,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "dark-dagger",
@@ -5314,7 +5487,8 @@
           "count": 300
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "dark-split-sword",
@@ -5358,6 +5532,7 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
       "aliases": [
         "dss",
         "split sword"
@@ -5404,7 +5579,8 @@
           "count": 75
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "deconstructor",
@@ -5478,6 +5654,8 @@
         }
       ],
       "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Dera Incarnon Genesis"
     },
     {
@@ -5516,7 +5694,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "despair",
@@ -5560,6 +5739,7 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
       "incarnonGenesis": "Despair Incarnon Genesis"
     },
     {
@@ -5604,6 +5784,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 25000,
       "incarnonGenesis": "Destreza Incarnon Genesis"
     },
     {
@@ -5642,7 +5824,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "deth-machine-rifle",
@@ -5710,7 +5893,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "dex-dakra",
@@ -5813,7 +5997,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "dragon-nikana",
@@ -5851,7 +6037,9 @@
           "count": 75
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 5000,
+      "blueprintPrice": 30000
     },
     {
       "slug": "drakgoon",
@@ -5899,7 +6087,9 @@
           "count": 5500
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 30000
     },
     {
       "slug": "dread",
@@ -5943,6 +6133,7 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
       "incarnonGenesis": "Dread Incarnon Genesis"
     },
     {
@@ -5981,7 +6172,9 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "dual-cleavers",
@@ -6029,7 +6222,9 @@
           "count": 1000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 25000
     },
     {
       "slug": "dual-coda-torxica",
@@ -6082,7 +6277,9 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 45000,
+      "blueprintPrice": 35000
     },
     {
       "slug": "dual-ether",
@@ -6125,7 +6322,9 @@
           "count": 900
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "dual-heat-swords",
@@ -6168,7 +6367,9 @@
           "count": 900
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "dual-ichor",
@@ -6212,6 +6413,8 @@
         }
       ],
       "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 50000,
       "incarnonGenesis": "Dual Ichor Incarnon Genesis"
     },
     {
@@ -6250,7 +6453,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 40000
     },
     {
       "slug": "dual-kamas-prime",
@@ -6283,7 +6488,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "dual-keres",
@@ -6326,7 +6532,9 @@
           "count": 3
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 25000
     },
     {
       "slug": "dual-keres-prime",
@@ -6359,7 +6567,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "dual-raza",
@@ -6402,7 +6611,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "dual-skana",
@@ -6459,6 +6670,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 25000,
       "aliases": [
         "dskana",
         "dual skanas"
@@ -6506,6 +6719,8 @@
         }
       ],
       "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Dual Toxocyst Incarnon Genesis"
     },
     {
@@ -6539,7 +6754,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "dual-zoren",
@@ -6587,7 +6803,9 @@
           "count": 900
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "dual-zoren-prime",
@@ -6620,7 +6838,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "edun",
@@ -6663,7 +6882,8 @@
           "count": 30
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "efv-5-jupiter",
@@ -6701,7 +6921,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "efv-8-mars",
@@ -6739,7 +6960,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "ekhein",
@@ -6782,7 +7004,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "embolist",
@@ -6825,7 +7048,9 @@
           "count": 15000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "endura",
@@ -6868,7 +7093,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "enkaus",
@@ -6906,7 +7133,8 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "epitaph",
@@ -6944,7 +7172,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "epitaph-prime",
@@ -6982,7 +7211,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "ether-daggers",
@@ -7025,7 +7255,8 @@
           "count": 600
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "ether-reaper",
@@ -7068,7 +7299,9 @@
           "count": 1000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "ether-sword",
@@ -7111,7 +7344,9 @@
           "count": 700
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "euphona-prime",
@@ -7149,7 +7384,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "evensong",
@@ -7192,7 +7428,8 @@
           "count": 700
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "exergis",
@@ -7235,7 +7472,9 @@
           "count": 8500
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "falcor",
@@ -7278,7 +7517,9 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "fang",
@@ -7321,7 +7562,9 @@
           "count": 600
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "fang-prime",
@@ -7354,7 +7597,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "felarx",
@@ -7397,7 +7641,8 @@
           "count": 15
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "ferrox",
@@ -7440,7 +7685,9 @@
           "count": 35000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "fluctus",
@@ -7483,7 +7730,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 45000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "flux-rifle",
@@ -7526,7 +7775,9 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "fragor",
@@ -7569,7 +7820,9 @@
           "count": 750
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "fragor-prime",
@@ -7607,7 +7860,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "fulmin",
@@ -7650,7 +7904,9 @@
           "count": 2100
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "fulmin-prime",
@@ -7693,7 +7949,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 45000
     },
     {
       "slug": "furax",
@@ -7742,6 +7999,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Furax Incarnon Genesis"
     },
     {
@@ -7775,7 +8034,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "furis",
@@ -7824,6 +8084,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Furis Incarnon Genesis"
     },
     {
@@ -7867,7 +8129,9 @@
           "count": 10000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "galariak-prime",
@@ -7905,7 +8169,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "galatine",
@@ -7953,7 +8218,9 @@
           "count": 750
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 25000
     },
     {
       "slug": "galatine-prime",
@@ -7991,7 +8258,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "galvacord",
@@ -8034,7 +8302,9 @@
           "count": 3600
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "gammacor",
@@ -8083,6 +8353,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 35000,
       "incarnonGenesis": "Gammacor Incarnon Genesis"
     },
     {
@@ -8126,7 +8398,9 @@
           "count": 2600
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "ghoulsaw",
@@ -8169,7 +8443,9 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "glaive",
@@ -8212,7 +8488,8 @@
           "count": 4500
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "glaive-prime",
@@ -8250,7 +8527,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "glaxion",
@@ -8293,7 +8571,9 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "glaxion-vandal",
@@ -8352,6 +8632,7 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 25000,
       "incarnonGenesis": "Gorgon Incarnon Genesis"
     },
     {
@@ -8390,7 +8671,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "gotva-prime",
@@ -8453,7 +8735,9 @@
           "count": 900
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "gram",
@@ -8496,7 +8780,9 @@
           "count": 750
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "gram-prime",
@@ -8534,7 +8820,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "grattler",
@@ -8577,7 +8864,9 @@
           "count": 5
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 65000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "grimoire",
@@ -8620,7 +8909,8 @@
           "count": 50
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "grinlok",
@@ -8663,7 +8953,9 @@
           "count": 5000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "guandao",
@@ -8706,7 +8998,9 @@
           "count": 750
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "guandao-prime",
@@ -8744,7 +9038,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "gunsen",
@@ -8787,7 +9082,9 @@
           "count": 3
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "gunsen-prime",
@@ -8820,7 +9117,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "haalvu",
@@ -8878,7 +9176,9 @@
           "count": 500
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "halikar-wraith",
@@ -8936,7 +9236,8 @@
           "count": 500
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "harpak",
@@ -8979,7 +9280,9 @@
           "count": 3600
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 40000
     },
     {
       "slug": "hate",
@@ -9023,6 +9326,7 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
       "incarnonGenesis": "Hate Incarnon Genesis"
     },
     {
@@ -9066,7 +9370,8 @@
           "count": 75
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "heat-sword",
@@ -9109,7 +9414,8 @@
           "count": 300
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "hek",
@@ -9152,7 +9458,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 25000
     },
     {
       "slug": "heliocor",
@@ -9195,7 +9503,8 @@
           "count": 1200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "helstrum",
@@ -9238,7 +9547,8 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 50000
     },
     {
       "slug": "hema",
@@ -9281,7 +9591,9 @@
           "count": 50000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "hespar",
@@ -9319,7 +9631,8 @@
           "count": 50
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "higasa",
@@ -9362,7 +9675,8 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000
     },
     {
       "slug": "hikou",
@@ -9410,7 +9724,9 @@
           "count": 4000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "hikou-prime",
@@ -9448,7 +9764,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "hind",
@@ -9491,7 +9808,9 @@
           "count": 1000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 40000
     },
     {
       "slug": "hirudo",
@@ -9534,7 +9853,9 @@
           "count": 1100
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "hystrix",
@@ -9576,7 +9897,9 @@
           "count": 9750
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 25000
     },
     {
       "slug": "hystrix-prime",
@@ -9614,7 +9937,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "ignis",
@@ -9657,7 +9981,9 @@
           "count": 5000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "ignis-wraith",
@@ -9700,7 +10026,9 @@
           "count": 5000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "imperator",
@@ -9743,7 +10071,8 @@
           "count": 150
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000
     },
     {
       "slug": "imperator-vandal",
@@ -9781,7 +10110,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "innodem",
@@ -9824,7 +10154,8 @@
           "count": 10
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "jat-kittag",
@@ -9867,7 +10198,9 @@
           "count": 5000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "jat-kusar",
@@ -9910,7 +10243,9 @@
           "count": 7500
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 15000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "javlok",
@@ -9953,7 +10288,9 @@
           "count": 5
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "jaw-sword",
@@ -9996,7 +10333,8 @@
           "count": 300
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "kama",
@@ -10044,7 +10382,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 40000
     },
     {
       "slug": "karak",
@@ -10087,7 +10427,9 @@
           "count": 900
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 30000
     },
     {
       "slug": "karak-wraith",
@@ -10125,7 +10467,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "karyst",
@@ -10168,7 +10511,9 @@
           "count": 1500
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "karyst-prime",
@@ -10206,7 +10551,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "kaszas",
@@ -10244,7 +10590,9 @@
           "count": 3
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000,
+      "blueprintPrice": 35000
     },
     {
       "slug": "keratinos",
@@ -10277,7 +10625,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "kesheg",
@@ -10320,7 +10669,9 @@
           "count": 1400
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "kestrel",
@@ -10363,7 +10714,9 @@
           "count": 4000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "kestrel-prime",
@@ -10401,7 +10754,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "knell",
@@ -10444,7 +10798,9 @@
           "count": 20000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "knell-prime",
@@ -10482,7 +10838,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "knux",
@@ -10525,7 +10882,9 @@
           "count": 10
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "kogake",
@@ -10573,7 +10932,9 @@
           "count": 400
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "kogake-prime",
@@ -10611,7 +10972,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "kohm",
@@ -10654,7 +11016,9 @@
           "count": 2500
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "kohmak",
@@ -10702,7 +11066,9 @@
           "count": 5000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "komorex",
@@ -10745,7 +11111,9 @@
           "count": 300
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "kompressa",
@@ -10783,7 +11151,8 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 20000
     },
     {
       "slug": "kompressa-prime",
@@ -10821,7 +11190,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "korrudo",
@@ -10864,7 +11234,8 @@
           "count": 20
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000
     },
     {
       "slug": "korumm",
@@ -10907,7 +11278,8 @@
           "count": 3200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "kraken",
@@ -10955,7 +11327,9 @@
           "count": 750
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "kreska",
@@ -10998,7 +11372,9 @@
           "count": 25
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "krohkur",
@@ -11046,7 +11422,9 @@
           "count": 5
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 20000,
+      "blueprintPrice": 25000
     },
     {
       "slug": "kronen",
@@ -11094,7 +11472,9 @@
           "count": 1000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 65000
     },
     {
       "slug": "kronen-prime",
@@ -11132,7 +11512,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "kulstar",
@@ -11175,7 +11556,9 @@
           "count": 2
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 40000
     },
     {
       "slug": "kunai",
@@ -11224,6 +11607,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Kunai Incarnon Genesis"
     },
     {
@@ -11247,7 +11632,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-brakk",
@@ -11270,7 +11656,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-bramma",
@@ -11293,7 +11680,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-chakkhurr",
@@ -11316,7 +11704,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-drakgoon",
@@ -11339,7 +11728,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-ghoulsaw",
@@ -11362,7 +11752,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-grattler",
@@ -11385,7 +11776,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-hek",
@@ -11408,7 +11800,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-hind",
@@ -11431,7 +11824,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-karak",
@@ -11454,7 +11848,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-kohm",
@@ -11477,7 +11872,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-kraken",
@@ -11500,7 +11896,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-nukor",
@@ -11523,7 +11920,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-ogris",
@@ -11546,7 +11944,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-quartakk",
@@ -11569,7 +11968,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-seer",
@@ -11592,7 +11992,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-shildeg",
@@ -11615,7 +12016,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-sobek",
@@ -11638,7 +12040,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-tonkor",
@@ -11661,7 +12064,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-twin-stubbas",
@@ -11684,7 +12088,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "kuva-zarr",
@@ -11707,7 +12112,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "lacera",
@@ -11750,7 +12156,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "lacerten",
@@ -11808,7 +12216,8 @@
           "count": 5
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "lanka",
@@ -11851,7 +12260,9 @@
           "count": 20
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "larkspur",
@@ -11894,7 +12305,9 @@
           "count": 80
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "larkspur-prime",
@@ -11937,7 +12350,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 45000
     },
     {
       "slug": "laser-rifle",
@@ -11981,6 +12395,7 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
       "incarnonGenesis": "Lato Incarnon Genesis"
     },
     {
@@ -12029,7 +12444,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "latron",
@@ -12078,6 +12494,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000,
       "incarnonGenesis": "Latron Incarnon Genesis"
     },
     {
@@ -12121,7 +12539,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "latron-wraith",
@@ -12159,7 +12578,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "lecta",
@@ -12202,7 +12622,9 @@
           "count": 900
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 30000
     },
     {
       "slug": "lenz",
@@ -12245,7 +12667,9 @@
           "count": 3
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "lesion",
@@ -12288,7 +12712,9 @@
           "count": 1400
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 25000
     },
     {
       "slug": "lex",
@@ -12352,7 +12778,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "machete",
@@ -12395,7 +12822,8 @@
           "count": 750
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "machete-wraith",
@@ -12459,6 +12887,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 25000,
+      "blueprintPrice": 25000,
       "incarnonGenesis": "Magistar Incarnon Genesis"
     },
     {
@@ -12507,7 +12937,9 @@
           "count": 900
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "magnus-prime",
@@ -12550,7 +12982,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "mandonel",
@@ -12593,7 +13026,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 45000
     },
     {
       "slug": "mara-detron",
@@ -12651,7 +13085,9 @@
           "count": 5000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "masseter",
@@ -12694,7 +13130,9 @@
           "count": 8600
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "masseter-prime",
@@ -12732,7 +13170,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "mausolon",
@@ -12790,7 +13229,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "mire",
@@ -12833,7 +13274,9 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "miter",
@@ -12882,6 +13325,7 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
       "incarnonGenesis": "Miter Incarnon Genesis"
     },
     {
@@ -13025,7 +13469,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "multron",
@@ -13089,6 +13534,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 20000,
       "aliases": [
         "mut cernos"
       ]
@@ -13134,7 +13581,9 @@
           "count": 15000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "nagantaka",
@@ -13177,7 +13626,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 40000
     },
     {
       "slug": "nagantaka-prime",
@@ -13220,7 +13671,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "nami-skyla",
@@ -13263,7 +13715,9 @@
           "count": 200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "nami-skyla-prime",
@@ -13301,7 +13755,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "nami-solo",
@@ -13345,6 +13800,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000,
       "incarnonGenesis": "Nami Solo Incarnon Genesis"
     },
     {
@@ -13403,7 +13860,8 @@
           "count": 6
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "nikana",
@@ -13451,7 +13909,9 @@
           "count": 75
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 5000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "nikana-prime",
@@ -13489,7 +13949,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "ninkondi",
@@ -13537,7 +13998,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "ninkondi-prime",
@@ -13575,7 +14038,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "nukor",
@@ -13618,7 +14082,9 @@
           "count": 5500
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "nunchasa",
@@ -13661,7 +14127,8 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 20000
     },
     {
       "slug": "obex",
@@ -13705,6 +14172,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Obex Incarnon Genesis"
     },
     {
@@ -13748,7 +14217,9 @@
           "count": 55
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "ogris",
@@ -13791,7 +14262,9 @@
           "count": 5000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "ohma",
@@ -13834,7 +14307,9 @@
           "count": 1400
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 55000
     },
     {
       "slug": "okina",
@@ -13878,6 +14353,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Okina Incarnon Genesis"
     },
     {
@@ -13916,7 +14393,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "onorix",
@@ -13954,7 +14432,9 @@
           "count": 3
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000,
+      "blueprintPrice": 35000
     },
     {
       "slug": "onos",
@@ -13997,7 +14477,8 @@
           "count": 3000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "opticor",
@@ -14040,7 +14521,9 @@
           "count": 20
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "opticor-vandal",
@@ -14098,7 +14581,9 @@
           "count": 500
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "orthos-prime",
@@ -14136,7 +14621,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "orvius",
@@ -14179,7 +14665,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "pandero",
@@ -14222,7 +14709,9 @@
           "count": 25000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "pandero-prime",
@@ -14260,7 +14749,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "pangolin-prime",
@@ -14298,7 +14788,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "pangolin-sword",
@@ -14341,7 +14832,8 @@
           "count": 750
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "panthera",
@@ -14383,7 +14875,9 @@
           "count": 600
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "panthera-prime",
@@ -14426,7 +14920,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "paracesis",
@@ -14470,6 +14965,7 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 30000,
       "aliases": [
         "para"
       ]
@@ -14515,7 +15011,9 @@
           "count": 15000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "paris",
@@ -14559,6 +15057,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 20000,
       "incarnonGenesis": "Paris Incarnon Genesis"
     },
     {
@@ -14602,7 +15102,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "pathocyst",
@@ -14640,7 +15141,8 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "pennant",
@@ -14683,7 +15185,8 @@
           "count": 2
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "penta",
@@ -14726,7 +15229,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 30000
     },
     {
       "slug": "perigale",
@@ -14769,7 +15274,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "perigale-prime",
@@ -14812,7 +15318,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "phaedra",
@@ -14855,7 +15362,9 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 45000,
+      "blueprintPrice": 35000
     },
     {
       "slug": "phage",
@@ -14898,7 +15407,9 @@
           "count": 6000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "phantasma",
@@ -14941,7 +15452,9 @@
           "count": 650
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 25000
     },
     {
       "slug": "phantasma-prime",
@@ -14984,7 +15497,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "phenmor",
@@ -15027,7 +15541,8 @@
           "count": 20
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "plasma-sword",
@@ -15070,7 +15585,8 @@
           "count": 450
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "plinx",
@@ -15113,7 +15629,9 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "pox",
@@ -15156,7 +15674,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "praedos",
@@ -15199,7 +15719,8 @@
           "count": 30
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "pride",
@@ -15232,7 +15753,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "prime-laser-rifle",
@@ -15307,7 +15829,8 @@
       "introducedDate": "2020-12-11",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "blueprintPrice": 35000
     },
     {
       "slug": "prisma-gorgon",
@@ -15516,6 +16039,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 30000,
       "aliases": [
         "prob cernos"
       ]
@@ -15561,7 +16086,9 @@
           "count": 1000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "prova-vandal",
@@ -15619,7 +16146,9 @@
           "count": 24
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "pupacyst",
@@ -15662,7 +16191,9 @@
           "count": 8750
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "purgator-1",
@@ -15700,7 +16231,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "pyrana",
@@ -15743,7 +16275,9 @@
           "count": 800
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "pyrana-prime",
@@ -15781,7 +16315,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "quanta",
@@ -15824,7 +16359,9 @@
           "count": 7000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "quanta-vandal",
@@ -15882,7 +16419,8 @@
           "count": 12450
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 20000
     },
     {
       "slug": "quassus",
@@ -15925,7 +16463,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "quassus-prime",
@@ -15958,7 +16497,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "quatz",
@@ -16001,7 +16541,9 @@
           "count": 12750
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 40000
     },
     {
       "slug": "quellor",
@@ -16044,7 +16586,8 @@
           "count": 4
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "rakta-ballistica",
@@ -16132,7 +16675,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000,
+      "blueprintPrice": 35000
     },
     {
       "slug": "rauta",
@@ -16175,7 +16720,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "reaper-prime",
@@ -16213,7 +16759,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "reconifex",
@@ -16251,7 +16798,8 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "redeemer",
@@ -16288,7 +16836,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "redeemer-prime",
@@ -16326,7 +16876,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "riot-848",
@@ -16369,7 +16920,8 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000
     },
     {
       "slug": "ripkas",
@@ -16411,7 +16963,9 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 40000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "rubico",
@@ -16454,7 +17008,9 @@
           "count": 3800
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "rubico-prime",
@@ -16497,7 +17053,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "rumblejack",
@@ -16545,7 +17102,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "sagek-prime",
@@ -16583,7 +17141,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "sampotes",
@@ -16626,7 +17185,8 @@
           "count": 20
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "sancti-castanas",
@@ -16709,7 +17269,8 @@
           "count": 50
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "sarofang-prime",
@@ -16747,7 +17308,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "sarpa",
@@ -16790,7 +17352,9 @@
           "count": 1000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "scindo",
@@ -16833,7 +17397,9 @@
           "count": 750
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "scindo-prime",
@@ -16871,7 +17437,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "scoliac",
@@ -16914,7 +17481,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "scourge",
@@ -16957,7 +17526,9 @@
           "count": 2500
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "scourge-prime",
@@ -17000,7 +17571,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "scyotid",
@@ -17038,7 +17610,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "secura-dual-cestra",
@@ -17121,7 +17694,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "sepulcrum",
@@ -17159,7 +17733,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "serro",
@@ -17202,7 +17777,9 @@
           "count": 1000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "shaku",
@@ -17245,7 +17822,9 @@
           "count": 1100
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "shedu",
@@ -17288,7 +17867,8 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "sheev",
@@ -17326,7 +17906,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "sibear",
@@ -17365,6 +17946,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Sibear Incarnon Genesis"
     },
     {
@@ -17419,7 +18002,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "sigma-octantis",
@@ -17462,7 +18046,8 @@
           "count": 2750
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "silva-aegis",
@@ -17505,7 +18090,9 @@
           "count": 3
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "silva-aegis-prime",
@@ -17548,7 +18135,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "simulor",
@@ -17591,7 +18179,8 @@
           "count": 850
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "skana",
@@ -17635,6 +18224,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Skana Incarnon Genesis"
     },
     {
@@ -17693,7 +18284,8 @@
           "count": 100
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 5000
     },
     {
       "slug": "slaytra",
@@ -17736,7 +18328,8 @@
           "count": 8
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "snipetron",
@@ -17779,7 +18372,8 @@
           "count": 1200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "snipetron-vandal",
@@ -17817,7 +18411,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "sobek",
@@ -17860,7 +18455,9 @@
           "count": 900
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 25000
     },
     {
       "slug": "soma",
@@ -17904,6 +18501,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 50000,
       "incarnonGenesis": "Soma Incarnon Genesis"
     },
     {
@@ -17947,7 +18546,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "sonicor",
@@ -17990,7 +18590,9 @@
           "count": 2600
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "spectra",
@@ -18033,7 +18635,9 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "spectra-vandal",
@@ -18071,7 +18675,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "spinnerex",
@@ -18109,7 +18714,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "spira",
@@ -18152,7 +18758,9 @@
           "count": 4000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "spira-prime",
@@ -18190,7 +18798,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "sporothrix",
@@ -18233,7 +18842,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "stahlta",
@@ -18271,7 +18881,8 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "staticor",
@@ -18314,7 +18925,9 @@
           "count": 3
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "steflos",
@@ -18357,7 +18970,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "steflos-prime",
@@ -18400,7 +19014,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "stinger",
@@ -18458,7 +19073,9 @@
           "count": 8000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "stradavar-prime",
@@ -18501,7 +19118,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "stropha",
@@ -18544,7 +19162,8 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "strun",
@@ -18603,7 +19222,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "strun-wraith",
@@ -18641,7 +19261,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "stubba",
@@ -18684,7 +19305,8 @@
           "count": 2
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 20000
     },
     {
       "slug": "stug",
@@ -18728,6 +19350,8 @@
         }
       ],
       "buildTime": 86400,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000,
       "incarnonGenesis": "Stug Incarnon Genesis"
     },
     {
@@ -18771,7 +19395,8 @@
           "count": 45
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "supra",
@@ -18814,7 +19439,9 @@
           "count": 7000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "supra-vandal",
@@ -18902,7 +19529,8 @@
           "count": 30
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "sybaris",
@@ -18946,6 +19574,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Sybaris Incarnon Genesis"
     },
     {
@@ -18989,7 +19619,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "sydon",
@@ -19032,7 +19663,9 @@
           "count": 4000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "synapse",
@@ -19075,7 +19708,9 @@
           "count": 30000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 50000
     },
     {
       "slug": "synoid-gammacor",
@@ -19158,7 +19793,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "talons",
@@ -19201,7 +19837,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "tatsu",
@@ -19244,7 +19882,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 5000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "tatsu-prime",
@@ -19282,7 +19922,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "tazicor",
@@ -19325,7 +19966,8 @@
           "count": 10
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 50000
     },
     {
       "slug": "tekko",
@@ -19368,7 +20010,9 @@
           "count": 700
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 25000
     },
     {
       "slug": "tekko-prime",
@@ -19406,7 +20050,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "telos-akbolto",
@@ -19479,7 +20124,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-arca-plasmor",
@@ -19502,7 +20148,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-cycron",
@@ -19525,7 +20172,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-detron",
@@ -19548,7 +20196,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-diplos",
@@ -19571,7 +20220,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-envoy",
@@ -19594,7 +20244,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-exec",
@@ -19617,7 +20268,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-ferrox",
@@ -19640,7 +20292,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-flux-rifle",
@@ -19663,7 +20316,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-glaxion",
@@ -19686,7 +20340,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-grigori",
@@ -19709,7 +20364,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-livia",
@@ -19732,7 +20388,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-plinx",
@@ -19755,7 +20412,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-quanta",
@@ -19778,7 +20436,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-spirex",
@@ -19801,7 +20460,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenet-tetra",
@@ -19824,7 +20484,8 @@
           "count": 1
         }
       ],
-      "buildTime": 60
+      "buildTime": 60,
+      "buildPrice": 10000
     },
     {
       "slug": "tenora",
@@ -19867,7 +20528,9 @@
           "count": 15000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "tenora-prime",
@@ -19910,7 +20573,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "tetra",
@@ -19953,7 +20617,9 @@
           "count": 100
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 30000
     },
     {
       "slug": "thalys",
@@ -19996,7 +20662,8 @@
           "count": 100
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "thornbak",
@@ -20039,7 +20706,8 @@
           "count": 100
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "tiberon",
@@ -20082,7 +20750,9 @@
           "count": 600
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "tiberon-prime",
@@ -20125,7 +20795,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "tigris",
@@ -20168,7 +20839,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 40000
     },
     {
       "slug": "tigris-prime",
@@ -20211,7 +20884,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "tipedo",
@@ -20258,7 +20932,9 @@
           "count": 1600
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "tipedo-prime",
@@ -20296,7 +20972,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "tonbo",
@@ -20339,7 +21016,9 @@
           "count": 800
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "tonkkatt",
@@ -20372,7 +21051,8 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "tonkor",
@@ -20415,7 +21095,9 @@
           "count": 1500
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 60000,
+      "blueprintPrice": 30000
     },
     {
       "slug": "torid",
@@ -20459,6 +21141,8 @@
         }
       ],
       "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000,
       "incarnonGenesis": "Torid Incarnon Genesis"
     },
     {
@@ -20502,7 +21186,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "trumna-prime",
@@ -20545,7 +21230,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "twin-basolk",
@@ -20582,7 +21268,9 @@
           "count": 2
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "twin-grakatas",
@@ -20616,6 +21304,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 20000,
       "aliases": [
         "twin grak"
       ]
@@ -20661,7 +21351,8 @@
           "count": 1500
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000
     },
     {
       "slug": "twin-kohmak",
@@ -20694,7 +21385,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "twin-krohkur",
@@ -20732,7 +21424,9 @@
           "count": 1
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "twin-rogga",
@@ -20775,7 +21469,9 @@
           "count": 1600
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 30000
     },
     {
       "slug": "twin-vipers",
@@ -20808,7 +21504,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "twin-vipers-wraith",
@@ -20846,7 +21544,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 25000
     },
     {
       "slug": "tysis",
@@ -20889,7 +21588,9 @@
           "count": 100
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 30000
     },
     {
       "slug": "vadarya-prime",
@@ -20932,7 +21633,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "vastilok",
@@ -21000,6 +21702,8 @@
         }
       ],
       "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 30000,
       "incarnonGenesis": "Vasto Incarnon Genesis"
     },
     {
@@ -21043,7 +21747,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "vaykor-hek",
@@ -21132,6 +21837,8 @@
         }
       ],
       "buildTime": 86400,
+      "buildPrice": 25000,
+      "blueprintPrice": 40000,
       "incarnonGenesis": "Vectis Incarnon Genesis"
     },
     {
@@ -21175,7 +21882,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "veldt",
@@ -21218,7 +21926,9 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "velocitus",
@@ -21261,7 +21971,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "velox",
@@ -21299,7 +22011,9 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 25000
     },
     {
       "slug": "velox-prime",
@@ -21337,7 +22051,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "venato",
@@ -21380,7 +22095,9 @@
           "count": 16
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "venato-prime",
@@ -21418,7 +22135,8 @@
           "count": 10
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "venka",
@@ -21461,7 +22179,9 @@
           "count": 1000
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "venka-prime",
@@ -21499,7 +22219,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "verdilac",
@@ -21542,7 +22263,8 @@
           "count": 6
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "verglas",
@@ -21630,7 +22352,8 @@
           "count": 1000
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 25000
     },
     {
       "slug": "vesper-77",
@@ -21668,7 +22391,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "vinquibus",
@@ -21711,7 +22435,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "viper",
@@ -21763,7 +22488,9 @@
           "count": 300
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "viper-wraith",
@@ -21821,7 +22548,8 @@
           "count": 60
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "volnus",
@@ -21864,7 +22592,9 @@
           "count": 225
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "volnus-prime",
@@ -21902,7 +22632,8 @@
           "count": 15
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "vulcax",
@@ -21945,7 +22676,8 @@
           "count": 5
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 50000
     },
     {
       "slug": "vulkar",
@@ -21988,7 +22720,9 @@
           "count": 1200
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "vulkar-wraith",
@@ -22061,7 +22795,8 @@
           "count": 1400
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "war-prime",
@@ -22119,7 +22854,8 @@
           "count": 5
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 30000
     },
     {
       "slug": "wrath",
@@ -22152,7 +22888,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     },
     {
       "slug": "xoris",
@@ -22190,7 +22927,8 @@
           "count": 1
         }
       ],
-      "buildTime": 30
+      "buildTime": 30,
+      "buildPrice": 15000
     },
     {
       "slug": "zakti",
@@ -22233,7 +22971,9 @@
           "count": 350
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000,
+      "blueprintPrice": 15000
     },
     {
       "slug": "zakti-prime",
@@ -22271,7 +23011,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "zarr",
@@ -22314,7 +23055,9 @@
           "count": 5500
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000,
+      "blueprintPrice": 30000
     },
     {
       "slug": "zenistar",
@@ -22357,7 +23100,8 @@
           "count": 2750
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "zenith",
@@ -22400,7 +23144,8 @@
           "count": 2750
         }
       ],
-      "buildTime": 86400
+      "buildTime": 86400,
+      "buildPrice": 30000
     },
     {
       "slug": "zhuge",
@@ -22443,7 +23188,9 @@
           "count": 900
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000,
+      "blueprintPrice": 20000
     },
     {
       "slug": "zhuge-prime",
@@ -22486,7 +23233,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "zylok",
@@ -22540,7 +23288,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 15000
     },
     {
       "slug": "zymos",
@@ -22573,7 +23322,8 @@
           "count": 1
         }
       ],
-      "buildTime": 43200
+      "buildTime": 43200,
+      "buildPrice": 20000
     }
   ]
 }

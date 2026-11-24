@@ -4,13 +4,14 @@ import { notFound } from 'next/navigation';
 import { FamilyTree, type TreeColumn, type TreeWeapon } from '@/components/FamilyTree';
 import { Icon } from '@/components/Icon';
 import { PersonalVerdict } from '@/components/PersonalVerdict';
+import { RecipeList } from '@/components/RecipeList';
 import type { CardTarget } from '@/components/VerdictCard';
 import { WeaponArt } from '@/components/WeaponArt';
 import { WeaponStatus } from '@/components/WeaponStatus';
 import { recipeGraph } from '@/data/engine';
 import { SLOT_LABEL, type Weapon } from '@/data/types';
 import { variantOf } from '@/data/variants';
-import { allWeapons, getWeapon, incarnonGenesisOf, otherVersions, resolve } from '@/data/weapons';
+import { allWeapons, getWeapon, incarnonGenesisOf, otherVersions, recipeOf, resolve } from '@/data/weapons';
 import { createEvaluator, explain, familyTree, type TreeNode } from '@/engine';
 
 type Params = { slug: string };
@@ -107,7 +108,10 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
 
   const verdict = evaluator.verdict(slug);
   const explanation = explain(verdict, recipeGraph);
-  const targets = verdict.targets.map((target) => toCard(resolve(target.slug)));
+  const targets = verdict.targets.map((target) => {
+    const built = resolve(target.slug);
+    return { ...toCard(built), recipe: recipeOf(built) };
+  });
   const names = Object.fromEntries(descendants(slug).map((s) => [s, resolve(s).name]));
   const variant = variantOf(weapon.name);
   const versions = otherVersions(slug);
@@ -125,20 +129,8 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
     (node, parent) => (parent ? `uses ${node.copies} ${parent}` : `uses ${node.copies}`),
     (generation) => (generation === 1 ? 'Used to build' : 'Then')
   );
-  const recipe = [
-    ...weapon.madeFrom.map((edge) => ({
-      key: edge.slug,
-      label: <Link href={`/w/${edge.slug}/`}>{resolve(edge.slug).name}</Link>,
-      count: edge.copies,
-      kind: 'weapon',
-    })),
-    ...(weapon.materials ?? []).map((material) => ({
-      key: `${material.kind}-${material.name}`,
-      label: <>{material.name}</>,
-      count: material.count,
-      kind: material.kind,
-    })),
-  ];
+  const recipe = recipeOf(weapon);
+  const hasRecipe = recipe.weapons.length > 0 || recipe.materials.length > 0;
 
   return (
     <>
@@ -198,19 +190,12 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
         </section>
       )}
 
-      {recipe.length > 0 && (
+      {hasRecipe && (
         <section className="section" aria-labelledby="recipe-title">
           <h2 id="recipe-title" className="section-title">
             Recipe
           </h2>
-          <ul className="resource-list resource-list--recipe">
-            {recipe.map((item) => (
-              <li key={item.key} data-kind={item.kind}>
-                <span>{item.label}</span>
-                <span className="resource-list__count">{item.count.toLocaleString('en-GB')}</span>
-              </li>
-            ))}
-          </ul>
+          <RecipeList recipe={recipe} />
           <p className="verdict__footnote">
             {weapon.madeFrom.length > 0 ? (
               <>
