@@ -91,6 +91,75 @@ export function planBuild(graph: RecipeGraph, arsenal: Arsenal, target: string):
   return { target, lines: sorted, steps };
 }
 
+export interface FoundryStage {
+  /** 1 for builds that can start now; each later stage needs something from an earlier one. */
+  readonly number: number;
+  /** In name order. */
+  readonly steps: readonly PlanLine[];
+}
+
+export interface FoundryTime {
+  readonly stages: readonly FoundryStage[];
+  /**
+   * Seconds until the target is built, starting every build the moment its ingredients are ready.
+   * The Foundry runs any number of builds at once, so copies of one weapon finish together and
+   * separate branches overlap: only the slowest chain counts.
+   */
+  readonly fastest: number;
+  /** Seconds if every build, every copy, ran one after another. */
+  readonly oneAtATime: number;
+  /** Steps whose build time is not known. They count as no time in both totals. */
+  readonly unknown: readonly string[];
+}
+
+/**
+ * When each remaining step can start, and how long the whole plan takes in the Foundry (M6.5,
+ * 12.6). A step waits only on its own ingredients that are still to be made; held copies are ready
+ * now. Pure: the build times come in through `buildTimeOf`.
+ */
+export function foundryTime(
+  graph: RecipeGraph,
+  plan: BuildPlan,
+  buildTimeOf: (slug: string) => number | undefined
+): FoundryTime {
+  const steps = new Map(plan.steps.map((step) => [step.slug, step]));
+  const unknown = plan.steps.filter((step) => buildTimeOf(step.slug) === undefined).map((s) => s.slug);
+  const time = (slug: string) => buildTimeOf(slug) ?? 0;
+  const waitsOn = (slug: string) =>
+    graph.get(slug).madeFrom.map((edge) => edge.slug).filter((child) => steps.has(child));
+
+  const stage = new Map<string, number>();
+  const finish = new Map<string, number>();
+  const walk = (slug: string): void => {
+    if (stage.has(slug)) return;
+    const children = waitsOn(slug);
+    children.forEach(walk);
+    stage.set(slug, 1 + Math.max(0, ...children.map((child) => stage.get(child)!)));
+    finish.set(slug, time(slug) + Math.max(0, ...children.map((child) => finish.get(child)!)));
+  };
+  plan.steps.forEach((step) => walk(step.slug));
+
+  const name = (slug: string) => graph.get(slug).name;
+  const grouped = new Map<number, PlanLine[]>();
+  for (const step of plan.steps) {
+    const number = stage.get(step.slug)!;
+    grouped.set(number, [...(grouped.get(number) ?? []), step]);
+  }
+  const stages = [...grouped]
+    .sort(([a], [b]) => a - b)
+    .map(([number, lines]) => ({
+      number,
+      steps: lines.sort((a, b) => name(a.slug).localeCompare(name(b.slug), 'en')),
+    }));
+
+  return {
+    stages,
+    fastest: Math.max(0, ...plan.steps.map((step) => finish.get(step.slug)!)),
+    oneAtATime: plan.steps.reduce((sum, step) => sum + time(step.slug) * step.toMake, 0),
+    unknown,
+  };
+}
+
 export interface MaterialLike {
   readonly name: string;
   readonly kind: 'blueprint' | 'part' | 'resource';

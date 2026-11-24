@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import type { WeaponIndex } from '../src/data/types';
-import { createGraph, planBuild, totalResources, type Arsenal } from '../src/engine';
+import { createGraph, foundryTime, planBuild, totalResources, type Arsenal } from '../src/engine';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const index = JSON.parse(
@@ -97,5 +97,59 @@ describe('materials in the index', () => {
         expect(material.count, `${weapon.slug}: ${material.name}`).toBeGreaterThanOrEqual(1);
       }
     }
+  });
+});
+
+describe('foundry time (M6.5, 12.6)', () => {
+  const HOUR = 3600;
+  const timeOf = (slug: string) => index.weapons.find((w) => w.slug === slug)?.buildTime;
+  const stagesOf = (t: ReturnType<typeof foundryTime>) =>
+    t.stages.map((s) => [s.number, s.steps.map((step) => step.slug)]);
+
+  it('counts only the slowest chain when builds run at once, and every copy one at a time', () => {
+    // A is built from B and C; B from D. C is slow, so it decides when A can start.
+    const g = createGraph([
+      { slug: 'a', name: 'A', usedToBuild: [], madeFrom: [{ slug: 'b', copies: 1 }, { slug: 'c', copies: 1 }] },
+      { slug: 'b', name: 'B', usedToBuild: [{ slug: 'a', copies: 1 }], madeFrom: [{ slug: 'd', copies: 2 }] },
+      { slug: 'c', name: 'C', usedToBuild: [{ slug: 'a', copies: 1 }], madeFrom: [] },
+      { slug: 'd', name: 'D', usedToBuild: [{ slug: 'b', copies: 2 }], madeFrom: [] },
+    ]);
+    const hours = { a: 1, b: 5, c: 10, d: 2 } as Record<string, number>;
+    const t = foundryTime(g, planBuild(g, {}, 'a'), (slug) => hours[slug]! * HOUR);
+    expect(stagesOf(t)).toEqual([
+      [1, ['c', 'd']],
+      [2, ['b']],
+      [3, ['a']],
+    ]);
+    expect(t.fastest).toBe(11 * HOUR); // A after the slower of B+D (7) and C (10)
+    expect(t.oneAtATime).toBe((1 + 5 + 10 + 2 * 2) * HOUR); // both copies of D
+  });
+
+  it('plans Akjagara from nothing: four stages, two days at best', () => {
+    const t = foundryTime(graph, planBuild(graph, {}, 'akjagara'), timeOf);
+    expect(stagesOf(t)).toEqual([
+      [1, ['dual-skana', 'lato']],
+      [2, ['bolto']],
+      [3, ['akbolto']],
+      [4, ['akjagara']],
+    ]);
+    expect(t.fastest).toBe(48 * HOUR);
+    expect(t.oneAtATime).toBe(84 * HOUR); // 7 builds of 12 hours
+    expect(t.unknown).toEqual([]);
+  });
+
+  it('starts from what the player holds: two Bolto in hand leave two stages', () => {
+    const t = foundryTime(graph, planBuild(graph, { bolto: { status: 'owned', qty: 2 } }, 'akjagara'), timeOf);
+    expect(stagesOf(t)).toEqual([
+      [1, ['akbolto', 'dual-skana']],
+      [2, ['akjagara']],
+    ]);
+    expect(t.fastest).toBe(24 * HOUR);
+  });
+
+  it('names a step whose time the data does not have, and counts it as none', () => {
+    const t = foundryTime(graph, planBuild(graph, {}, 'aklex'), timeOf);
+    expect(t.unknown).toEqual(['lex']);
+    expect(t.fastest).toBe(12 * HOUR);
   });
 });

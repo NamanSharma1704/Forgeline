@@ -259,6 +259,8 @@ const weapons = players.map((weapon) => {
     usedToBuild: edges(usedToBuild, weapon.uniqueName),
     madeFrom: edges(madeFrom, weapon.uniqueName),
     ...(materials.length ? { materials } : {}),
+    // Foundry time for one build, in seconds (M6.5, 12.6). A few weapons have none in the source.
+    ...(weapon.buildTime > 0 ? { buildTime: weapon.buildTime } : {}),
     ...(genesisByName.has(weapon.name) ? { incarnonGenesis: genesisByName.get(weapon.name) } : {}),
     ...(aliases[slug] ? { aliases: aliases[slug] } : {}),
   };

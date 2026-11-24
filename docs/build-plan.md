@@ -555,6 +555,12 @@ are named for, and the wiki's rule carries each to that weapon's versions (90 we
 or Dual ones). The weapon page shows a badge, the verdict card and copied text say it without
 changing the verdict, and the sweep adds it to a Safe reason. The Circuit's week-by-week rotation is
 left out: it is not in the data and could not be verified.
+Foundry time (12.6) is done as well. The index carries each weapon's build time from `@wfcd/items`
+(86 of the 87 recipe weapons; Lex has none, and the planner says so instead of guessing). The
+planner groups what is left into stages, and gives two totals: the fastest, with every build
+started as soon as its ingredients are ready (the Foundry runs any number at once, so only the
+slowest chain counts), and one build at a time. Akjagara from nothing is 48 hours at best and 84
+one at a time, not the 72 hours in 12.6's example: every step in it takes 12 hours.
 No schema bump: the flag is optional, so an old tab left open after a deploy still reads the arsenal
 rather than treating it as unreadable and writing an empty one back. What the data allows for the
 rest: build times, credit costs, vault status and the 45 Incarnon Genesis adapters are all in

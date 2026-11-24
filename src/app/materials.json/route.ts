@@ -1,8 +1,10 @@
 /**
- * Each weapon's non-weapon recipe components (blueprint, parts, resources), as a static file for the
- * build planner: /materials.json. Generated at build time from data/index.json.
+ * What the build planner needs beyond the recipe graph, as a static file: /materials.json. For each
+ * weapon, its non-weapon recipe components (blueprint, parts, resources) and its foundry time in
+ * seconds. Generated at build time from data/index.json; weapons with neither are left out.
  */
 
+import type { RecipeFileEntry } from '@/data/recipe-file';
 import { allWeapons } from '@/data/weapons';
 
 export const dynamic = 'force-static';
@@ -10,9 +12,13 @@ export const dynamic = 'force-static';
 export function GET() {
   return Response.json(
     Object.fromEntries(
-      allWeapons()
-        .filter((weapon) => weapon.materials?.length)
-        .map((weapon) => [weapon.slug, weapon.materials])
+      allWeapons().flatMap((weapon) => {
+        const entry: RecipeFileEntry = {
+          ...(weapon.materials?.length ? { materials: weapon.materials } : {}),
+          ...(weapon.buildTime ? { buildTime: weapon.buildTime } : {}),
+        };
+        return Object.keys(entry).length ? [[weapon.slug, entry]] : [];
+      })
     )
   );
 }

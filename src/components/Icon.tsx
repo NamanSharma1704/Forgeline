@@ -37,6 +37,13 @@ const PATHS = {
     </>
   ),
   done: <path d="M5 12.5l4.25 4.25L19 7" />,
+  // Foundry time.
+  clock: (
+    <>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 7.5V12l3 2" />
+    </>
+  ),
   // Incarnon: a cut crystal, for weapons that can take an Incarnon Genesis.
   incarnon: (
     <>

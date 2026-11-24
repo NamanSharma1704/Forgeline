@@ -1238,6 +1238,47 @@ a.tree-box:hover {
   max-width: var(--measure);
 }
 
+.plan-step__time {
+  margin-left: 10px;
+  color: var(--text-3);
+  font-size: var(--step--1);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Foundry time: one line of answer, one of how it was worked out. */
+.foundry {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  max-width: calc(var(--measure) + 32px);
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  border: 1px solid var(--edge-soft);
+  border-left: 2px solid var(--focus);
+  background: var(--sheen), var(--surface-1);
+}
+
+.foundry .icon {
+  color: var(--focus);
+  margin-top: 1px;
+}
+
+.foundry p + p {
+  margin-top: 4px;
+  font-size: var(--step--1);
+}
+
+.plan-stage + .plan-stage {
+  margin-top: 22px;
+}
+
+.plan-stage__label {
+  margin: 0 0 8px;
+  color: var(--text-2);
+  font: 600 var(--step--1) / 1.2 var(--font-body);
+  letter-spacing: 0.06em;
+}
+
 .plan-step__controls {
   display: flex;
   flex-wrap: wrap;

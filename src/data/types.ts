@@ -49,6 +49,8 @@ export interface Weapon {
    * Cells. Listed for the player, never tracked (spec 5.6). Absent when the weapon has no recipe.
    */
   materials?: Material[];
+  /** Foundry time for one build, in seconds. Absent when the source has none (Lex, for one). */
+  buildTime?: number;
   /**
    * The Incarnon Genesis adapter made for this exact weapon ("Torid Incarnon Genesis"), when one
    * exists. The weapon's other versions can take it too: see incarnonGenesisOf in weapons.ts.
