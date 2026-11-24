@@ -282,16 +282,17 @@ Built:
 Checked on the exported site at desktop and 375 px widths, in both themes, with no hydration or
 script errors. Not yet measured: the five-second answer on throttled 4G.
 
-### M4. Monthly automation (S to M) - built, first run on GitHub pending
+### M4. Monthly automation (S to M) - done
 
 `refresh-data.yml` with the schedule, the manual trigger, the publish gate, the changelog, and a
 GitHub issue on failure.
 **Done when:** a manual run on unchanged data skips the deploy and says so; a run with a deliberately
 corrupted source blocks the deploy, opens an issue, and leaves the live site on last month's data.
 
-Every branch is proven locally and in 16 tests (section 8). What remains is the same run on GitHub:
-a manual **dry run** from the Actions tab should report "Nothing changed this month" and deploy
-nothing.
+Every branch is proven locally and in 16 tests (section 8), and on GitHub: the first manual dry run
+(run 45443658561, 24 November 2026) passed in 35 seconds. The gate found nothing changed, so the
+promote step was skipped; the picture recheck found nothing new, so tests, export and commit were
+skipped; no issue was opened and `main` was untouched. The first scheduled run is 1 December.
 
 ### M5. Arsenal and personal verdicts (M to L)
 
@@ -431,12 +432,12 @@ and the data refreshes itself monthly behind a gate that cannot publish a broken
 
 Next, in order:
 
-1. **A dry run of the refresh on GitHub.** Run workflow, tick dry run. It should say "Nothing
-   changed this month" and deploy nothing, which closes M4. The first scheduled run is 1 December.
-2. **Measure the five-second goal.** A throttled 4G run against the live site, so M3's last
+1. **Measure the five-second goal.** A throttled 4G run against the live site, so M3's last
    acceptance criterion is a number rather than an assumption.
-3. **My Arsenal (M5).** The stored arsenal and the guided 87-weapon setup, which turn every Check
+2. **My Arsenal (M5).** The stored arsenal and the guided 87-weapon setup, which turn every Check
    into a personal Keep or Safe. The card and engine are already built to take it.
+3. **Watch the 1 December run.** The first scheduled refresh. Expect "unchanged" unless
+   `@wfcd/items` publishes a game update before then.
 
 Hosting is settled (section 9). Open decisions that block nothing yet, but should be settled before
 M3 ships: the domain, the branding line, and whether analytics exist at all. The recommendations are
