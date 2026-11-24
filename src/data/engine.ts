@@ -4,6 +4,6 @@
  */
 
 import { createGraph } from '@/engine';
-import { allWeapons } from './weapons';
+import { graphWeapons } from './weapons';
 
-export const recipeGraph = createGraph(allWeapons());
+export const recipeGraph = createGraph(graphWeapons());

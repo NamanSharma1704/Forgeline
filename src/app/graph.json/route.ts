@@ -4,10 +4,10 @@
  */
 
 import { toGraphFile } from '@/data/graph-file';
-import { allWeapons } from '@/data/weapons';
+import { graphWeapons } from '@/data/weapons';
 
 export const dynamic = 'force-static';
 
 export function GET() {
-  return Response.json(toGraphFile(allWeapons()));
+  return Response.json(toGraphFile(graphWeapons()));
 }

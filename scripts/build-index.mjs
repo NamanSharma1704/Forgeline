@@ -207,6 +207,28 @@ const materialsOf = (weapon) => {
   return [...totals.values()].map(({ name, kind, count }) => ({ name, kind, count }));
 };
 
+// ---------------------------------------------------------------- incarnon
+
+/**
+ * Incarnon Genesis adapters, the Steel Path Circuit rewards that give a weapon an Incarnon form
+ * (M6.5, 12.2). Misc.json names each one after the weapon it is made for ("Torid Incarnon
+ * Genesis"), so the index records that fact on that exact weapon. The game also lets a weapon's own
+ * versions take it (Braton Prime, Braton Vandal, Mk1-Braton): that rule lives with the variant
+ * rules in src/data/weapons.ts, not here.
+ */
+const GENESIS = / Incarnon Genesis$/;
+const genesisByName = new Map(
+  JSON.parse(fs.readFileSync(path.join(dataDir, 'Misc.json'), 'utf8'))
+    .filter((item) => GENESIS.test(item?.name ?? ''))
+    .map((item) => [item.name.replace(GENESIS, ''), item.name])
+);
+{
+  const names = new Set(players.map((weapon) => weapon.name));
+  for (const [weaponName, adapter] of genesisByName) {
+    if (!names.has(weaponName)) warnings.push(`${adapter}: no weapon named ${weaponName}`);
+  }
+}
+
 // ---------------------------------------------------------------- assemble
 
 const previous = readJson(previousFile);
@@ -237,6 +259,7 @@ const weapons = players.map((weapon) => {
     usedToBuild: edges(usedToBuild, weapon.uniqueName),
     madeFrom: edges(madeFrom, weapon.uniqueName),
     ...(materials.length ? { materials } : {}),
+    ...(genesisByName.has(weapon.name) ? { incarnonGenesis: genesisByName.get(weapon.name) } : {}),
     ...(aliases[slug] ? { aliases: aliases[slug] } : {}),
   };
 });

@@ -16,6 +16,7 @@ export interface GraphInput {
   readonly maxRank?: number;
   readonly usedToBuild: readonly RecipeEdge[];
   readonly madeFrom: readonly RecipeEdge[];
+  readonly incarnon?: string;
 }
 
 const bySlug = (a: RecipeEdge, b: RecipeEdge) => a.slug.localeCompare(b.slug, 'en');
@@ -72,6 +73,7 @@ export function createGraph(weapons: readonly GraphInput[]): RecipeGraph {
       maxRank: weapon.maxRank ?? 30,
       usedToBuild: Object.freeze(forward.get(weapon.slug) ?? []),
       madeFrom: Object.freeze(backward.get(weapon.slug) ?? []),
+      incarnon: weapon.incarnon ?? null,
     });
   }
 

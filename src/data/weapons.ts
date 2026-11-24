@@ -56,5 +56,27 @@ export const otherVersions = (slug: string): Weapon[] => {
     );
 };
 
+const genesisByBase = new Map<string, string>(
+  index.weapons.flatMap((weapon) =>
+    weapon.incarnonGenesis ? [[variantOf(weapon.name).base, weapon.incarnonGenesis] as const] : []
+  )
+);
+
+/**
+ * The Incarnon Genesis this weapon can take, or null. The adapter is made for one weapon, and the
+ * wiki's Incarnon page says its versions can take it too: Prime, Vandal, Wraith, MK1, Prisma, Dex
+ * and Syndicate. Akimbo and Dual weapons count as different weapons there, and the variant rules
+ * already give them a base of their own (Aklato is not Lato), so they get nothing.
+ */
+export const incarnonGenesisOf = (weapon: Pick<Weapon, 'name' | 'incarnonGenesis'>): string | null =>
+  weapon.incarnonGenesis ?? genesisByBase.get(variantOf(weapon.name).base) ?? null;
+
+/** Every weapon as the recipe graph takes it, with the Incarnon Genesis it can take. */
+export const graphWeapons = () =>
+  index.weapons.map((weapon) => {
+    const incarnon = incarnonGenesisOf(weapon);
+    return incarnon ? { ...weapon, incarnon } : weapon;
+  });
+
 /** Weapons added since the previous monthly refresh, for the "New this month" strip. */
 export const newWeapons = (): Weapon[] => index.weapons.filter((weapon) => weapon.isNew);

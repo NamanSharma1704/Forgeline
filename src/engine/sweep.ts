@@ -89,6 +89,9 @@ export function sweep(graph: RecipeGraph, arsenal: Arsenal): SweepResult {
         reason = `Mastered, and you hold ${verdict.have - verdict.keep} more than recipes need.`;
         break;
     }
+    // Safe for recipes, but a weapon with an Incarnon Genesis is one a player may regret selling.
+    const adapter = graph.get(slug).incarnon;
+    if (adapter) reason += ` It can take the ${adapter}: keep it if you might use that.`;
     safe.push({ slug, status, verdict, reason });
   }
 

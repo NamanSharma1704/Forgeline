@@ -16,6 +16,8 @@ export interface GraphNode {
   readonly maxRank: number;
   readonly usedToBuild: readonly RecipeEdge[];
   readonly madeFrom: readonly RecipeEdge[];
+  /** The Incarnon Genesis it can take, or null. Never changes a verdict; it is said alongside. */
+  readonly incarnon: string | null;
 }
 
 /**

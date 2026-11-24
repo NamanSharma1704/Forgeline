@@ -20,10 +20,14 @@ export interface GraphFileNode {
   readonly r: number;
   /** used to build: [slug, copies] */
   readonly u?: readonly (readonly [string, number])[];
+  /** the Incarnon Genesis it can take */
+  readonly i?: string;
 }
 
 export function toGraphFile(
-  weapons: readonly Pick<Weapon, 'slug' | 'name' | 'slot' | 'maxRank' | 'usedToBuild'>[]
+  weapons: readonly (Pick<Weapon, 'slug' | 'name' | 'slot' | 'maxRank' | 'usedToBuild'> & {
+    readonly incarnon?: string;
+  })[]
 ): GraphFileNode[] {
   return weapons.map((w) => ({
     s: w.slug,
@@ -31,6 +35,7 @@ export function toGraphFile(
     t: w.slot,
     r: w.maxRank,
     ...(w.usedToBuild.length ? { u: w.usedToBuild.map((e) => [e.slug, e.copies] as const) } : {}),
+    ...(w.incarnon ? { i: w.incarnon } : {}),
   }));
 }
 
@@ -47,5 +52,6 @@ export function fromGraphFile(nodes: readonly GraphFileNode[]): GraphInput[] {
     maxRank: node.r,
     usedToBuild: (node.u ?? []).map(([slug, copies]) => ({ slug, copies })),
     madeFrom: madeFrom.get(node.s) ?? [],
+    ...(node.i ? { incarnon: node.i } : {}),
   }));
 }

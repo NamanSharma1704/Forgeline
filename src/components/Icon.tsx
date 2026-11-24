@@ -37,6 +37,13 @@ const PATHS = {
     </>
   ),
   done: <path d="M5 12.5l4.25 4.25L19 7" />,
+  // Incarnon: a cut crystal, for weapons that can take an Incarnon Genesis.
+  incarnon: (
+    <>
+      <path d="M12 3.25l6.75 8.75L12 20.75 5.25 12z" />
+      <path d="M5.25 12h13.5M12 3.25v17.5" />
+    </>
+  ),
   // Favourite: filled by CSS when the toggle is on.
   star: <path d="M12 3.6l2.6 5.28 5.83.85-4.22 4.11 1 5.8L12 16.9l-5.21 2.74 1-5.8-4.22-4.11 5.83-.85z" />,
   info: (

@@ -128,6 +128,13 @@ export function VerdictCard({
         </p>
       )}
 
+      {e.incarnon && (
+        <p className="verdict__mastery verdict__incarnon">
+          <Icon name="incarnon" size={20} />
+          <span>{e.incarnon}</span>
+        </p>
+      )}
+
       <CopyResult text={e.copyText} />
     </section>
   );

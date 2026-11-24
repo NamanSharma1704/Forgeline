@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { FamilyTree, type TreeColumn, type TreeWeapon } from '@/components/FamilyTree';
+import { Icon } from '@/components/Icon';
 import { PersonalVerdict } from '@/components/PersonalVerdict';
 import type { CardTarget } from '@/components/VerdictCard';
 import { WeaponArt } from '@/components/WeaponArt';
@@ -9,7 +10,7 @@ import { WeaponStatus } from '@/components/WeaponStatus';
 import { recipeGraph } from '@/data/engine';
 import { SLOT_LABEL, type Weapon } from '@/data/types';
 import { variantOf } from '@/data/variants';
-import { allWeapons, getWeapon, otherVersions, resolve } from '@/data/weapons';
+import { allWeapons, getWeapon, incarnonGenesisOf, otherVersions, resolve } from '@/data/weapons';
 import { createEvaluator, explain, familyTree, type TreeNode } from '@/engine';
 
 type Params = { slug: string };
@@ -110,6 +111,7 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
   const names = Object.fromEntries(descendants(slug).map((s) => [s, resolve(s).name]));
   const variant = variantOf(weapon.name);
   const versions = otherVersions(slug);
+  const incarnon = incarnonGenesisOf(weapon);
 
   // Phase 2: the full depth, at most three steps each way in the current data.
   const tree = familyTree(recipeGraph, slug);
@@ -151,6 +153,12 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
             <span>Mastery rank {weapon.masteryReq}</span>
             <span>Added in {weapon.introduced}</span>
             {variant.line && <span>{variant.line} variant</span>}
+            {incarnon && (
+              <span className="badge-incarnon" title={`Can take the ${incarnon}`}>
+                <Icon name="incarnon" size={16} />
+                Incarnon Genesis
+              </span>
+            )}
             {weapon.isNew && <span className="badge-new">New this month</span>}
           </p>
           {versions.length > 0 && (

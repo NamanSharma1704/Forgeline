@@ -134,7 +134,8 @@
           "kind": "resource",
           "count": 7500
         }
-      ]
+      ],
+      "incarnonGenesis": "Ack & Brunt Incarnon Genesis"
     },
     {
       "slug": "acrid",
@@ -1503,7 +1504,8 @@
           "kind": "resource",
           "count": 900
         }
-      ]
+      ],
+      "incarnonGenesis": "Angstrum Incarnon Genesis"
     },
     {
       "slug": "anku",
@@ -1545,7 +1547,8 @@
           "kind": "resource",
           "count": 800
         }
-      ]
+      ],
+      "incarnonGenesis": "Anku Incarnon Genesis"
     },
     {
       "slug": "ankyros",
@@ -2147,7 +2150,8 @@
           "kind": "resource",
           "count": 1500
         }
-      ]
+      ],
+      "incarnonGenesis": "Atomos Incarnon Genesis"
     },
     {
       "slug": "atterax",
@@ -2399,7 +2403,8 @@
           "kind": "resource",
           "count": 1200
         }
-      ]
+      ],
+      "incarnonGenesis": "Ballistica Incarnon Genesis"
     },
     {
       "slug": "ballistica-prime",
@@ -2675,7 +2680,8 @@
           "kind": "resource",
           "count": 900
         }
-      ]
+      ],
+      "incarnonGenesis": "Bo Incarnon Genesis"
     },
     {
       "slug": "bo-prime",
@@ -2754,7 +2760,8 @@
           "kind": "resource",
           "count": 750
         }
-      ]
+      ],
+      "incarnonGenesis": "Boar Incarnon Genesis"
     },
     {
       "slug": "boar-prime",
@@ -2930,7 +2937,8 @@
           "kind": "resource",
           "count": 900
         }
-      ]
+      ],
+      "incarnonGenesis": "Boltor Incarnon Genesis"
     },
     {
       "slug": "boltor-prime",
@@ -3031,7 +3039,8 @@
           "kind": "blueprint",
           "count": 1
         }
-      ]
+      ],
+      "incarnonGenesis": "Braton Incarnon Genesis"
     },
     {
       "slug": "braton-prime",
@@ -3249,7 +3258,8 @@
           "kind": "resource",
           "count": 800
         }
-      ]
+      ],
+      "incarnonGenesis": "Bronco Incarnon Genesis"
     },
     {
       "slug": "bronco-prime",
@@ -3405,7 +3415,8 @@
           "kind": "resource",
           "count": 400
         }
-      ]
+      ],
+      "incarnonGenesis": "Burston Incarnon Genesis"
     },
     {
       "slug": "burston-prime",
@@ -3941,7 +3952,8 @@
           "kind": "resource",
           "count": 600
         }
-      ]
+      ],
+      "incarnonGenesis": "Ceramic Dagger Incarnon Genesis"
     },
     {
       "slug": "cerata",
@@ -4119,7 +4131,8 @@
           "kind": "resource",
           "count": 1200
         }
-      ]
+      ],
+      "incarnonGenesis": "Cestra Incarnon Genesis"
     },
     {
       "slug": "ceti-lacera",
@@ -5341,7 +5354,8 @@
           "kind": "resource",
           "count": 1
         }
-      ]
+      ],
+      "incarnonGenesis": "Dera Incarnon Genesis"
     },
     {
       "slug": "dera-vandal",
@@ -5420,7 +5434,8 @@
           "kind": "resource",
           "count": 4500
         }
-      ]
+      ],
+      "incarnonGenesis": "Despair Incarnon Genesis"
     },
     {
       "slug": "destreza",
@@ -5462,7 +5477,8 @@
           "kind": "resource",
           "count": 1700
         }
-      ]
+      ],
+      "incarnonGenesis": "Destreza Incarnon Genesis"
     },
     {
       "slug": "destreza-prime",
@@ -5794,7 +5810,8 @@
           "kind": "resource",
           "count": 750
         }
-      ]
+      ],
+      "incarnonGenesis": "Dread Incarnon Genesis"
     },
     {
       "slug": "dual-cestra",
@@ -6056,7 +6073,8 @@
           "kind": "resource",
           "count": 15000
         }
-      ]
+      ],
+      "incarnonGenesis": "Dual Ichor Incarnon Genesis"
     },
     {
       "slug": "dual-kamas",
@@ -6342,7 +6360,8 @@
           "kind": "resource",
           "count": 1100
         }
-      ]
+      ],
+      "incarnonGenesis": "Dual Toxocyst Incarnon Genesis"
     },
     {
       "slug": "dual-viciss",
@@ -7547,7 +7566,8 @@
           "kind": "resource",
           "count": 900
         }
-      ]
+      ],
+      "incarnonGenesis": "Furax Incarnon Genesis"
     },
     {
       "slug": "furax-wraith",
@@ -7626,7 +7646,8 @@
           "kind": "resource",
           "count": 400
         }
-      ]
+      ],
+      "incarnonGenesis": "Furis Incarnon Genesis"
     },
     {
       "slug": "fusilai",
@@ -7878,7 +7899,8 @@
           "kind": "resource",
           "count": 650
         }
-      ]
+      ],
+      "incarnonGenesis": "Gammacor Incarnon Genesis"
     },
     {
       "slug": "gazal-machete",
@@ -8140,7 +8162,8 @@
           "kind": "resource",
           "count": 6000
         }
-      ]
+      ],
+      "incarnonGenesis": "Gorgon Incarnon Genesis"
     },
     {
       "slug": "gorgon-wraith",
@@ -8795,7 +8818,8 @@
           "kind": "resource",
           "count": 4500
         }
-      ]
+      ],
+      "incarnonGenesis": "Hate Incarnon Genesis"
     },
     {
       "slug": "heat-dagger",
@@ -10943,7 +10967,8 @@
           "kind": "resource",
           "count": 4000
         }
-      ]
+      ],
+      "incarnonGenesis": "Kunai Incarnon Genesis"
     },
     {
       "slug": "kuva-ayanga",
@@ -11672,7 +11697,8 @@
           "kind": "blueprint",
           "count": 1
         }
-      ]
+      ],
+      "incarnonGenesis": "Lato Incarnon Genesis"
     },
     {
       "slug": "lato-prime",
@@ -11766,7 +11792,8 @@
           "kind": "resource",
           "count": 900
         }
-      ]
+      ],
+      "incarnonGenesis": "Latron Incarnon Genesis"
     },
     {
       "slug": "latron-prime",
@@ -11991,7 +12018,8 @@
           "copies": 2
         }
       ],
-      "madeFrom": []
+      "madeFrom": [],
+      "incarnonGenesis": "Lex Incarnon Genesis"
     },
     {
       "slug": "lex-prime",
@@ -12137,7 +12165,8 @@
           "kind": "resource",
           "count": 300
         }
-      ]
+      ],
+      "incarnonGenesis": "Magistar Incarnon Genesis"
     },
     {
       "slug": "magnus",
@@ -12550,7 +12579,8 @@
           "kind": "part",
           "count": 1
         }
-      ]
+      ],
+      "incarnonGenesis": "Miter Incarnon Genesis"
     },
     {
       "slug": "mk1-bo",
@@ -13004,7 +13034,8 @@
           "kind": "resource",
           "count": 200
         }
-      ]
+      ],
+      "incarnonGenesis": "Nami Solo Incarnon Genesis"
     },
     {
       "slug": "nataruk",
@@ -13355,7 +13386,8 @@
           "kind": "resource",
           "count": 900
         }
-      ]
+      ],
+      "incarnonGenesis": "Obex Incarnon Genesis"
     },
     {
       "slug": "ocucor",
@@ -13523,7 +13555,8 @@
           "kind": "resource",
           "count": 2
         }
-      ]
+      ],
+      "incarnonGenesis": "Okina Incarnon Genesis"
     },
     {
       "slug": "okina-prime",
@@ -14187,7 +14220,8 @@
           "kind": "resource",
           "count": 700
         }
-      ]
+      ],
+      "incarnonGenesis": "Paris Incarnon Genesis"
     },
     {
       "slug": "paris-prime",
@@ -16934,7 +16968,8 @@
           "kind": "resource",
           "count": 30000
         }
-      ]
+      ],
+      "incarnonGenesis": "Sibear Incarnon Genesis"
     },
     {
       "slug": "sicarus",
@@ -16949,7 +16984,8 @@
       "introducedDate": "2012-10-25",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "incarnonGenesis": "Sicarus Incarnon Genesis"
     },
     {
       "slug": "sicarus-prime",
@@ -17196,7 +17232,8 @@
           "kind": "resource",
           "count": 750
         }
-      ]
+      ],
+      "incarnonGenesis": "Skana Incarnon Genesis"
     },
     {
       "slug": "skana-prime",
@@ -17458,7 +17495,8 @@
           "kind": "resource",
           "count": 8000
         }
-      ]
+      ],
+      "incarnonGenesis": "Soma Incarnon Genesis"
     },
     {
       "slug": "soma-prime",
@@ -18098,7 +18136,8 @@
       "introducedDate": "2012-10-25",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "incarnonGenesis": "Strun Incarnon Genesis"
     },
     {
       "slug": "strun-prime",
@@ -18261,7 +18300,8 @@
           "kind": "resource",
           "count": 3000
         }
-      ]
+      ],
+      "incarnonGenesis": "Stug Incarnon Genesis"
     },
     {
       "slug": "sun-moon",
@@ -18474,7 +18514,8 @@
           "kind": "resource",
           "count": 800
         }
-      ]
+      ],
+      "incarnonGenesis": "Sybaris Incarnon Genesis"
     },
     {
       "slug": "sybaris-prime",
@@ -19945,7 +19986,8 @@
           "kind": "resource",
           "count": 4500
         }
-      ]
+      ],
+      "incarnonGenesis": "Torid Incarnon Genesis"
     },
     {
       "slug": "trumna",
@@ -20472,7 +20514,8 @@
           "kind": "resource",
           "count": 1000
         }
-      ]
+      ],
+      "incarnonGenesis": "Vasto Incarnon Genesis"
     },
     {
       "slug": "vasto-prime",
@@ -20601,7 +20644,8 @@
           "kind": "resource",
           "count": 2500
         }
-      ]
+      ],
+      "incarnonGenesis": "Vectis Incarnon Genesis"
     },
     {
       "slug": "vectis-prime",
@@ -21940,7 +21984,8 @@
       "introducedDate": "2018-08-30",
       "isNew": false,
       "usedToBuild": [],
-      "madeFrom": []
+      "madeFrom": [],
+      "incarnonGenesis": "Zylok Incarnon Genesis"
     },
     {
       "slug": "zylok-prime",

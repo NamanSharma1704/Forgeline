@@ -27,6 +27,12 @@ export interface Explanation {
   readonly chains: readonly string[];
   /** The note about levelling the weapon before selling it, when it applies. */
   readonly mastery: string | null;
+  /**
+   * The note that the weapon can take an Incarnon Genesis (M6.5, 12.2), when it can. It never
+   * changes the verdict: recipes decide that. It is said alongside, because a weapon that is safe for
+   * recipes can still be one a player would regret selling.
+   */
+  readonly incarnon: string | null;
   /** One line of plain ASCII for pasting into in-game clan chat. */
   readonly copyText: string;
 }
@@ -212,7 +218,19 @@ export function explain(verdict: Verdict, graph: RecipeGraph): Explanation {
         : `If ${weapon} isn't rank ${maxRank} yet, level it before you sell it: that's ${thousands(points)} mastery, and it stays after you sell.`;
   }
 
-  const chat = [`${weapon}: ${headline}.`, ...(chatLines.length > 0 ? chatLines : [summary])]
+  const adapter = graph.get(verdict.slug).incarnon;
+  const incarnon = adapter
+    ? `${weapon} can take the ${adapter}, a Steel Path Circuit reward that gives it an Incarnon form.` +
+      (verdict.kind === 'safe'
+        ? ' Worth keeping if you might use that, whatever the recipes say.'
+        : ' One more reason to keep it.')
+    : null;
+
+  const chat = [
+    `${weapon}: ${headline}.`,
+    ...(chatLines.length > 0 ? chatLines : [summary]),
+    ...(adapter ? [`Can take the ${adapter}.`] : []),
+  ]
     .join(' ')
     .replaceAll('→', '->');
 
@@ -224,6 +242,7 @@ export function explain(verdict: Verdict, graph: RecipeGraph): Explanation {
     notes,
     chains: unique(chains),
     mastery,
+    incarnon,
     copyText: chat,
   };
 }

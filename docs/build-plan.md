@@ -550,6 +550,11 @@ sticks from tablet width up. Every text colour was measured against every surfac
 
 M6.5 has started. Favourites (12.3) are done: a held weapon can be starred on its page, in My
 Arsenal or in the sweep, and the sweep puts it under Favourites instead of ever suggesting its sale.
+The Incarnon flag (12.2) is done too: the index records the 45 Genesis adapters on the weapons they
+are named for, and the wiki's rule carries each to that weapon's versions (90 weapons; never Akimbo
+or Dual ones). The weapon page shows a badge, the verdict card and copied text say it without
+changing the verdict, and the sweep adds it to a Safe reason. The Circuit's week-by-week rotation is
+left out: it is not in the data and could not be verified.
 No schema bump: the flag is optional, so an old tab left open after a deploy still reads the arsenal
 rather than treating it as unreadable and writing an empty one back. What the data allows for the
 rest: build times, credit costs, vault status and the 45 Incarnon Genesis adapters are all in
