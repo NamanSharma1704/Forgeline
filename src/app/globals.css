@@ -1,34 +1,70 @@
 /*
  * Forgeline
  *
- * Spec section 8: the Space Heroes emblem style. Black shapes, thin white edges, mid-grey ground,
- * one accent colour for verdicts (green Safe, amber Check, red Keep). Clean and fast rather than
- * decorative; the verdict readable at a glance.
+ * Design direction: the Tenno Foundry HUD plan (docs/design-plan.md), which supersedes the flat
+ * emblem style of spec section 8. Layered obsidian surfaces on a deep void ground, lit by faint
+ * ambient light and a fine grid. The chamfered emblem panel (.shape) stays the signature, now with a
+ * lit gradient edge. Colour never carries meaning alone: every verdict has an icon and a word, green
+ * Safe, amber Check, red Keep, and cyan marks focus and selection.
  *
- * The signature is the emblem shape: a black panel with a crisp 1 px white edge and two cut corners
- * (.shape). It is reserved for the things a player acts on: the search field, the verdict, the
- * family tree and the weapon's own picture. Everything else stays quiet.
+ * Everything here is plain CSS: no images, no script, nothing that costs the five-second goal.
+ * Backdrop blur is used once, on the sticky header, where there is content behind it to blur.
  *
- * Dark is the default (spec 5.10). Light inverts the emblem: white shapes, black edges, pale ground.
+ * Dark is the default (spec 5.10). Light is alabaster ground with white panels.
  */
 
 /* ------------------------------------------------------------------ tokens */
 
 :root {
-  --bg: #2c2e33;
-  --surface: #0c0c0e;
-  --surface-hover: #17181b;
-  --edge: rgba(255, 255, 255, 0.86);
-  --edge-soft: rgba(255, 255, 255, 0.16);
-  --text: #f3f3f5;
-  --text-2: #b8bac1;
-  /* Only on black surfaces; on the grey ground it would fall below 4.5:1. */
-  --text-3: #8f929b;
+  /* Ground, and the light that falls on it. */
+  --bg: #0a0b0e;
+  --bg-glow-1: #121620;
+  --bg-glow-2: #0d131f;
+  --grid-line: rgba(255, 255, 255, 0.022);
 
-  --safe: #4cc76f;
-  --check: #f2b33d;
-  --keep: #ff6b5e;
-  --focus: #8fd0ff;
+  /* Three surface levels: panels, raised controls, hover and active. */
+  --surface-1: #101217;
+  --surface-2: #161922;
+  --surface-3: #1d2230;
+  --surface: var(--surface-1);
+  --surface-hover: var(--surface-3);
+  --header-bg: rgba(12, 14, 18, 0.84);
+  --header-shadow: 0 12px 32px -24px rgba(0, 0, 0, 0.8);
+
+  /* Edges. Strong is for boundaries a control is found by: 4:1 against every surface. */
+  --edge-subtle: rgba(255, 255, 255, 0.08);
+  --edge-medium: rgba(255, 255, 255, 0.16);
+  --edge-strong: rgba(255, 255, 255, 0.42);
+  --edge-glow: rgba(143, 208, 255, 0.35);
+  --edge-gold: rgba(224, 185, 115, 0.45);
+  --edge: var(--edge-strong);
+  --edge-soft: var(--edge-medium);
+  /* The lit edge of an emblem panel: brightest at the top-left cut, cooling towards the other. */
+  --edge-lit: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0.14) 38%,
+    rgba(255, 255, 255, 0.1) 62%,
+    rgba(143, 208, 255, 0.32)
+  );
+  /* Light from above on a panel's face. */
+  --sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 42%);
+  --shadow-panel: 0 24px 48px -28px rgba(0, 0, 0, 0.9);
+
+  --text: #eef1f6;
+  --text-2: #a9b0bd;
+  --text-3: #858d9c;
+
+  /* Verdicts, each with the soft light it casts. */
+  --safe: #3ddc84;
+  --safe-glow: rgba(61, 220, 132, 0.16);
+  --check: #f5a623;
+  --check-glow: rgba(245, 166, 35, 0.16);
+  --keep: #ff5555;
+  --keep-glow: rgba(255, 85, 85, 0.2);
+  --focus: #58c4dc;
+  --focus-glow: rgba(88, 196, 220, 0.25);
+  --selected: color-mix(in srgb, var(--focus) 18%, var(--surface-2));
 
   --font-body: var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-barlow-sc), var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
@@ -48,19 +84,46 @@
 }
 
 :root[data-theme='light'] {
-  --bg: #c9cbcf;
-  --surface: #fbfbfc;
-  --surface-hover: #eceef0;
-  --edge: rgba(12, 12, 14, 0.88);
-  --edge-soft: rgba(12, 12, 14, 0.16);
-  --text: #121316;
-  --text-2: #3c3f46;
-  --text-3: #5a5d65;
+  --bg: #edf0f4;
+  --bg-glow-1: #f8fafd;
+  --bg-glow-2: #e4e9f1;
+  --grid-line: rgba(15, 23, 42, 0.035);
 
-  --safe: #157a37;
-  --check: #8a5900;
-  --keep: #c0281f;
+  --surface-1: #ffffff;
+  --surface-2: #f6f8fb;
+  --surface-3: #eef2f7;
+  --header-bg: rgba(255, 255, 255, 0.82);
+  --header-shadow: 0 10px 24px -22px rgba(15, 23, 42, 0.35);
+
+  --edge-subtle: rgba(15, 23, 42, 0.06);
+  --edge-medium: rgba(15, 23, 42, 0.12);
+  --edge-strong: rgba(15, 23, 42, 0.5);
+  --edge-glow: rgba(10, 95, 192, 0.3);
+  --edge-gold: rgba(138, 98, 30, 0.45);
+  --edge-lit: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.5),
+    rgba(15, 23, 42, 0.16) 38%,
+    rgba(15, 23, 42, 0.12) 62%,
+    rgba(10, 95, 192, 0.35)
+  );
+  --sheen: none;
+  --shadow-panel: 0 18px 36px -24px rgba(15, 23, 42, 0.28);
+
+  --text: #121621;
+  --text-2: #3d4452;
+  --text-3: #586070;
+
+  /* At least 5.5:1 on the white panels. */
+  --safe: #11703a;
+  --safe-glow: rgba(17, 112, 58, 0.1);
+  --check: #835400;
+  --check-glow: rgba(200, 130, 20, 0.12);
+  --keep: #b3241c;
+  --keep-glow: rgba(179, 36, 28, 0.1);
   --focus: #0a5fc0;
+  --focus-glow: rgba(10, 95, 192, 0.18);
+  --selected: color-mix(in srgb, var(--focus) 12%, var(--surface-1));
 
   color-scheme: light;
 }
@@ -89,13 +152,40 @@ body {
   font-size: var(--step-0);
   line-height: 1.5;
   font-variant-numeric: tabular-nums;
-  caret-color: var(--text);
+  caret-color: var(--focus);
   -webkit-font-smoothing: antialiased;
 }
 
+/*
+ * The atmosphere: two pools of faint light at the top of the page and a fine grid that fades out
+ * below the fold. Fixed layers behind everything, so scrolling repaints nothing.
+ */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::before {
+  background:
+    radial-gradient(70rem 36rem at 12% -14%, var(--bg-glow-1), transparent 68%),
+    radial-gradient(56rem 32rem at 100% -6%, var(--bg-glow-2), transparent 72%);
+}
+
+body::after {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, #000 25%, transparent 78%);
+}
+
 ::selection {
-  background: var(--text);
-  color: var(--surface);
+  background: color-mix(in srgb, var(--focus) 38%, transparent);
+  color: var(--text);
 }
 
 a {
@@ -162,11 +252,16 @@ kbd {
  * shortened by (2 - sqrt 2) x the inset so the diagonal edge comes out the same width as the straight
  * ones. Because clip-path would also clip an outline, focus is shown by recolouring and thickening
  * the edge instead.
+ *
+ * The edge is lit (--edge-lit, a gradient) and the face carries a sheen from above. clip-path also
+ * clips shadows and glows, so any light a panel casts is painted inside it (--shape-sheen), never
+ * around it.
  */
 .shape {
   --cut: 14px;
-  --shape-edge: var(--edge);
+  --shape-edge: var(--edge-lit);
   --shape-fill: var(--surface);
+  --shape-sheen: var(--sheen);
   --shape-inset: 1px;
   --cut-in: calc(var(--cut) - var(--shape-inset) * 0.586);
   position: relative;
@@ -187,7 +282,7 @@ kbd {
   position: absolute;
   inset: var(--shape-inset);
   z-index: -1;
-  background: var(--shape-fill);
+  background: var(--shape-sheen), var(--shape-fill);
   clip-path: polygon(
     var(--cut-in) 0,
     100% 0,
@@ -212,6 +307,25 @@ button.shape:focus-visible,
   --shape-inset: 2px;
 }
 
+/*
+ * HUD corner ticks on the primary panels: small brackets in the two corners the cut leaves square.
+ * Drawn with gradients on ::after, so they cost no markup and no image.
+ */
+.verdict::after,
+.search--hero .search__field::after {
+  content: '';
+  position: absolute;
+  inset: calc(var(--shape-inset) + 6px);
+  pointer-events: none;
+  --tick: var(--edge-glow);
+  background:
+    linear-gradient(var(--tick) 0 0) right top / 10px 1px,
+    linear-gradient(var(--tick) 0 0) right top / 1px 10px,
+    linear-gradient(var(--tick) 0 0) left bottom / 10px 1px,
+    linear-gradient(var(--tick) 0 0) left bottom / 1px 10px;
+  background-repeat: no-repeat;
+}
+
 /* ------------------------------------------------------------------ controls */
 
 .button {
@@ -221,7 +335,7 @@ button.shape:focus-visible,
   min-height: 44px;
   padding: 0 16px;
   border: 1px solid var(--edge);
-  background: var(--surface);
+  background: var(--sheen), var(--surface-2);
   color: var(--text);
   font: 600 var(--step--1) / 1 var(--font-body);
   letter-spacing: 0.06em;
@@ -229,12 +343,16 @@ button.shape:focus-visible,
   cursor: pointer;
   transition:
     background-color 160ms var(--ease-out),
+    border-color 160ms var(--ease-out),
+    box-shadow 160ms var(--ease-out),
     color 160ms var(--ease-out);
 }
 
+/* A halo rather than an inversion: the control lights up, the page does not flash. */
 .button:hover {
-  background: var(--text);
-  color: var(--surface);
+  background-color: var(--surface-3);
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px var(--focus-glow);
 }
 
 .button:active {
@@ -265,11 +383,25 @@ button.shape:focus-visible,
 
 /* ------------------------------------------------------------------ shell */
 
+/*
+ * Glass: translucent, blurring the page that scrolls under it. Sticky from tablet width up; on a
+ * phone the header is two rows tall and would take too much of the screen.
+ */
 .site-header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--edge);
+  background: var(--header-bg);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid var(--edge-medium);
+  box-shadow: var(--header-shadow);
   position: relative;
   z-index: 20;
+}
+
+@media (min-width: 760px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+  }
 }
 
 .site-header__inner {
@@ -335,7 +467,8 @@ main {
 }
 
 .site-footer {
-  border-top: 1px solid var(--edge-soft);
+  border-top: 1px solid var(--edge-subtle);
+  background: color-mix(in srgb, var(--surface-1) 55%, transparent);
   color: var(--text-2);
   font-size: var(--step--1);
   padding: 24px 0 32px;
@@ -367,9 +500,24 @@ main {
   margin-top: 56px;
 }
 
+/* HUD section headers: condensed capitals, tracked, behind a short lit rule. */
 .section-title {
-  font: 600 var(--step-2) / 1.2 var(--font-display);
-  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  font: 700 var(--step-1) / 1.2 var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.section-title::before {
+  content: '';
+  flex: none;
+  width: 14px;
+  height: 2px;
+  background: var(--focus);
+  box-shadow: 0 0 8px var(--focus-glow);
 }
 
 .prose p + p {
@@ -506,9 +654,9 @@ main {
   left: 0;
   right: 0;
   z-index: 30;
-  background: var(--surface);
-  border: 1px solid var(--edge);
-  box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.55);
+  background: var(--surface-1);
+  border: 1px solid var(--edge-medium);
+  box-shadow: var(--shadow-panel);
   animation: panel-in 160ms var(--ease-out);
 }
 
@@ -536,8 +684,8 @@ main {
 }
 
 .search__option[aria-selected='true'] {
-  background: var(--surface-hover);
-  box-shadow: inset 0 0 0 1px var(--edge-soft);
+  background: var(--selected);
+  box-shadow: inset 2px 0 0 var(--focus);
 }
 
 .search__option-text {
@@ -592,9 +740,12 @@ main {
 
 /* ------------------------------------------------------------------ verdict card */
 
+/* The verdict casts its colour as a soft light from the top-left, behind the icon and headline. */
 .verdict {
   --cut: 20px;
   --tone: var(--text);
+  --tone-glow: transparent;
+  --shape-sheen: radial-gradient(44rem 18rem at 0% 0%, var(--tone-glow), transparent 70%), var(--sheen);
   margin-top: 28px;
   padding: 24px;
 }
@@ -602,14 +753,17 @@ main {
 .verdict--safe,
 .verdict--safe-soft {
   --tone: var(--safe);
+  --tone-glow: var(--safe-glow);
 }
 
 .verdict--check {
   --tone: var(--check);
+  --tone-glow: var(--check-glow);
 }
 
 .verdict--keep {
   --tone: var(--keep);
+  --tone-glow: var(--keep-glow);
 }
 
 .verdict__banner {
@@ -1092,14 +1246,15 @@ a.tree-box:hover {
   min-height: 36px;
   padding: 0 12px;
   border: 1px solid var(--edge-soft);
-  background: transparent;
+  background: var(--surface-1);
   color: var(--text-2);
   font: 500 var(--step--1) / 1 var(--font-body);
   cursor: pointer;
   transition:
     background-color 160ms var(--ease-out),
     color 160ms var(--ease-out),
-    border-color 160ms var(--ease-out);
+    border-color 160ms var(--ease-out),
+    box-shadow 160ms var(--ease-out);
 }
 
 .chip:hover {
@@ -1107,10 +1262,12 @@ a.tree-box:hover {
   color: var(--text);
 }
 
+/* Selected: lit cyan, not inverted, so a row of chips reads as one control with one choice. */
 .chip[aria-pressed='true'] {
-  background: var(--text);
-  border-color: var(--text);
-  color: var(--surface);
+  background: var(--selected);
+  border-color: var(--focus);
+  color: var(--text);
+  box-shadow: 0 0 12px -2px var(--focus-glow);
 }
 
 .field {
@@ -1126,7 +1283,7 @@ a.tree-box:hover {
   min-height: 36px;
   padding: 0 10px;
   border: 1px solid var(--edge-soft);
-  background: var(--surface);
+  background: var(--surface-2);
   color: var(--text);
   font: 500 var(--step--1) / 1 var(--font-body);
 }
@@ -1242,7 +1399,9 @@ a.tree-box:hover {
 }
 
 .button:disabled:hover {
-  background: var(--surface);
+  background-color: var(--surface-2);
+  border-color: var(--edge);
+  box-shadow: none;
   color: var(--text);
 }
 
@@ -1263,7 +1422,9 @@ a.tree-box:hover {
 
 .button--danger:hover {
   background: var(--keep);
-  color: var(--surface);
+  border-color: var(--keep);
+  box-shadow: 0 0 0 3px var(--keep-glow);
+  color: var(--surface-1);
 }
 
 .button--small {
@@ -1271,12 +1432,12 @@ a.tree-box:hover {
   padding: 0 12px;
 }
 
-/* A segmented radio group. Selected is the emblem inverted: white fill, black text. */
+/* A segmented radio group. Selected is lit like a selected chip, with a cyan rim. */
 .status-picker {
   display: inline-flex;
   flex-wrap: nowrap;
   border: 1px solid var(--edge-soft);
-  background: var(--surface);
+  background: var(--surface-2);
 }
 
 .status-picker__option {
@@ -1304,8 +1465,9 @@ a.tree-box:hover {
 }
 
 .status-picker__option[aria-checked='true'] {
-  background: var(--text);
-  color: var(--surface);
+  background: var(--selected);
+  box-shadow: inset 0 0 0 1px var(--focus);
+  color: var(--text);
   font-weight: 600;
 }
 
@@ -1337,7 +1499,7 @@ a.tree-box:hover {
   height: 32px;
   padding: 0;
   border: 1px solid var(--edge-soft);
-  background: var(--surface);
+  background: var(--surface-2);
   color: var(--text);
   cursor: pointer;
 }
@@ -1454,14 +1616,16 @@ a.tree-box:hover {
 
 .progress {
   height: 10px;
-  border: 1px solid var(--edge);
-  background: var(--surface);
+  border: 1px solid var(--edge-medium);
+  background: var(--surface-2);
 }
 
+/* A charge bar: cyan rising to green as mastery fills. */
 .progress__fill {
   display: block;
   height: 100%;
-  background: var(--text);
+  background: linear-gradient(90deg, var(--focus), var(--safe));
+  box-shadow: 0 0 10px var(--focus-glow);
   transition: width 240ms var(--ease-out);
 }
 
@@ -1473,7 +1637,8 @@ a.tree-box:hover {
   margin-top: 24px;
   padding: 16px 20px;
   border: 1px solid var(--edge-soft);
-  background: var(--surface);
+  background: var(--sheen), var(--surface-1);
+  box-shadow: var(--shadow-panel);
 }
 
 .panel__summary {
@@ -1610,7 +1775,8 @@ a.tree-box:hover {
   gap: 10px;
   padding: 12px;
   border: 1px solid var(--edge-soft);
-  background: var(--surface);
+  background: var(--sheen), var(--surface-1);
+  box-shadow: var(--shadow-panel);
 }
 
 .arsenal-tile__link {
@@ -1632,7 +1798,7 @@ a.tree-box:hover {
   min-height: 36px;
   padding: 0 8px;
   border: 1px solid var(--edge-soft);
-  background: var(--surface);
+  background: var(--surface-2);
   color: var(--text);
   font: 500 var(--step--1) / 1 var(--font-body);
 }
@@ -1750,8 +1916,9 @@ a.tree-box:hover {
   max-width: 34rem;
   margin: 0 auto;
   padding: 8px 8px 8px 16px;
-  background: var(--surface);
-  border: 1px solid var(--edge);
+  background: var(--sheen), var(--surface-2);
+  border: 1px solid var(--edge-medium);
+  box-shadow: inset 2px 0 0 var(--focus), var(--shadow-panel);
   animation: update-bar-in 240ms var(--ease-out);
 }
 

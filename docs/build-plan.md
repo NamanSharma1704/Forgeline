@@ -541,6 +541,13 @@ read from its name in `src/data/variants.ts`, since the source has no field for 
 the ingredient list filter by variant, and each weapon page links its other versions (Braton to
 Braton Prime, Braton Vandal and Mk1-Braton), because each is a separate weapon to master and sell.
 
+The visual direction has moved on from spec section 8. The Tenno Foundry HUD plan
+(`docs/design-plan.md`, kept out of git) replaces the flat emblem look in five phases. Phase 1, the
+foundations, is done: a void ground with ambient light and a fine grid, three surface levels, lit
+panel edges, verdict-coloured light inside the verdict card, cyan selection, and a glass header that
+sticks from tablet width up. Every text colour was measured against every surface it sits on:
+4.5:1 or better in both themes, and the light verdict colours at 5.5:1 or better on white.
+
 Next, in order:
 
 1. **Check the worker on the live site.** After the M6 deploy: install from Chrome on a phone,
@@ -560,3 +567,189 @@ M7 (phase 3) waits until the core and M6.5 have been used by real players.
 Hosting is settled (section 9). Open decisions that block nothing yet, but should be settled before
 M3 ships: the domain, the branding line, and whether analytics exist at all. The recommendations are
 in section 5 of [spec-review.md](spec-review.md).
+
+## 12. Changes made by Naman
+
+The following player-centric improvements and specifications were conceived and introduced to solve real *Warframe* player pain points beyond pure recipe mathematics (codified in Milestone M6.5). Each entry details the motivation, schema changes, engine logic, UI presentation, and verification criteria.
+
+---
+
+### 12.1. Re-acquisition Difficulty & Quest Protection
+
+#### Problem & Context
+In *Warframe*, not all weapons are equal to replace. A `Lato` or `Lex` can be re-purchased from the in-game Market for 25,000 Credits and equipped instantly with 0 craft time. In contrast, quest weapons (e.g., `Broken War`, `Xoris`, `Nataruk`) and Cephalon Simaris inventory items cost 100,000+ reputation standing and require rare parts (like Stalker blade drops) to craft again. Selling a `Broken War` simply because it builds nothing today causes catastrophic player regret.
+
+#### Data Model & Schema
+In `data/types.ts` and `data/index.json`:
+```ts
+export type AcquisitionTier =
+  | 'market-credit'    // Bought pre-built for credits (Braton, Lato, Lex, MK1 series)
+  | 'market-blueprint' // Blueprint bought from market, normal foundry craft
+  | 'clan-dojo'        // Researched in Tenno/Bio/Energy/Chem Lab, requires Forma
+  | 'quest'            // Awarded by quest (Broken War, Xoris, Nataruk)
+  | 'simaris'          // Re-bought via Cephalon Simaris standing
+  | 'invasion'         // Wraith/Vandal weapon parts from invasions
+  | 'baro'             // Baro Ki'Teer / Ducats
+  | 'syndicate'        // Standing purchase from 6 core Syndicates
+  | 'relic-vaulted'    // Prime parts currently vaulted
+  | 'relic-active';    // Prime parts actively in drop tables
+
+export interface Weapon {
+  // ... existing fields
+  readonly acquisition: {
+    readonly tier: AcquisitionTier;
+    readonly source: string;          // e.g. "Cephalon Simaris (100,000 Standing)" or "Market (25,000 Credits)"
+    readonly warning?: string;        // Emitted when selling carries high recovery penalty
+  };
+}
+```
+
+#### Engine & UI Logic
+- In `src/engine/verdict.ts`: A weapon that builds nothing still receives verdict `safe`, but carries a `recoveryWarning` field when `tier` is `'quest'`, `'simaris'`, `'invasion'`, or `'relic-vaulted'`.
+- In `VerdictCard.tsx`: The card banner displays an alert badge (amber/red outline) with text:
+  *"Hard to re-acquire: Quest reward / Cephalon Simaris (100,000 Standing). Keep unless you are certain you will never use it again."*
+- `tests/engine.test.ts`: Verify that `broken-war` emits `safe` with a non-null `recoveryWarning`, whereas `lato` emits `safe` with no warning.
+
+---
+
+### 12.2. Incarnon Genesis Compatibility Flag
+
+#### Problem & Context
+The Steel Path Circuit rewards *Incarnon Genesis Adapters* for legacy weapons (`Torid`, `Dual Toxocyst`, `Angstrum`, `Bo`, `Furis`, `Lato`, `Lex`, `Miter`, `Strun`, etc.). These adapters elevate baseline weapons into top-tier endgame meta choices. If a player masters `Torid` and sells it because Forgeline says *"Safe to sell: builds nothing"*, they discard an S-tier weapon.
+
+#### Data Model & Schema
+In `data/types.ts`:
+```ts
+export interface Weapon {
+  // ...
+  readonly isIncarnonCompatible?: boolean;
+  readonly incarnonRotation?: number; // 1 through 7 (Circuit rotation week)
+}
+```
+A static fixture `data/fixtures/incarnon-weapons.json` lists all ~35 Incarnon-compatible weapon slugs.
+
+#### Engine & UI Logic
+- `src/engine/explain.ts`: Appends an Incarnon note to the explanation summary:
+  *"⚡ Compatible with Steel Path Circuit Incarnon Genesis adapter (Rotation X). High endgame combat utility."*
+- `VerdictCard.tsx` and `w/[slug]/page.tsx`: Display a glowing Void cyan badge `⚡ INCARNON GENESIS` in the weapon header and verdict banner.
+- `tests/engine.test.ts`: Test that checking `torid` surfaces the Incarnon compatibility flag regardless of arsenal status.
+
+---
+
+### 12.3. Favorite / "Potatoed" Protection in Arsenal & Slot Sweep
+
+#### Problem & Context
+Players regularly install Orokin Catalysts ("potatoes"), Exilus weapon adapters, and multiple Forma into weapons they enjoy. When running `/sweep` to clear inventory space, players want the sweep to recommend selling uninvested mastery fodder—never a weapon they spent 5 Forma on.
+
+#### Data Model & Schema
+In `src/store/arsenal.ts`:
+```ts
+export interface StoredWeaponEntry {
+  readonly status: OwnershipStatus;
+  readonly quantity?: number;
+  readonly isFavorited?: boolean; // Starred / Invested (Catalyst / Forma)
+}
+```
+Store version bumped with backward-compatible migration: existing records default `isFavorited: false`.
+
+#### Engine & UI Logic
+- In `src/components/StatusPicker.tsx`: Add a toggleable star/catalyst button (`★ Favorite`).
+- In `src/engine/sweep.ts`:
+  ```ts
+  if (entry.isFavorited) {
+    keep.push({ slug, reason: 'Favorited / Invested (Protected from sale)' });
+    continue;
+  }
+  ```
+  Favorited weapons are placed in a dedicated top tier: **"Protected Gear"**, guaranteeing they never appear under "Safe to Sell".
+- `tests/sweep.test.ts`: Assert that marking a weapon with `isFavorited: true` prevents it from appearing in `sweep.canSell` even if all targets are mastered.
+
+---
+
+### 12.4. Variant Family & Sibling Links
+
+#### Problem & Context
+*Warframe* weapons exist in variant families: `Normal`, `Prime`, `Kuva`, `Tenet`, `Prisma`, `Wraith`, `Vandal`, and `Syndicate`. Players looking at `Boltor` need to know:
+1. Is there a Prime or Telos version that renders this obsolete?
+2. Does my variant satisfy the recipe? (e.g. `Lex` crafts `Aklex`, but `Lex Prime` does **not** craft `Aklex`—it crafts `Aklex Prime`).
+
+#### Data Model & Schema
+Implemented in `src/data/variants.ts` and `src/data/weapons.ts`:
+- Classifies each weapon into its variant line (`normal`, `prime`, `kuva-tenet-coda`, `vandal-wraith`, `prisma`, `syndicate`, `other`).
+- Groups sibling weapons sharing a root name (e.g. `braton` $\rightarrow$ `braton-prime`, `braton-vandal`, `mk1-braton`).
+
+#### UI Presentation
+- In `w/[slug]/page.tsx`: A **Variant Line** ribbon rendered under the weapon title:
+  `[ Normal (Current) ]  [ Prime ]  [ Vandal ]  [ MK1 ]`
+- Explicit recipe distinction callouts: *"Lex Prime is not used in Aklex; it is used in Aklex Prime."*
+- In `/arsenal`: Filter chips for variant types to inspect mastery by variant collection.
+
+---
+
+### 12.5. Express 46 Onboarding Wizard
+
+#### Problem & Context
+Forgeline contains 621 weapons. When a player opens `/arsenal`, a checklist of 621 items causes onboarding fatigue, and players abandon setup. In reality, **only 46 weapons are ingredients in other recipes**—the remaining 575 weapons have zero impact on sell verdicts.
+
+#### UX Flow & Implementation
+- In `/arsenal`: A prominent banner: **"Quick Setup (2 Minutes): Mark your 46 ingredient weapons to get 100% accurate verdicts."**
+- Launches a modal/step card presenting only the 46 ingredients grouped by mastery rank requirement:
+  - Single-click toggle: `[ Not Owned ]` $\rightarrow$ `[ Owned ]` $\rightarrow$ `[ Mastered ]`.
+  - Preset shortcuts: **"Mark all Market Credit weapons as Mastered"** (instantly sets MK1 weapons, baseline Braton, Lato, Strun, Aklato, Lex).
+- Progress indicator: `12 / 46 Ingredients Marked`. Once complete, emits celebration toast: *"Arsenal personalized! Every sell check is now tailored to your inventory."*
+
+---
+
+### 12.6. Foundry Crafting Duration & Staged Sequencing in Build Planner
+
+#### Problem & Context
+Crafting multi-stage weapons involves extensive Foundry wait times. For example, `Akjagara` requires:
+- 2x `Bolto` (12h craft time each, 12h if built concurrently)
+- 1x `Akbolto` (24h craft time)
+- 2x `Skana` (Market purchase or 12h craft time)
+- 1x `Dual Skana` (12h craft time)
+- 1x `Akjagara` (24h craft time)
+Total sequential time: **72 hours**. Players need to know the true time investment and what can be queued in parallel.
+
+#### Engine & UI Logic
+- In `src/engine/planner.ts`:
+  - Extend each `PlanLine` with `buildTimeSeconds` and `concurrentStage`.
+  - Calculate **Critical Path Duration** (minimum time assuming concurrent crafting of identical stages) vs **Sequential Duration**.
+- In `/plan`:
+  - Visual summary card: **"Total Foundry Time: 72 Hours (3 Days) — 3 Stages"**.
+  - **Stage 1 (Queue First)**: Build 2x Bolto + 1x Dual Skana.
+  - **Stage 2 (After Stage 1)**: Build Akbolto.
+  - **Stage 3 (Final Blueprint)**: Build Akjagara.
+
+---
+
+### 12.7. Target Recipe Resource Breakdown & Foundry Ingredients
+
+#### Problem & Context
+When looking at `Bolto`, the card says *"Used to build: Akbolto (2 copies)"*. The player does not know what non-weapon resources are needed to craft Akbolto, forcing them to open another tab or leave the page.
+
+#### UI & Data Integration
+- Leverages `/materials.json` (already pre-compiled by `materials.json/route.ts`).
+- In `VerdictCard.tsx`: Each target weapon row gains an expandable/hoverable **"Blueprint Requirements"** pill:
+  - **Weapon Ingredients**: `2x Bolto`
+  - **Foundry Resources**: `1x Orokin Cell`, `20,000 Credits`, `1x Akbolto Blueprint (Market)`
+- **Rare Resource Tags**: Highlights bottleneck resources with visual pills:
+  - 🟡 `1x Orokin Cell`
+  - 🔵 `Forma` / `Tellurium`
+  - ⚡ `Argon Crystal`
+- One-click action button: `[ Plan Full Build → ]` linking directly to `/plan/?w=akbolto`.
+
+---
+
+### 12.8. Direct Community Links (Wiki & Market)
+
+#### Problem & Context
+When a player discovers a weapon they need to keep or farm, their immediate next question is *"Where does this drop?"* or *"What is the relic/platinum price?"*.
+
+#### Implementation
+- In `w/[slug]/page.tsx`: A discreet **Community Links** strip in the weapon header:
+  - **Warframe Wiki**: `https://wiki.warframe.com/w/${encodeURIComponent(weapon.name)}` (direct drop tables, damage stats, quirks).
+  - **Warframe Market**: `https://warframe.market/items/${encodeURIComponent(weapon.slug.replace(/-/g, '_'))}` (for Prime sets and syndicate weapons).
+- Strict non-commercial posture preserved: External links open with `rel="noopener noreferrer"` in a new tab; no affiliate tracking, ads, or cookies.
+
+
