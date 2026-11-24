@@ -61,7 +61,7 @@ The same steps by hand:
 npm run data:verify    # read-only audit of the upstream package
 npm run data:refresh   # build a candidate index beside the live one and run the publish gate
 npm run data:images    # fetch and convert anything new; add -- --recheck to compare every picture
-npm run data:links     # check every weapon's wiki and warframe.market pages; run after new weapons arrive
+npm run data:links     # check every weapon's wiki and warframe.market pages; the monthly refresh runs it too
 npm run data:accept    # after reviewing a recipe change: update the verified-recipe fixture
 ```
 

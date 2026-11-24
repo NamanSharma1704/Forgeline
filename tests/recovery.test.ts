@@ -5,7 +5,7 @@
 
 import { describe, expect, it } from 'vitest';
 import { decodeHard, encodeHard, fromGraphFile, toGraphFile } from '../src/data/graph-file';
-import { hardToGetOf } from '../src/data/recovery';
+import { hardToGetOf, reviewedAcquisition } from '../src/data/recovery';
 import { getWeapon, graphWeapons } from '../src/data/weapons';
 import { createEvaluator, createGraph, explain, hardToGetSentence, sweep, type HardToGet } from '../src/engine';
 
@@ -29,7 +29,8 @@ describe('which weapons are hard to get back', () => {
     ['heliocor', 'the Market sells it, though its blueprint is from Simaris'],
     ['braton-prime', 'its relics still drop'],
     ['kuva-bramma', 'a new Lich can drop it again'],
-    ['paracesis', 'the source says nothing, so no guess'],
+    ['sheev', 'the source is silent, but the wiki shows it drops from Invasions'],
+    ['deconstructor', 'it comes with Helios'],
   ])('%s: none, because %s', (slug) => {
     expect(hardOf(slug)).toBeNull();
   });
@@ -39,7 +40,7 @@ describe('which weapons are hard to get back', () => {
     for (const weapon of graphWeapons()) {
       if (weapon.hardToGet) counts[weapon.hardToGet.kind] = (counts[weapon.hardToGet.kind] ?? 0) + 1;
     }
-    expect(counts).toEqual({ vaulted: 87, only: 18, event: 15, baro: 14 });
+    expect(counts).toEqual({ vaulted: 87, only: 20, event: 17, baro: 17, quest: 2 });
   });
 });
 
@@ -98,6 +99,8 @@ describe('the browser graph file', () => {
       { kind: 'baro' },
       { kind: 'only', from: ['stalker'] },
       { kind: 'only', from: ['simaris', 'stalker'], simarisAfter: 'Complete The Second Dream' },
+      { kind: 'quest', quest: 'The Sacrifice', once: true },
+      { kind: 'quest', quest: 'The Chimera Prologue' },
     ];
     for (const hard of cases) expect(decodeHard(encodeHard(hard))).toEqual(hard);
   });
@@ -111,5 +114,38 @@ describe('the browser graph file', () => {
 
   it('stays small', () => {
     expect(JSON.stringify(toGraphFile(graphWeapons())).length).toBeLessThan(45_000);
+  });
+});
+
+describe('the reviewed list, for weapons the source is silent on', () => {
+  it.each([
+    ['paracesis', { kind: 'quest', quest: 'The Chimera Prologue' }],
+    ['skiajati', { kind: 'quest', quest: 'The Sacrifice', once: true }],
+    ['thornbak', { kind: 'only', from: ['simaris'], simarisAfter: 'Complete The Teacher' }],
+    ['basmu', { kind: 'event' }],
+    ['vastilok', { kind: 'baro' }],
+  ])('%s: %o', (slug, expected) => {
+    expect(hardOf(slug)).toEqual(expected);
+  });
+
+  it('says a quest is the only source, and when replaying it gives none', () => {
+    expect(hardToGetSentence(hardOf('skiajati')!)).toBe(
+      'Hard to get back: its only source is the quest The Sacrifice, and replaying it does not give a second one.'
+    );
+    expect(hardToGetSentence(hardOf('paracesis')!)).toBe(
+      'Hard to get back: its only source is the quest The Chimera Prologue.'
+    );
+  });
+
+  it('covers only weapons the source is still silent on, so a refresh that adds one flags it', () => {
+    for (const slug of Object.keys(reviewedAcquisition.weapons)) {
+      const weapon = getWeapon(slug);
+      expect(weapon, `${slug} is not in the index`).toBeDefined();
+      expect(weapon!.obtain, `${slug} now has a source in the data: review its entry`).toBeUndefined();
+    }
+  });
+
+  it('gives every entry its evidence', () => {
+    for (const entry of Object.values(reviewedAcquisition.weapons)) expect(entry.evidence.length).toBeGreaterThan(10);
   });
 });

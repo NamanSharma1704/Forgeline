@@ -37,6 +37,7 @@ export function VerdictCard({
   names,
   controls = false,
   footnote,
+  favourite = false,
 }: {
   verdict: Verdict;
   explanation: Explanation;
@@ -48,6 +49,8 @@ export function VerdictCard({
   controls?: boolean;
   /** One line under the rows: where the verdict comes from, or how to make it personal. */
   footnote?: React.ReactNode;
+  /** The player starred it: say so beside the verdict, which recipes alone decide. */
+  favourite?: boolean;
 }) {
   const e = explanation;
   const safe = e.tone === 'safe' || e.tone === 'safe-soft';
@@ -79,6 +82,12 @@ export function VerdictCard({
             <p className="verdict__warning">
               <Icon name="check" size={18} />
               <span>{e.recovery}</span>
+            </p>
+          )}
+          {favourite && (
+            <p className="verdict__favourite">
+              <Icon name="star" size={18} />
+              <span>Your favourite: the sweep never suggests selling it, whatever the recipes say.</span>
             </p>
           )}
         </div>

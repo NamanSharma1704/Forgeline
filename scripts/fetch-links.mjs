@@ -127,9 +127,37 @@ for (const weapon of weapons) {
 // ---------------------------------------------------------------- write
 
 const sorted = (record) => Object.fromEntries(Object.entries(record).sort(([a], [b]) => a.localeCompare(b, 'en')));
+const previous = fs.existsSync(outFile) ? JSON.parse(fs.readFileSync(outFile, 'utf8')) : null;
+
+// The monthly refresh runs this unattended. A site that answers but has changed its API, or is
+// half down, must not wipe the links it already has: a sharp drop leaves the file alone.
+for (const [label, next, before] of [
+  ['wiki', wiki, previous?.wiki],
+  ['market', market, previous?.market],
+]) {
+  const had = Object.keys(before ?? {}).length;
+  const has = Object.keys(next).length;
+  if (had > 0 && has < had * 0.9) {
+    throw new Error(`${label}: ${has} links where there were ${had}; leaving data/links.json as it is`);
+  }
+}
+
+const unchanged =
+  previous &&
+  JSON.stringify(previous.wiki) === JSON.stringify(sorted(wiki)) &&
+  JSON.stringify(previous.market) === JSON.stringify(sorted(market));
 fs.writeFileSync(
   outFile,
-  `${JSON.stringify({ checkedAt: new Date().toISOString(), wiki: sorted(wiki), market: sorted(market) }, null, 2)}\n`
+  `${JSON.stringify(
+    {
+      // Only moves when a link does, so a month with no new weapons leaves no diff behind.
+      checkedAt: unchanged ? previous.checkedAt : new Date().toISOString(),
+      wiki: sorted(wiki),
+      market: sorted(market),
+    },
+    null,
+    2
+  )}\n`
 );
 
 console.log(`wiki pages    ${Object.keys(wiki).length} of ${weapons.length}`);

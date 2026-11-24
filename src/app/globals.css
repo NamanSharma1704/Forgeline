@@ -940,6 +940,29 @@ main {
   color: var(--check);
 }
 
+/* Starred by the player, under the verdict: gold, the favourite colour, with its star. */
+.verdict__favourite {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: var(--measure);
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-left: 2px solid var(--gold);
+  background: color-mix(in srgb, var(--gold) 9%, transparent);
+  color: var(--text);
+}
+
+.verdict__favourite .icon {
+  flex: none;
+  margin-top: 2px;
+  color: var(--gold);
+}
+
+.verdict__favourite .icon path {
+  fill: currentColor;
+}
+
 /* Several notes in a row read as one block: no rule between them. */
 .verdict__mastery + .verdict__recovery,
 .verdict__recovery + .verdict__incarnon {

@@ -35,8 +35,12 @@ export function hardToGetSentence(hard: HardToGet): string {
       return `Hard to get back: another one depends on ${listOf(routes)}.`;
     }
     case 'event':
-      return 'Hard to get back: Vandal and Wraith weapons come from events, Invasions and other limited offers, and may not be offered again for a long time.';
+      return 'Hard to get back: it comes from limited-time events or Invasions, and may not be offered again for a long time.';
     case 'baro':
-      return "Hard to get back: Prisma weapons are sold only by Baro Ki'Teer, and not on every visit.";
+      return "Hard to get back: only Baro Ki'Teer sells it, and not on every visit.";
+    case 'quest':
+      return `Hard to get back: its only source is the quest ${hard.quest}${
+        hard.once ? ', and replaying it does not give a second one' : ''
+      }.`;
   }
 }

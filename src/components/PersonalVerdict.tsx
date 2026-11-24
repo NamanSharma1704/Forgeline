@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useMemo } from 'react';
 import { createEvaluator, explain, isArsenalSetUp, type Explanation, type Verdict } from '@/engine';
-import { toEngineArsenal } from '@/store/arsenal';
+import { favouriteIn, toEngineArsenal } from '@/store/arsenal';
 import { useArsenal } from '@/store/useArsenal';
 import { useRecipeGraph } from '@/store/useRecipeGraph';
 import { VerdictCard, type CardTarget } from './VerdictCard';
@@ -64,6 +64,7 @@ export function PersonalVerdict({
       names={names}
       controls={targets.length > 0}
       footnote={footnote}
+      favourite={ready && favouriteIn(arsenal, slug)}
     />
   );
 }

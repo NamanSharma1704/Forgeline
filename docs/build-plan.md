@@ -598,8 +598,13 @@ nothing, 15 Vandal or Wraith and 14 Prisma weapons. It never changes a verdict; 
 it sits right below the summary in the caution colour, and the sweep and copied text carry it. Two
 corrections to 12.1: Broken War is an ingredient (War is built from it), so it is a Check, and only
 turns Safe, with the warning, once War is built and mastered; Hate is the example that is Safe as
-it stands. Quest rewards the source says nothing about, such as Paracesis and Skiajati, get no
-warning rather than a guess.
+it stands. For the 40 weapons the source says nothing about, each wiki page's Acquisition
+section was read; the nine that are hard to get back are in data/fixtures/acquisition.json with
+the evidence (Paracesis and Skiajati, quest only; Thornbak and Veritux, Simaris after their quest;
+Basmu and Haalvu, events; Vastilok, Vericres and Zylok, Baro Ki'Teer). A test fails if the source
+later gives one of them a route, so the list is reviewed rather than left stale. A starred weapon's
+own verdict now says it is a favourite, and the monthly refresh checks wiki and market links for
+new weapons, keeping the committed ones if either site is down or answers oddly.
 No schema bump: the flag is optional, so an old tab left open after a deploy still reads the arsenal
 rather than treating it as unreadable and writing an empty one back. What the data allows for the
 rest: build times, credit costs, vault status and the 45 Incarnon Genesis adapters are all in

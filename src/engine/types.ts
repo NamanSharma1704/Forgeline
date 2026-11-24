@@ -23,7 +23,9 @@ export type HardToGet =
       readonly simarisAfter?: string;
     }
   | { readonly kind: 'event' }
-  | { readonly kind: 'baro' };
+  | { readonly kind: 'baro' }
+  /** A quest is its only source; `once` when replaying the quest gives no second one. */
+  | { readonly kind: 'quest'; readonly quest: string; readonly once?: boolean };
 
 export interface GraphNode {
   readonly slug: string;

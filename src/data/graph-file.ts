@@ -28,16 +28,20 @@ export interface GraphFileNode {
 }
 
 /**
- * HardToGet in a few characters: "vaulted", "event", "baro", or "only:simaris+stalker", with the
- * Simaris condition after a second colon ("only:simaris:Complete The New War").
+ * HardToGet in a few characters: "vaulted", "event", "baro", "only:simaris+stalker" with the
+ * Simaris condition after a second colon ("only:simaris:Complete The New War"), or
+ * "quest:1:The Sacrifice" (1 when replaying it gives no second one).
  */
 export function encodeHard(hard: HardToGet): string {
+  if (hard.kind === 'quest') return `quest:${hard.once ? 1 : 0}:${hard.quest}`;
   if (hard.kind !== 'only') return hard.kind;
   return `only:${hard.from.join('+')}${hard.simarisAfter ? `:${hard.simarisAfter}` : ''}`;
 }
 
 export function decodeHard(code: string): HardToGet | null {
   if (code === 'vaulted' || code === 'event' || code === 'baro') return { kind: code };
+  const quest = /^quest:([01]):(.+)$/.exec(code);
+  if (quest) return { kind: 'quest', quest: quest[2]!, ...(quest[1] === '1' ? { once: true } : {}) };
   const match = /^only:([a-z+]+)(?::(.*))?$/.exec(code);
   if (!match) return null;
   const from = match[1]!

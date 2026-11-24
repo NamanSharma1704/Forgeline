@@ -76,6 +76,13 @@ jobs:
         if: steps.gate.outputs.status == 'publish' && env.ACCEPT == 'true'
         run: node scripts/update-fixture.mjs
 
+      # Checks every weapon's wiki and warframe.market page, so new weapons get their links. Asks
+      # both sites once; if either is down, the step fails alone and the committed links stand.
+      - name: Check wiki and market links
+        if: steps.gate.outputs.status == 'publish'
+        continue-on-error: true
+        run: node scripts/fetch-links.mjs
+
       # Re-downloads every source and compares hashes, so art replaced upstream under the same
       # filename is caught. Never deletes an existing picture.
       - name: Recheck every picture

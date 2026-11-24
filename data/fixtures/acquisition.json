@@ -1,0 +1,49 @@
+{
+  "checked": "2026-11-24",
+  "source": "The Acquisition section of each weapon's page on wiki.warframe.com, read for the 40 weapons @wfcd/items gives no source for. Only the ones that would be hard to get back are listed; the rest come with a companion, or from the Market, Nightwave, the dojo or a syndicate vendor.",
+  "weapons": {
+    "basmu": {
+      "kind": "event",
+      "evidence": "Blueprint only from limited-time events (Scarlet Spear, Orphix Venom)."
+    },
+    "haalvu": {
+      "kind": "event",
+      "evidence": "Sold during an Epoch operation, and given for watching TennoCon 2026."
+    },
+    "paracesis": {
+      "kind": "quest",
+      "quest": "The Chimera Prologue",
+      "evidence": "Blueprint given on completing The Chimera Prologue; no other source listed."
+    },
+    "skiajati": {
+      "kind": "quest",
+      "quest": "The Sacrifice",
+      "once": true,
+      "evidence": "Given during The Sacrifice; replaying the quest does not give a second one."
+    },
+    "thornbak": {
+      "kind": "only",
+      "from": ["simaris"],
+      "simarisAfter": "Complete The Teacher",
+      "evidence": "Awarded in The Teacher; further copies from Cephalon Simaris for standing."
+    },
+    "vastilok": {
+      "kind": "baro",
+      "evidence": "Sold by Baro Ki'Teer, whose stock changes with each visit."
+    },
+    "vericres": {
+      "kind": "baro",
+      "evidence": "Sold by Baro Ki'Teer, whose stock changes with each visit."
+    },
+    "veritux": {
+      "kind": "only",
+      "from": ["simaris"],
+      "simarisAfter": "Complete The Archwing",
+      "evidence": "Comes with Odonata in The Archwing; further blueprints from Cephalon Simaris."
+    },
+    "zylok": {
+      "kind": "baro",
+      "evidence": "Sold by Baro Ki'Teer, whose stock changes with each visit."
+    }
+  }
+}
