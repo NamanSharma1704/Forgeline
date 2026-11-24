@@ -167,6 +167,18 @@ export function setStatus(
   return { schema: ARSENAL_SCHEMA, updatedAt: nowIso, entries };
 }
 
+/** Set several statuses in one change, as setStatus would one at a time: one save, one update. */
+export function setStatuses(
+  arsenal: StoredArsenal,
+  changes: Readonly<Record<string, OwnershipStatus>>,
+  nowIso: string
+): StoredArsenal {
+  return Object.entries(changes).reduce(
+    (next, [slug, status]) => setStatus(next, slug, status, nowIso),
+    arsenal
+  );
+}
+
 /** Set how many copies of a held weapon the player has. Ignored for weapons not held. */
 export function setQty(
   arsenal: StoredArsenal,

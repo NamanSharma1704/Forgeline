@@ -10,6 +10,7 @@ import {
   setFavourite,
   setQty,
   setStatus,
+  setStatuses,
   type StoredArsenal,
 } from './arsenal';
 
@@ -67,6 +68,8 @@ const now = () => new Date().toISOString();
 
 export const arsenalActions = {
   setStatus: (slug: string, status: OwnershipStatus) => commit(setStatus(snapshot(), slug, status, now())),
+  setStatuses: (changes: Readonly<Record<string, OwnershipStatus>>) =>
+    commit(setStatuses(snapshot(), changes, now())),
   setQty: (slug: string, qty: number) => commit(setQty(snapshot(), slug, qty, now())),
   setFavourite: (slug: string, favourite: boolean) =>
     commit(setFavourite(snapshot(), slug, favourite, now())),

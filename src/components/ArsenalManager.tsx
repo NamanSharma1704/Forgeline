@@ -20,6 +20,7 @@ import { FavouriteToggle } from './FavouriteToggle';
 import { Icon } from './Icon';
 import { QtyStepper } from './QtyStepper';
 import { StatusPicker } from './StatusPicker';
+import { QuickSetup } from './QuickSetup';
 import { WeaponArt, type ArtWeapon } from './WeaponArt';
 
 /**
@@ -33,6 +34,7 @@ export interface ArsenalRow extends ArtWeapon {
   readonly slug: string;
   readonly role: RecipeRole;
   readonly variant: Variant;
+  readonly masteryReq: number;
 }
 
 type Scope = 'recipe' | 'ingredients' | 'all';
@@ -117,10 +119,12 @@ export function ArsenalManager({
   const [status, setStatus] = useState<OwnershipStatus | 'any'>('any');
   const [text, setText] = useState('');
   const [view, setView] = useState<'list' | 'grid'>('list');
+  const [setupOpen, setSetupOpen] = useState(false);
   const [file, setFile] = useState<FileState>({ kind: 'idle' });
   const fileInput = useRef<HTMLInputElement>(null);
 
   const known = useMemo(() => new Set(rows.map((row) => row.slug)), [rows]);
+  const recipeRows = useMemo(() => rows.filter((row) => row.role !== 'none'), [rows]);
   const scopeCount = useMemo(
     () => ({
       recipe: rows.filter((row) => inScope(row, 'recipe')).length,
@@ -210,11 +214,41 @@ export function ArsenalManager({
         <p className="arsenal-summary__line muted">
           Recipe weapons marked: {ready ? recipeMarked : '…'} of {scopeCount.recipe}. These decide every
           Keep or Safe verdict on the site.
+          {ready && recipeMarked > 0 && !setupOpen && (
+            <>
+              {' '}
+              <button type="button" className="link-button" onClick={() => setSetupOpen(true)}>
+                Go through them again
+              </button>
+            </>
+          )}
         </p>
       </section>
 
+      {setupOpen ? (
+        <QuickSetup rows={recipeRows} onClose={() => setSetupOpen(false)} />
+      ) : (
+        ready &&
+        recipeMarked === 0 && (
+          <section className="setup-banner panel" aria-labelledby="setup-banner-title">
+            <div>
+              <h2 id="setup-banner-title" className="setup__title">
+                Quick setup, about two minutes
+              </h2>
+              <p className="muted">
+                Mark the {scopeCount.recipe} weapons that decide every verdict, one mastery-rank group at
+                a time. A tap changes a weapon, and a whole group can be marked mastered at once.
+              </p>
+            </div>
+            <button type="button" className="button" onClick={() => setSetupOpen(true)}>
+              Start quick setup
+            </button>
+          </section>
+        )
+      )}
+
       {starters.length > 0 && (
-        <details className="panel" open={ready && totals.recorded === 0}>
+        <details className="panel">
           <summary className="panel__summary">Starting out? Mark your tutorial weapons</summary>
           <p className="muted panel__intro">Tap the starter weapons you picked to mark them Owned.</p>
           <Starters rows={starters} />

@@ -29,6 +29,7 @@ const toRow = (weapon: Weapon): ArsenalRow => ({
   image: weapon.image,
   thumb: weapon.thumb,
   role: role(weapon),
+  masteryReq: weapon.masteryReq,
   variant: variantOf(weapon.name).variant,
 });
 

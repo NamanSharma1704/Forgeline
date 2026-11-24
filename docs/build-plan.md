@@ -582,6 +582,13 @@ wiki's own API resolves each title (the source's address was stale for a few, su
 Prime), and market items are matched by game id, so Founders-only Primes like Lato Prime get no
 market link. All 621 weapons have a wiki page; 208 have a market page. New weapons get links the
 next time the script runs.
+The quick setup (12.5) is done, covering the 87 recipe weapons rather than the 46 ingredients.
+My Arsenal offers it until any recipe weapon is marked, and keeps a "go through them again" link
+after. It walks three mastery-rank groups (0 to 4, 5 to 8, 9 and up); one tap moves a weapon
+through Not owned, Owned, Mastered and Sold; "All mastered" marks a whole group, leaving Sold as it
+is, and can be undone. Every change saves as it happens. 12.5's "Market credit weapons" preset was
+replaced by that per-group action: the data has no "bought for credits" field, and the MK1
+weapons it named are in no recipe, so marking them would change no verdict.
 No schema bump: the flag is optional, so an old tab left open after a deploy still reads the arsenal
 rather than treating it as unreadable and writing an empty one back. What the data allows for the
 rest: build times, credit costs, vault status and the 45 Incarnon Genesis adapters are all in

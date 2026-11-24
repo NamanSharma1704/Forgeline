@@ -1979,6 +1979,164 @@ a.tree-box:hover {
   opacity: 0.7;
 }
 
+/* ------------------------------------------------------------------ quick setup */
+
+.setup-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+  border-left: 2px solid var(--focus);
+}
+
+.setup-banner > div {
+  flex: 1 1 320px;
+}
+
+.setup__title {
+  font: 700 var(--step-1) / 1.2 var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+.setup__title:focus {
+  outline: none;
+}
+
+.setup-banner .setup__title {
+  margin-bottom: 4px;
+}
+
+.setup__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-bottom: 10px;
+}
+
+.setup__progress {
+  color: var(--text-2);
+  font-size: var(--step--1);
+  font-variant-numeric: tabular-nums;
+}
+
+.setup__help {
+  margin-top: 12px;
+  color: var(--text-2);
+  font-size: var(--step--1);
+}
+
+.setup__bulk {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.setup__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* One tap moves a weapon on. Each state has its edge colour and always its word. */
+.setup-tile {
+  --cut: 10px;
+  --shape-edge: var(--edge-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  height: 100%;
+  padding: 12px 8px 10px;
+  border: 0;
+  color: var(--text);
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.setup-tile:hover {
+  --shape-fill: var(--surface-hover);
+}
+
+.setup-tile__name {
+  margin-top: 4px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.setup-tile__meta {
+  color: var(--text-3);
+  font-size: 0.75rem;
+}
+
+.setup-tile__status {
+  margin-top: 4px;
+  color: var(--text-3);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.setup-tile[data-status='owned'] {
+  --shape-edge: var(--focus);
+}
+
+.setup-tile[data-status='owned'] .setup-tile__status {
+  color: var(--focus);
+}
+
+.setup-tile[data-status='mastered'] {
+  --shape-edge: var(--safe);
+  --shape-fill: color-mix(in srgb, var(--safe) 8%, var(--surface-1));
+}
+
+.setup-tile[data-status='mastered'] .setup-tile__status {
+  color: var(--safe);
+}
+
+.setup-tile[data-status='sold'] .setup-tile__status {
+  color: var(--text-2);
+}
+
+.setup__nav,
+.setup__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin-top: 18px;
+}
+
+.setup__actions {
+  margin-top: 14px;
+}
+
+/* A group can run to 35 tiles: Back and Next stay on screen while it scrolls. */
+.setup__nav {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+  margin-bottom: -16px;
+  padding: 12px 0 calc(12px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--edge-subtle);
+  background: var(--surface-1);
+}
+
+.setup__close {
+  margin-left: auto;
+}
+
+.setup p + p {
+  margin-top: 8px;
+}
+
 .arsenal-list {
   list-style: none;
   margin: 12px 0 0;
