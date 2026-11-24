@@ -53,7 +53,7 @@ switched off, since the build already produces exactly the two sizes the site se
   scripts/diff-index.mjs -------> data/changelog.json  + publish gate (pass / block)
         |
         v
-  next build (output: export) --> out/  621 pre-rendered weapon pages  --> static host
+  next build (output: export) --> out/  621 pre-rendered weapon pages  --> Vercel, on push
         |                               + /, /ingredients, /about
         v
   browser:  trimmed search index  +  localStorage arsenal  ->  src/engine (pure)  ->  UI
@@ -203,7 +203,7 @@ and full keyboard navigation in the dropdown. 600 entries is trivial for Fuse.
 Each milestone is shippable on its own and ends with something verifiable. Sizes are relative:
 S is a sitting, M is a day or two, L is several days.
 
-### M0. Foundations (S) - done, except the hosting account
+### M0. Foundations (S) - done, except the linter
 
 Git repository, Next.js 16 with the App Router, React 19, TypeScript in strict mode with
 `noUncheckedIndexedAccess`, Vitest, and CI that runs typecheck, tests and the static export on every
@@ -211,8 +211,8 @@ push.
 **Done when:** a page deploys from a push to main.
 
 Built: the repository, the toolchain, `.github/workflows/ci.yml`, and a working static export of
-626 pages. Outstanding: a linter (ESLint with `eslint-config-next`, plus Prettier) and the hosting
-account, which is open decision 1.
+626 pages, deployed to Vercel from every push to `main` (section 9). Outstanding: a linter (ESLint
+with `eslint-config-next`, plus Prettier).
 
 ### M1. Data pipeline and validated index (M) - done, except the monthly diff
 
@@ -320,7 +320,7 @@ steps:
         - nothing changed at all                             -> skip deploy, exit 0
   5  node scripts/fetch-images.mjs           incremental, retries, never deletes
   6  npm test                                 fail -> stop, no deploy
-  7  commit index.json, manifest, changelog, new images; deploy
+  7  commit index.json, manifest, changelog, new images and push; Vercel deploys the push
   on failure or block: open a GitHub issue with the diff, leave the live site untouched
 ```
 
@@ -331,18 +331,33 @@ as a fallback source behind a flag, not as a live dependency.
 
 ## 9. Hosting and deploy
 
-The build produces a plain `out/` directory of HTML, CSS, JS and WebP, so the host is a detail rather
-than a commitment. Recommended: **Cloudflare Pages**, free tier, deployed by GitHub Actions. It is
-fast worldwide, has no bandwidth cap to worry about with 12 MB of images, supports a custom domain
-and needs no server. GitHub Pages works too but has a 1 GB soft limit and slower cache behaviour.
-Vercel is the zero-configuration option for a Next.js project and would also serve this export
-happily. All three are reversible; `trailingSlash: true` is already set so the directory-style URLs
-work the same on each. The domain is not reversible, so register it before the About copy is
-finalised, and keep "Warframe" out of it.
+**Decided: GitHub holds everything, Vercel serves the site.** GitHub is the source of truth for the
+code, the generated index and all 1,242 images. Vercel's Git integration reads the repository on
+every push to `main`, runs `next build`, and serves the static `out/` directory. Nothing lives only
+on Vercel: delete the Vercel project and the repository is untouched and can be deployed anywhere
+else, since the export is plain HTML, CSS, JS and WebP. `trailingSlash: true` keeps the
+directory-style URLs identical on any static host.
 
-Cookieless Cloudflare Web Analytics is the only measurement that fits the no-accounts,
-non-commercial posture. Without it, the five-second goal in section 12 is unmeasurable and should be
-stated as a design intent instead.
+| | |
+| --- | --- |
+| Repository | `NamanSharma1704/Forgeline` on GitHub, production branch `main` |
+| Vercel project | `forgeline`, in the `souldevourer17's projects` team, Hobby (free) plan |
+| Production URL | https://forgeline-arsenal.vercel.app |
+| Deploys | Automatic on every push to `main`; a build takes about 20 seconds |
+| Checks | GitHub Actions CI runs typecheck, tests and the export on the same push |
+
+The Hobby plan is for non-commercial use, which matches the Content Policy's terms for the weapon
+art: the site stays free, with no ads and no paywall.
+
+Two details to tidy later. Vercel builds with Node 26 while CI tests on Node 20; both pass today,
+but pinning one version in `package.json` `engines` and in the Vercel project settings keeps them
+from drifting. And the domain is still open: a custom domain can point at the Vercel project at any
+time, and is the one hosting decision that is hard to reverse, so register it before the About copy
+is finalised and keep "Warframe" out of it.
+
+Analytics, if any, should stay cookieless to fit the no-accounts, non-commercial posture. Vercel's
+own Web Analytics is the natural candidate now that the site is there. Without some measurement,
+the five-second goal in section 12 is unmeasurable and should be stated as a design intent instead.
 
 ## 10. Deliberately not in this plan
 
@@ -370,6 +385,6 @@ Next, in order:
 3. **The monthly refresh (M4).** `diff-index.mjs`, the changelog, the publish gate and
    `refresh-data.yml`, with a failure opening an issue rather than deploying.
 
-Open decisions that block nothing yet, but should be settled before M3 ships: the domain and hosting
-account, the branding line, and whether analytics exist at all. The recommendations are in section 5
-of [spec-review.md](spec-review.md).
+Hosting is settled (section 9). Open decisions that block nothing yet, but should be settled before
+M3 ships: the domain, the branding line, and whether analytics exist at all. The recommendations are
+in section 5 of [spec-review.md](spec-review.md).

@@ -137,8 +137,8 @@ Two useful measurements the spec does not have:
     fatal monthly, but the manual trigger matters more than the spec implies, and the footer should
     print the real last-refresh timestamp from the build rather than a promise.
 14. **No measurement plan for the success metrics.** "An answer in under five seconds" and "players
-    come back" need either a cookieless analytics endpoint (Cloudflare Web Analytics fits the
-    no-accounts, non-commercial posture) or an honest downgrade to qualitative feedback.
+    come back" need either a cookieless analytics endpoint (one that fits the no-accounts,
+    non-commercial posture) or an honest downgrade to qualitative feedback.
 15. **Storage needs a schema version from day one.** localStorage and the export file both need a
     version and a migration path, or the phase 2 shape change silently loses arsenals.
 
@@ -170,10 +170,10 @@ The spec's four, with a recommendation each, plus three worth adding.
 
 | # | Decision | Recommendation |
 | --- | --- | --- |
-| 1 | Domain and hosting account | Cloudflare Pages free tier, `forgeline.app` if available. I cannot check availability from here. Hosting is reversible, the domain is not, so register before the About copy is written |
+| 1 | Domain and hosting account | **Hosting decided:** files stay on GitHub, and Vercel serves the site from the repository at https://forgeline-arsenal.vercel.app (build plan section 9). The first recommendation here was Cloudflare Pages; either works for a static export. **Domain still open:** `forgeline.app` if available. It is the one irreversible part, so register before the About copy is written |
 | 2 | Space Heroes branding | One "Built by the Space Heroes clan" line in the footer. It costs nothing, it is honest, and the header stays neutral |
 | 3 | Warframes and companions in phase 1 or 2 | Neither. The data proves no weapon recipe needs them, so they add no verdict accuracy. Keep them in phase 3 as a separate answer for frame and companion parts |
 | 4 | Who receives the failure alert | Better: no email secret at all. Have the workflow open a GitHub issue on failure. That notifies watchers for free and leaves an audit trail. Add email later if it is ever missed |
 | 5 | Max or sum for "keep at least" | Sum of outstanding immediate demand, with the per-recipe breakdown shown |
 | 6 | Commit generated images, or build them on deploy | Commit them. Deterministic deploys, working offline precache, survives a CDN outage, small monthly diff |
-| 7 | Any analytics at all | Cloudflare Web Analytics, cookieless, or drop the time-to-answer metric honestly |
+| 7 | Any analytics at all | Something cookieless (with the site on Vercel, its own Web Analytics is the natural candidate), or drop the time-to-answer metric honestly |

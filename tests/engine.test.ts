@@ -397,7 +397,7 @@ describe('explanations', () => {
       for (const weapon of index.weapons) {
         const e = explain(evaluator.verdict(weapon.slug), graph);
         const text = [e.headline, e.summary, ...e.lines, ...e.chains, e.mastery ?? ''].join('\n');
-        expect(text, weapon.slug).not.toMatch(/[–—]/);
+        expect(text, weapon.slug).not.toMatch(/[\u2013\u2014]/);
         expect(e.copyText, weapon.slug).toMatch(/^[\x20-\x7e]+$/);
       }
     }

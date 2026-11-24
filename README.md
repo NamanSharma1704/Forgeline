@@ -10,6 +10,9 @@ Built with Next.js 16 (App Router), React 19 and TypeScript, exported as a fully
 weapon data and all 1,242 images are generated from [`@wfcd/items`](https://github.com/wfcd/warframe-items)
 and committed, so a deploy never depends on an upstream server being awake.
 
+**Live at https://forgeline-arsenal.vercel.app.** This GitHub repository holds every file; Vercel
+reads it and redeploys on each push to `main`, so nothing lives only on Vercel.
+
 ## Where it stands
 
 | | |

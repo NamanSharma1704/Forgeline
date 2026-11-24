@@ -28,5 +28,11 @@ Thumbs.db
 *.log
 npm-debug.log*
 
+# personal Claude Code settings for this project (the Vercel plugin is enabled here, telemetry off)
+.claude/settings.local.json
+
+# Vercel CLI link state, written by `vercel link`
+.vercel/
+
 # Generated data and images are committed on purpose: see docs/build-plan.md section 0.
 # data/index.json, data/images.manifest.json and public/img are part of the deploy.
