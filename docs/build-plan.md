@@ -282,12 +282,16 @@ Built:
 Checked on the exported site at desktop and 375 px widths, in both themes, with no hydration or
 script errors. Not yet measured: the five-second answer on throttled 4G.
 
-### M4. Monthly automation (S to M)
+### M4. Monthly automation (S to M) - built, first run on GitHub pending
 
 `refresh-data.yml` with the schedule, the manual trigger, the publish gate, the changelog, and a
 GitHub issue on failure.
 **Done when:** a manual run on unchanged data skips the deploy and says so; a run with a deliberately
 corrupted source blocks the deploy, opens an issue, and leaves the live site on last month's data.
+
+Every branch is proven locally and in 16 tests (section 8). What remains is the same run on GitHub:
+a manual **dry run** from the Actions tab should report "Nothing changed this month" and deploy
+nothing.
 
 ### M5. Arsenal and personal verdicts (M to L)
 
@@ -327,27 +331,51 @@ Spec phases map as: phase 1 is M0 to M4, phase 2 is M5 to M6, phase 3 is M7.
 
 ## 8. The monthly refresh, in detail
 
+Built as `.github/workflows/refresh-data.yml`. The decisions are pure functions in
+`scripts/lib/refresh.mjs`, tested in `tests/refresh.test.ts`; the workflow only runs scripts and acts
+on their answers.
+
 ```
-schedule: 1st of the month 06:00 UTC   +   workflow_dispatch
-steps:
-  1  npm install @wfcd/items@latest, record the resolved version
-  2  node scripts/build-index.mjs            -> data/index.next.json
-  3  schema validation                        fail -> stop, no deploy
-  4  node scripts/diff-index.mjs              publish gate:
-        - ingredient count moved more than 20 percent       -> block
-        - any previously known ingredient disappeared        -> block
-        - any weapon lost its image                          -> block
-        - nothing changed at all                             -> skip deploy, exit 0
-  5  node scripts/fetch-images.mjs           incremental, retries, never deletes
-  6  npm test                                 fail -> stop, no deploy
-  7  commit index.json, manifest, changelog, new images and push; Vercel deploys the push
-  on failure or block: open a GitHub issue with the diff, leave the live site untouched
+on: 1st of the month 06:00 UTC, or Run workflow (inputs: accept recipe changes, dry run)
+
+ 1  npm ci, then npm install @wfcd/items@latest
+ 2  build-index --out data/index.next.json       built beside the live index, never over it;
+                --previous data/index.json        validation errors stop the run here
+ 3  diff-index (the publish gate)                 unchanged / publish / blocked
+ 4  publish: promote the candidate; if accepted, rewrite the recipe fixture (update-fixture)
+ 5  fetch-images --recheck                        re-downloads all 611 sources, converts only
+                                                  what changed by hash, never deletes
+ 6  nothing in data/, public/img or the lockfile changed?  stop: nothing deploys
+ 7  npm test, then next build                     any failure stops the run
+ 8  commit and push to main                       Vercel deploys the push (skipped on dry run)
+ on block or failure: one open issue labelled data-refresh, commented on by later runs
 ```
 
+What the gate decides, and why:
+
+| Change | Decision | Why |
+| --- | --- | --- |
+| Nothing, or only the package version and timestamp | **Unchanged**, nothing deploys | A version bump with identical data is not worth a deploy; the repository stays byte-identical |
+| New weapons outside the recipe graph, picture changes, metadata, New badges expiring | **Publish** | None of it can change a verdict |
+| Any change to the recipe graph: an ingredient gained or lost, a copy count changed | **Blocked until reviewed** | This is what decides Keep and Safe. A person checks it against the wiki, then re-runs with *accept recipe changes*, which publishes and updates the fixture, marking changed rows unverified |
+| Ingredient count swings more than 20 percent, or more than 5 percent of weapons vanish | **Blocked, accepted or not** | Real updates move these by a handful; this size means a broken source |
+
+The New badge follows the spec: a weapon is new if it was absent from the previous index, and a
+second refresh in the same month (a manual run after a big update) keeps that month's badges
+instead of clearing them.
+
+Verified locally before the first scheduled run: on today's data the candidate is identical and the
+gate says unchanged; the picture recheck downloaded 18.4 MB, found all 611 unchanged and left every
+file byte-identical; a simulated picture change publishes and writes the changelog; a simulated lost
+ingredient exits 1 with a report that names Lato and says what to do; `update-fixture` reproduces
+the current fixture exactly. The workflow file parses, and a YAML error it had was caught that way.
+
 Notes: scheduled runs on shared runners can be late, and GitHub disables schedules in a repository
-with no activity for 60 days, so the manual trigger is a first-class path and the footer prints the
-real `generatedAt` from the build rather than a promise. Keep `warframe-public-export-plus` wired up
-as a fallback source behind a flag, not as a live dependency.
+with no activity for 60 days, which a quiet month (no commit) can lead to. The manual trigger is a
+first-class path, and the footer prints the real `generatedAt` rather than a promise. A push made by
+the workflow does not trigger the CI workflow (GitHub's rule for its own token), which is why the
+refresh runs the tests and the export itself before pushing. Keep `warframe-public-export-plus` as a
+fallback source behind a flag, not as a live dependency.
 
 ## 9. Hosting and deploy
 
@@ -396,15 +424,15 @@ the five-second goal in section 12 is unmeasurable and should be stated as a des
 
 ## 11. Where this stands, and the next three things
 
-Done: M0 to M3, which is phase 1 of the spec except the monthly automation. A player can search,
-land on a weapon's page and get a Check or Safe with its reason, the chain beyond and the family
-tree, on a phone, in either theme. 65 tests, CI, and every push deployed by Vercel.
+Done: M0 to M4, which is phase 1 of the spec. A player can search, land on a weapon's page and get
+a Check or Safe with its reason, the chain beyond and the family tree, on a phone, in either theme;
+and the data refreshes itself monthly behind a gate that cannot publish a broken recipe graph.
+81 tests, CI, and every push deployed by Vercel.
 
 Next, in order:
 
-1. **The monthly refresh (M4).** `diff-index.mjs`, the changelog, the publish gate and
-   `refresh-data.yml`, with a failure opening an issue rather than deploying. It is the last piece
-   of phase 1, and the one that keeps the site right after the next game update.
+1. **A dry run of the refresh on GitHub.** Run workflow, tick dry run. It should say "Nothing
+   changed this month" and deploy nothing, which closes M4. The first scheduled run is 1 December.
 2. **Measure the five-second goal.** A throttled 4G run against the live site, so M3's last
    acceptance criterion is a number rather than an assumption.
 3. **My Arsenal (M5).** The stored arsenal and the guided 87-weapon setup, which turn every Check

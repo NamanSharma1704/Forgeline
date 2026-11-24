@@ -37,12 +37,27 @@ npm test             # index integrity and the recipe fixture
 npm run typecheck
 ```
 
-Refreshing the game data (normally a monthly GitHub Action, see build plan section 8):
+### The monthly data refresh
+
+`.github/workflows/refresh-data.yml` runs at 06:00 UTC on the 1st of each month. It rebuilds the
+weapon data from the latest `@wfcd/items`, rechecks every picture, and publishes only if the publish
+gate, the tests and the build all pass. Publishing is a push to `main`, which Vercel deploys. A quiet
+month changes nothing and deploys nothing.
+
+Anything that changes the recipe graph (a weapon gaining or losing an ingredient role, a copy count)
+is **blocked until a person checks it**, because that is what decides Keep and Safe. When that
+happens, an issue labelled `data-refresh` lists the changes. Check them against the WARFRAME Wiki,
+then open **Actions > Monthly data refresh > Run workflow** and tick **accept recipe changes**. Changes
+that look like a broken source (a big swing in the ingredient count, many weapons vanishing) cannot
+be accepted; the live site simply keeps last month's data.
+
+The same steps by hand:
 
 ```
 npm run data:verify    # read-only audit of the upstream package
-npm run data:build     # rebuild data/index.json
-npm run data:images    # fetch and convert anything new, incremental
+npm run data:refresh   # build a candidate index beside the live one and run the publish gate
+npm run data:images    # fetch and convert anything new; add -- --recheck to compare every picture
+npm run data:accept    # after reviewing a recipe change: update the verified-recipe fixture
 ```
 
 ## Documents

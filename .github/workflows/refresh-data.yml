@@ -1,0 +1,159 @@
+name: Monthly data refresh
+
+# Rebuilds the weapon index and pictures from the latest @wfcd/items and publishes only when the
+# publish gate (scripts/lib/refresh.mjs), the full test suite and the static export all agree.
+# Publishing means pushing to main; Vercel deploys the push. If anything stops it, the live site
+# keeps last month's data and an issue labelled data-refresh explains why.
+#
+# Runs on the 1st of each month, and by hand from the Actions tab (Run workflow) after a big game
+# update or after reviewing a blocked run. See docs/build-plan.md section 8.
+
+on:
+  schedule:
+    # 06:00 UTC on the 1st: 6am UK time in winter, 7am in summer.
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+    inputs:
+      accept_recipe_changes:
+        description: I have checked the recipe changes from the last blocked run against the WARFRAME Wiki
+        type: boolean
+        default: false
+      dry_run:
+        description: Run every check but do not commit or deploy
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # Scheduled runs have no inputs, so both read as false.
+      ACCEPT: ${{ inputs.accept_recipe_changes == true }}
+      DRY_RUN: ${{ inputs.dry_run == true }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Update the data package to its latest release
+        run: npm install --no-audit --no-fund @wfcd/items@latest
+
+      # Built beside the committed index, never over it: data/index.json is only replaced once the
+      # gate says publish.
+      - name: Build the candidate index
+        run: node scripts/build-index.mjs --out data/index.next.json --previous data/index.json
+
+      - name: Publish gate
+        id: gate
+        run: |
+          if [ "$ACCEPT" = "true" ]; then
+            node scripts/diff-index.mjs --old data/index.json --new data/index.next.json --accept
+          else
+            node scripts/diff-index.mjs --old data/index.json --new data/index.next.json
+          fi
+
+      - name: Promote the candidate index
+        if: steps.gate.outputs.status == 'publish'
+        run: mv data/index.next.json data/index.json
+
+      - name: Record the reviewed recipe changes in the fixture
+        if: steps.gate.outputs.status == 'publish' && env.ACCEPT == 'true'
+        run: node scripts/update-fixture.mjs
+
+      # Re-downloads every source and compares hashes, so art replaced upstream under the same
+      # filename is caught. Never deletes an existing picture.
+      - name: Recheck every picture
+        run: node scripts/fetch-images.mjs --recheck --report images-report.json
+
+      - name: Anything to publish?
+        id: changes
+        env:
+          GATE: ${{ steps.gate.outputs.status }}
+        run: |
+          # A package bump with identical data is not worth a deploy: put it back.
+          if [ "$GATE" != "publish" ]; then
+            git checkout -- package.json package-lock.json
+          fi
+          rm -f data/index.next.json
+          if [ -z "$(git status --porcelain -- data public/img package.json package-lock.json)" ]; then
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            echo "Nothing to publish: the data and pictures already match the live site." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+            {
+              echo "### Files to publish"
+              echo '```'
+              git status --short -- data public/img package.json package-lock.json | head -60
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Tests (index integrity, recipe fixture, engine, search, gate)
+        if: steps.changes.outputs.publish == 'true'
+        run: npm test
+
+      - name: Static export
+        if: steps.changes.outputs.publish == 'true'
+        run: npm run build
+
+      - name: Commit and push, which deploys
+        if: steps.changes.outputs.publish == 'true' && env.DRY_RUN != 'true'
+        env:
+          GATE: ${{ steps.gate.outputs.status }}
+        run: |
+          version=$(node -p "require('./data/index.json').sourceVersion")
+          {
+            echo "Monthly data refresh: @wfcd/items ${version}"
+            echo
+            if [ "$GATE" = "publish" ]; then cat refresh-report.md; echo; fi
+            node -e "const r=require('./images-report.json'); console.log(r.converted.length ? 'Pictures updated: ' + r.converted.join(', ') : 'No picture changes.')"
+          } > commit-message.txt
+          git config user.name "forgeline-refresh[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data public/img package.json package-lock.json
+          git commit -F commit-message.txt
+          git push
+
+      - name: Dry run summary
+        if: steps.changes.outputs.publish == 'true' && env.DRY_RUN == 'true'
+        run: |
+          echo "Dry run: every check passed, nothing was committed or deployed." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Report a blocked or failed refresh
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -f refresh-report.md ] && grep -q "blocked" refresh-report.md; then
+            body_file=refresh-report.md
+          else
+            printf '%s\n\n%s\n\n%s\n' \
+              "## Refresh failed" \
+              "A step failed before the publish gate could report, or after it (tests, the static export, or the push). The live site is unchanged and keeps last month's data." \
+              "Run: ${RUN_URL}" > failure.md
+            body_file=failure.md
+          fi
+          gh label create data-refresh --color B60205 --description "Monthly data refresh needs a person" --force
+          existing=$(gh issue list --label data-refresh --state open --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file "$body_file"
+          else
+            gh issue create --title "Monthly data refresh needs attention" --label data-refresh --body-file "$body_file"
+          fi

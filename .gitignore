@@ -34,5 +34,12 @@ npm-debug.log*
 # Vercel CLI link state, written by `vercel link`
 .vercel/
 
+# Scratch output of the monthly refresh (scripts/diff-index.mjs, fetch-images --report)
+data/index.next.json
+refresh-report.md
+images-report.json
+commit-message.txt
+failure.md
+
 # Generated data and images are committed on purpose: see docs/build-plan.md section 0.
 # data/index.json, data/images.manifest.json and public/img are part of the deploy.

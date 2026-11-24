@@ -13,13 +13,20 @@
  * Output is deterministic: identical input produces a byte-identical file, so the monthly refresh
  * can tell "nothing changed" from "something changed".
  *
- * Usage: node scripts/build-index.mjs [--data <dir>] [--out <file>]
+ * Usage: node scripts/build-index.mjs [--data <dir>] [--out <file>] [--previous <file>] [--now <iso>]
+ *
+ *   --out       where to write (default data/index.json)
+ *   --previous  the index to compare against for New badges and the unchanged-timestamp rule
+ *               (default: the --out file). The monthly refresh builds to data/index.next.json with
+ *               --previous data/index.json, so the committed index is only replaced after the gate.
+ *   --now       the build time, for reproducible tests (default: now)
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
+import { newSlugs } from './lib/refresh.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '..');
@@ -82,6 +89,8 @@ const readJson = (file, fallback = null) =>
 
 const dataDir = resolveDataDir();
 const outFile = arg('out', path.join(ROOT, 'data', 'index.json'));
+const previousFile = arg('previous', outFile);
+const nowIso = arg('now', new Date().toISOString());
 const exclusions = readJson(path.join(ROOT, 'data', 'fixtures', 'exclusions.json'), { exclude: [] });
 const aliases = readJson(path.join(ROOT, 'data', 'fixtures', 'aliases.json'), {});
 const excluded = new Set(exclusions.exclude.map((e) => e.uniqueName));
@@ -158,8 +167,13 @@ const edges = (map, unique) =>
 
 // ---------------------------------------------------------------- assemble
 
-const previous = readJson(outFile);
-const previousSlugs = new Set((previous?.weapons ?? []).map((w) => w.slug));
+const previous = readJson(previousFile);
+// New badges: absent from the previous index, or already new earlier this month (scripts/lib).
+const fresh = newSlugs(
+  previous,
+  players.map((weapon) => slugByUnique.get(weapon.uniqueName)),
+  nowIso
+);
 
 const weapons = players.map((weapon) => {
   const slug = slugByUnique.get(weapon.uniqueName);
@@ -176,7 +190,7 @@ const weapons = players.map((weapon) => {
     imageSource: weapon.imageName,
     introduced: weapon.introduced?.name ?? 'Unknown',
     introducedDate: weapon.introduced?.date ?? null,
-    isNew: previousSlugs.size > 0 && !previousSlugs.has(slug),
+    isNew: fresh.has(slug),
     usedToBuild: edges(usedToBuild, weapon.uniqueName),
     madeFrom: edges(madeFrom, weapon.uniqueName),
     ...(aliases[slug] ? { aliases: aliases[slug] } : {}),
@@ -192,7 +206,7 @@ const newestUpdate = players
 
 const index = {
   schema: SCHEMA,
-  generatedAt: new Date().toISOString(),
+  generatedAt: nowIso,
   sourceVersion: sourceVersion(),
   newestWeaponUpdate: newestUpdate?.introduced?.name ?? 'Unknown',
   newestWeaponDate: newestUpdate?.introduced?.date ?? null,
@@ -243,9 +257,9 @@ console.log(`source        @wfcd/items ${index.sourceVersion}`);
 console.log(`entries       ${raw.length} raw, ${weapons.length} player weapons`);
 console.log(`graph         ${index.counts.ingredients} ingredients, ${index.counts.craftable} craftable`);
 console.log(`newest weapon ${index.newestWeaponUpdate} (${index.newestWeaponDate ?? 'no date'})`);
-if (previousSlugs.size > 0) {
+if (previous) {
   const added = weapons.filter((w) => w.isNew).map((w) => w.name);
-  console.log(`new weapons   ${added.length ? added.join(', ') : 'none since the last build'}`);
+  console.log(`new weapons   ${added.length ? added.join(', ') : 'none this month'}`);
 }
 for (const warning of warnings) console.log(`warning       ${warning}`);
 

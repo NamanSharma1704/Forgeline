@@ -17,7 +17,9 @@
     "data:verify": "node scripts/verify-source-data.mjs",
     "data:build": "node scripts/build-index.mjs",
     "data:images": "node scripts/fetch-images.mjs",
-    "data:refresh": "npm run data:build && npm run data:images && npm run test"
+    "data:refresh": "node scripts/build-index.mjs --out data/index.next.json --previous data/index.json && node scripts/diff-index.mjs",
+    "data:diff": "node scripts/diff-index.mjs",
+    "data:accept": "node scripts/update-fixture.mjs"
   },
   "dependencies": {
     "fuse.js": "^7.5.0",

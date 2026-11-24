@@ -17,7 +17,14 @@
  *     by weapon slug.
  *   - A failed fetch never deletes what is already on disk. Stale art beats a broken page.
  *
- * Usage: node scripts/fetch-images.mjs [--force] [--limit <n>] [--concurrency <n>]
+ * Usage: node scripts/fetch-images.mjs [--force] [--recheck] [--report <file>] [--limit <n>]
+ *        [--concurrency <n>]
+ *
+ *   --recheck  download every source again and compare hashes, converting only what changed. The
+ *              monthly refresh uses this: upstream can replace art under the same filename, and a
+ *              hash is the only way to notice. About 21 MB per run.
+ *   --report   write {checked, converted, failures} as JSON, for the run summary
+ *   --force    reconvert everything, changed or not
  */
 
 import fs from 'node:fs';
@@ -46,8 +53,15 @@ const option = (name, fallback) => {
 };
 
 const force = flag('force');
+const recheck = flag('recheck');
 const concurrency = option('concurrency', 8);
 const limit = option('limit', Infinity);
+const reportIndex = process.argv.indexOf('--report');
+const reportFile = reportIndex !== -1 ? process.argv[reportIndex + 1] : null;
+
+const writeReport = (report) => {
+  if (reportFile) fs.writeFileSync(reportFile, `${JSON.stringify(report, null, 2)}\n`);
+};
 
 const index = JSON.parse(fs.readFileSync(INDEX, 'utf8'));
 const manifest = fs.existsSync(MANIFEST)
@@ -72,13 +86,16 @@ const outputsExist = (slugs) =>
   );
 
 const work = [...bySource.entries()]
-  .filter(([source, slugs]) => force || !manifest.sources[source] || !outputsExist(slugs))
+  .filter(
+    ([source, slugs]) => force || recheck || !manifest.sources[source] || !outputsExist(slugs)
+  )
   .slice(0, limit === Infinity ? undefined : limit);
 
 console.log(`${bySource.size} source images for ${index.weapons.length} weapons`);
 console.log(`${work.length} to fetch, ${bySource.size - work.length} already current`);
 if (work.length === 0) {
   console.log('nothing to do');
+  writeReport({ checked: 0, converted: [], failures: [] });
   process.exit(0);
 }
 
@@ -110,6 +127,8 @@ async function convert(buffer, slugs) {
 }
 
 const failures = [];
+const converted = [];
+const manifestBefore = JSON.stringify(manifest.sources);
 let done = 0;
 let fetched = 0;
 let unchanged = 0;
@@ -131,6 +150,7 @@ async function worker() {
       } else {
         await convert(buffer, slugs);
         fetched++;
+        converted.push(source);
       }
       manifest.sources[source] = { sha256: sha, bytes: buffer.length, slugs: [...slugs].sort() };
     } catch (error) {
@@ -147,11 +167,23 @@ await Promise.all(Array.from({ length: Math.min(concurrency, queue.length) }, wo
 process.stdout.write('\n');
 
 manifest.schema = 1;
-manifest.generatedAt = new Date().toISOString();
 manifest.sources = Object.fromEntries(
   Object.entries(manifest.sources).sort(([a], [b]) => a.localeCompare(b, 'en'))
 );
+// Only touch the timestamp when an image actually changed, so a recheck that finds nothing new
+// leaves the file byte-identical and the monthly refresh has nothing to commit.
+const sourcesChanged =
+  JSON.stringify(manifest.sources) !==
+  JSON.stringify(
+    Object.fromEntries(
+      Object.entries(JSON.parse(manifestBefore)).sort(([a], [b]) => a.localeCompare(b, 'en'))
+    )
+  );
+if (sourcesChanged || converted.length > 0 || !manifest.generatedAt) {
+  manifest.generatedAt = new Date().toISOString();
+}
 fs.writeFileSync(MANIFEST, `${JSON.stringify(manifest, null, 2)}\n`);
+writeReport({ checked: work.length, converted: [...converted].sort(), failures });
 
 const du = (dir) =>
   fs
