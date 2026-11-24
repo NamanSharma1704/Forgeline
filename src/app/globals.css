@@ -865,8 +865,29 @@ main {
   display: none;
 }
 
+/* A generation and the arrow joining it to its neighbour. */
+.tree__step {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
 @media (min-width: 760px) {
+  /* Up to seven columns: let the tree scroll sideways inside its section, never the page. */
+  .tree-scroll {
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
   .tree {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    width: max-content;
+  }
+
+  .tree__step {
     flex-direction: row;
     align-items: center;
     gap: 16px;
@@ -920,9 +941,124 @@ a.tree-box:hover {
   font-size: var(--step--1);
 }
 
-.tree-box__then {
-  color: var(--text-3);
+/* ------------------------------------------------------------------ recipe and resources */
+
+.resource-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0 32px;
+  max-width: 760px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resource-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--edge-soft);
+}
+
+.resource-list__count {
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.resource-list li[data-kind='weapon'] {
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------------ build planner */
+
+.planner-search {
+  max-width: 680px;
+  margin-top: 28px;
+}
+
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--text-3);
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.link-button:hover {
+  text-decoration-color: currentColor;
+}
+
+.plan-head {
+  display: flex;
+  align-items: center;
+  gap: 16px 20px;
+  margin-top: 40px;
+}
+
+.plan-head__art {
+  --cut: 14px;
+  padding: 10px;
+}
+
+.plan-head__title {
+  margin-bottom: 4px;
+}
+
+.plan-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--edge-soft);
+  counter-reset: step;
+}
+
+.plan-step {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--edge-soft);
+}
+
+.plan-step__main {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.plan-step__title strong {
+  font-weight: 700;
+}
+
+.plan-step__detail {
+  margin-top: 2px;
+  color: var(--text-2);
   font-size: var(--step--1);
+  max-width: var(--measure);
+}
+
+.plan-step__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px 14px;
+}
+
+@media (max-width: 759px) {
+  .plan-step {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-step__controls {
+    justify-content: flex-start;
+  }
 }
 
 /* ------------------------------------------------------------------ ingredient index */
@@ -1585,6 +1721,38 @@ a.tree-box:hover {
 
   .sweep-row .button {
     justify-self: start;
+  }
+}
+
+/* ------------------------------------------------------------------ new build available */
+
+/* Shown when a new build has installed behind the running one; it waits for the player to reload. */
+.update-bar {
+  position: fixed;
+  z-index: 30;
+  left: 16px;
+  right: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  gap: 8px 12px;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 8px 8px 8px 16px;
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  animation: update-bar-in 240ms var(--ease-out);
+}
+
+.update-bar p {
+  flex: 1;
+  margin: 0;
+}
+
+@keyframes update-bar-in {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
   }
 }
 

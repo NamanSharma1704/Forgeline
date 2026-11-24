@@ -337,6 +337,37 @@ install and offline, light theme.
 **Done when:** the site loads offline after one visit, and a new monthly build prompts a reload
 rather than silently serving stale data.
 
+**Done.** What shipped:
+
+- **Build planner** (`/plan`, `src/engine/planner.ts`). Pick a weapon; it lists every weapon down
+  the chain, what is left to build or get once held copies are counted (a held Bolto covers one of
+  the two Akbolto needs, and the Lato under it drop away), the steps in order, deepest first, and
+  the resources those steps still cost. The status and quantity controls on each step write to the
+  same arsenal as everywhere else. `?w=` makes a plan linkable, and each craftable weapon's page
+  links to its own.
+- **Recipe data.** The index now carries each weapon's full recipe from `@wfcd/items` (blueprint,
+  parts, resources), served to the planner as `/materials.json`. Only weapons count towards
+  verdicts; the rest is listed, not tracked.
+- **Full-depth family tree.** Every generation each way, as columns, with a weapon reached along two
+  branches shown once with both captions. A Recipe section sits under it on every weapon page.
+- **Installable and offline.** A web app manifest and icons (`scripts/make-icons.mjs`), and a
+  service worker generated at build time (`/sw.js`). One visit saves the core pages, the 87 recipe
+  weapons' pages, the three data files and every build chunk: about 1.1 MB over the wire. Pages and
+  data are network first, so online always means the live build; hashed files and pictures are
+  cache first. Any other weapon page offline gets `/offline.html`, which still answers from the
+  recipe graph: a weapon that feeds no recipe is Safe to sell.
+- **Update prompt.** Every build is a new worker version. It installs in the background and waits;
+  the page shows "Forgeline has new weapon data or features" with Reload, and only that click swaps
+  it in. The old cache is deleted on the swap.
+- The light theme listed here shipped early, with the M3 design pass.
+
+Both acceptance criteria were watched in headless Chrome against the static export (the desktop
+app's browser pane cannot register service workers): after one online visit and with the server
+stopped, Bolto, Akbolto by link click, the planner, About and search all worked, and Acceltra got
+the offline answer. After a rebuild, the next visit showed the Reload bar, and Reload moved the page
+to the new version's cache. The planner and tree were checked at 1200 and 390 px with no horizontal
+page scroll. 117 tests.
+
 ### M7. Phase 3 (L, only after the core is proven)
 
 Share links and the clan page on Supabase, non-weapon ingredients (Warframe, companion and Archwing
@@ -453,19 +484,24 @@ the five-second goal in section 12 is unmeasurable and should be stated as a des
 
 ## 11. Where this stands, and the next three things
 
-Done: M0 to M5. Phase 1 of the spec is complete, and phase 2 is down to its last milestone: a player
-can mark their arsenal and every verdict, tree and sweep becomes about their own weapons. The data
-refreshes itself monthly behind a gate that cannot publish a broken recipe graph. 107 tests, CI,
-and every push deployed by Vercel.
+Done: M0 to M6. Phases 1 and 2 of the spec are complete: a player can mark their arsenal and every
+verdict, tree, sweep and build plan becomes about their own weapons, on a phone home screen and
+offline. The data refreshes itself monthly behind a gate that cannot publish a broken recipe graph,
+and each refresh reaches players as a Reload prompt rather than silently. 117 tests, CI, and every
+push deployed by Vercel.
 
 Next, in order:
 
-1. **Planner, full tree, offline (M6).** The build planner, the full-depth family tree (the
-   engine's `familyTree` already does it), and install-to-home-screen with offline support.
+1. **Check the worker on the live site.** After the M6 deploy: install from Chrome on a phone,
+   confirm `/sw.js` and `/offline.html` are served as they are locally, and that the next deploy
+   shows the Reload bar.
 2. **Measure the five-second goal.** A throttled 4G run against the live site, so M3's last
-   acceptance criterion is a number rather than an assumption.
+   acceptance criterion is a number rather than an assumption. Repeat visits are now served from
+   the cache, so measure a first visit.
 3. **Watch the 1 December run.** The first scheduled refresh. Expect "unchanged" unless
    `@wfcd/items` publishes a game update before then.
+
+M7 (phase 3) waits until the core has been used by real players.
 
 Hosting is settled (section 9). Open decisions that block nothing yet, but should be settled before
 M3 ships: the domain, the branding line, and whether analytics exist at all. The recommendations are

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { FamilyTree, type TreeWeapon } from '@/components/FamilyTree';
+import { FamilyTree, type TreeColumn, type TreeWeapon } from '@/components/FamilyTree';
 import { PersonalVerdict } from '@/components/PersonalVerdict';
 import type { CardTarget } from '@/components/VerdictCard';
 import { WeaponArt } from '@/components/WeaponArt';
@@ -8,7 +9,7 @@ import { WeaponStatus } from '@/components/WeaponStatus';
 import { recipeGraph } from '@/data/engine';
 import { SLOT_LABEL, type Weapon } from '@/data/types';
 import { allWeapons, getWeapon, resolve } from '@/data/weapons';
-import { createEvaluator, explain, familyTree } from '@/engine';
+import { createEvaluator, explain, familyTree, type TreeNode } from '@/engine';
 
 type Params = { slug: string };
 
@@ -44,10 +45,39 @@ const toCard = (weapon: Weapon): CardTarget => ({
   thumb: weapon.thumb,
 });
 
-const toTree = (weapon: Weapon): TreeWeapon => ({
-  ...toCard(weapon),
-  builds: weapon.usedToBuild.map((edge) => resolve(edge.slug).name),
-});
+const toTree = (weapon: Weapon): TreeWeapon => toCard(weapon);
+
+/**
+ * Flatten one direction of the engine's tree into generation columns. A weapon reached along two
+ * branches (a diamond) appears once per column, with both captions joined.
+ */
+function generations(
+  roots: readonly TreeNode[],
+  caption: (node: TreeNode, parent: string | null) => string,
+  labels: (generation: number) => string
+): TreeColumn[] {
+  const columns: TreeColumn[] = [];
+  let frontier: { node: TreeNode; parent: string | null }[] = roots.map((node) => ({ node, parent: null }));
+  for (let generation = 1; frontier.length > 0; generation++) {
+    const merged = new Map<string, { weapon: TreeWeapon; captions: string[] }>();
+    for (const { node, parent } of frontier) {
+      const entry = merged.get(node.slug) ?? { weapon: toTree(resolve(node.slug)), captions: [] };
+      entry.captions.push(caption(node, parent));
+      merged.set(node.slug, entry);
+    }
+    columns.push({
+      label: labels(generation),
+      boxes: [...merged.values()].map(({ weapon, captions }) => ({
+        weapon,
+        caption: [...new Set(captions)].join(', '),
+      })),
+    });
+    frontier = frontier.flatMap(({ node }) =>
+      node.children.map((child) => ({ node: child, parent: resolve(node.slug).name }))
+    );
+  }
+  return columns;
+}
 
 // Pages are pre-rendered with the empty-arsenal verdict: Check for the 46 ingredients, Safe for the
 // rest. PersonalVerdict re-renders the card in the browser once the player has an arsenal.
@@ -78,15 +108,32 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
   const targets = verdict.targets.map((target) => toCard(resolve(target.slug)));
   const names = Object.fromEntries(descendants(slug).map((s) => [s, resolve(s).name]));
 
-  const tree = familyTree(recipeGraph, slug, { depth: 1 });
-  const madeFrom = tree.madeFrom.map((node) => ({
-    weapon: toTree(resolve(node.slug)),
-    copies: node.copies,
-  }));
-  const usedToBuild = tree.usedToBuild.map((node) => ({
-    weapon: toTree(resolve(node.slug)),
-    copies: node.copies,
-  }));
+  // Phase 2: the full depth, at most three steps each way in the current data.
+  const tree = familyTree(recipeGraph, slug);
+  const before = generations(
+    tree.madeFrom,
+    (node, parent) => (parent ? `${node.copies} for ${parent}` : `${node.copies} needed`),
+    (generation) => (generation === 1 ? 'Made from' : 'Before that')
+  ).reverse();
+  const after = generations(
+    tree.usedToBuild,
+    (node, parent) => (parent ? `uses ${node.copies} ${parent}` : `uses ${node.copies}`),
+    (generation) => (generation === 1 ? 'Used to build' : 'Then')
+  );
+  const recipe = [
+    ...weapon.madeFrom.map((edge) => ({
+      key: edge.slug,
+      label: <Link href={`/w/${edge.slug}/`}>{resolve(edge.slug).name}</Link>,
+      count: edge.copies,
+      kind: 'weapon',
+    })),
+    ...(weapon.materials ?? []).map((material) => ({
+      key: `${material.kind}-${material.name}`,
+      label: <>{material.name}</>,
+      count: material.count,
+      kind: material.kind,
+    })),
+  ];
 
   return (
     <>
@@ -118,15 +165,38 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
         names={names}
       />
 
-      {(madeFrom.length > 0 || usedToBuild.length > 0) && (
+      {(before.length > 0 || after.length > 0) && (
         <section className="section" aria-labelledby="tree-title">
           <h2 id="tree-title" className="section-title">
             Family tree
           </h2>
-          <FamilyTree self={toTree(weapon)} madeFrom={madeFrom} usedToBuild={usedToBuild} />
-          <p className="result-count">
-            Weapon ingredients only. Resources such as Orokin Cells are part of the recipe but are
-            not tracked here.
+          <FamilyTree self={toTree(weapon)} before={before} after={after} />
+        </section>
+      )}
+
+      {recipe.length > 0 && (
+        <section className="section" aria-labelledby="recipe-title">
+          <h2 id="recipe-title" className="section-title">
+            Recipe
+          </h2>
+          <ul className="resource-list resource-list--recipe">
+            {recipe.map((item) => (
+              <li key={item.key} data-kind={item.kind}>
+                <span>{item.label}</span>
+                <span className="resource-list__count">{item.count.toLocaleString('en-GB')}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="verdict__footnote">
+            {weapon.madeFrom.length > 0 ? (
+              <>
+                Weapons count towards verdicts; the rest is listed, not tracked.{' '}
+                <Link href={`/plan/?w=${weapon.slug}`}>Plan a build of {weapon.name}</Link>, down the
+                whole chain.
+              </>
+            ) : (
+              'Listed for reference, not tracked.'
+            )}
           </p>
         </section>
       )}

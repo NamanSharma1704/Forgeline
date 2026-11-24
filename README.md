@@ -19,12 +19,14 @@ reads it and redeploys on each push to `main`, so nothing lives only on Vercel.
 | --- | --- |
 | Data pipeline | Working. 621 player weapons, 46 recipe ingredients, verified against a committed fixture |
 | Images | Working. 256 px and 96 px WebP for every weapon, 12 MB total |
-| Pages | Home, ingredient index, About, and a page per weapon. 627 pre-rendered files |
+| Pages | Home, My Arsenal, sweep, planner, ingredient index, About, and a page per weapon. 636 pre-rendered files |
 | Search | Working. Typo tolerant, Prime aware, `/` from any page |
 | Verdict engine | Working and tested, in `src/engine/`. Rules in [docs/verdict-rules.md](docs/verdict-rules.md) |
 | Sell-check card | Working on every weapon page, and personal once you mark your arsenal: Keep N or Safe, with the reason |
 | My Arsenal and slot sweep | Working. Saved in the browser, with file export and import |
-| Build planner, offline support | Not built yet, phase 2 (M6) |
+| Build planner | Working. Every weapon down the chain, what is left to build, and the resources it costs |
+| Family tree | Full depth on every weapon page, with the recipe underneath |
+| Install and offline | Installable, and one visit saves the recipe weapons, arsenal, sweep and planner for offline use. A new build asks before it reloads |
 
 See [docs/build-plan.md](docs/build-plan.md) section 11 for what comes next.
 

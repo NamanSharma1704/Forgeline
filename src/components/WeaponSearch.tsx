@@ -37,7 +37,18 @@ function loadSearcher(): Promise<Searcher> {
 
 type Status = 'idle' | 'loading' | 'ready' | 'error';
 
-export function WeaponSearch({ variant }: { variant: 'hero' | 'compact' }) {
+export function WeaponSearch({
+  variant,
+  onSelect,
+  placeholder,
+  label = 'Search weapons',
+}: {
+  variant: 'hero' | 'compact';
+  /** Pick a weapon instead of opening its page (the build planner uses this). */
+  onSelect?: (entry: SearchEntry) => void;
+  placeholder?: string;
+  label?: string;
+}) {
   const router = useRouter();
   const id = useId();
   const listId = `${id}-list`;
@@ -75,14 +86,15 @@ export function WeaponSearch({ variant }: { variant: 'hero' | 'compact' }) {
 
   // Warm the page the player is most likely to open next.
   useEffect(() => {
-    if (activeEntry) router.prefetch(`/w/${activeEntry.s}/`);
-  }, [activeEntry, router]);
+    if (activeEntry && !onSelect) router.prefetch(`/w/${activeEntry.s}/`);
+  }, [activeEntry, router, onSelect]);
 
   const go = (entry: SearchEntry) => {
     setOpen(false);
     setQuery('');
     inputRef.current?.blur();
-    router.push(`/w/${entry.s}/`);
+    if (onSelect) onSelect(entry);
+    else router.push(`/w/${entry.s}/`);
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -193,8 +205,10 @@ export function WeaponSearch({ variant }: { variant: 'hero' | 'compact' }) {
           autoCorrect="off"
           autoCapitalize="none"
           spellCheck={false}
-          placeholder={variant === 'hero' ? 'Type a weapon, like Bolto' : 'Search weapons'}
-          aria-label="Search weapons"
+          placeholder={
+            placeholder ?? (variant === 'hero' ? 'Type a weapon, like Bolto' : 'Search weapons')
+          }
+          aria-label={label}
           role="combobox"
           aria-autocomplete="list"
           aria-expanded={showPanel && results.length > 0}

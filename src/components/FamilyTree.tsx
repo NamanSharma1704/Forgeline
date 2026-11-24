@@ -4,43 +4,35 @@ import { StatusTag } from './StatusTag';
 import { WeaponArt, type ArtWeapon } from './WeaponArt';
 
 /**
- * The family tree on a weapon page (spec 5.3): what it is made from, the weapon itself, and what it
- * is used to build, as picture boxes that open each weapon's page. Phase 1 shows one level each way;
- * a box whose weapon builds something further says so, which is the spec's "next step in the chain".
+ * The family tree on a weapon page (spec 5.3), at full depth: every generation it is made from, the
+ * weapon itself, and every generation it goes on to build, as columns of picture boxes that open
+ * each weapon's page. The deepest chain in the data is three steps each way, so at most seven
+ * columns; wide screens scroll sideways if they must, phones read it top to bottom.
  *
- * Reads left to right on wide screens and top to bottom on phones.
+ * Each box says how it connects to the column next to the weapon ("2 needed", "uses 1 Akbolto"),
+ * and shows the player's status once their arsenal is set up.
  */
 
 export interface TreeWeapon extends ArtWeapon {
   readonly slug: string;
-  /** Names of what this weapon builds, for the "then" hint. */
-  readonly builds: readonly string[];
 }
 
-export interface TreeEdge {
+export interface TreeBoxData {
   readonly weapon: TreeWeapon;
-  readonly copies: number;
+  readonly caption: string;
 }
 
-function TreeBox({
-  weapon,
-  caption,
-  then,
-  self = false,
-}: {
-  weapon: TreeWeapon;
-  caption?: string;
-  then?: readonly string[];
-  self?: boolean;
-}) {
+export interface TreeColumn {
+  readonly label: string;
+  readonly boxes: readonly TreeBoxData[];
+}
+
+function TreeBox({ weapon, caption, self = false }: { weapon: TreeWeapon; caption?: string; self?: boolean }) {
   const body = (
     <>
       <WeaponArt weapon={weapon} size="medium" />
       <span className="tree-box__name">{weapon.name}</span>
       {caption && <span className="tree-box__caption">{caption}</span>}
-      {then && then.length > 0 && (
-        <span className="tree-box__then">then {then.join(', ')}</span>
-      )}
       <StatusTag slug={weapon.slug} />
     </>
   );
@@ -67,51 +59,52 @@ function Connector() {
   );
 }
 
+function Column({ column }: { column: TreeColumn }) {
+  return (
+    <div className="tree__group">
+      <h3 className="tree__label">{column.label}</h3>
+      <ul className="tree__boxes">
+        {column.boxes.map((box) => (
+          <li key={box.weapon.slug}>
+            <TreeBox weapon={box.weapon} caption={box.caption} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function FamilyTree({
   self,
-  madeFrom,
-  usedToBuild,
+  before,
+  after,
 }: {
   self: TreeWeapon;
-  madeFrom: readonly TreeEdge[];
-  usedToBuild: readonly TreeEdge[];
+  /** Generations it is made from, farthest first. */
+  before: readonly TreeColumn[];
+  /** Generations it builds, nearest first. */
+  after: readonly TreeColumn[];
 }) {
   return (
-    <div className="tree">
-      {madeFrom.length > 0 && (
-        <>
-          <div className="tree__group">
-            <h3 className="tree__label">Made from</h3>
-            <ul className="tree__boxes">
-              {madeFrom.map(({ weapon, copies }) => (
-                <li key={weapon.slug}>
-                  <TreeBox weapon={weapon} caption={`${copies} needed`} />
-                </li>
-              ))}
-            </ul>
+    <div className="tree-scroll">
+      <div className="tree">
+        {before.map((column) => (
+          <div key={`before-${column.label}`} className="tree__step">
+            <Column column={column} />
+            <Connector />
           </div>
-          <Connector />
-        </>
-      )}
-      <div className="tree__group">
-        <h3 className="tree__label">This weapon</h3>
-        <TreeBox weapon={self} self />
+        ))}
+        <div className="tree__group">
+          <h3 className="tree__label">This weapon</h3>
+          <TreeBox weapon={self} self />
+        </div>
+        {after.map((column) => (
+          <div key={`after-${column.label}`} className="tree__step">
+            <Connector />
+            <Column column={column} />
+          </div>
+        ))}
       </div>
-      {usedToBuild.length > 0 && (
-        <>
-          <Connector />
-          <div className="tree__group">
-            <h3 className="tree__label">Used to build</h3>
-            <ul className="tree__boxes">
-              {usedToBuild.map(({ weapon, copies }) => (
-                <li key={weapon.slug}>
-                  <TreeBox weapon={weapon} caption={`uses ${copies}`} then={weapon.builds} />
-                </li>
-              ))}
-            </ul>
-          </div>
-        </>
-      )}
     </div>
   );
 }

@@ -165,6 +165,48 @@ const edges = (map, unique) =>
     .filter((edge) => edge.slug)
     .sort((a, b) => a.slug.localeCompare(b.slug, 'en'));
 
+// ---------------------------------------------------------------- materials
+
+/**
+ * The rest of each recipe: blueprint, parts and resources (spec 5.6: "listed but not tracked").
+ * Components carry no names, so they are resolved through the three files that hold them; every
+ * one resolved when this was written (2,406 of 2,406). Weapons are excluded here because they are
+ * already the recipe graph.
+ */
+// Components.json holds each weapon's own blueprint and parts (Barrel, Receiver, Blade...), which
+// mean nothing summed across weapons. Misc.json and Resources.json hold shared resources (Orokin
+// Cell, Ferrite, Forma...), which a build plan can total. The kind records which is which.
+const componentInfo = new Map();
+for (const file of ['Resources', 'Misc', 'Components']) {
+  const walk = (item) => {
+    if (item?.uniqueName && item.name && !componentInfo.has(item.uniqueName)) {
+      const kind =
+        file !== 'Components' ? 'resource' : item.name === 'Blueprint' ? 'blueprint' : 'part';
+      componentInfo.set(item.uniqueName, { name: item.name, kind });
+    }
+    for (const component of item?.components ?? []) walk(component);
+  };
+  for (const item of JSON.parse(fs.readFileSync(path.join(dataDir, `${file}.json`), 'utf8'))) {
+    walk(item);
+  }
+}
+
+const materialsOf = (weapon) => {
+  const totals = new Map();
+  for (const component of weapon.components ?? []) {
+    if (byUnique.has(component.uniqueName)) continue;
+    let info = componentInfo.get(component.uniqueName);
+    if (!info) {
+      info = { name: component.uniqueName.split('/').pop() ?? component.uniqueName, kind: 'part' };
+      warnings.push(`${weapon.name}: component ${component.uniqueName} has no name; using ${info.name}`);
+    }
+    const key = `${info.kind}:${info.name}`;
+    const current = totals.get(key);
+    totals.set(key, { ...info, count: (current?.count ?? 0) + (component.itemCount ?? 1) });
+  }
+  return [...totals.values()].map(({ name, kind, count }) => ({ name, kind, count }));
+};
+
 // ---------------------------------------------------------------- assemble
 
 const previous = readJson(previousFile);
@@ -177,6 +219,7 @@ const fresh = newSlugs(
 
 const weapons = players.map((weapon) => {
   const slug = slugByUnique.get(weapon.uniqueName);
+  const materials = materialsOf(weapon);
   return {
     slug,
     name: weapon.name,
@@ -193,6 +236,7 @@ const weapons = players.map((weapon) => {
     isNew: fresh.has(slug),
     usedToBuild: edges(usedToBuild, weapon.uniqueName),
     madeFrom: edges(madeFrom, weapon.uniqueName),
+    ...(materials.length ? { materials } : {}),
     ...(aliases[slug] ? { aliases: aliases[slug] } : {}),
   };
 });

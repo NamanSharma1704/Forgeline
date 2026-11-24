@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Barlow, Barlow_Semi_Condensed } from 'next/font/google';
 import { HeaderSearch } from '@/components/HeaderSearch';
 import { SearchShortcut } from '@/components/SearchShortcut';
+import { ServiceWorkerManager } from '@/components/ServiceWorkerManager';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { THEME_SCRIPT } from '@/components/theme';
 import { weaponIndex } from '@/data/weapons';
@@ -31,6 +32,7 @@ export const metadata: Metadata = {
   description:
     'See what every Warframe weapon becomes before you sell it: what it builds, how many copies the recipe needs, and whether you can let it go.',
   applicationName: 'Forgeline',
+  appleWebApp: { title: 'Forgeline', statusBarStyle: 'black' },
 };
 
 export const viewport: Viewport = {
@@ -82,8 +84,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
             <HeaderSearch />
             <nav className="site-nav" aria-label="Main">
-              <Link href="/arsenal/">My Arsenal</Link>
+              <Link href="/arsenal/">Arsenal</Link>
               <Link href="/sweep/">Sweep</Link>
+              <Link href="/plan/">Plan</Link>
               <Link href="/ingredients/">Ingredients</Link>
               <ThemeToggle />
             </nav>
@@ -93,6 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="container">{children}</div>
         </main>
         <Footer />
+        <ServiceWorkerManager />
       </body>
     </html>
   );

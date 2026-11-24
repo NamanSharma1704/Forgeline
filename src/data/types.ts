@@ -5,6 +5,16 @@
 
 export type Slot = 'primary' | 'secondary' | 'melee' | 'arch-gun' | 'arch-melee' | 'companion';
 
+/**
+ * A non-weapon recipe component. `blueprint` and `part` belong to one weapon (its Barrel is not
+ * another weapon's Barrel); `resource` is shared and can be totalled across a build plan.
+ */
+export interface Material {
+  name: string;
+  kind: 'blueprint' | 'part' | 'resource';
+  count: number;
+}
+
 /** An edge in the recipe graph. `copies` is how many of the referenced weapon one build consumes. */
 export interface RecipeEdge {
   slug: string;
@@ -32,8 +42,13 @@ export interface Weapon {
   isNew: boolean;
   /** Weapons this one is an ingredient for, with the copies each recipe consumes. */
   usedToBuild: RecipeEdge[];
-  /** Weapon ingredients this one is built from. Resources are not tracked. */
+  /** Weapon ingredients this one is built from. */
   madeFrom: RecipeEdge[];
+  /**
+   * The rest of the recipe, in the source's order: blueprint, parts and resources such as Orokin
+   * Cells. Listed for the player, never tracked (spec 5.6). Absent when the weapon has no recipe.
+   */
+  materials?: Material[];
   /** Community shorthand folded into search. */
   aliases?: string[];
 }

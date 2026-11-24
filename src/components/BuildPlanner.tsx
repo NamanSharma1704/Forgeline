@@ -1,0 +1,229 @@
+'use client';
+
+import Link from 'next/link';
+import { useEffect, useMemo, useState } from 'react';
+import type { Material } from '@/data/types';
+import { planBuild, totalResources, type PlanLine } from '@/engine';
+import { toEngineArsenal } from '@/store/arsenal';
+import { useArsenal } from '@/store/useArsenal';
+import { useRecipeGraph } from '@/store/useRecipeGraph';
+import { useStaticJson } from '@/store/useStaticJson';
+import { QtyStepper } from './QtyStepper';
+import { StatusPicker } from './StatusPicker';
+import { WeaponArt } from './WeaponArt';
+import { WeaponSearch } from './WeaponSearch';
+
+/**
+ * The build planner (spec 5.6): pick a weapon you want, see every weapon needed down the whole
+ * chain, what you already hold, and what is left in the order to do it. Each step carries its
+ * status picker, so marking what you get shrinks the plan as you go. The target lives in the URL
+ * (?w=akjagara), so a plan can be bookmarked or shared.
+ */
+
+const SUGGESTED = ['akjagara', 'redeemer', 'proboscis-cernos', 'dual-raza', 'lesion', 'twin-basolk'];
+
+const plural = (n: number, one: string, many: string) => (n === 1 ? one : many);
+
+export function BuildPlanner() {
+  const [target, setTarget] = useState<string | null>(null);
+  const { arsenal } = useArsenal();
+  const { graph, slots, status } = useRecipeGraph(true);
+  const materials = useStaticJson<Record<string, Material[]>>('/materials.json', target !== null);
+
+  // Read the target from the address once, after hydration (pages are pre-rendered without it).
+  useEffect(() => {
+    const fromUrl = new URLSearchParams(window.location.search).get('w');
+    if (fromUrl) setTarget(fromUrl);
+  }, []);
+
+  const choose = (slug: string) => {
+    setTarget(slug);
+    const url = new URL(window.location.href);
+    url.searchParams.set('w', slug);
+    window.history.replaceState(window.history.state, '', url);
+  };
+
+  const entries = toEngineArsenal(arsenal);
+  const plan = useMemo(
+    () => (graph && target && graph.has(target) ? planBuild(graph, entries, target) : null),
+    [graph, target, entries]
+  );
+  const totals = useMemo(
+    () => (plan && materials ? totalResources(plan, (slug) => materials[slug]) : null),
+    [plan, materials]
+  );
+
+  const name = (slug: string) => graph?.get(slug).name ?? slug;
+  const art = (slug: string) => ({
+    name: name(slug),
+    slot: slots?.get(slug) ?? 'primary',
+    thumb: `img/thumb/${slug}.webp`,
+    image: `img/${slug}.webp`,
+  });
+
+  /** What one build of this weapon takes: weapon ingredients first, then everything else. */
+  const recipeText = (line: PlanLine) => {
+    const parts = [
+      ...(graph?.get(line.slug).madeFrom ?? []).map(
+        (edge) => `${name(edge.slug)}${edge.copies > 1 ? ` ${edge.copies}` : ''}`
+      ),
+      ...(materials?.[line.slug] ?? []).map(
+        (m) => `${m.name}${m.count > 1 ? ` ${m.count.toLocaleString('en-GB')}` : ''}`
+      ),
+    ];
+    return parts.length ? parts.join(', ') : null;
+  };
+
+  return (
+    <>
+      <div className="planner-search">
+        <WeaponSearch
+          variant="hero"
+          onSelect={(entry) => choose(entry.s)}
+          placeholder="Which weapon do you want to build?"
+          label="Weapon to plan"
+        />
+      </div>
+
+      {!target && graph && (
+        <p className="search-hint">
+          Try{' '}
+          {SUGGESTED.filter((slug) => graph.has(slug)).map((slug, index, list) => (
+            <span key={slug}>
+              <button type="button" className="link-button" onClick={() => choose(slug)}>
+                {name(slug)}
+              </button>
+              {index < list.length - 2 ? ', ' : index === list.length - 2 ? ' or ' : '.'}
+            </span>
+          ))}
+        </p>
+      )}
+
+      {target && status === 'error' && (
+        <p className="result-count">Could not load the recipe data. Reload to try again.</p>
+      )}
+      {target && graph && !graph.has(target) && (
+        <p className="result-count">There is no weapon called &ldquo;{target}&rdquo;. Search for one above.</p>
+      )}
+
+      {plan && (
+        <>
+          <section className="plan-head" aria-labelledby="plan-title">
+            <div className="plan-head__art shape">
+              <WeaponArt weapon={art(plan.target)} size="medium" />
+            </div>
+            <div>
+              <h2 id="plan-title" className="section-title plan-head__title">
+                Build {name(plan.target)}
+              </h2>
+              <p className="muted">
+                {plan.lines.length - 1 === 0
+                  ? 'No other weapons go into it.'
+                  : `${plan.lines.length - 1} other ${plural(plan.lines.length - 1, 'weapon', 'weapons')} in the chain, ${plan.steps.length} ${plural(plan.steps.length, 'step', 'steps')} left.`}{' '}
+                <Link href={`/w/${plan.target}/`}>See {name(plan.target)}</Link>
+              </p>
+            </div>
+          </section>
+
+          <section className="section" aria-labelledby="plan-steps">
+            <h3 id="plan-steps" className="verdict__label">
+              Still to do, in order
+            </h3>
+            <ol className="plan-steps">
+              {plan.steps.map((step) => {
+                const recipe = recipeText(step);
+                const verb = step.craftable ? 'Build' : 'Get';
+                const isTarget = step.slug === plan.target;
+                return (
+                  <li key={step.slug} className="plan-step">
+                    <div className="plan-step__main">
+                      <WeaponArt weapon={art(step.slug)} />
+                      <div>
+                        <p className="plan-step__title">
+                          <strong>
+                            {verb} {step.toMake}
+                          </strong>{' '}
+                          <Link href={`/w/${step.slug}/`}>{name(step.slug)}</Link>
+                        </p>
+                        <p className="plan-step__detail">
+                          {step.usedFor.length > 0 &&
+                            `For ${step.usedFor.map((u) => `${name(u.slug)} (${u.copies})`).join(', ')}. `}
+                          {step.have > 0 && `You have ${step.have} of the ${step.needed} needed. `}
+                          {recipe && `${step.toMake > 1 ? 'Each needs' : 'Needs'} ${recipe}.`}
+                        </p>
+                      </div>
+                    </div>
+                    {!isTarget && (
+                      <div className="plan-step__controls">
+                        <StatusPicker slug={step.slug} name={name(step.slug)} size="small" />
+                        <QtyStepper slug={step.slug} name={name(step.slug)} />
+                      </div>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+            <p className="verdict__footnote">
+              Mark what you get as you go: copies you hold count towards the plan, and the steps
+              below them drop away.
+            </p>
+          </section>
+
+          {plan.lines.length > 1 && (
+            <section className="section" aria-labelledby="plan-all">
+              <h3 id="plan-all" className="verdict__label">
+                Every weapon in the chain
+              </h3>
+              <div className="table-wrap shape">
+                <table className="data-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Weapon</th>
+                      <th scope="col">Needed</th>
+                      <th scope="col">You have</th>
+                      <th scope="col">To make</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {plan.lines.map((line) => (
+                      <tr key={line.slug}>
+                        <th scope="row">
+                          <Link href={`/w/${line.slug}/`} className="cell-weapon">
+                            <WeaponArt weapon={art(line.slug)} />
+                            {name(line.slug)}
+                          </Link>
+                        </th>
+                        <td>{line.needed}</td>
+                        <td className="cell-muted">{line.slug === plan.target ? 'n/a' : line.have}</td>
+                        <td>{line.toMake === 0 ? <span className="cell-muted">covered</span> : line.toMake}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          )}
+
+          {totals && totals.length > 0 && (
+            <section className="section" aria-labelledby="plan-resources">
+              <h3 id="plan-resources" className="verdict__label">
+                Resources for the steps left
+              </h3>
+              <ul className="resource-list">
+                {totals.map((total) => (
+                  <li key={total.name}>
+                    <span>{total.name}</span>
+                    <span className="resource-list__count">{total.count.toLocaleString('en-GB')}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="verdict__footnote">
+                Listed, not tracked. Blueprints and weapon parts are in each step above.
+              </p>
+            </section>
+          )}
+        </>
+      )}
+    </>
+  );
+}

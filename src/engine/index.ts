@@ -15,6 +15,13 @@ export { explain, listOf, type Explanation, type Tone } from './explain';
 export { familyTree, type FamilyTree, type TreeNode, type TreeOptions } from './tree';
 export { sweep, type SweepItem, type SweepResult } from './sweep';
 export {
+  planBuild,
+  totalResources,
+  type BuildPlan,
+  type MaterialLike,
+  type PlanLine,
+} from './planner';
+export {
   heldCount,
   holds,
   isArsenalSetUp,

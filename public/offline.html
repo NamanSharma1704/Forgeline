@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0c0c0e" />
+    <title>Offline | Forgeline</title>
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('forgeline-theme');
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+    <style>
+      /*
+       * Served by the service worker in place of any page that was not saved on this device, at
+       * that page's own address. Self-contained on purpose: no build assets, so it works whatever
+       * else is missing from the cache.
+       */
+      :root {
+        --bg: #2c2e33;
+        --surface: #0c0c0e;
+        --edge: rgba(255, 255, 255, 0.86);
+        --edge-soft: rgba(255, 255, 255, 0.16);
+        --text: #f3f3f5;
+        --text-2: #b8bac1;
+        --safe: #4cc76f;
+        --check: #f2b33d;
+        color-scheme: dark;
+      }
+      :root[data-theme='light'] {
+        --bg: #c9cbcf;
+        --surface: #fbfbfc;
+        --edge: rgba(12, 12, 14, 0.88);
+        --edge-soft: rgba(12, 12, 14, 0.16);
+        --text: #121316;
+        --text-2: #3c3f46;
+        --safe: #157a37;
+        --check: #8a5900;
+        color-scheme: light;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+        font: 400 1rem / 1.5 Barlow, ui-sans-serif, system-ui, sans-serif;
+      }
+      header {
+        background: var(--surface);
+        border-bottom: 1px solid var(--edge);
+      }
+      .container {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+      header .container {
+        display: flex;
+        align-items: center;
+        min-height: 60px;
+      }
+      .wordmark {
+        color: var(--text);
+        font-weight: 700;
+        font-size: 1.125rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+      main {
+        padding: 40px 0 64px;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 1.75rem;
+        line-height: 1.15;
+      }
+      p {
+        max-width: 66ch;
+        margin: 0 0 12px;
+        color: var(--text-2);
+      }
+      .panel {
+        max-width: 40rem;
+        margin: 24px 0;
+        padding: 20px;
+        background: var(--surface);
+        border: 1px solid var(--edge);
+      }
+      .panel p {
+        margin: 0;
+        color: var(--text);
+      }
+      .verdict {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+        font-weight: 700;
+        font-size: 1.375rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .verdict[data-tone='safe'] {
+        color: var(--safe);
+      }
+      .verdict[data-tone='check'] {
+        color: var(--check);
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 24px;
+      }
+      nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 16px;
+        border: 1px solid var(--edge-soft);
+        background: var(--surface);
+        color: var(--text);
+        font-size: 0.8125rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+      nav a:hover {
+        border-color: var(--edge);
+      }
+      a:focus-visible {
+        outline: 2px solid #8fd0ff;
+        outline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container"><a class="wordmark" href="/">Forgeline</a></div>
+    </header>
+    <main>
+      <div class="container">
+        <h1 id="title">You're offline</h1>
+        <p id="lede">This page isn't saved on this device yet. It will load when you're back online.</p>
+        <div class="panel" id="answer" hidden>
+          <div class="verdict" id="verdict"></div>
+          <p id="summary"></p>
+        </div>
+        <p>
+          Saved for offline use: the weapons that appear in any recipe, your arsenal, the sweep and the
+          build planner.
+        </p>
+        <nav aria-label="Saved pages">
+          <a href="/">Search</a>
+          <a href="/arsenal/">Arsenal</a>
+          <a href="/sweep/">Sweep</a>
+          <a href="/plan/">Plan</a>
+          <a href="/ingredients/">Ingredients</a>
+        </nav>
+      </div>
+    </main>
+    <script>
+      // A weapon page that was not saved can still be answered from the recipe graph, which is: a
+      // weapon that feeds no recipe is safe to sell, whatever the arsenal holds.
+      (function () {
+        var match = location.pathname.match(/^\/w\/([^/]+)\/?$/);
+        if (!match) return;
+        var slug = decodeURIComponent(match[1]);
+        fetch('/graph.json')
+          .then(function (response) {
+            return response.ok ? response.json() : [];
+          })
+          .then(function (nodes) {
+            var names = {};
+            var weapon = null;
+            nodes.forEach(function (node) {
+              names[node.s] = node.n;
+              if (node.s === slug) weapon = node;
+            });
+            if (!weapon) return;
+            document.title = weapon.n + ' | Forgeline';
+            document.getElementById('title').textContent = weapon.n;
+            document.getElementById('lede').textContent =
+              "You're offline, so this is the short answer. The full page loads when you're back online.";
+            var verdict = document.getElementById('verdict');
+            var summary = document.getElementById('summary');
+            if (!weapon.u || weapon.u.length === 0) {
+              verdict.dataset.tone = 'safe';
+              verdict.textContent = 'Safe to sell';
+              summary.textContent = weapon.n + " isn't used in any recipe.";
+            } else {
+              verdict.dataset.tone = 'check';
+              verdict.textContent = 'Check';
+              summary.textContent =
+                weapon.n +
+                ' is used to build ' +
+                weapon.u
+                  .map(function (edge) {
+                    var copies = edge[1] === 1 ? '1 copy' : edge[1] + ' copies';
+                    return (names[edge[0]] || edge[0]) + ' (' + copies + ')';
+                  })
+                  .join(' and ') +
+                '. Keep it unless you have already built and mastered what it makes.';
+            }
+            document.getElementById('answer').hidden = false;
+          })
+          .catch(function () {});
+      })();
+    </script>
+  </body>
+</html>
