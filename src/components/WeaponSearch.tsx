@@ -227,7 +227,8 @@ export function WeaponSearch({
           role="combobox"
           aria-autocomplete="list"
           aria-expanded={showPanel && results.length > 0}
-          aria-controls={listId}
+          // Only while the list is on the page: a reference to a missing element is invalid ARIA.
+          aria-controls={showPanel && results.length > 0 ? listId : undefined}
           aria-activedescendant={
             showPanel && activeEntry ? optionId(results.indexOf(activeEntry)) : undefined
           }

@@ -696,10 +696,19 @@ button.shape:focus-visible,
     min-height: 52px;
   }
 
-  .wordmark__name,
   .segment-tabs,
   .search-trigger {
     display: none;
+  }
+
+  /* Out of sight but still read, so the emblem link keeps its name: "Forgeline". */
+  .wordmark__name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
   }
 
   .orbiter-bar__screen {
@@ -740,6 +749,30 @@ button.shape:focus-visible,
 main {
   flex: 1;
   padding: 32px 0 72px;
+}
+
+/* Main takes focus from the skip link without drawing a ring round the whole screen. */
+main:focus {
+  outline: none;
+}
+
+/* Hidden until focused, then the first thing on screen, top left, above the bar. */
+.skip-link {
+  position: absolute;
+  z-index: var(--z-overlay);
+  top: 8px;
+  left: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--focus);
+  background: var(--surface-3);
+  color: var(--text);
+  font: 600 var(--step--1) / 1 var(--font-body);
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
 }
 
 /* ------------------------------------------------------------------ shell: screen header */
@@ -4486,6 +4519,22 @@ a.variant-tab:hover {
 @media (min-width: 760px) {
   html {
     scroll-padding-top: 80px;
+  }
+
+  /* Nor under the action bar at the foot. */
+  html:has(.action-dock) {
+    scroll-padding-bottom: 80px;
+  }
+}
+
+/* Phones: jumps and focus stop above the bottom bar, and the action bar when there is one. */
+@media (max-width: 759px) {
+  html {
+    scroll-padding-bottom: calc(68px + env(safe-area-inset-bottom));
+  }
+
+  html:has(.action-dock) {
+    scroll-padding-bottom: calc(128px + env(safe-area-inset-bottom));
   }
 }
 

@@ -94,8 +94,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body>
+        {/* The first stop for a keyboard: past the bar's eight controls, straight to the screen. */}
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <OrbiterBar weaponCount={weaponCount} />
-        <main>
+        <main id="main" tabIndex={-1}>
           <div className="container">{children}</div>
         </main>
         <StatusStrip />
