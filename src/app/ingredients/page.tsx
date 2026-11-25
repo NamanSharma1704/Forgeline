@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ScreenHeader, Telemetry } from '@/components/shell/ScreenHeader';
 import { IngredientIndex, type IngredientRow } from '@/components/IngredientIndex';
 import { variantOf } from '@/data/variants';
 import { ingredientWeapons, resolve } from '@/data/weapons';
@@ -30,11 +31,11 @@ export default function IngredientsPage() {
 
   return (
     <>
-      <h1 className="page-title">{rows.length} weapons you should think twice about selling</h1>
-      <p className="lede">
-        Each one is consumed by at least one other weapon&apos;s recipe. The copy count is what that
-        one recipe needs, so a weapon feeding two recipes can be worth keeping more than once.
-      </p>
+      <ScreenHeader
+        title="Ingredients"
+        context={`${rows.length} weapons you should think twice about selling: each one goes into another weapon's recipe.`}
+        telemetry={<Telemetry label="Weapons" value={rows.length} />}
+      />
       <IngredientIndex rows={rows} />
     </>
   );

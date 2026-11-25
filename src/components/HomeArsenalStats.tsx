@@ -5,6 +5,7 @@ import { sweep } from '@/engine';
 import { tally, toEngineArsenal } from '@/store/arsenal';
 import { useArsenal } from '@/store/useArsenal';
 import { useRecipeGraph } from '@/store/useRecipeGraph';
+import { Telemetry } from './shell/ScreenHeader';
 
 /**
  * The home page's live arsenal figures (design plan 3.4 and 3.5), read from this browser. Pages are
@@ -48,6 +49,13 @@ export function HomeArsenalStats() {
       )}
     </p>
   );
+}
+
+/** The Slot Sweep header's figure: slots that can be freed, once there is an arsenal to sweep. */
+export function FreeableTelemetry() {
+  const { ready, held, safe } = useArsenalSummary();
+  if (!ready || held === 0 || safe === null) return null;
+  return <Telemetry label="Freeable" value={safe} />;
 }
 
 /** The sweep card's figure: how many held weapons can go, or a prompt before there are any. */

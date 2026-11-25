@@ -23,7 +23,7 @@ export function WeaponStatus({
       <div className="weapon-status__controls">
         <StatusPicker slug={slug} name={name} />
         {isIngredient && <QtyStepper slug={slug} name={name} />}
-        <FavouriteToggle slug={slug} name={name} />
+        <FavouriteToggle slug={slug} name={name} shortcut />
       </div>
     </div>
   );

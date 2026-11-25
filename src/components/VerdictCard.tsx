@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import type { RecipeSummary } from '@/data/recipe';
 import type { Explanation, Tone, Verdict } from '@/engine';
-import { CopyResult } from './CopyResult';
 import { Icon, type IconName } from './Icon';
 import { RecipeList } from './RecipeList';
 import { StatusPicker } from './StatusPicker';
@@ -10,8 +9,9 @@ import { WeaponArt, type ArtWeapon } from './WeaponArt';
 /**
  * The Sell Check result (spec 5.1 and 5.2), as the dossier's right column (design plan 4.3): the
  * verdict in crest, word and colour with the reason under it, one card per weapon it builds with
- * picture, copies per build and the player's status, the chain beyond with mastery ranks, the
- * notes, and the action dock (copy for clan chat, plan a build).
+ * picture, copies per build and the player's status, the chain beyond with mastery ranks, and the
+ * notes. Copy for clan chat and Plan a build live in the action bar (design plan 4.4), registered
+ * by PersonalVerdict.
  *
  * With `controls`, each card also carries the player's status for that weapon, so a Check resolves
  * into Keep or Safe on the card itself (docs/verdict-rules.md, rule 2). PersonalVerdict renders it
@@ -71,7 +71,6 @@ export function VerdictCard({
   controls = false,
   footnote,
   favourite = false,
-  plan,
 }: {
   verdict: Verdict;
   explanation: Explanation;
@@ -87,8 +86,6 @@ export function VerdictCard({
   footnote?: React.ReactNode;
   /** The player starred it: say so beside the verdict, which recipes alone decide. */
   favourite?: boolean;
-  /** The dock's second action, when the weapon has a recipe to plan. */
-  plan?: { readonly href: string; readonly label: string };
 }) {
   const e = explanation;
   const safe = e.tone === 'safe' || e.tone === 'safe-soft';
@@ -236,17 +233,6 @@ export function VerdictCard({
           <span>{e.incarnon}</span>
         </p>
       )}
-
-      <div className="verdict__dock">
-        <CopyResult text={e.copyText} quiet />
-        {plan && (
-          <Link href={plan.href} className="dock-plan shape">
-            <Icon name="queue" size={18} />
-            {plan.label}
-            <Icon name="arrow-right" size={16} className="dock-plan__arrow" />
-          </Link>
-        )}
-      </div>
     </section>
   );
 }

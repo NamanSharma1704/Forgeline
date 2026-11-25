@@ -124,10 +124,16 @@ export function WeaponSearch({
           go(activeEntry);
         }
         break;
+      // Each Esc does one thing, and claims the key when it does, so a dialog around the search
+      // (the overlay) closes only once the field is already empty.
       case 'Escape':
-        if (open && trimmed) setOpen(false);
-        else {
+        if (open && trimmed) {
+          event.preventDefault();
+          setOpen(false);
+        } else if (query) {
+          event.preventDefault();
           setQuery('');
+        } else {
           inputRef.current?.blur();
         }
         break;

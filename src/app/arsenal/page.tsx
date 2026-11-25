@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ScreenHeader } from '@/components/shell/ScreenHeader';
 import { ArsenalManager, type ArsenalRow, type RecipeRole } from '@/components/ArsenalManager';
 import type { Weapon } from '@/data/types';
 import { variantOf } from '@/data/variants';
@@ -42,11 +43,10 @@ export default function ArsenalPage() {
 
   return (
     <>
-      <h1 className="page-title">My Arsenal</h1>
-      <p className="lede">
-        Mark what you own and what you have mastered. It stays in this browser, no account needed,
-        and every verdict on the site follows it.
-      </p>
+      <ScreenHeader
+        title="My Arsenal"
+        context="What you own and what you have mastered. Saved in this browser; every verdict on the site follows it."
+      />
       <ArsenalManager rows={rows} starters={starters} />
     </>
   );

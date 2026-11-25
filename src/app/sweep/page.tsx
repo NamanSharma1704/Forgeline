@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { FreeableTelemetry } from '@/components/HomeArsenalStats';
+import { ScreenHeader } from '@/components/shell/ScreenHeader';
 import { SlotSweep } from '@/components/SlotSweep';
 
 export const metadata: Metadata = {
@@ -10,7 +12,11 @@ export const metadata: Metadata = {
 export default function SweepPage() {
   return (
     <>
-      <h1 className="page-title">Out of slots?</h1>
+      <ScreenHeader
+        title="Slot Sweep"
+        context="Out of slots? What you hold, sorted into what can go and what must stay."
+        telemetry={<FreeableTelemetry />}
+      />
       <SlotSweep />
     </>
   );

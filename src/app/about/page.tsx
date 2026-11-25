@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ScreenHeader } from '@/components/shell/ScreenHeader';
 import { weaponIndex } from '@/data/weapons';
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="prose">
-      <h1 className="page-title">Where this data comes from</h1>
+      <ScreenHeader title="About" context="Where this data comes from, how often it refreshes, and how to report a mistake." />
 
       <h2>Source</h2>
       <p>

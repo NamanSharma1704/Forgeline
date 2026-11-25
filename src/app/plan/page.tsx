@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { BuildPlanner } from '@/components/BuildPlanner';
+import { ScreenHeader } from '@/components/shell/ScreenHeader';
 
 export const metadata: Metadata = {
   title: 'Build planner',
@@ -10,11 +11,10 @@ export const metadata: Metadata = {
 export default function PlanPage() {
   return (
     <>
-      <h1 className="page-title">Build planner</h1>
-      <p className="lede">
-        Pick a weapon you want. Forgeline lists every weapon that goes into it, down the whole chain,
-        and what is left to build or get once the weapons in your arsenal are counted.
-      </p>
+      <ScreenHeader
+        title="Foundry"
+        context="Pick a weapon to build: every weapon down the chain, what is left once your arsenal is counted, and what it costs."
+      />
       <BuildPlanner />
     </>
   );

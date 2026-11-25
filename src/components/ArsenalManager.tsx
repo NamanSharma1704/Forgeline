@@ -18,6 +18,7 @@ import {
 import { arsenalActions, useArsenal } from '@/store/useArsenal';
 import { FavouriteToggle } from './FavouriteToggle';
 import { FilterSearch, FilterSelect } from './Filters';
+import { useScreenActions } from './shell/actions';
 import { Icon } from './Icon';
 import { QtyStepper } from './QtyStepper';
 import { StatusPicker } from './StatusPicker';
@@ -127,6 +128,11 @@ export function ArsenalManager({
   const [text, setText] = useState('');
   // Grid first: the pictures are how players recognise their weapons at a glance.
   const [view, setView] = useState<'list' | 'grid'>('grid');
+  // G and L switch the view (design plan 4.4); the switch itself shows the keys.
+  useScreenActions('arsenal-view', [
+    { id: 'grid', keyName: 'g', label: 'Grid view', keyOnly: true, run: () => setView('grid') },
+    { id: 'list', keyName: 'l', label: 'List view', keyOnly: true, run: () => setView('list') },
+  ]);
   const [setupOpen, setSetupOpen] = useState(false);
   const [file, setFile] = useState<FileState>({ kind: 'idle' });
   const fileInput = useRef<HTMLInputElement>(null);
@@ -325,11 +331,13 @@ export function ArsenalManager({
             ))}
           </FilterSelect>
           <div className="view-toggle" role="group" aria-label="View">
-            <button type="button" aria-pressed={view === 'grid'} onClick={() => setView('grid')} title="Grid">
+            <button type="button" aria-pressed={view === 'grid'} onClick={() => setView('grid')} title="Grid" aria-keyshortcuts="G">
               <Icon name="grid" size={18} label="Grid" />
+              <kbd className="keycap" aria-hidden="true">G</kbd>
             </button>
-            <button type="button" aria-pressed={view === 'list'} onClick={() => setView('list')} title="List">
+            <button type="button" aria-pressed={view === 'list'} onClick={() => setView('list')} title="List" aria-keyshortcuts="L">
               <Icon name="list" size={18} label="List" />
+              <kbd className="keycap" aria-hidden="true">L</kbd>
             </button>
           </div>
         </div>

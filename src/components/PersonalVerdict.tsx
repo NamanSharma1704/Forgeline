@@ -4,8 +4,11 @@ import Link from 'next/link';
 import { useMemo } from 'react';
 import { createEvaluator, explain, isArsenalSetUp, type Explanation, type Verdict } from '@/engine';
 import { favouriteIn, toEngineArsenal } from '@/store/arsenal';
+import { useRouter } from 'next/navigation';
 import { useArsenal } from '@/store/useArsenal';
 import { useRecipeGraph } from '@/store/useRecipeGraph';
+import { hasMovedInApp, useScreenActions, type ScreenAction } from './shell/actions';
+import { useCopyText } from './useCopyText';
 import { VerdictCard, type CardTarget } from './VerdictCard';
 
 /**
@@ -45,6 +48,30 @@ export function PersonalVerdict({
   const verdict = computed?.verdict ?? initialVerdict;
   const explanation = computed?.explanation ?? initialExplanation;
 
+  // The weapon screen's actions (design plan 4.4): copy for clan chat, plan a build, back.
+  const router = useRouter();
+  const { state: copyState, copy } = useCopyText(explanation.copyText);
+  const actions: ScreenAction[] = [
+    {
+      id: 'copy',
+      keyName: 'c',
+      icon: copyState === 'copied' ? 'done' : 'copy',
+      label: copyState === 'copied' ? 'Copied' : 'Copy for clan chat',
+      run: copy,
+    },
+    // The weapon is on screen, so the label needs no name: it stays short enough for a phone.
+    ...(plan ? [{ id: 'plan', keyName: 'p', icon: 'queue' as const, label: 'Plan a build', href: plan.href, primary: true }] : []),
+    {
+      id: 'back',
+      keyName: 'Escape',
+      icon: 'back',
+      label: 'Back',
+      compact: true,
+      run: () => (hasMovedInApp() ? router.back() : router.push('/')),
+    },
+  ];
+  useScreenActions('weapon', actions);
+
   let footnote: React.ReactNode;
   if (computed) {
     footnote = (
@@ -61,16 +88,26 @@ export function PersonalVerdict({
   }
 
   return (
-    <VerdictCard
-      verdict={verdict}
-      explanation={explanation}
-      targets={targets}
-      names={names}
-      ranks={ranks}
-      plan={plan}
-      controls={targets.length > 0}
-      footnote={footnote}
-      favourite={ready && favouriteIn(arsenal, slug)}
-    />
+    <>
+      <VerdictCard
+        verdict={verdict}
+        explanation={explanation}
+        targets={targets}
+        names={names}
+        ranks={ranks}
+        controls={targets.length > 0}
+        footnote={footnote}
+        favourite={ready && favouriteIn(arsenal, slug)}
+      />
+      <span className="sr-only" role="status" aria-live="polite">
+        {copyState === 'copied' ? 'Result copied. Paste it into clan chat.' : ''}
+      </span>
+      {copyState === 'failed' && (
+        <p className="copy-result__fallback">
+          Copying is blocked here. Select this instead:
+          <output className="copy-result__text">{explanation.copyText}</output>
+        </p>
+      )}
+    </>
   );
 }
