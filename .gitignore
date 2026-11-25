@@ -41,5 +41,9 @@ images-report.json
 commit-message.txt
 failure.md
 
-# Generated data and images are committed on purpose: see docs/build-plan.md section 0.
+# Planning documents (specs, reviews, build and design plans): kept locally, not in the repository
+docs/
+Forgeline_Website_Spec.md
+
+# Generated data and images are committed on purpose, so a deploy never depends on an upstream server.
 # data/index.json, data/images.manifest.json and public/img are part of the deploy.

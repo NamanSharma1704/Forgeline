@@ -21,7 +21,7 @@ reads it and redeploys on each push to `main`, so nothing lives only on Vercel.
 | Images | Working. 256 px and 96 px WebP for every weapon, 12 MB total |
 | Pages | Home, My Arsenal, sweep, planner, ingredient index, About, and a page per weapon. 636 pre-rendered files |
 | Search | Working. Typo tolerant, Prime aware, `/` from any page |
-| Verdict engine | Working and tested, in `src/engine/`. Rules in [docs/verdict-rules.md](docs/verdict-rules.md) |
+| Verdict engine | Working and tested, in `src/engine/`, with every rule as a fixture in `tests/engine.test.ts` |
 | Sell-check card | Working on every weapon page, and personal once you mark your arsenal: Keep N or Safe, with the reason |
 | My Arsenal and slot sweep | Working. Saved in the browser, with file export and import |
 | Build planner | Working. Every weapon down the chain, what is left to build, and the resources it costs |
@@ -29,7 +29,6 @@ reads it and redeploys on each push to `main`, so nothing lives only on Vercel.
 | Install and offline | Installable, and one visit saves the recipe weapons, arsenal, sweep and planner for offline use. A new build asks before it reloads |
 | Variants | Normal, Prime, Kuva/Tenet/Coda, Vandal/Wraith, Prisma and Syndicate weapons filter apart in My Arsenal and the ingredient list, and each weapon page links its other versions |
 
-See [docs/build-plan.md](docs/build-plan.md) section 11 for what comes next.
 
 ## Running it
 
@@ -64,15 +63,6 @@ npm run data:images    # fetch and convert anything new; add -- --recheck to com
 npm run data:links     # check every weapon's wiki and warframe.market pages; the monthly refresh runs it too
 npm run data:accept    # after reviewing a recipe change: update the verified-recipe fixture
 ```
-
-## Documents
-
-| File | What it is |
-| --- | --- |
-| [Forgeline_Website_Spec.md](Forgeline_Website_Spec.md) | The product spec, version 1.1 |
-| [docs/spec-review.md](docs/spec-review.md) | Review of that spec against the live data source: what checks out, what needs correcting, what it leaves undecided |
-| [docs/verdict-rules.md](docs/verdict-rules.md) | The verdict engine written unambiguously, with the demand arithmetic and 14 test fixtures |
-| [docs/build-plan.md](docs/build-plan.md) | Architecture, data contract, pipeline, milestones and quality gates |
 
 ## Credits and legal
 
