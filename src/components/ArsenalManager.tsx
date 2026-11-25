@@ -17,6 +17,7 @@ import {
 } from '@/store/arsenal';
 import { arsenalActions, useArsenal } from '@/store/useArsenal';
 import { FavouriteToggle } from './FavouriteToggle';
+import { FilterSearch, FilterSelect } from './Filters';
 import { Icon } from './Icon';
 import { QtyStepper } from './QtyStepper';
 import { StatusPicker } from './StatusPicker';
@@ -51,38 +52,6 @@ const SCOPE_LABEL: Record<Scope, string> = {
   ingredients: 'Ingredients',
   all: 'All weapons',
 };
-
-/**
- * A compact filter as a native select: keyboard and screen-reader behaviour for free, a drawn
- * chevron, and lit cyan while it is narrowing the list, so an active filter is never missed.
- */
-function FilterSelect({
-  id,
-  label,
-  value,
-  active,
-  onChange,
-  children,
-}: {
-  id: string;
-  label: string;
-  value: string;
-  active: boolean;
-  onChange: (value: string) => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <span className="filter-select" data-active={active ? '' : undefined}>
-      <label className="sr-only" htmlFor={id}>
-        {label}
-      </label>
-      <select id={id} value={value} onChange={(event) => onChange(event.target.value)}>
-        {children}
-      </select>
-      <Icon name="chevron-down" size={16} className="filter-select__chevron" />
-    </span>
-  );
-}
 
 const isIngredient = (row: ArsenalRow) => row.role === 'ingredient' || row.role === 'both';
 
@@ -318,21 +287,7 @@ export function ArsenalManager({
         </div>
 
         <div className="filter-bar">
-          <span className="filter-search">
-            <label className="sr-only" htmlFor={`${id}-text`}>
-              Filter by name
-            </label>
-            <Icon name="search" size={16} />
-            <input
-              id={`${id}-text`}
-              type="text"
-              value={text}
-              placeholder="Filter by name"
-              autoComplete="off"
-              spellCheck={false}
-              onChange={(event) => setText(event.target.value)}
-            />
-          </span>
+          <FilterSearch id={`${id}-text`} label="Filter by name" value={text} placeholder="Filter by name" onChange={setText} />
           <FilterSelect id={`${id}-slot`} label="Slot" value={slot} active={slot !== 'all'} onChange={(value) => setSlot(value as Slot | 'all')}>
             <option value="all">Any slot</option>
             {slots.map((candidate) => (

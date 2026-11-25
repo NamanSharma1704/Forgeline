@@ -2590,14 +2590,6 @@ a.tree-box:hover {
 
 /* ------------------------------------------------------------------ ingredient index */
 
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 20px;
-  margin-top: 28px;
-}
-
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -2630,29 +2622,6 @@ a.tree-box:hover {
   border-color: var(--focus);
   color: var(--text);
   box-shadow: 0 0 12px -2px var(--focus-glow);
-}
-
-.field {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--text-2);
-  font-size: var(--step--1);
-}
-
-.field input,
-.field select {
-  min-height: 36px;
-  padding: 0 10px;
-  border: 1px solid var(--edge-soft);
-  background: var(--surface-2);
-  color: var(--text);
-  font: 500 var(--step--1) / 1 var(--font-body);
-}
-
-.field input:hover,
-.field select:hover {
-  border-color: var(--edge);
 }
 
 .result-count {
@@ -3073,12 +3042,13 @@ a.tree-box:hover {
   opacity: 0.7;
 }
 
-/* ------------------------------------------------------------------ my arsenal: filters */
+/* ------------------------------------------------------------------ filter bars */
 
 /*
- * Two rows instead of a wall of chips: which collection as underline tabs, then one toolbar of
- * name search, three compact dropdowns and the view switch. A dropdown lights up only while it is
- * narrowing the list.
+ * One quiet toolbar instead of a wall of chips (My Arsenal, the Ingredient Index): a name search,
+ * compact dropdowns and toggles, and the view switch or sort order at the right end. A control
+ * lights up only while it is narrowing the list. My Arsenal puts its collections above it as
+ * underline tabs.
  */
 .arsenal-filters {
   margin-top: 28px;
@@ -3200,8 +3170,46 @@ a.tree-box:hover {
 }
 
 .filter-search input:hover,
-.filter-select select:hover {
+.filter-select select:hover,
+.filter-toggle:hover {
   border-color: var(--edge);
+}
+
+.filter-toggle {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--edge-soft);
+  background: var(--surface-1);
+  color: var(--text-2);
+  font: 500 var(--step--1) / 1 var(--font-body);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.filter-toggle:hover {
+  color: var(--text);
+}
+
+.filter-toggle[aria-pressed='true'] {
+  background: var(--selected);
+  border-color: var(--focus);
+  box-shadow: 0 0 12px -2px var(--focus-glow);
+  color: var(--text);
+}
+
+/* The Ingredient Index has no tabs above its bar, so the bar takes the section's spacing. */
+.index-filters {
+  margin-top: 28px;
+}
+
+/* The sort order, at the far end of the bar where the view switch sits on My Arsenal. */
+.filter-bar__end {
+  margin-left: auto;
 }
 
 .filter-select {
@@ -3281,7 +3289,10 @@ a.tree-box:hover {
   color: var(--focus);
 }
 
-/* Phones: search and view switch on one line, the three dropdowns sharing the next. */
+/*
+ * Phones. My Arsenal: search and view switch on one line, its three dropdowns sharing the next.
+ * Ingredient Index: search across, then the filters and sort order two to a line.
+ */
 @media (max-width: 559px) {
   .filter-bar {
     display: grid;
@@ -3303,6 +3314,19 @@ a.tree-box:hover {
 
   .filter-select {
     grid-column: span 2;
+  }
+
+  .index-filters .filter-search {
+    grid-column: 1 / -1;
+  }
+
+  .index-filters .filter-select,
+  .index-filters .filter-toggle {
+    grid-column: span 3;
+  }
+
+  .filter-bar__end {
+    margin-left: 0;
   }
 
   /* Room for "Any variant" in a third of the row. */

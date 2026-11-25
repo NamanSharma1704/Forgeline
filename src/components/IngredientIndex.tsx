@@ -7,6 +7,7 @@ import { VARIANT_LABEL, VARIANT_ORDER, type Variant } from '@/data/variants';
 import { normalise } from '@/search/rank';
 import { STATUS_LABEL, statusIn } from '@/store/arsenal';
 import { useArsenal } from '@/store/useArsenal';
+import { FilterSearch, FilterSelect, FilterToggle } from './Filters';
 import { WeaponArt, type ArtWeapon } from './WeaponArt';
 
 /**
@@ -23,6 +24,12 @@ export interface IngredientRow extends ArtWeapon {
 }
 
 type SortKey = 'name' | 'slot' | 'copies';
+
+const SORT_LABEL: Record<SortKey, string> = {
+  name: 'Sort: Name',
+  slot: 'Sort: Slot',
+  copies: 'Sort: Most copies needed',
+};
 
 const SLOT_ORDER: Slot[] = ['primary', 'secondary', 'melee', 'arch-gun', 'arch-melee', 'companion'];
 
@@ -76,6 +83,7 @@ export function IngredientIndex({ rows }: { rows: readonly IngredientRow[] }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rows, slot, variant, sort, text, mine, ready, arsenal]);
 
+  const filtered = slot !== 'all' || variant !== 'all' || mine || text.trim() !== '';
   const reset = () => {
     setSlot('all');
     setVariant('all');
@@ -85,89 +93,67 @@ export function IngredientIndex({ rows }: { rows: readonly IngredientRow[] }) {
 
   return (
     <>
-      <div className="filters">
-        <div className="chips" role="group" aria-label="Filter by slot">
-          <button
-            type="button"
-            className="chip"
-            aria-pressed={slot === 'all'}
-            onClick={() => setSlot('all')}
-          >
-            All
-          </button>
+      <div className="filter-bar index-filters">
+        <FilterSearch
+          id={`${id}-text`}
+          label="Filter by weapon, or by what it builds"
+          value={text}
+          placeholder="Weapon or what it builds"
+          onChange={setText}
+        />
+        <FilterSelect id={`${id}-slot`} label="Slot" value={slot} active={slot !== 'all'} onChange={(value) => setSlot(value as Slot | 'all')}>
+          <option value="all">Any slot</option>
           {slots.map((candidate) => (
-            <button
-              key={candidate}
-              type="button"
-              className="chip"
-              aria-pressed={slot === candidate}
-              onClick={() => setSlot(candidate)}
-            >
+            <option key={candidate} value={candidate}>
               {SLOT_LABEL[candidate]}
-            </button>
+            </option>
           ))}
-        </div>
+        </FilterSelect>
         {variants.length > 1 && (
-          <div className="chips" role="group" aria-label="Filter by variant">
-            <button
-              type="button"
-              className="chip"
-              aria-pressed={variant === 'all'}
-              onClick={() => setVariant('all')}
-            >
-              Any variant
-            </button>
-            {variants.map(({ variant: candidate, count }) => (
-              <button
-                key={candidate}
-                type="button"
-                className="chip"
-                aria-pressed={variant === candidate}
-                onClick={() => setVariant(candidate)}
-              >
-                {VARIANT_LABEL[candidate]} <span className="chip__count">{count}</span>
-              </button>
-            ))}
-          </div>
-        )}
-        <button
-          type="button"
-          className="chip"
-          aria-pressed={mine}
-          onClick={() => setMine((value) => !value)}
-        >
-          Only ones I own
-        </button>
-        <label className="field" htmlFor={`${id}-text`}>
-          Name
-          <input
-            id={`${id}-text`}
-            type="text"
-            value={text}
-            placeholder="Weapon or what it builds"
-            autoComplete="off"
-            spellCheck={false}
-            onChange={(event) => setText(event.target.value)}
-          />
-        </label>
-        <label className="field" htmlFor={`${id}-sort`}>
-          Sort
-          <select
-            id={`${id}-sort`}
-            value={sort}
-            onChange={(event) => setSort(event.target.value as SortKey)}
+          <FilterSelect
+            id={`${id}-variant`}
+            label="Variant"
+            value={variant}
+            active={variant !== 'all'}
+            onChange={(value) => setVariant(value as Variant | 'all')}
           >
-            <option value="name">Name</option>
-            <option value="slot">Slot</option>
-            <option value="copies">Most copies needed</option>
-          </select>
-        </label>
+            <option value="all">Any variant</option>
+            {variants.map(({ variant: candidate, count }) => (
+              <option key={candidate} value={candidate}>
+                {VARIANT_LABEL[candidate]} ({count})
+              </option>
+            ))}
+          </FilterSelect>
+        )}
+        <FilterToggle pressed={mine} onToggle={() => setMine((value) => !value)}>
+          Only ones I own
+        </FilterToggle>
+        <FilterSelect
+          id={`${id}-sort`}
+          label="Sort order"
+          value={sort}
+          className="filter-bar__end"
+          onChange={(value) => setSort(value as SortKey)}
+        >
+          {(Object.keys(SORT_LABEL) as SortKey[]).map((key) => (
+            <option key={key} value={key}>
+              {SORT_LABEL[key]}
+            </option>
+          ))}
+        </FilterSelect>
       </div>
 
-      <p className="result-count" role="status" aria-live="polite">
-        {visible.length === rows.length
-          ? `All ${rows.length} ingredient weapons`
-          : `${visible.length} of ${rows.length} ingredient weapons`}
+      <p className="result-count">
+        <span role="status" aria-live="polite">
+          {visible.length === rows.length
+            ? `All ${rows.length} ingredient weapons`
+            : `${visible.length} of ${rows.length} ingredient weapons`}
+        </span>
+        {filtered && visible.length > 0 && (
+          <button type="button" className="link-button result-count__clear" onClick={reset}>
+            Clear filters
+          </button>
+        )}
       </p>
 
       <div className="table-wrap shape">
