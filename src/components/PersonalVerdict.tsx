@@ -20,12 +20,16 @@ export function PersonalVerdict({
   initialExplanation,
   targets,
   names,
+  ranks,
+  plan,
 }: {
   slug: string;
   initialVerdict: Verdict;
   initialExplanation: Explanation;
   targets: readonly CardTarget[];
   names: Readonly<Record<string, string>>;
+  ranks?: Readonly<Record<string, number>>;
+  plan?: { readonly href: string; readonly label: string };
 }) {
   const { ready, arsenal } = useArsenal();
   const entries = toEngineArsenal(arsenal);
@@ -62,6 +66,8 @@ export function PersonalVerdict({
       explanation={explanation}
       targets={targets}
       names={names}
+      ranks={ranks}
+      plan={plan}
       controls={targets.length > 0}
       footnote={footnote}
       favourite={ready && favouriteIn(arsenal, slug)}

@@ -615,6 +615,19 @@ and the home page as a terminal deck: search console with a category strip, quic
 weapon pictures, three tool cards with live figures, and the player's own numbers. Fixes kept over
 the plan: solid headlines (no gradient text), drawn icons (no emoji), tertiary text at 4.5:1 (the
 plan's measured 2.4 to 3.5), and no hover nudge on rows that hold controls.
+
+Phase 4 is done as well: the weapon page is a two-column dossier from 1024 px, identity on the
+left and the verdict on the right, and one column below that, where the verdict comes straight
+after the name and picture so a phone reaches the answer first. The weapon stands on a pedestal lit
+in its slot's colour, over a telemetry matrix (mastery rank, added in, Foundry time, ingredient
+for). The verdict has a crest, a recovery card under a Safe verdict, one card per target with its
+copies per build and a top line in what that target means for the verdict, chain steps with
+mastery ranks, and a dock with Copy for clan chat and Plan a build. The family tree is a
+schematic: wires measured from the laid-out boxes (the arrows stay on phones and before
+hydration), copy counts on the wires, and a mastery rank and status ring on every box. Kept over
+the plan: the recovery note stays inside the verdict, in the caution colour rather than red,
+because it qualifies a Safe verdict and must sit with it on a phone; and no wipe-in on the verdict,
+which would hide the answer for 400 ms.
 No schema bump: the flag is optional, so an old tab left open after a deploy still reads the arsenal
 rather than treating it as unreadable and writing an empty one back. What the data allows for the
 rest: build times, credit costs, vault status and the 45 Incarnon Genesis adapters are all in

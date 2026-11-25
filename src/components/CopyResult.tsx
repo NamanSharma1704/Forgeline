@@ -24,7 +24,8 @@ function legacyCopy(text: string) {
 
 type State = 'idle' | 'copied' | 'failed';
 
-export function CopyResult({ text }: { text: string }) {
+/** `quiet` is the ghost form, for the verdict's dock where planning is the main action. */
+export function CopyResult({ text, quiet = false }: { text: string; quiet?: boolean }) {
   const [state, setState] = useState<State>('idle');
 
   useEffect(() => {
@@ -50,9 +51,9 @@ export function CopyResult({ text }: { text: string }) {
 
   return (
     <div className="copy-result">
-      <button type="button" className="button" onClick={copy}>
+      <button type="button" className={quiet ? 'button button--quiet' : 'button'} onClick={copy}>
         <Icon name={state === 'copied' ? 'done' : 'copy'} size={20} />
-        {state === 'copied' ? 'Copied' : 'Copy result'}
+        {state === 'copied' ? 'Copied' : 'Copy for clan chat'}
       </button>
       <span className="sr-only" role="status" aria-live="polite">
         {state === 'copied' ? 'Result copied. Paste it into clan chat.' : ''}

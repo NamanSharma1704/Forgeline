@@ -74,6 +74,11 @@
   /* Orokin gold: favourites, the weapons a player has invested in. */
   --gold: #d8b36a;
   --gold-glow: rgba(216, 179, 106, 0.25);
+  /* Slot accents (design plan 4.2.1): the pedestal's halo and the slot tag. */
+  --slot-primary: var(--gold);
+  --slot-secondary: var(--focus);
+  --slot-melee: var(--keep);
+  --slot-other: #9b8cf0;
 
   /* Three roles (design plan 2.2): display, interface, telemetry. */
   --font-body: var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
@@ -195,6 +200,7 @@
   --selected: color-mix(in srgb, var(--focus) 12%, var(--surface-1));
   --gold: #835e1a;
   --gold-glow: rgba(131, 94, 26, 0.18);
+  --slot-other: #5b4caf;
   --surface-active: #e4e9f1;
 
   /* Shadows on a pale ground are softer and cooler; glows tint rather than shine. */
@@ -1231,13 +1237,39 @@ main {
 
 .verdict__banner {
   display: flex;
-  gap: 16px;
-  align-items: flex-start;
+  gap: 18px;
+  align-items: center;
+}
+
+/* The crest (design plan 4.3.1): the verdict's icon in a ring, over a disc of its own light. */
+.verdict__crest {
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+}
+
+.verdict__crest::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--tone-glow), transparent 68%);
+}
+
+.verdict__crest::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border: 1px solid color-mix(in srgb, var(--tone) 38%, transparent);
+  border-radius: 50%;
 }
 
 .verdict__icon {
+  position: relative;
   color: var(--tone);
-  margin-top: 2px;
   filter: drop-shadow(0 0 10px var(--tone-glow));
   /* The one authored moment: the verdict lands, from an already visible start. */
   animation: verdict-land 320ms var(--ease-out);
@@ -1264,6 +1296,40 @@ main {
   color: var(--text-2);
 }
 
+/* Hard to get back, under a Safe verdict: the caution colour with its icon and a title, never colour alone. */
+.recovery-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 12px 14px;
+  border: 1px solid color-mix(in srgb, var(--check) 40%, transparent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--check) 8%, transparent);
+}
+
+.recovery-card__icon {
+  margin-top: 1px;
+  color: var(--check);
+}
+
+.recovery-card p {
+  max-width: var(--measure);
+  color: var(--text-2);
+}
+
+.recovery-card__title {
+  display: block;
+  color: var(--check);
+  font: 700 0.9375rem / 1.3 var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+.recovery-card__text {
+  display: block;
+  margin-top: 2px;
+}
+
 .verdict__section {
   margin-top: 24px;
   padding-top: 20px;
@@ -1278,51 +1344,111 @@ main {
   text-transform: uppercase;
 }
 
-.verdict__rows {
-  list-style: none;
+/* The weapons it builds (design plan 4.3.2): raised cards, each topped by what it means for the verdict. */
+.target-cards {
+  display: grid;
+  gap: 10px;
   margin: 0;
   padding: 0;
-  display: grid;
-  gap: 8px;
+  list-style: none;
 }
 
-.verdict__row {
+.target-card {
+  --line: var(--edge-medium);
   display: grid;
-  grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'target copies'
+    'note note'
+    'control control'
+    'peek peek';
   align-items: center;
-  gap: 8px 16px;
-  padding: 10px 14px;
-  background: color-mix(in srgb, var(--surface-2) 60%, transparent);
+  gap: 4px 12px;
+  padding: 12px 14px 6px;
   border: 1px solid var(--edge-subtle);
   border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--surface-2) 70%, transparent);
+  box-shadow: inset 0 2px 0 var(--line);
   transition:
     background-color var(--dur-fast) var(--ease-out),
     border-color var(--dur-fast) var(--ease-out);
 }
 
-/* No nudge on hover: these rows hold status pickers, and a target that moves gets mis-clicked. */
-.verdict__row:hover {
-  background: var(--surface-2);
-  border-color: var(--edge-medium);
+.target-card[data-tone='safe'] {
+  --line: var(--safe);
 }
 
-.verdict__target {
+.target-card[data-tone='check'] {
+  --line: var(--check);
+}
+
+.target-card[data-tone='keep'] {
+  --line: var(--keep);
+}
+
+/* No nudge on hover: the card holds a status picker, and a target that moves gets mis-clicked. */
+.target-card:hover {
+  border-color: var(--edge-medium);
+  background: var(--surface-2);
+}
+
+.target-card__target {
+  grid-area: target;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 4px 8px 4px 0;
-  font-weight: 600;
+  min-width: 0;
   text-decoration: none;
 }
 
-.verdict__target:hover .verdict__target-name {
+.target-card__name {
+  font: 600 1.0625rem / 1.2 var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+.target-card__target:hover .target-card__name {
   text-decoration: underline;
   text-decoration-color: var(--text-3);
   text-underline-offset: 0.2em;
 }
 
-.verdict__note {
+/* Copies one build takes: a fact of the recipe, whatever the player holds. */
+.target-card__copies {
+  grid-area: copies;
+  padding: 4px 8px;
+  border: 1px solid var(--edge-medium);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
   color: var(--text-2);
+  font: 500 0.75rem / 1.2 var(--font-mono);
+  white-space: nowrap;
+}
+
+.target-card__copies strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* Note, picker and peek line up under the name, past the picture. */
+.target-card__note,
+.target-card__control,
+.target-card .recipe-peek {
+  padding-left: 56px;
+}
+
+.target-card__note {
+  grid-area: note;
+  color: var(--text-2);
+  font-size: 0.9375rem;
+}
+
+.target-card__control {
+  grid-area: control;
+  margin-top: 6px;
+}
+
+.target-card .recipe-peek {
+  grid-area: peek;
 }
 
 @media (max-width: 559px) {
@@ -1330,14 +1456,24 @@ main {
     padding: 20px 16px;
   }
 
-  .verdict__row {
-    grid-template-columns: 1fr;
-    padding-bottom: 8px;
+  .verdict__crest {
+    width: 52px;
+    height: 52px;
   }
 
-  .verdict__note {
-    padding-left: 56px;
-    margin-top: -6px;
+  .verdict__crest .icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .target-card {
+    padding: 12px 12px 6px;
+  }
+
+  .target-card__note,
+  .target-card__control,
+  .target-card .recipe-peek {
+    padding-left: 0;
   }
 }
 
@@ -1346,7 +1482,7 @@ main {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 
 .chain {
@@ -1356,7 +1492,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px 8px;
+  gap: 8px;
 }
 
 .chain__step {
@@ -1369,12 +1505,40 @@ main {
   color: var(--text-3);
 }
 
+/* Each step a small chamfered chip with its mastery rank; the weapon itself in Orokin gold. */
+.chain__node {
+  --cut: 7px;
+  --shape-fill: var(--surface-2);
+  --shape-edge: var(--edge-medium);
+  --shape-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 4px 10px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+a.chain__node:hover {
+  --shape-fill: var(--surface-3);
+  --shape-edge: var(--edge-glow);
+}
+
+.chain__node--self {
+  --shape-fill: color-mix(in srgb, var(--gold) 10%, var(--surface-2));
+  --shape-edge: var(--edge-gold);
+}
+
 .chain__name {
+  font-size: var(--step--1);
   font-weight: 600;
 }
 
-.chain__name--self {
-  color: var(--tone);
+.chain__mr {
+  color: var(--gold);
+  font: 700 0.6875rem / 1 var(--font-mono);
+  letter-spacing: 0.04em;
 }
 
 .verdict__mastery {
@@ -1397,24 +1561,6 @@ main {
   color: var(--focus);
 }
 
-/* Hard to get back, under a Safe verdict: the caution colour and its icon, never colour alone. */
-.verdict__warning {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  max-width: var(--measure);
-  margin-top: 12px;
-  padding: 8px 12px;
-  border-left: 2px solid var(--check);
-  background: color-mix(in srgb, var(--check) 9%, transparent);
-  color: var(--text);
-}
-
-.verdict__warning .icon {
-  flex: none;
-  margin-top: 2px;
-  color: var(--check);
-}
 
 /* Starred by the player, under the verdict: gold, the favourite colour, with its star. */
 .verdict__favourite {
@@ -1471,35 +1617,314 @@ main {
   user-select: all;
 }
 
-/* ------------------------------------------------------------------ weapon page */
 
-.weapon-head {
+/* The action dock (design plan 4.3.4): copy for clan chat as the quiet action, planning as the lit one. */
+.verdict__dock {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--edge-soft);
+}
+
+.verdict__dock .copy-result {
+  margin-top: 0;
+}
+
+.dock-plan {
+  --cut: var(--chamfer-sm);
+  --shape-fill: var(--surface-2);
+  --shape-edge: var(--edge-glow);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  color: var(--focus);
+  font: 600 var(--step--1) / 1 var(--font-body);
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.dock-plan:hover {
+  --shape-fill: var(--surface-3);
+  --shape-edge: var(--focus);
+}
+
+.dock-plan__arrow {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.dock-plan:hover .dock-plan__arrow {
+  transform: translateX(3px);
+}
+
+/* ------------------------------------------------------------------ weapon dossier */
+
+/*
+ * Design plan 4.1: identity on the left (40%), the verdict on the right (60%) from 1024 px. Below
+ * that one column, where the verdict follows the name and picture, and the notes and the player's
+ * own controls come after it, so a phone reaches the answer first.
+ */
+.dossier {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'id'
+    'verdict'
+    'notes'
+    'own';
+  gap: 24px;
+}
+
+.dossier__id {
+  grid-area: id;
+  display: grid;
+  /* A set width: the drawn base under the picture would otherwise size the column to itself. */
+  grid-template-columns: 272px minmax(0, 1fr);
+  grid-template-areas:
+    'art identity'
+    'art matrix';
+  align-items: end;
   gap: 16px 28px;
 }
 
-/* The pedestal: the weapon over a soft cyan halo, a lit edge and a backlight that follows the cuts. */
-.weapon-head__art {
+.dossier__verdict {
+  grid-area: verdict;
+  min-width: 0;
+}
+
+.dossier__verdict .verdict {
+  margin-top: 0;
+}
+
+.dossier__notes {
+  grid-area: notes;
+  display: grid;
+  gap: 12px;
+}
+
+.dossier__own {
+  grid-area: own;
+  padding-top: 20px;
+  border-top: 1px solid var(--edge-soft);
+}
+
+@media (min-width: 1024px) {
+  .dossier {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      'id verdict'
+      'notes verdict'
+      'own verdict';
+    column-gap: var(--space-8);
+    row-gap: 20px;
+    align-items: start;
+  }
+
+  .dossier__id {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'art'
+      'identity'
+      'matrix';
+    align-items: stretch;
+  }
+}
+
+/*
+ * Phones: the picture beside the slot tag and name, then the versions and the matrix across the
+ * full width, so a long name or a four-chip ribbon never wraps a letter at a time.
+ */
+@media (max-width: 559px) {
+  .dossier__id {
+    grid-template-columns: 140px minmax(0, 1fr);
+    grid-template-areas:
+      'art eyebrow'
+      'art name'
+      'versions versions'
+      'matrix matrix';
+    gap: 0 16px;
+  }
+
+  .dossier__identity {
+    display: contents;
+  }
+
+  .dossier__eyebrow {
+    grid-area: eyebrow;
+    align-self: end;
+  }
+
+  .dossier__name {
+    grid-area: name;
+    align-self: start;
+  }
+
+  .dossier__id .versions {
+    grid-area: versions;
+    margin-top: 16px;
+  }
+
+  .dossier__id .telemetry-matrix {
+    margin-top: 16px;
+  }
+}
+
+/* The pedestal (design plan 4.2.1): the weapon over a halo in its slot's colour, on a drawn base. */
+.pedestal {
+  grid-area: art;
   --cut: var(--chamfer-lg);
-  --shape-edge: linear-gradient(135deg, var(--edge-glow), var(--edge-subtle) 55%, var(--edge-glow));
-  --shape-fill: radial-gradient(circle at 50% 55%, color-mix(in srgb, var(--focus) 16%, transparent), transparent 70%), var(--surface-1);
-  --shape-shadow: var(--shadow-lg) drop-shadow(0 0 22px var(--focus-glow));
-  padding: 24px;
+  --slot-accent: var(--slot-other);
+  --shape-edge: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--slot-accent) 60%, transparent),
+    var(--edge-subtle) 55%,
+    color-mix(in srgb, var(--slot-accent) 40%, transparent)
+  );
+  --shape-fill:
+    radial-gradient(circle at 50% 44%, color-mix(in srgb, var(--slot-accent) 18%, transparent), transparent 62%),
+    var(--surface-1);
+  --shape-shadow: var(--shadow-lg) drop-shadow(0 0 22px color-mix(in srgb, var(--slot-accent) 20%, transparent));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 24px 12px;
 }
 
-.weapon-head__text {
-  flex: 1 1 260px;
-  padding-bottom: 6px;
+.pedestal[data-slot='primary'],
+.slot-tag[data-slot='primary'] {
+  --slot-accent: var(--slot-primary);
 }
 
-.weapon-meta {
+.pedestal[data-slot='secondary'],
+.slot-tag[data-slot='secondary'] {
+  --slot-accent: var(--slot-secondary);
+}
+
+.pedestal[data-slot='melee'],
+.slot-tag[data-slot='melee'] {
+  --slot-accent: var(--slot-melee);
+}
+
+/* It rises onto the pedestal once, from an already visible start. */
+.pedestal__art {
+  animation: pedestal-rise 600ms var(--ease-out);
+}
+
+.pedestal__art .weapon-art {
+  filter: var(--shadow-md);
+}
+
+@keyframes pedestal-rise {
+  from {
+    opacity: 0.4;
+    transform: translateY(8px);
+  }
+}
+
+.pedestal__base {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  margin-top: -14px;
+  overflow: visible;
+}
+
+.pedestal__ring {
+  fill: none;
+  stroke: var(--slot-accent);
+  stroke-width: 1.25;
+  opacity: 0.55;
+}
+
+.pedestal__ring--inner {
+  fill: color-mix(in srgb, var(--slot-accent) 12%, transparent);
+  opacity: 0.45;
+}
+
+.pedestal__tick {
+  stroke: var(--slot-accent);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  opacity: 0.75;
+}
+
+@media (max-width: 559px) {
+  .pedestal {
+    padding: 14px 12px 8px;
+  }
+
+  .pedestal .weapon-art--large {
+    width: 112px;
+    height: 112px;
+  }
+}
+
+/* The identity header (design plan 4.2.2): slot tag, name, versions. */
+.dossier__identity {
+  grid-area: identity;
+  min-width: 0;
+}
+
+.dossier__eyebrow {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 14px;
-  margin-top: 10px;
+  align-items: center;
+  gap: 6px 14px;
+}
+
+.slot-tag {
+  --slot-accent: var(--slot-other);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--slot-accent);
+  font: 700 0.6875rem / 1.2 var(--font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.slot-tag::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  transform: rotate(45deg);
+}
+
+.dossier__variant,
+.badge-new {
+  font: 600 0.6875rem / 1.2 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.dossier__variant {
   color: var(--text-2);
+}
+
+.badge-new {
+  color: var(--check);
+}
+
+.dossier__name {
+  margin-top: 10px;
+  font-size: clamp(2rem, 3.6vw, 2.75rem);
+  letter-spacing: -0.03em;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 559px) {
+  .dossier__name {
+    margin-top: 6px;
+    font-size: var(--step-3);
+  }
 }
 
 /* Versions ribbon: the weapon's family as chips, the current one lit. */
@@ -1508,7 +1933,7 @@ main {
   flex-wrap: wrap;
   align-items: center;
   gap: 6px 12px;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 .versions__label {
@@ -1538,25 +1963,77 @@ main {
   box-shadow: 0 0 12px -2px var(--focus-glow);
 }
 
-/* Outside links: quiet, and marked as leaving the site. */
-.weapon-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 18px;
-  margin-top: 10px;
-  font-size: var(--step--1);
+/* The telemetry matrix (design plan 4.2.3): the weapon's numbers in the telemetry face, two by two. */
+.telemetry-matrix {
+  grid-area: matrix;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  border: 1px solid var(--edge-subtle);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--surface-1) 72%, transparent);
 }
 
-.weapon-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  min-height: 28px;
-  color: var(--text-2);
+.telemetry-matrix__cell {
+  padding: 10px 14px;
 }
 
-.weapon-links a:hover {
+.telemetry-matrix__cell:nth-child(odd) {
+  border-right: 1px solid var(--edge-subtle);
+}
+
+.telemetry-matrix__cell:nth-child(-n + 2) {
+  border-bottom: 1px solid var(--edge-subtle);
+}
+
+.telemetry-matrix dt {
+  color: var(--text-3);
+  font: 600 0.6875rem / 1.2 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.telemetry-matrix dd {
+  margin: 4px 0 0;
   color: var(--text);
+  font: 700 0.9375rem / 1.3 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.telemetry-matrix .telemetry-matrix__mr {
+  color: var(--gold);
+}
+
+/* Incarnon Genesis (design plan 4.2.3): Void cyan, the one place the focus colour also carries meaning. */
+.incarnon-strip {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--edge-glow);
+  border-radius: var(--radius-sm);
+  background: var(--cyan-tenno-dim);
+  box-shadow: 0 0 18px -8px var(--focus-glow);
+}
+
+.incarnon-strip__icon {
+  margin-top: 1px;
+  color: var(--focus);
+}
+
+.incarnon-strip__label {
+  display: block;
+  color: var(--focus);
+  font: 700 0.75rem / 1.3 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.incarnon-strip__text {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-2);
+  font-size: var(--step--1);
 }
 
 /* Which version a recipe takes, when it matters. */
@@ -1564,7 +2041,7 @@ main {
   display: grid;
   gap: 6px;
   max-width: var(--measure);
-  margin: 12px 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
   color: var(--text-2);
@@ -1583,43 +2060,64 @@ main {
   color: var(--focus);
 }
 
-/* Incarnon: Void cyan, the one place the focus colour also carries meaning, always with its word. */
-.badge-incarnon {
+/* Community intel (design plan 4.2.6): quiet buttons, marked as leaving the site. */
+.weapon-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+  font-size: var(--step--1);
+}
+
+.weapon-links a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 0 8px;
-  border: 1px solid var(--edge-glow);
-  background: color-mix(in srgb, var(--focus) 10%, transparent);
-  box-shadow: 0 0 12px -4px var(--focus-glow);
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--edge-medium);
+  border-radius: var(--radius-sm);
+  color: var(--text-2);
+  text-decoration: none;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.weapon-links a .icon {
   color: var(--focus);
-  font-size: var(--step--1);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
-.badge-new {
-  color: var(--check);
-  font-weight: 600;
-}
-
-@media (max-width: 559px) {
-  .weapon-head__art {
-    padding: 12px;
-  }
-
-  .weapon-head__art .weapon-art--large {
-    width: 152px;
-    height: 152px;
-  }
+.weapon-links a:hover {
+  background: var(--surface-2);
+  border-color: var(--edge-strong);
+  color: var(--text);
 }
 
 /* ------------------------------------------------------------------ family tree */
 
+.schematic__eyebrow {
+  margin-bottom: 10px;
+}
+
+/* The schematic's canvas (design plan 4.4): a raised panel under a fine blueprint grid and a faint cyan light. */
+.tree-scroll {
+  overflow-x: auto;
+  padding: 20px 16px;
+  border: 1px solid var(--edge-subtle);
+  border-radius: var(--radius-sm);
+  background:
+    radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--focus) 6%, transparent), transparent 75%),
+    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 24px 24px,
+    var(--surface-1);
+}
+
 .tree {
-  /* Two boxes side by side on a 375 px phone, never wider than 168 px. */
-  --tree-box: min(168px, calc(50vw - 22px));
+  /* Two boxes side by side on a 375 px phone, inside the canvas, never wider than 168 px. */
+  --tree-box: min(168px, calc(50vw - 40px));
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1634,8 +2132,8 @@ main {
 
 .tree__label {
   color: var(--text-2);
-  font: 600 var(--step--1) / 1.2 var(--font-body);
-  letter-spacing: 0.1em;
+  font: 600 0.6875rem / 1.2 var(--font-mono);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -1669,31 +2167,22 @@ main {
 }
 
 @media (min-width: 760px) {
-  /* Up to seven columns: let the tree scroll sideways inside its section, never the page. */
-  /* The schematic's own blueprint canvas (design plan 4.4): a finer grid under a faint cyan light. */
+  /* Up to seven columns: the tree scrolls sideways inside its canvas, never the page. */
   .tree-scroll {
-    overflow-x: auto;
-    padding: 24px;
-    background:
-      radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--focus) 5%, transparent), transparent 75%),
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size: 100% 100%, 28px 28px, 28px 28px;
-    border: 1px solid var(--edge-subtle);
-    border-radius: var(--radius-sm);
+    padding: 28px 28px 24px;
   }
 
   .tree {
     flex-direction: row;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
     width: max-content;
   }
 
   .tree__step {
     flex-direction: row;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
   }
 
   .tree__boxes {
@@ -1711,8 +2200,62 @@ main {
   .tree__arrow--down {
     display: none;
   }
+
+  /* Once the wires are drawn the arrows give way, keeping their space for the wires to run through. */
+  .tree[data-wired] .tree__arrow--across {
+    visibility: hidden;
+  }
 }
 
+/* The circuit (design plan 4.4): dim cyan traces that light up with the box they touch. */
+.tree-wires {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.tree-wire__trace,
+.tree-wire__head {
+  fill: none;
+  stroke: color-mix(in srgb, var(--focus) 32%, transparent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke var(--dur-fast) var(--ease-out);
+}
+
+.tree-wire__pad {
+  fill: color-mix(in srgb, var(--focus) 45%, transparent);
+  transition: fill var(--dur-fast) var(--ease-out);
+}
+
+.tree-wire__count {
+  fill: var(--text-2);
+  font: 700 11px var(--font-mono);
+  transition: fill var(--dur-fast) var(--ease-out);
+}
+
+.tree-wire.is-lit .tree-wire__trace,
+.tree-wire.is-lit .tree-wire__head {
+  stroke: color-mix(in srgb, var(--focus) 90%, transparent);
+}
+
+.tree-wire.is-lit .tree-wire__trace {
+  filter: drop-shadow(0 0 4px var(--focus-glow));
+}
+
+.tree-wire.is-lit .tree-wire__pad {
+  fill: var(--focus);
+}
+
+.tree-wire.is-lit .tree-wire__count {
+  fill: var(--focus);
+}
+
+/* A node: name in the display face, mastery rank in the telemetry face, the picture in its status ring. */
 .tree-box {
   --cut: 12px;
   display: flex;
@@ -1736,10 +2279,58 @@ a.tree-box:hover {
   --shape-shadow: var(--shadow-md) var(--glow-gold);
 }
 
+.tree-box__mr {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  color: var(--gold);
+  font: 700 0.6875rem / 1 var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.tree-box__art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  margin-top: 6px;
+}
+
+.tree-box__art::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--edge-medium);
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--focus) 8%, transparent), transparent 70%);
+}
+
+.tree-box__art .weapon-art {
+  position: relative;
+}
+
+/* The player's status as the ring's colour, once the arsenal is set up; the tag below says it in words. */
+.status-ring {
+  position: absolute;
+  inset: -1px;
+  border: 2px solid var(--edge-strong);
+  border-radius: 50%;
+}
+
+.status-ring[data-status='owned'] {
+  border-color: var(--focus);
+  box-shadow: 0 0 10px -2px var(--focus-glow);
+}
+
+.status-ring[data-status='mastered'] {
+  border-color: var(--safe);
+  box-shadow: 0 0 10px -2px var(--safe-glow);
+}
+
 .tree-box__name {
   margin-top: 6px;
-  font-weight: 600;
-  line-height: 1.25;
+  font: 600 0.9375rem / 1.25 var(--font-display);
 }
 
 .tree-box__caption {
@@ -1803,11 +2394,6 @@ a.tree-box:hover {
   color: var(--check);
 }
 
-/* The peek on a verdict row: what that weapon takes, folded away until asked for. */
-.verdict__row .recipe-peek {
-  grid-column: 1 / -1;
-  margin: 2px 0 6px;
-}
 
 .recipe-peek summary {
   display: inline-flex;
@@ -2365,7 +2951,7 @@ a.tree-box:hover {
 /* ------------------------------------------------------------------ weapon page: own status */
 
 .weapon-status {
-  margin-top: 18px;
+  margin: 0;
 }
 
 .weapon-status__label {
@@ -2384,44 +2970,12 @@ a.tree-box:hover {
   gap: 10px 16px;
 }
 
-/* ------------------------------------------------------------------ verdict card: controls */
-
-.verdict__rows--controls .verdict__row {
-  grid-template-columns: minmax(0, 13rem) minmax(0, 1fr) auto;
-  padding: 4px 0;
-}
-
-.verdict__control {
-  justify-self: end;
-}
+/* ------------------------------------------------------------------ verdict card: footnote */
 
 .verdict__footnote {
   margin-top: 14px;
   color: var(--text-2);
   font-size: var(--step--1);
-}
-
-@media (max-width: 759px) {
-  .verdict__rows--controls .verdict__row {
-    grid-template-columns: 1fr;
-    gap: 6px;
-    padding-bottom: 14px;
-  }
-
-  .verdict__control {
-    justify-self: start;
-    padding-left: 56px;
-  }
-}
-
-@media (max-width: 559px) {
-  .verdict__control {
-    padding-left: 0;
-  }
-
-  .verdict__rows--controls .verdict__note {
-    margin-top: 0;
-  }
 }
 
 /* ------------------------------------------------------------------ my arsenal */

@@ -36,6 +36,10 @@ const jetbrainsMono = JetBrains_Mono({
   // Design plan 10.4: optional, so a slow connection keeps the fallback rather than reflowing.
   display: 'optional',
   preload: false,
+  // The generated fallback is metric-matched Arial, which turns telemetry into a sans on a first
+  // visit. A real monospace keeps the figures aligned until the font is cached.
+  adjustFontFallback: false,
+  fallback: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
 });
 
 /** The emblem: the app icon's glyph, two ingredients joining into what they build. */
