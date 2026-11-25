@@ -99,6 +99,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       data-theme="dark"
+      // Smooth scrolling is for in-page jumps; this has Next make route changes jump to the top at once.
+      data-scroll-behavior="smooth"
       className={`${barlow.variable} ${chakraPetch.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >

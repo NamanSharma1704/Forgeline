@@ -223,7 +223,6 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  scrollbar-color: var(--text-3) var(--bg);
 }
 
 body {
@@ -3488,6 +3487,104 @@ a.tree-box:hover {
 
   .site-nav a {
     padding: 10px 7px;
+  }
+}
+
+/* ------------------------------------------------------------------ scrolling */
+
+/*
+ * In-page jumps glide, unless the player has asked for less motion. Page changes stay instant
+ * (data-scroll-behavior on <html>). From tablet width the command bar is sticky, so a jump stops
+ * clear of it.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (min-width: 760px) {
+  html {
+    scroll-padding-top: 80px;
+  }
+}
+
+/*
+ * The scrollbar as a HUD rail: a dark track with a hairline on its inner edge, and a thumb tinted
+ * with Tenno cyan that brightens when pointed at and lights fully while held. Chrome, Edge and
+ * Safari draw it from the ::-webkit-scrollbar parts. Firefox has only the standard colours, set in
+ * the @supports block below: setting those in Chrome would switch the parts off.
+ */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+  box-shadow: inset 1px 0 0 var(--edge-subtle);
+}
+
+::-webkit-scrollbar-track:horizontal {
+  box-shadow: inset 0 1px 0 var(--edge-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 40px;
+  border: 3px solid transparent;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--focus) 28%, var(--surface-3)) padding-box;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--focus) 30%, transparent);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, var(--focus) 55%, var(--surface-3));
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--focus);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Panels that scroll inside the page take a slimmer rail on their own surface. */
+.search__list::-webkit-scrollbar,
+.strip::-webkit-scrollbar,
+.tree-scroll::-webkit-scrollbar,
+.table-wrap::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.search__list::-webkit-scrollbar-track,
+.strip::-webkit-scrollbar-track,
+.tree-scroll::-webkit-scrollbar-track,
+.table-wrap::-webkit-scrollbar-track {
+  background: transparent;
+  box-shadow: none;
+}
+
+.search__list::-webkit-scrollbar-thumb,
+.strip::-webkit-scrollbar-thumb,
+.tree-scroll::-webkit-scrollbar-thumb,
+.table-wrap::-webkit-scrollbar-thumb {
+  min-height: 24px;
+  border-width: 2px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-color: color-mix(in srgb, var(--focus) 40%, var(--surface-3)) var(--bg);
+  }
+
+  .search__list,
+  .strip,
+  .tree-scroll,
+  .table-wrap {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--focus) 40%, var(--surface-3)) transparent;
   }
 }
 

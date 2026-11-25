@@ -118,7 +118,8 @@ export function ArsenalManager({
   const [variant, setVariant] = useState<Variant | 'all'>('all');
   const [status, setStatus] = useState<OwnershipStatus | 'any'>('any');
   const [text, setText] = useState('');
-  const [view, setView] = useState<'list' | 'grid'>('list');
+  // Grid first: the pictures are how players recognise their weapons at a glance.
+  const [view, setView] = useState<'list' | 'grid'>('grid');
   const [setupOpen, setSetupOpen] = useState(false);
   const [file, setFile] = useState<FileState>({ kind: 'idle' });
   const fileInput = useRef<HTMLInputElement>(null);
@@ -331,11 +332,11 @@ export function ArsenalManager({
           />
         </label>
         <div className="chips" role="group" aria-label="View">
+          <button type="button" className="chip" aria-pressed={view === 'grid'} onClick={() => setView('grid')}>
+            Grid
+          </button>
           <button type="button" className="chip" aria-pressed={view === 'list'} onClick={() => setView('list')}>
             List
-          </button>
-          <button type="button" className="chip" aria-pressed={view === 'grid'} onClick={() => setView('grid')}>
-            Pictures
           </button>
         </div>
       </div>
