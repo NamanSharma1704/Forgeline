@@ -3073,6 +3073,256 @@ a.tree-box:hover {
   opacity: 0.7;
 }
 
+/* ------------------------------------------------------------------ my arsenal: filters */
+
+/*
+ * Two rows instead of a wall of chips: which collection as underline tabs, then one toolbar of
+ * name search, three compact dropdowns and the view switch. A dropdown lights up only while it is
+ * narrowing the list.
+ */
+.arsenal-filters {
+  margin-top: 28px;
+}
+
+.scope-tabs {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--edge-soft);
+  scrollbar-width: none;
+}
+
+.scope-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.scope-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 10px 14px 12px;
+  border: 0;
+  background: none;
+  color: var(--text-2);
+  font: 600 var(--step--1) / 1 var(--font-body);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.scope-tab::after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  bottom: -1px;
+  left: 10px;
+  height: 2px;
+  background: transparent;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.scope-tab:hover {
+  color: var(--text);
+}
+
+.scope-tab:hover::after {
+  background: var(--edge-strong);
+}
+
+.scope-tab[aria-pressed='true'] {
+  color: var(--text);
+}
+
+.scope-tab[aria-pressed='true']::after {
+  background: var(--focus);
+  box-shadow: 0 0 8px var(--focus-glow);
+}
+
+.scope-tab:focus-visible {
+  outline-offset: -2px;
+}
+
+.scope-tab__count {
+  color: var(--text-3);
+  font: 500 0.75rem / 1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.scope-tab[aria-pressed='true'] .scope-tab__count {
+  color: var(--focus);
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.filter-search {
+  position: relative;
+  flex: 1 1 220px;
+  max-width: 320px;
+}
+
+.filter-search .icon {
+  position: absolute;
+  top: 50%;
+  left: 11px;
+  color: var(--text-3);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.filter-search input,
+.filter-select select {
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid var(--edge-soft);
+  background: var(--surface-1);
+  color: var(--text);
+  font: 500 var(--step--1) / 1 var(--font-body);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.filter-search input {
+  padding: 0 12px 0 34px;
+}
+
+.filter-search input::placeholder {
+  color: var(--text-3);
+}
+
+.filter-search input:hover,
+.filter-select select:hover {
+  border-color: var(--edge);
+}
+
+.filter-select {
+  position: relative;
+  display: inline-flex;
+  min-width: 0;
+}
+
+.filter-select select {
+  padding: 0 34px 0 12px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.filter-select__chevron {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  color: var(--text-2);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Narrowing the list: lit like a selected chip. */
+.filter-select[data-active] select {
+  background: var(--selected);
+  border-color: var(--focus);
+  box-shadow: 0 0 12px -2px var(--focus-glow);
+}
+
+.filter-select[data-active] .filter-select__chevron {
+  color: var(--focus);
+}
+
+.view-toggle {
+  display: inline-flex;
+  margin-left: auto;
+  border: 1px solid var(--edge-soft);
+}
+
+.view-toggle button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: var(--surface-1);
+  color: var(--text-2);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.view-toggle button + button {
+  border-left: 1px solid var(--edge-soft);
+}
+
+.view-toggle button:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.view-toggle button[aria-pressed='true'] {
+  background: var(--selected);
+  box-shadow: inset 0 0 0 1px var(--focus);
+  color: var(--focus);
+}
+
+.view-toggle button:focus-visible {
+  outline-offset: -2px;
+}
+
+.result-count__clear {
+  margin-left: 12px;
+  color: var(--focus);
+}
+
+/* Phones: search and view switch on one line, the three dropdowns sharing the next. */
+@media (max-width: 559px) {
+  .filter-bar {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .filter-search {
+    grid-column: span 4;
+    max-width: none;
+  }
+
+  /* Placed first, so the dropdowns flow onto the next line. */
+  .view-toggle {
+    grid-row: 1;
+    grid-column: 5 / span 2;
+    justify-self: end;
+  }
+
+  .filter-select {
+    grid-column: span 2;
+  }
+
+  /* Room for "Any variant" in a third of the row. */
+  .filter-select select {
+    padding: 0 28px 0 10px;
+  }
+
+  .filter-select__chevron {
+    right: 8px;
+  }
+
+  /* Each count under its label, so all three tabs fit across a 375 px phone. */
+  .scope-tab {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 8px 10px 10px;
+  }
+}
+
 /* ------------------------------------------------------------------ quick setup */
 
 .setup-banner {

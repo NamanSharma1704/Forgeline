@@ -90,6 +90,10 @@ const PATHS = {
   moon: <path d="M19.5 14.6A7.75 7.75 0 0 1 9.4 4.5a7.75 7.75 0 1 0 10.1 10.1z" />,
   'arrow-right': <path d="M4.5 12h14M13.5 7l5 5-5 5" />,
   'arrow-down': <path d="M12 4.5v14M7 13.5l5 5 5-5" />,
+  'chevron-down': <path d="M7 10l5 5 5-5" />,
+  // View switches: tiles, and rows.
+  grid: <path d="M4.5 4.5h6v6h-6zM13.5 4.5h6v6h-6zM4.5 13.5h6v6h-6zM13.5 13.5h6v6h-6z" />,
+  list: <path d="M9.5 6.5h10M9.5 12h10M9.5 17.5h10M4.75 6.5h.5M4.75 12h.5M4.75 17.5h.5" />,
   close: <path d="M6.5 6.5l11 11M17.5 6.5l-11 11" />,
   minus: <path d="M6 12h12" />,
   plus: <path d="M12 6v12M6 12h12" />,

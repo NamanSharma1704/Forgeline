@@ -46,6 +46,44 @@ const inScope = (row: ArsenalRow, scope: Scope) =>
   (scope === 'recipe' && row.role !== 'none') ||
   (scope === 'ingredients' && (row.role === 'ingredient' || row.role === 'both'));
 
+const SCOPE_LABEL: Record<Scope, string> = {
+  recipe: 'Recipe weapons',
+  ingredients: 'Ingredients',
+  all: 'All weapons',
+};
+
+/**
+ * A compact filter as a native select: keyboard and screen-reader behaviour for free, a drawn
+ * chevron, and lit cyan while it is narrowing the list, so an active filter is never missed.
+ */
+function FilterSelect({
+  id,
+  label,
+  value,
+  active,
+  onChange,
+  children,
+}: {
+  id: string;
+  label: string;
+  value: string;
+  active: boolean;
+  onChange: (value: string) => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <span className="filter-select" data-active={active ? '' : undefined}>
+      <label className="sr-only" htmlFor={id}>
+        {label}
+      </label>
+      <select id={id} value={value} onChange={(event) => onChange(event.target.value)}>
+        {children}
+      </select>
+      <Icon name="chevron-down" size={16} className="filter-select__chevron" />
+    </span>
+  );
+}
+
 const isIngredient = (row: ArsenalRow) => row.role === 'ingredient' || row.role === 'both';
 
 function StatusSelect({ slug, name }: { slug: string; name: string }) {
@@ -194,6 +232,13 @@ export function ArsenalManager({
   };
 
   const slots = SLOT_ORDER.filter((candidate) => rows.some((row) => row.slot === candidate));
+  const filtered = slot !== 'all' || variant !== 'all' || status !== 'any' || text.trim() !== '';
+  const clearFilters = () => {
+    setSlot('all');
+    setVariant('all');
+    setStatus('any');
+    setText('');
+  };
 
   return (
     <>
@@ -256,108 +301,100 @@ export function ArsenalManager({
         </details>
       )}
 
-      <div className="filters">
-        <div className="chips" role="group" aria-label="Which weapons">
+      <div className="arsenal-filters">
+        <div className="scope-tabs" role="group" aria-label="Which weapons">
           {(['recipe', 'ingredients', 'all'] as Scope[]).map((candidate) => (
             <button
               key={candidate}
               type="button"
-              className="chip"
+              className="scope-tab"
               aria-pressed={scope === candidate}
               onClick={() => setScope(candidate)}
             >
-              {candidate === 'recipe' ? 'Recipe weapons' : candidate === 'ingredients' ? 'Ingredients' : 'All weapons'}{' '}
-              <span className="chip__count">{scopeCount[candidate]}</span>
+              {SCOPE_LABEL[candidate]}
+              <span className="scope-tab__count">{scopeCount[candidate]}</span>
             </button>
           ))}
         </div>
-        <div className="chips" role="group" aria-label="Filter by variant">
-          <button
-            type="button"
-            className="chip"
-            aria-pressed={variant === 'all'}
-            onClick={() => setVariant('all')}
+
+        <div className="filter-bar">
+          <span className="filter-search">
+            <label className="sr-only" htmlFor={`${id}-text`}>
+              Filter by name
+            </label>
+            <Icon name="search" size={16} />
+            <input
+              id={`${id}-text`}
+              type="text"
+              value={text}
+              placeholder="Filter by name"
+              autoComplete="off"
+              spellCheck={false}
+              onChange={(event) => setText(event.target.value)}
+            />
+          </span>
+          <FilterSelect id={`${id}-slot`} label="Slot" value={slot} active={slot !== 'all'} onChange={(value) => setSlot(value as Slot | 'all')}>
+            <option value="all">Any slot</option>
+            {slots.map((candidate) => (
+              <option key={candidate} value={candidate}>
+                {SLOT_LABEL[candidate]}
+              </option>
+            ))}
+          </FilterSelect>
+          <FilterSelect
+            id={`${id}-variant`}
+            label="Variant"
+            value={variant}
+            active={variant !== 'all'}
+            onChange={(value) => setVariant(value as Variant | 'all')}
           >
-            Any variant
-          </button>
-          {variants.map((candidate) => (
-            <button
-              key={candidate}
-              type="button"
-              className="chip"
-              aria-pressed={variant === candidate}
-              onClick={() => setVariant(candidate)}
-            >
-              {VARIANT_LABEL[candidate]} <span className="chip__count">{variantCount(candidate)}</span>
-            </button>
-          ))}
-        </div>
-        <div className="chips" role="group" aria-label="Filter by slot">
-          <button type="button" className="chip" aria-pressed={slot === 'all'} onClick={() => setSlot('all')}>
-            Any slot
-          </button>
-          {slots.map((candidate) => (
-            <button
-              key={candidate}
-              type="button"
-              className="chip"
-              aria-pressed={slot === candidate}
-              onClick={() => setSlot(candidate)}
-            >
-              {SLOT_LABEL[candidate]}
-            </button>
-          ))}
-        </div>
-        <label className="field" htmlFor={`${id}-status`}>
-          Status
-          <select id={`${id}-status`} value={status} onChange={(e) => setStatus(e.target.value as OwnershipStatus | 'any')}>
-            <option value="any">Any</option>
+            <option value="all">Any variant</option>
+            {variants.map((candidate) => (
+              <option key={candidate} value={candidate}>
+                {VARIANT_LABEL[candidate]} ({variantCount(candidate)})
+              </option>
+            ))}
+          </FilterSelect>
+          <FilterSelect
+            id={`${id}-status`}
+            label="Status"
+            value={status}
+            active={status !== 'any'}
+            onChange={(value) => setStatus(value as OwnershipStatus | 'any')}
+          >
+            <option value="any">Any status</option>
             {STATUSES.map((candidate) => (
               <option key={candidate} value={candidate}>
                 {STATUS_LABEL[candidate]}
               </option>
             ))}
-          </select>
-        </label>
-        <label className="field" htmlFor={`${id}-text`}>
-          Name
-          <input
-            id={`${id}-text`}
-            type="text"
-            value={text}
-            placeholder="Filter by name"
-            autoComplete="off"
-            spellCheck={false}
-            onChange={(event) => setText(event.target.value)}
-          />
-        </label>
-        <div className="chips" role="group" aria-label="View">
-          <button type="button" className="chip" aria-pressed={view === 'grid'} onClick={() => setView('grid')}>
-            Grid
-          </button>
-          <button type="button" className="chip" aria-pressed={view === 'list'} onClick={() => setView('list')}>
-            List
-          </button>
+          </FilterSelect>
+          <div className="view-toggle" role="group" aria-label="View">
+            <button type="button" aria-pressed={view === 'grid'} onClick={() => setView('grid')} title="Grid">
+              <Icon name="grid" size={18} label="Grid" />
+            </button>
+            <button type="button" aria-pressed={view === 'list'} onClick={() => setView('list')} title="List">
+              <Icon name="list" size={18} label="List" />
+            </button>
+          </div>
         </div>
       </div>
 
-      <p className="result-count" role="status" aria-live="polite">
-        Showing {visible.length} of {scopeCount[scope]}
+      <p className="result-count">
+        <span role="status" aria-live="polite">
+          Showing {visible.length} of {scopeCount[scope]}
+        </span>
+        {filtered && visible.length > 0 && (
+          <button type="button" className="link-button result-count__clear" onClick={clearFilters}>
+            Clear filters
+          </button>
+        )}
       </p>
 
       {visible.length === 0 ? (
         <div className="empty">
           <p>No weapon matches these filters.</p>
-          <button
-            type="button"
-            className="button"
-            onClick={() => {
-              setSlot('all');
-              setVariant('all');
-              setStatus('any');
-              setText('');
-            }}
-          >
+          <button type="button" className="button" onClick={clearFilters}>
             Clear filters
           </button>
         </div>
