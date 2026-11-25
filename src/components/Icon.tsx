@@ -91,6 +91,62 @@ const PATHS = {
   'arrow-right': <path d="M4.5 12h14M13.5 7l5 5-5 5" />,
   'arrow-down': <path d="M12 4.5v14M7 13.5l5 5 5-5" />,
   'chevron-down': <path d="M7 10l5 5 5-5" />,
+  // Slots (design plan 3.5): slots are told apart by these shapes, never by colour.
+  primary: <path d="M2.5 13l1.75-2.75h10.5L16 9h5.5v2.5h-3.25l-1 1h-4.5l-1.5 3.5H8.5l.75-3z" />,
+  secondary: (
+    <>
+      <path d="M4.5 7.75h15v3.5H11l-.75 1v5.5h-4l-.75-5.5-1-1z" />
+      <path d="M10.25 13.75h2.25v-2.5" />
+    </>
+  ),
+  melee: (
+    <>
+      <path d="M19.25 4.75l-1 3.5-8 8-2.5-2.5 8-8z" />
+      <path d="M6.25 12.25l5.5 5.5M8.25 15.75l-3.5 3.5" />
+    </>
+  ),
+  'arch-gun': (
+    <>
+      <path d="M2.75 9.75h13.5l1.5-1.5h3.5v5h-3.25l-1 1.25H2.75z" />
+      <path d="M9.5 14.5v3.25h3.5V14.5" />
+    </>
+  ),
+  'arch-melee': (
+    <>
+      <path d="M19.75 4.25l-.75 5.5-8.25 8.25-4.75-4.75 8.25-8.25z" />
+      <path d="M4.75 11.75l7.5 7.5M7.75 16.25l-3.5 3.5" />
+    </>
+  ),
+  companion: (
+    <>
+      <path d="M12 8.25l3.75 3.75L12 15.75 8.25 12z" />
+      <path d="M8.25 12h-4.5l1.75-3M15.75 12h4.5l-1.75-3M12 15.75v3.5" />
+    </>
+  ),
+  // Mastered: a wreath of our own drawing, with an Orokin diamond at its head.
+  laurel: (
+    <>
+      <path d="M10.25 19.5C6.5 18.5 4 15.25 4.25 10.5M13.75 19.5c3.75-1 6.25-4.25 6-9" />
+      <path d="M4.6 13.5l2.4-1.1M5.6 16.4l2.3-1.4M7.6 18.6l1.9-1.8M4.3 10.6l2.2-.4M19.4 13.5l-2.4-1.1M18.4 16.4l-2.3-1.4M16.4 18.6l-1.9-1.8M19.7 10.6l-2.2-.4" />
+      <path d="M12 4.25l1.75 1.75L12 7.75 10.25 6z" />
+    </>
+  ),
+  // Nodes, markers and rule ends.
+  diamond: <path d="M12 4.5l7.5 7.5-7.5 7.5L4.5 12z" />,
+  // Credits: a stack of coins (a lettered coin reads as the copyright sign).
+  credits: (
+    <>
+      <ellipse cx="12" cy="7.5" rx="6.5" ry="2.75" />
+      <path d="M5.5 7.5V12c0 1.5 2.9 2.75 6.5 2.75s6.5-1.25 6.5-2.75V7.5M5.5 12v4.5c0 1.5 2.9 2.75 6.5 2.75s6.5-1.25 6.5-2.75V12" />
+    </>
+  ),
+  sell: (
+    <>
+      <path d="M3.75 12.5V4.75h7.75l8.75 8.75-7.75 7.75z" />
+      <circle cx="8.25" cy="9.25" r="1.25" />
+    </>
+  ),
+  back: <path d="M10 6.5L4.5 12l5.5 5.5M4.75 12h14.75" />,
   // View switches: tiles, and rows.
   grid: <path d="M4.5 4.5h6v6h-6zM13.5 4.5h6v6h-6zM4.5 13.5h6v6h-6zM13.5 13.5h6v6h-6z" />,
   list: <path d="M9.5 6.5h10M9.5 12h10M9.5 17.5h10M4.75 6.5h.5M4.75 12h.5M4.75 17.5h.5" />,

@@ -15,77 +15,71 @@
 
 /* ------------------------------------------------------------------ tokens */
 
+/*
+ * Design plan 3.1. One rule decides every colour: verdict colours mean verdicts, Orokin gold means
+ * current, mastered, favourite and primary frames, Tenno cyan means interaction (focus, links,
+ * owned, active filters). Slots are told apart by icon, never by colour. Depth is a step in
+ * surface colour plus a hairline: no shadows, no glows.
+ */
 :root {
-  /* Ground, and the light that falls on it. */
-  --bg: #06070a;
-  --bg-glow-1: rgba(84, 231, 242, 0.04);
-  --bg-glow-2: rgba(216, 179, 106, 0.04);
-  --bg-glow-3: rgba(80, 60, 140, 0.06);
-  --grid-line: rgba(255, 255, 255, 0.025);
-
-  /* Three surface levels: panels, raised controls, hover and active. */
-  --surface-1: #10141b;
-  --surface-2: #161c25;
-  --surface-3: #1d2430;
+  /* The obsidian ground and three surfaces: panels, tiles and rows, hover and menus. */
+  --bg: #090b0e;
+  --surface-1: #101319;
+  --surface-2: #161a22;
+  --surface-3: #1d232e;
+  --surface-active: #222a37;
   --surface: var(--surface-1);
   --surface-hover: var(--surface-3);
-  --header-bg: rgba(6, 7, 10, 0.85);
-  --header-shadow: 0 12px 32px -24px rgba(0, 0, 0, 0.9);
+  --header-bg: rgba(9, 11, 14, 0.92);
 
   /*
-   * Edges. Strong is the plan's hover emphasis; control is for boundaries a control is found by,
-   * 4:1 against every surface, so inputs and buttons never rely on the faint ones.
+   * Lines. Hairlines divide, steel frames tiles, control edges (3:1 or better) are how an input or
+   * button is found, and the Orokin and Tenno frames mark gold and cyan roles.
    */
-  --edge-subtle: rgba(255, 255, 255, 0.07);
-  --edge-medium: rgba(255, 255, 255, 0.14);
-  --edge-strong: rgba(255, 255, 255, 0.22);
-  --edge-control: rgba(255, 255, 255, 0.42);
-  --edge-glow: rgba(84, 231, 242, 0.35);
-  --edge-gold: rgba(216, 179, 106, 0.45);
+  --border-hairline: rgba(255, 255, 255, 0.09);
+  --border-steel: rgba(255, 255, 255, 0.18);
+  --border-control: rgba(255, 255, 255, 0.42);
+  --border-orokin: rgba(201, 166, 107, 0.45);
+  --border-cyan: rgba(77, 212, 232, 0.4);
+  --edge-subtle: var(--border-hairline);
+  --edge-medium: var(--border-steel);
+  --edge-strong: rgba(255, 255, 255, 0.28);
+  --edge-control: var(--border-control);
+  --edge-gold: var(--border-orokin);
   --edge: var(--edge-control);
   --edge-soft: var(--edge-medium);
-  /* The lit edge of an emblem panel: brightest at the top-left cut, cooling towards the other. */
-  --edge-lit: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.55),
-    rgba(255, 255, 255, 0.14) 38%,
-    rgba(255, 255, 255, 0.1) 62%,
-    rgba(84, 231, 242, 0.32)
-  );
-  /* Light from above on a panel's face. */
-  --sheen: linear-gradient(180deg, rgba(255, 255, 255, 0.035), transparent 42%);
-  --shadow-panel: 0 24px 48px -28px rgba(0, 0, 0, 0.9);
+  /* Corner brackets on inspection frames: steel at rest. */
+  --bracket: rgba(255, 255, 255, 0.34);
 
-  --text: #e9edf2;
-  --text-2: #8995a5;
-  /* The plan's #5b6675 measures 2.4 to 3.5:1 here; this is the darkest that still reads at 4.5:1. */
-  --text-3: #818c9c;
+  --text: #eceff4;
+  --text-2: #94a0b2;
+  /*
+   * The plan's #636e7e measures 3.05 to 3.60:1 here. This keeps 4.58:1 or better on every surface,
+   * the cyan and gold washes included, while staying a step below the secondary text.
+   */
+  --text-3: #8792a2;
 
-  /* Verdicts, each with the soft light it casts. */
-  --safe: #36d399;
-  --safe-glow: rgba(54, 211, 153, 0.18);
-  --check: #f5a623;
-  --check-glow: rgba(245, 166, 35, 0.18);
+  /* Verdicts. Keep is #f87171, not #ef4444, which drops to 4.19:1 on the hover surface. */
+  --safe: #34d399;
+  --check: #f59e0b;
   --keep: #f87171;
-  --keep-glow: rgba(248, 113, 113, 0.22);
-  --focus: #54e7f2;
-  --focus-glow: rgba(84, 231, 242, 0.28);
-  --selected: color-mix(in srgb, var(--focus) 18%, var(--surface-2));
-  /* Orokin gold: favourites, the weapons a player has invested in. */
-  --gold: #d8b36a;
-  --gold-glow: rgba(216, 179, 106, 0.25);
-  /* Slot accents (design plan 4.2.1): the pedestal's halo and the slot tag. */
-  --slot-primary: var(--gold);
-  --slot-secondary: var(--focus);
-  --slot-melee: var(--keep);
-  --slot-other: #9b8cf0;
 
-  /* Three roles (design plan 2.2): display, interface, telemetry. */
+  /* Tenno cyan: interaction. */
+  --focus: #4dd4e8;
+  /* 10% over the panel surface: muted text on it still reads at 4.56:1. */
+  --selected: color-mix(in srgb, var(--focus) 10%, var(--surface-1));
+
+  /* Orokin gold: the primary accent. */
+  --gold: #c9a66b;
+  --gold-bright: #e6c88a;
+  --gold-dim: rgba(201, 166, 107, 0.14);
+
+  /* Three roles (design plan 3.2): display, interface, telemetry. */
   --font-body: var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-chakra), var(--font-barlow), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  /* Spacing on a 4 px grid (design plan 2.3). */
+  /* Spacing on a 4 px grid. */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -97,49 +91,39 @@
   --space-12: 48px;
   --space-16: 64px;
 
-  /* Chamfer sizes and the small radius for tags (design plan 2.4). */
+  /* Chamfer sizes and the small radius for tags (design plan 3.3). */
   --chamfer-sm: 10px;
-  --chamfer-md: 14px;
-  --chamfer-lg: 20px;
+  --chamfer-md: 12px;
+  --chamfer-lg: 16px;
   --radius-sm: 4px;
 
-  /*
-   * Depth (design plan 2.5). drop-shadow, not box-shadow, so a chamfered panel's shadow follows its
-   * cuts; .shape 2.0 below is what lets these render at all.
-   */
-  --shadow-sm: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
-  --shadow-md: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.7));
-  --shadow-lg: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.75));
-  --glow-cyan: drop-shadow(0 0 12px rgba(84, 231, 242, 0.4));
-  --glow-gold: drop-shadow(0 0 12px rgba(216, 179, 106, 0.35));
-
-  /* Motion (design plan 2.6). */
+  /* Motion (design plan 3.6): mechanical and quick. */
   --dur-instant: 80ms;
   --dur-fast: 150ms;
-  --dur-normal: 250ms;
+  --dur-normal: 180ms;
   --dur-slow: 400ms;
   --ease-sharp: cubic-bezier(0.25, 0, 0, 1);
 
-  /* Layers (design plan 2.7). */
+  /* Layers. */
   --z-raised: 10;
   --z-sticky: 100;
   --z-overlay: 200;
 
-  /* The plan's token names, for the phases that build on them. */
-  --bg-void: var(--bg);
-  --surface-elevated: var(--surface-1);
-  --surface-secondary: var(--surface-2);
-  --surface-active: #222c3a;
-  --cyan-tenno: var(--focus);
-  --cyan-tenno-dim: color-mix(in srgb, var(--focus) 12%, transparent);
+  /* The plan's token names (design plan 3.1), for the phases that build on them. */
+  --bg-obsidian: var(--bg);
+  --surface-panel: var(--surface-1);
+  --surface-tile: var(--surface-2);
+  --surface-elevated: var(--surface-3);
   --gold-orokin: var(--gold);
-  --gold-orokin-dim: color-mix(in srgb, var(--gold) 12%, transparent);
+  --tenno-cyan: var(--focus);
+  --tenno-cyan-dim: color-mix(in srgb, var(--focus) 12%, transparent);
+  --cyan-tenno-dim: var(--tenno-cyan-dim);
   --verdict-safe: var(--safe);
   --verdict-check: var(--check);
   --verdict-keep: var(--keep);
   --text-primary: var(--text);
   --text-secondary: var(--text-2);
-  --text-tertiary: var(--text-3);
+  --text-muted: var(--text-3);
 
   --step--1: 0.8125rem;
   --step-0: 1rem;
@@ -148,67 +132,46 @@
   --step-3: 1.75rem;
   --step-4: 2.25rem;
 
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --container: 1040px;
+  --ease-out: cubic-bezier(0.25, 0, 0, 1);
+  /* One width for every screen (design plan 4.2): 1280 px of content inside 24 px gutters. */
+  --container: 1280px;
+  --gutter: 24px;
   --measure: 66ch;
 
   color-scheme: dark;
 }
 
+/* "Orokin Alabaster" (design plan 3.1): ivory ground, white panels, bronze gold, slate ink. */
 :root[data-theme='light'] {
-  --bg: #edf0f4;
-  --bg-glow-1: rgba(10, 95, 192, 0.05);
-  --bg-glow-2: rgba(131, 94, 26, 0.04);
-  --bg-glow-3: rgba(80, 60, 140, 0.04);
-  --grid-line: rgba(15, 23, 42, 0.035);
-
+  --bg: #f2efe9;
   --surface-1: #ffffff;
-  --surface-2: #f6f8fb;
-  --surface-3: #eef2f7;
-  --header-bg: rgba(255, 255, 255, 0.82);
-  --header-shadow: 0 10px 24px -22px rgba(15, 23, 42, 0.35);
+  --surface-2: #f8f6f2;
+  --surface-3: #efebe4;
+  --surface-active: #e7e1d6;
+  --header-bg: rgba(242, 239, 233, 0.94);
 
-  --edge-subtle: rgba(15, 23, 42, 0.06);
-  --edge-medium: rgba(15, 23, 42, 0.12);
-  --edge-strong: rgba(15, 23, 42, 0.24);
-  --edge-control: rgba(15, 23, 42, 0.5);
-  --edge-glow: rgba(10, 95, 192, 0.3);
-  --edge-gold: rgba(138, 98, 30, 0.45);
-  --edge-lit: linear-gradient(
-    135deg,
-    rgba(15, 23, 42, 0.5),
-    rgba(15, 23, 42, 0.16) 38%,
-    rgba(15, 23, 42, 0.12) 62%,
-    rgba(10, 95, 192, 0.35)
-  );
-  --sheen: none;
-  --shadow-panel: 0 18px 36px -24px rgba(15, 23, 42, 0.28);
+  --border-hairline: rgba(20, 24, 32, 0.1);
+  --border-steel: rgba(20, 24, 32, 0.2);
+  --border-control: rgba(20, 24, 32, 0.5);
+  --border-orokin: rgba(124, 92, 30, 0.5);
+  --border-cyan: rgba(10, 95, 192, 0.4);
+  --edge-strong: rgba(20, 24, 32, 0.3);
+  --bracket: rgba(20, 24, 32, 0.38);
 
-  --text: #121621;
+  --text: #141820;
   --text-2: #3d4452;
-  --text-3: #586070;
+  --text-3: #575e6b;
 
-  /* At least 5.5:1 on the white panels. */
+  /* The dark verdict colours fail on white; these keep 5.4:1 or better on both grounds. */
   --safe: #11703a;
-  --safe-glow: rgba(17, 112, 58, 0.1);
   --check: #835400;
-  --check-glow: rgba(200, 130, 20, 0.12);
   --keep: #b3241c;
-  --keep-glow: rgba(179, 36, 28, 0.1);
   --focus: #0a5fc0;
-  --focus-glow: rgba(10, 95, 192, 0.18);
-  --selected: color-mix(in srgb, var(--focus) 12%, var(--surface-1));
-  --gold: #835e1a;
-  --gold-glow: rgba(131, 94, 26, 0.18);
-  --slot-other: #5b4caf;
-  --surface-active: #e4e9f1;
-
-  /* Shadows on a pale ground are softer and cooler; glows tint rather than shine. */
-  --shadow-sm: drop-shadow(0 1px 3px rgba(15, 23, 42, 0.12));
-  --shadow-md: drop-shadow(0 4px 12px rgba(15, 23, 42, 0.12));
-  --shadow-lg: drop-shadow(0 8px 24px rgba(15, 23, 42, 0.16));
-  --glow-cyan: drop-shadow(0 0 10px rgba(10, 95, 192, 0.25));
-  --glow-gold: drop-shadow(0 0 10px rgba(131, 94, 26, 0.22));
+  --selected: color-mix(in srgb, var(--focus) 10%, var(--surface-1));
+  /* The plan's #8a6623 measures 4.03:1 on the darkest ivory; this keeps 4.74:1 or better. */
+  --gold: #7c5c1e;
+  --gold-bright: #5f4413;
+  --gold-dim: rgba(124, 92, 30, 0.12);
 
   color-scheme: light;
 }
@@ -238,35 +201,6 @@ body {
   font-variant-numeric: tabular-nums;
   caret-color: var(--focus);
   -webkit-font-smoothing: antialiased;
-}
-
-/*
- * The atmosphere: two pools of faint light at the top of the page and a fine grid that fades out
- * below the fold. Fixed layers behind everything, so scrolling repaints nothing.
- */
-body::before,
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* Design plan 2.1: Tenno cyan top left, Orokin gold top right, void indigo from below. */
-body::before {
-  background:
-    radial-gradient(90rem 50rem at 0% 0%, var(--bg-glow-1), transparent 55%),
-    radial-gradient(80rem 45rem at 100% 0%, var(--bg-glow-2), transparent 55%),
-    radial-gradient(80rem 40rem at 50% 100%, var(--bg-glow-3), transparent 60%);
-}
-
-body::after {
-  background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 40px 40px;
-  mask-image: radial-gradient(ellipse 90% 75% at 50% 0%, #000 35%, transparent 85%);
 }
 
 ::selection {
@@ -320,9 +254,15 @@ kbd {
 
 .container {
   width: 100%;
-  max-width: var(--container);
+  max-width: calc(var(--container) + 2 * var(--gutter));
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 var(--gutter);
+}
+
+@media (max-width: 759px) {
+  :root {
+    --gutter: 16px;
+  }
 }
 
 .icon {
@@ -330,40 +270,30 @@ kbd {
   display: block;
 }
 
-/* ------------------------------------------------------------------ the emblem shape */
+/* ------------------------------------------------------------------ the chamfered frame */
 
 /*
- * .shape 2.0: a panel with a lit 1 px edge and two cut corners (top left, bottom right) that casts
- * a shadow following the cuts.
+ * .shape: a flat panel with a crisp 1 px edge and two cut corners, top right and bottom left
+ * (design plan 3.3). The edge and the face are pseudo-elements, each clipped to the chamfer:
+ * ::before is the edge, ::after the face, inset by the edge width, so the cuts carry the border
+ * too. The inner cut is shortened by (2 - sqrt 2) x the inset so the diagonal edge comes out as
+ * wide as the straight ones.
  *
- * The element itself is not clipped. Its edge and its face are pseudo-elements, each clipped to the
- * chamfer: ::before is the edge, ::after the face, inset by the edge width. A filter on the element
- * (--shape-shadow) is drawn from what those paint, so drop-shadow follows the cut corners. Before
- * 2.0 the element carried the clip-path, and a filter on a clipped element is clipped with it, so
- * shadows and glows set on .shape never showed.
- *
- * The face is layered: HUD corner ticks (when a panel asks for them), the sheen from above, then
- * the fill. The inner cut is shortened by (2 - sqrt 2) x the inset so the diagonal edge comes out
- * as wide as the straight ones. Focus recolours and thickens the edge; an outline would be a
- * rectangle around a chamfered panel.
- *
- * Content is not clipped. A panel whose content paints right to its edges (a data table) is
- * clipped again with .shape--clip and gives up its shadow in exchange.
+ * No shadows and no glows: elevation is a step in surface colour plus the edge. A panel that is a
+ * link brightens its edge when pointed at; focus recolours and thickens it, since an outline would
+ * be a rectangle around a chamfered panel. Content is not clipped; a panel whose content paints to
+ * its edges (a data table) is clipped again with .shape--clip.
  */
 .shape {
   --cut: var(--chamfer-md);
-  --shape-edge: var(--edge-lit);
+  --shape-edge: var(--border-steel);
   --shape-fill: var(--surface-1);
-  --shape-sheen: var(--sheen);
-  --shape-ticks: none;
-  --shape-shadow: var(--shadow-sm);
+  --shape-brackets: none;
   --shape-inset: 1px;
   --cut-in: calc(var(--cut) - var(--shape-inset) * 0.586);
   position: relative;
   isolation: isolate;
   background: transparent;
-  filter: var(--shape-shadow);
-  transition: filter var(--dur-fast) var(--ease-out);
 }
 
 .shape::before,
@@ -378,34 +308,35 @@ kbd {
   z-index: -2;
   background: var(--shape-edge);
   clip-path: polygon(
-    var(--cut) 0,
-    100% 0,
-    100% calc(100% - var(--cut)),
-    calc(100% - var(--cut)) 100%,
-    0 100%,
-    0 var(--cut)
+    0 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut))
   );
+  transition: background-color var(--dur-fast) var(--ease-out);
 }
 
 .shape::after {
   inset: var(--shape-inset);
   z-index: -1;
-  background: var(--shape-ticks), var(--shape-sheen), var(--shape-fill);
+  background: var(--shape-brackets), var(--shape-fill);
   clip-path: polygon(
-    var(--cut-in) 0,
-    100% 0,
-    100% calc(100% - var(--cut-in)),
-    calc(100% - var(--cut-in)) 100%,
-    0 100%,
-    0 var(--cut-in)
+    0 0,
+    calc(100% - var(--cut-in)) 0,
+    100% var(--cut-in),
+    100% 100%,
+    var(--cut-in) 100%,
+    0 calc(100% - var(--cut-in))
   );
   transition: background-color var(--dur-fast) var(--ease-out);
 }
 
-/* Links and buttons that are panels light up when pointed at: the plan's cyan glow. */
+/* Links and buttons that are panels: the edge brightens when pointed at. Nothing glows or moves. */
 a.shape:hover,
 button.shape:hover {
-  --shape-shadow: var(--shadow-md) var(--glow-cyan);
+  --shape-edge: var(--border-control);
 }
 
 /*
@@ -422,39 +353,65 @@ button.shape:focus-visible,
 }
 
 /*
- * HUD corner reticles on the primary panels (design plan 3.2): brackets in the two corners the cut
- * leaves square, drawn as layers of the face, so they cost no markup. They brighten while the panel
- * is pointed at or holds focus.
+ * Corner brackets (design plan 3.3): 8 px L-brackets in the two square corners, top left and
+ * bottom right, drawn as layers of the face so they cost no markup. Steel at rest; gold when the
+ * frame is selected; cyan while the search field it frames is in use.
  */
-.shape--hud,
+.shape--frame,
 .verdict,
 .search--hero .search__field {
-  --tick: var(--edge-glow);
-  --shape-ticks:
-    linear-gradient(var(--tick) 0 0) right 6px top 6px / 10px 1px no-repeat,
-    linear-gradient(var(--tick) 0 0) right 6px top 6px / 1px 10px no-repeat,
-    linear-gradient(var(--tick) 0 0) left 6px bottom 6px / 10px 1px no-repeat,
-    linear-gradient(var(--tick) 0 0) left 6px bottom 6px / 1px 10px no-repeat;
+  --bracket-colour: var(--bracket);
+  --shape-brackets:
+    linear-gradient(var(--bracket-colour) 0 0) left 5px top 5px / 8px 1px no-repeat,
+    linear-gradient(var(--bracket-colour) 0 0) left 5px top 5px / 1px 8px no-repeat,
+    linear-gradient(var(--bracket-colour) 0 0) right 5px bottom 5px / 8px 1px no-repeat,
+    linear-gradient(var(--bracket-colour) 0 0) right 5px bottom 5px / 1px 8px no-repeat;
 }
 
-.shape--hud:hover,
+.shape--frame[aria-selected='true'],
+.shape--frame[aria-current='page'] {
+  --bracket-colour: var(--gold);
+}
+
 .search--hero .search__field:hover,
 .search--hero .search__field:focus-within {
-  --tick: var(--focus);
+  --bracket-colour: var(--focus);
 }
 
 /* For content that paints to the panel's edges, such as a data table's row hover. */
 .shape--clip,
 .table-wrap.shape {
-  --shape-shadow: none;
   clip-path: polygon(
-    var(--cut) 0,
-    100% 0,
-    100% calc(100% - var(--cut)),
-    calc(100% - var(--cut)) 100%,
-    0 100%,
-    0 var(--cut)
+    0 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut))
   );
+}
+
+/*
+ * Diamond rules (design plan 3.3): a 1 px hairline with a 7 px gold diamond at its start. Section
+ * titles carry one; .diamond-rule draws one on its own.
+ */
+.diamond-rule {
+  position: relative;
+  height: 1px;
+  margin: 0;
+  border: 0;
+  background: var(--border-hairline);
+}
+
+.diamond-rule::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
 }
 
 /* ------------------------------------------------------------------ controls */
@@ -466,7 +423,7 @@ button.shape:focus-visible,
   min-height: 44px;
   padding: 0 16px;
   border: 1px solid var(--edge);
-  background: var(--sheen), var(--surface-2);
+  background: var(--surface-2);
   color: var(--text);
   font: 600 var(--step--1) / 1 var(--font-body);
   letter-spacing: 0.06em;
@@ -479,11 +436,10 @@ button.shape:focus-visible,
     color 160ms var(--ease-out);
 }
 
-/* A halo rather than an inversion: the control lights up, the page does not flash. */
+/* The edge takes the interaction colour; nothing glows, the page does not flash. */
 .button:hover {
   background-color: var(--surface-3);
   border-color: var(--focus);
-  box-shadow: 0 0 0 3px var(--focus-glow);
 }
 
 .button:active {
@@ -522,9 +478,8 @@ button.shape:focus-visible,
   background: var(--header-bg);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
   backdrop-filter: blur(16px) saturate(140%);
-  /* The plan's cyan hairline along the bottom of the command bar. */
-  border-bottom: 1px solid color-mix(in srgb, var(--focus) 28%, transparent);
-  box-shadow: var(--header-shadow);
+  /* An Orokin gold hairline along the bottom of the bar. */
+  border-bottom: 1px solid var(--border-orokin);
   position: relative;
   z-index: var(--z-sticky);
 }
@@ -559,16 +514,15 @@ button.shape:focus-visible,
   color: var(--text);
 }
 
-/* The emblem is drawn (the app icon's glyph), so it renders the same on every platform. */
+/* The emblem is drawn (the app icon's glyph), so it renders the same on every platform. Gold, unlit. */
 .wordmark__emblem {
   flex: none;
-  color: var(--focus);
-  filter: drop-shadow(0 0 6px var(--focus-glow));
-  transition: filter var(--dur-fast) var(--ease-out);
+  color: var(--gold);
+  transition: color var(--dur-fast) var(--ease-out);
 }
 
 .wordmark:hover .wordmark__emblem {
-  filter: var(--glow-cyan);
+  color: var(--gold-bright);
 }
 
 .site-nav {
@@ -599,11 +553,11 @@ button.shape:focus-visible,
   color: var(--text);
 }
 
-/* The current page: a lit underside (design plan, Phase 2), set from the route by NavLinks. */
+/* The current screen: a gold underside (design plan 4.3), set from the route by NavLinks. */
 .site-nav a[aria-current='page'] {
-  background: var(--cyan-tenno-dim);
+  background: var(--gold-dim);
   color: var(--text);
-  box-shadow: inset 0 -2px 0 var(--focus);
+  box-shadow: inset 0 -2px 0 var(--gold);
 }
 
 .site-header .search {
@@ -678,13 +632,22 @@ main {
   text-transform: uppercase;
 }
 
+/* A gold diamond before the title and a hairline running on after it (design plan 3.3). */
 .section-title::before {
   content: '';
   flex: none;
-  width: 14px;
-  height: 2px;
-  background: var(--focus);
-  box-shadow: 0 0 8px var(--focus-glow);
+  width: 7px;
+  height: 7px;
+  margin: 0 2px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-hairline);
 }
 
 .prose p + p {
@@ -821,9 +784,8 @@ main {
   left: 0;
   right: 0;
   z-index: 30;
-  background: var(--surface-1);
-  border: 1px solid var(--edge-medium);
-  box-shadow: var(--shadow-panel);
+  background: var(--surface-2);
+  border: 1px solid var(--edge-strong);
   animation: panel-in 160ms var(--ease-out);
 }
 
@@ -919,20 +881,13 @@ main {
   color: var(--text-3);
 }
 
+/* A still gold diamond: the marker no longer pulses. */
 .eyebrow__pulse {
   flex: none;
   width: 7px;
   height: 7px;
-  background: var(--focus);
+  background: var(--gold);
   transform: rotate(45deg);
-  box-shadow: 0 0 8px var(--focus-glow);
-  animation: eyebrow-pulse 1.2s ease-in-out infinite alternate;
-}
-
-@keyframes eyebrow-pulse {
-  from {
-    opacity: 0.6;
-  }
 }
 
 /* Capitals in the chamfered display face; tracking opens up rather than tightening for capitals. */
@@ -962,11 +917,11 @@ main {
 .home-hero__rule::after {
   content: '';
   position: absolute;
-  top: -2px;
-  width: 4px;
-  height: 4px;
-  background: var(--focus);
-  opacity: 0.7;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
 }
 
 .home-hero__rule::before {
@@ -985,7 +940,6 @@ main {
 
 .console .search--hero .search__field {
   --shape-fill: var(--surface-2);
-  --shape-shadow: var(--shadow-md);
 }
 
 .console__scopes {
@@ -1025,9 +979,7 @@ main {
 /* A weapon's own picture, with an edge lit in its slot's colour (design plan 3.3). */
 .quick-pick {
   --cut: var(--chamfer-sm);
-  --slot-accent: var(--edge-medium);
   --shape-fill: var(--surface-2);
-  --shape-edge: linear-gradient(135deg, var(--slot-accent), var(--edge-subtle) 60%);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1042,22 +994,9 @@ main {
     filter var(--dur-fast) var(--ease-out);
 }
 
-.quick-pick[data-slot='primary'] {
-  --slot-accent: var(--gold);
-}
-
-.quick-pick[data-slot='secondary'] {
-  --slot-accent: var(--focus);
-}
-
-.quick-pick[data-slot='melee'] {
-  --slot-accent: var(--keep);
-}
-
 .quick-pick:hover {
   --shape-fill: var(--surface-3);
   color: var(--text);
-  transform: translateY(-1px);
 }
 
 .quick-pick .weapon-art {
@@ -1065,7 +1004,7 @@ main {
   height: 32px;
 }
 
-/* The three tools (design plan 3.4). Each card is one link, so it may lift on hover. */
+/* The three tools. Each card is one link; pointed at, its edge brightens and nothing moves. */
 .tool-cards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1075,7 +1014,6 @@ main {
 
 .tool-card {
   --cut: var(--chamfer-md);
-  --shape-shadow: var(--shadow-md);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1088,9 +1026,7 @@ main {
 }
 
 .tool-card:hover {
-  --shape-fill: color-mix(in srgb, var(--focus) 6%, var(--surface-1));
-  --shape-edge: linear-gradient(135deg, var(--edge-glow), var(--edge-strong) 60%);
-  transform: translateY(-3px);
+  --shape-fill: var(--surface-2);
 }
 
 .tool-card__head {
@@ -1144,10 +1080,6 @@ main {
   font-size: var(--step--1);
   font-weight: 600;
   transition: gap var(--dur-fast) var(--ease-out);
-}
-
-.tool-card:hover .tool-card__cta {
-  gap: 10px;
 }
 
 @media (max-width: 759px) {
@@ -1204,16 +1136,10 @@ main {
 
 /* ------------------------------------------------------------------ verdict card */
 
-/*
- * The verdict casts its colour twice: as light inside the panel from the top-left, and as a
- * backlight around it (design plan 2.5's verdict glows), which .shape 2.0 lets follow the cuts.
- */
+/* The verdict: a flat panel with corner brackets. Its colour is in the crest and the headline, never as light. */
 .verdict {
   --cut: var(--chamfer-lg);
   --tone: var(--text);
-  --tone-glow: transparent;
-  --shape-sheen: radial-gradient(44rem 18rem at 0% 0%, var(--tone-glow), transparent 70%), var(--sheen);
-  --shape-shadow: var(--shadow-lg) drop-shadow(0 0 18px var(--tone-glow));
   margin-top: 28px;
   padding: 28px;
 }
@@ -1221,17 +1147,14 @@ main {
 .verdict--safe,
 .verdict--safe-soft {
   --tone: var(--safe);
-  --tone-glow: var(--safe-glow);
 }
 
 .verdict--check {
   --tone: var(--check);
-  --tone-glow: var(--check-glow);
 }
 
 .verdict--keep {
   --tone: var(--keep);
-  --tone-glow: var(--keep-glow);
 }
 
 .verdict__banner {
@@ -1240,7 +1163,7 @@ main {
   align-items: center;
 }
 
-/* The crest (design plan 4.3.1): the verdict's icon in a ring, over a disc of its own light. */
+/* The crest: the verdict's icon in a ring of its colour. */
 .verdict__crest {
   position: relative;
   display: grid;
@@ -1248,14 +1171,6 @@ main {
   place-items: center;
   width: 64px;
   height: 64px;
-}
-
-.verdict__crest::before {
-  content: '';
-  position: absolute;
-  inset: -12px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--tone-glow), transparent 68%);
 }
 
 .verdict__crest::after {
@@ -1269,7 +1184,6 @@ main {
 .verdict__icon {
   position: relative;
   color: var(--tone);
-  filter: drop-shadow(0 0 10px var(--tone-glow));
   /* The one authored moment: the verdict lands, from an already visible start. */
   animation: verdict-land 320ms var(--ease-out);
 }
@@ -1285,8 +1199,6 @@ main {
   color: var(--tone);
   font: 700 var(--step-3) / 1.05 var(--font-display);
   letter-spacing: 0.01em;
-  /* Faint, so the word stays crisp: the glow is the panel's job. */
-  text-shadow: 0 0 12px var(--tone-glow);
 }
 
 .verdict__summary {
@@ -1509,7 +1421,6 @@ main {
   --cut: 7px;
   --shape-fill: var(--surface-2);
   --shape-edge: var(--edge-medium);
-  --shape-shadow: none;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1521,7 +1432,6 @@ main {
 
 a.chain__node:hover {
   --shape-fill: var(--surface-3);
-  --shape-edge: var(--edge-glow);
 }
 
 .chain__node--self {
@@ -1635,7 +1545,7 @@ a.chain__node:hover {
 .dock-plan {
   --cut: var(--chamfer-sm);
   --shape-fill: var(--surface-2);
-  --shape-edge: var(--edge-glow);
+  --shape-edge: var(--border-cyan);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -1653,13 +1563,7 @@ a.chain__node:hover {
   --shape-edge: var(--focus);
 }
 
-.dock-plan__arrow {
-  transition: transform var(--dur-fast) var(--ease-out);
-}
 
-.dock-plan:hover .dock-plan__arrow {
-  transform: translateX(3px);
-}
 
 /* ------------------------------------------------------------------ weapon dossier */
 
@@ -1774,49 +1678,20 @@ a.chain__node:hover {
   }
 }
 
-/* The pedestal (design plan 4.2.1): the weapon over a halo in its slot's colour, on a drawn base. */
+/* The weapon's frame: flat, steel-edged, bracketed. Phase 3 turns it into the Codex frame. */
 .pedestal {
   grid-area: art;
   --cut: var(--chamfer-lg);
-  --slot-accent: var(--slot-other);
-  --shape-edge: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--slot-accent) 60%, transparent),
-    var(--edge-subtle) 55%,
-    color-mix(in srgb, var(--slot-accent) 40%, transparent)
-  );
-  --shape-fill:
-    radial-gradient(circle at 50% 44%, color-mix(in srgb, var(--slot-accent) 18%, transparent), transparent 62%),
-    var(--surface-1);
-  --shape-shadow: var(--shadow-lg) drop-shadow(0 0 22px color-mix(in srgb, var(--slot-accent) 20%, transparent));
+  --shape-fill: var(--surface-1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px 24px 12px;
+  padding: 24px;
 }
 
-.pedestal[data-slot='primary'],
-.slot-tag[data-slot='primary'] {
-  --slot-accent: var(--slot-primary);
-}
-
-.pedestal[data-slot='secondary'],
-.slot-tag[data-slot='secondary'] {
-  --slot-accent: var(--slot-secondary);
-}
-
-.pedestal[data-slot='melee'],
-.slot-tag[data-slot='melee'] {
-  --slot-accent: var(--slot-melee);
-}
-
-/* It rises onto the pedestal once, from an already visible start. */
+/* It rises into the frame once, from an already visible start. */
 .pedestal__art {
-  animation: pedestal-rise 600ms var(--ease-out);
-}
-
-.pedestal__art .weapon-art {
-  filter: var(--shadow-md);
+  animation: pedestal-rise 400ms var(--ease-out);
 }
 
 @keyframes pedestal-rise {
@@ -1826,37 +1701,9 @@ a.chain__node:hover {
   }
 }
 
-.pedestal__base {
-  display: block;
-  width: 100%;
-  max-width: 240px;
-  height: auto;
-  margin-top: -14px;
-  overflow: visible;
-}
-
-.pedestal__ring {
-  fill: none;
-  stroke: var(--slot-accent);
-  stroke-width: 1.25;
-  opacity: 0.55;
-}
-
-.pedestal__ring--inner {
-  fill: color-mix(in srgb, var(--slot-accent) 12%, transparent);
-  opacity: 0.45;
-}
-
-.pedestal__tick {
-  stroke: var(--slot-accent);
-  stroke-width: 1.25;
-  stroke-linecap: round;
-  opacity: 0.75;
-}
-
 @media (max-width: 559px) {
   .pedestal {
-    padding: 14px 12px 8px;
+    padding: 14px 12px;
   }
 
   .pedestal .weapon-art--large {
@@ -1865,7 +1712,7 @@ a.chain__node:hover {
   }
 }
 
-/* The identity header (design plan 4.2.2): slot tag, name, versions. */
+/* The identity header: slot tag, name, versions. Slots are words (icons in Phase 3), never colours. */
 .dossier__identity {
   grid-area: identity;
   min-width: 0;
@@ -1879,11 +1726,10 @@ a.chain__node:hover {
 }
 
 .slot-tag {
-  --slot-accent: var(--slot-other);
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: var(--slot-accent);
+  color: var(--text-2);
   font: 700 0.6875rem / 1.2 var(--font-mono);
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1893,7 +1739,7 @@ a.chain__node:hover {
   content: '';
   width: 6px;
   height: 6px;
-  background: currentColor;
+  background: var(--gold);
   transform: rotate(45deg);
 }
 
@@ -1955,11 +1801,11 @@ a.chain__node:hover {
   text-decoration: none;
 }
 
+/* The current version: gold, as the current screen is. */
 .chip[aria-current='page'] {
-  background: var(--selected);
-  border-color: var(--focus);
+  background: var(--gold-dim);
+  border-color: var(--gold);
   color: var(--text);
-  box-shadow: 0 0 12px -2px var(--focus-glow);
 }
 
 /* The telemetry matrix (design plan 4.2.3): the weapon's numbers in the telemetry face, two by two. */
@@ -2009,10 +1855,9 @@ a.chain__node:hover {
   align-items: flex-start;
   gap: 10px;
   padding: 10px 14px;
-  border: 1px solid var(--edge-glow);
+  border: 1px solid var(--border-cyan);
   border-radius: var(--radius-sm);
-  background: var(--cyan-tenno-dim);
-  box-shadow: 0 0 18px -8px var(--focus-glow);
+  background: var(--tenno-cyan-dim);
 }
 
 .incarnon-strip__icon {
@@ -2100,17 +1945,13 @@ a.chain__node:hover {
   margin-bottom: 10px;
 }
 
-/* The schematic's canvas (design plan 4.4): a raised panel under a fine blueprint grid and a faint cyan light. */
+/* The schematic's slate (design plan 6.3): a flat panel in a 1 px frame, no grid, no light. */
 .tree-scroll {
   overflow-x: auto;
   padding: 20px 16px;
-  border: 1px solid var(--edge-subtle);
+  border: 1px solid var(--border-hairline);
   border-radius: var(--radius-sm);
-  background:
-    radial-gradient(ellipse at 50% 50%, color-mix(in srgb, var(--focus) 6%, transparent), transparent 75%),
-    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 24px 24px,
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 24px 24px,
-    var(--surface-1);
+  background: var(--surface-1);
 }
 
 .tree {
@@ -2242,10 +2083,6 @@ a.chain__node:hover {
   stroke: color-mix(in srgb, var(--focus) 90%, transparent);
 }
 
-.tree-wire.is-lit .tree-wire__trace {
-  filter: drop-shadow(0 0 4px var(--focus-glow));
-}
-
 .tree-wire.is-lit .tree-wire__pad {
   fill: var(--focus);
 }
@@ -2273,9 +2110,9 @@ a.tree-box:hover {
 
 /* The current weapon: the Orokin gold chassis (design plan 4.4). */
 .tree-box--self {
-  --shape-edge: var(--edge-gold);
+  --shape-edge: var(--gold);
+  --shape-fill: color-mix(in srgb, var(--gold) 8%, var(--surface-1));
   --shape-inset: 2px;
-  --shape-shadow: var(--shadow-md) var(--glow-gold);
 }
 
 .tree-box__mr {
@@ -2302,7 +2139,6 @@ a.tree-box:hover {
   inset: 0;
   border: 1px solid var(--edge-medium);
   border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--focus) 8%, transparent), transparent 70%);
 }
 
 .tree-box__art .weapon-art {
@@ -2319,12 +2155,11 @@ a.tree-box:hover {
 
 .status-ring[data-status='owned'] {
   border-color: var(--focus);
-  box-shadow: 0 0 10px -2px var(--focus-glow);
 }
 
+/* Mastered is gold, the Orokin colour, as it is everywhere. */
 .status-ring[data-status='mastered'] {
-  border-color: var(--safe);
-  box-shadow: 0 0 10px -2px var(--safe-glow);
+  border-color: var(--gold);
 }
 
 .tree-box__name {
@@ -2424,7 +2259,7 @@ a.tree-box:hover {
 .recipe-peek__body {
   margin: 4px 0 4px 6px;
   padding: 10px 0 4px 16px;
-  border-left: 1px solid var(--edge-glow);
+  border-left: 1px solid var(--border-cyan);
 }
 
 .recipe-peek__list {
@@ -2546,7 +2381,7 @@ a.tree-box:hover {
   padding: 14px 16px;
   border: 1px solid var(--edge-soft);
   border-left: 2px solid var(--focus);
-  background: var(--sheen), var(--surface-1);
+  background: var(--surface-1);
 }
 
 .foundry .icon {
@@ -2616,12 +2451,11 @@ a.tree-box:hover {
   color: var(--text);
 }
 
-/* Selected: lit cyan, not inverted, so a row of chips reads as one control with one choice. */
+/* Selected: a cyan wash and edge, not inverted, so a row of chips reads as one control with one choice. */
 .chip[aria-pressed='true'] {
   background: var(--selected);
   border-color: var(--focus);
   color: var(--text);
-  box-shadow: 0 0 12px -2px var(--focus-glow);
 }
 
 .result-count {
@@ -2754,7 +2588,6 @@ a.tree-box:hover {
 .button--danger:hover {
   background: var(--keep);
   border-color: var(--keep);
-  box-shadow: 0 0 0 3px var(--keep-glow);
   color: var(--surface-1);
 }
 
@@ -2959,12 +2792,11 @@ a.tree-box:hover {
   background: var(--surface-2);
 }
 
-/* A charge bar: cyan rising to green as mastery fills. */
+/* Mastery fills in Orokin gold: flat, unlit. */
 .progress__fill {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, var(--focus), var(--safe));
-  box-shadow: 0 0 10px var(--focus-glow);
+  background: var(--gold);
   transition: width 240ms var(--ease-out);
 }
 
@@ -2976,8 +2808,7 @@ a.tree-box:hover {
   margin-top: 24px;
   padding: 16px 20px;
   border: 1px solid var(--edge-soft);
-  background: var(--sheen), var(--surface-1);
-  box-shadow: var(--shadow-panel);
+  background: var(--surface-1);
 }
 
 .panel__summary {
@@ -3105,9 +2936,9 @@ a.tree-box:hover {
   color: var(--text);
 }
 
+/* The current collection: a gold underside, as the current screen has. */
 .scope-tab[aria-pressed='true']::after {
-  background: var(--focus);
-  box-shadow: 0 0 8px var(--focus-glow);
+  background: var(--gold);
 }
 
 .scope-tab:focus-visible {
@@ -3121,7 +2952,7 @@ a.tree-box:hover {
 }
 
 .scope-tab[aria-pressed='true'] .scope-tab__count {
-  color: var(--focus);
+  color: var(--gold);
 }
 
 .filter-bar {
@@ -3198,7 +3029,6 @@ a.tree-box:hover {
 .filter-toggle[aria-pressed='true'] {
   background: var(--selected);
   border-color: var(--focus);
-  box-shadow: 0 0 12px -2px var(--focus-glow);
   color: var(--text);
 }
 
@@ -3237,7 +3067,6 @@ a.tree-box:hover {
 .filter-select[data-active] select {
   background: var(--selected);
   border-color: var(--focus);
-  box-shadow: 0 0 12px -2px var(--focus-glow);
 }
 
 .filter-select[data-active] .filter-select__chevron {
@@ -3577,8 +3406,7 @@ a.tree-box:hover {
   gap: 10px;
   padding: 12px;
   border: 1px solid var(--edge-soft);
-  background: var(--sheen), var(--surface-1);
-  box-shadow: var(--shadow-panel);
+  background: var(--surface-1);
 }
 
 .arsenal-tile__link {
@@ -3734,9 +3562,9 @@ a.tree-box:hover {
   max-width: 34rem;
   margin: 0 auto;
   padding: 8px 8px 8px 16px;
-  background: var(--sheen), var(--surface-2);
-  border: 1px solid var(--edge-medium);
-  box-shadow: inset 2px 0 0 var(--focus), var(--shadow-panel);
+  background: var(--surface-2);
+  border: 1px solid var(--edge-strong);
+  box-shadow: inset 2px 0 0 var(--focus);
   animation: update-bar-in 240ms var(--ease-out);
 }
 
