@@ -37,6 +37,25 @@ const PATHS = {
     </>
   ),
   done: <path d="M5 12.5l4.25 4.25L19 7" />,
+  // Home page tools (design plan 3.4): a blueprint sheet, inventory slots, a Foundry queue.
+  blueprint: (
+    <>
+      <path d="M5 4.5h11l3 3v12H5z" />
+      <path d="M8.5 10h7M8.5 13.5h7M8.5 17h4" />
+    </>
+  ),
+  slots: (
+    <>
+      <path d="M4.5 4.5h6.5v6.5H4.5zM13 4.5h6.5v6.5H13zM4.5 13h6.5v6.5H4.5z" />
+      <path d="M13 13h6.5v6.5H13z" strokeDasharray="2 2" />
+    </>
+  ),
+  queue: (
+    <>
+      <path d="M4.5 6h15M4.5 12h11M4.5 18h7" />
+      <path d="M17.5 15.5l2.5 2.5-2.5 2.5" />
+    </>
+  ),
   // Leaves the site: opens another site in a new tab.
   external: <path d="M13.5 5.5h5v5M18.5 5.5l-7.5 7.5M16.5 13.5v5h-11v-11h5" />,
   // Foundry time.

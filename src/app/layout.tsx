@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import Link from 'next/link';
-import { Barlow, Barlow_Semi_Condensed } from 'next/font/google';
+import { Barlow, Chakra_Petch, JetBrains_Mono } from 'next/font/google';
 import { HeaderSearch } from '@/components/HeaderSearch';
+import { NavLinks } from '@/components/NavLinks';
 import { SearchShortcut } from '@/components/SearchShortcut';
 import { ServiceWorkerManager } from '@/components/ServiceWorkerManager';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -10,6 +11,7 @@ import { weaponIndex } from '@/data/weapons';
 import './globals.css';
 
 // Self-hosted at build time by next/font, so no request leaves for a font service at runtime.
+// Three roles (docs/design-plan.md, section 3): body, display, telemetry.
 const barlow = Barlow({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
@@ -17,12 +19,36 @@ const barlow = Barlow({
   display: 'swap',
 });
 
-const barlowSemiCondensed = Barlow_Semi_Condensed({
+// Display: its letters have cut corners, the same chamfer as the panels.
+const chakraPetch = Chakra_Petch({
   subsets: ['latin'],
   weight: ['600', '700'],
-  variable: '--font-barlow-sc',
+  variable: '--font-chakra',
   display: 'swap',
 });
+
+// Telemetry: small data tags only (MR, copies, hours). Not preloaded, so it never holds up the
+// first paint; on a slow first visit the tags keep the fallback monospace.
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['500', '700'],
+  variable: '--font-jetbrains',
+  // Design plan 10.4: optional, so a slow connection keeps the fallback rather than reflowing.
+  display: 'optional',
+  preload: false,
+});
+
+/** The emblem: the app icon's glyph, two ingredients joining into what they build. */
+function Emblem() {
+  return (
+    <svg className="wordmark__emblem" width="20" height="20" viewBox="128 144 256 224" aria-hidden="true">
+      <rect x="128" y="144" width="72" height="72" fill="currentColor" />
+      <rect x="128" y="296" width="72" height="72" fill="currentColor" />
+      <path d="M200 180 H244 V332 H200 M244 256 H290" fill="none" stroke="currentColor" strokeWidth="16" />
+      <polygon points="314,206 384,206 384,282 360,306 290,306 290,230" fill="currentColor" />
+    </svg>
+  );
+}
 
 export const metadata: Metadata = {
   title: {
@@ -69,7 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="en"
       data-theme="dark"
-      className={`${barlow.variable} ${barlowSemiCondensed.variable}`}
+      className={`${barlow.variable} ${chakraPetch.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
@@ -80,14 +106,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="site-header">
           <div className="container site-header__inner">
             <Link href="/" className="wordmark">
+              <Emblem />
               Forgeline
             </Link>
             <HeaderSearch />
             <nav className="site-nav" aria-label="Main">
-              <Link href="/arsenal/">Arsenal</Link>
-              <Link href="/sweep/">Sweep</Link>
-              <Link href="/plan/">Plan</Link>
-              <Link href="/ingredients/">Ingredients</Link>
+              <NavLinks />
               <ThemeToggle />
             </nav>
           </div>

@@ -42,12 +42,15 @@ export function WeaponSearch({
   onSelect,
   placeholder,
   label = 'Search weapons',
+  filter,
 }: {
   variant: 'hero' | 'compact';
   /** Pick a weapon instead of opening its page (the build planner uses this). */
   onSelect?: (entry: SearchEntry) => void;
   placeholder?: string;
   label?: string;
+  /** Narrow the results, as the home page's category strip does. Keep it stable (memoised). */
+  filter?: (entry: SearchEntry) => boolean;
 }) {
   const router = useRouter();
   const id = useId();
@@ -78,9 +81,15 @@ export function WeaponSearch({
   }, [variant, ensureLoaded]);
 
   const trimmed = query.trim();
+  // With a filter (the home page's category strip), rank wider first so eight still survive it.
   const results = useMemo(
-    () => (searcher && trimmed ? searcher(trimmed, 8) : []),
-    [searcher, trimmed]
+    () =>
+      searcher && trimmed
+        ? filter
+          ? searcher(trimmed, 80).filter(filter).slice(0, 8)
+          : searcher(trimmed, 8)
+        : [],
+    [searcher, trimmed, filter]
   );
   const activeEntry = results[Math.min(active, results.length - 1)];
 

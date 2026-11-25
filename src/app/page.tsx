@@ -1,31 +1,114 @@
 import Link from 'next/link';
+import { HomeArsenalStats, SweepFigure } from '@/components/HomeArsenalStats';
+import { HomeSearch, type QuickPick } from '@/components/HomeSearch';
+import { Icon } from '@/components/Icon';
 import { WeaponArt } from '@/components/WeaponArt';
-import { WeaponSearch } from '@/components/WeaponSearch';
-import { ingredientWeapons, newWeapons } from '@/data/weapons';
+import { allWeapons, getWeapon, ingredientWeapons, newWeapons, weaponsInSlot } from '@/data/weapons';
 
-/** Spec 5.1: the home page is a single search box. */
+/** Weapons players check most, the ingredients they meet first (design plan 3.3). */
+const QUICK = ['bolto', 'lato', 'dual-skana', 'broken-war'];
+
+/**
+ * The home page, the terminal deck (design plan 3): the question, the search console with its
+ * category strip and quick picks, the three tools with their figures, and the player's own
+ * numbers once there are any. Spec 5.1 still holds: the search is the first thing to use.
+ */
 export default function HomePage() {
   const fresh = newWeapons();
+  const total = allWeapons().length;
   const ingredientCount = ingredientWeapons().length;
+  const counts = {
+    all: total,
+    ingredients: ingredientCount,
+    primary: weaponsInSlot('primary').length,
+    secondary: weaponsInSlot('secondary').length,
+    melee: weaponsInSlot('melee').length,
+  };
+  const quick: QuickPick[] = QUICK.flatMap((slug) => {
+    const weapon = getWeapon(slug);
+    return weapon ? [{ slug, name: weapon.name, slot: weapon.slot, image: weapon.image, thumb: weapon.thumb }] : [];
+  });
 
   return (
     <div className="home">
-      <h1 className="page-title">Can I sell this?</h1>
-      <p className="lede">
-        Type the weapon you are about to sell. Forgeline shows what it builds, how many copies the
-        recipe needs, and whether you can let it go.
-      </p>
+      <header className="home-hero">
+        <p className="eyebrow">
+          <span className="eyebrow__pulse" aria-hidden="true" />
+          {/* One run of text, so it wraps as a line on a phone rather than as columns. */}
+          <span>
+            Tenno Foundry Command{' '}
+            <span className="eyebrow__sep" aria-hidden="true">
+              {'//'}
+            </span>{' '}
+            {total} weapons indexed
+          </span>
+        </p>
+        <h1 className="page-title home-hero__title">Can I sell this?</h1>
+        <p className="lede home-hero__lede">
+          Instant sell-safe verdicts for every Warframe weapon. Keep what you need. Free the slots you
+          don&apos;t. Plan your next build.
+        </p>
+        <div className="home-hero__rule" aria-hidden="true" />
+      </header>
 
-      <WeaponSearch variant="hero" />
+      <HomeSearch counts={counts} quick={quick} />
 
-      <p className="search-hint">
-        Try <Link href="/w/bolto/">Bolto</Link>, <Link href="/w/lato/">Lato</Link> or{' '}
-        <Link href="/w/dual-skana/">Dual Skana</Link>.
-      </p>
+      <div className="tool-cards">
+        <Link href="/ingredients/" className="tool-card shape">
+          <span className="tool-card__head">
+            <Icon name="blueprint" size={22} className="tool-card__icon" />
+            <span className="eyebrow eyebrow--inline">Catalog</span>
+          </span>
+          <h2 className="tool-card__title">Ingredient Index</h2>
+          <p className="tool-card__lede">
+            Every weapon another recipe consumes, with what it builds and how many copies.
+          </p>
+          <span className="tool-card__figure telemetry">
+            {ingredientCount} <small>core weapons</small>
+          </span>
+          <span className="tool-card__cta">
+            View index <Icon name="arrow-right" size={14} />
+          </span>
+        </Link>
+
+        <Link href="/sweep/" className="tool-card shape">
+          <span className="tool-card__head">
+            <Icon name="slots" size={22} className="tool-card__icon" />
+            <span className="eyebrow eyebrow--inline">Inventory</span>
+          </span>
+          <h2 className="tool-card__title">Slot Sweep</h2>
+          <p className="tool-card__lede">
+            What you hold, sorted into what can go and what must stay, each with its reason.
+          </p>
+          <SweepFigure />
+          <span className="tool-card__cta">
+            Sweep now <Icon name="arrow-right" size={14} />
+          </span>
+        </Link>
+
+        <Link href="/plan/" className="tool-card shape">
+          <span className="tool-card__head">
+            <Icon name="queue" size={22} className="tool-card__icon" />
+            <span className="eyebrow eyebrow--inline">Foundry</span>
+          </span>
+          <h2 className="tool-card__title">Build Planner</h2>
+          <p className="tool-card__lede">
+            Every weapon down the chain, the stages to queue, the hours and the resources.
+          </p>
+          <span className="tool-card__figure tool-card__figure--quiet telemetry">Plan any build</span>
+          <span className="tool-card__cta">
+            Open planner <Icon name="arrow-right" size={14} />
+          </span>
+        </Link>
+      </div>
+
+      <HomeArsenalStats />
 
       {fresh.length > 0 && (
-        <section className="section">
-          <h2 className="section-title">New this month</h2>
+        <section className="section" aria-labelledby="new-weapons-title">
+          <h2 id="new-weapons-title" className="section-title">
+            New this month
+          </h2>
           <ul className="strip">
             {fresh.map((weapon) => (
               <li key={weapon.slug}>
@@ -38,15 +121,6 @@ export default function HomePage() {
           </ul>
         </section>
       )}
-
-      <section className="section prose">
-        <h2>{ingredientCount} weapons feed other recipes</h2>
-        <p>
-          The game never warns you before you sell one, and you usually find out weeks later when a
-          blueprint asks for it. <Link href="/ingredients/">See every ingredient weapon</Link>, what
-          it builds and how many copies each recipe needs.
-        </p>
-      </section>
     </div>
   );
 }

@@ -605,6 +605,16 @@ Basmu and Haalvu, events; Vastilok, Vericres and Zylok, Baro Ki'Teer). A test fa
 later gives one of them a route, so the list is reviewed rather than left stale. A starred weapon's
 own verdict now says it is a favourite, and the monthly refresh checks wiki and market links for
 new weapons, keeping the committed ones if either site is down or answers oddly.
+
+The design moved on again: docs/design-plan.md (kept out of git) is now the Master Design plan,
+followed with the review's technical and factual fixes. Its Phases 1 to 3 are done: the token
+system (palette, spacing, chamfer, depth, motion, layers), Chakra Petch, Barlow and JetBrains Mono,
+`.shape` 2.0 (edge and face as clipped pseudo-elements, so drop-shadows and glows follow the cuts),
+the command bar with a drawn emblem, a cyan hairline and the current page lit, Ctrl+K beside "/",
+and the home page as a terminal deck: search console with a category strip, quick picks with real
+weapon pictures, three tool cards with live figures, and the player's own numbers. Fixes kept over
+the plan: solid headlines (no gradient text), drawn icons (no emoji), tertiary text at 4.5:1 (the
+plan's measured 2.4 to 3.5), and no hover nudge on rows that hold controls.
 No schema bump: the flag is optional, so an old tab left open after a deploy still reads the arsenal
 rather than treating it as unreadable and writing an empty one back. What the data allows for the
 rest: build times, credit costs, vault status and the 45 Incarnon Genesis adapters are all in
