@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { FamilyTree, type TreeColumn, type TreeEdge } from '@/components/FamilyTree';
+import { FamilyTree } from '@/components/FamilyTree';
+import { treeColumns } from '@/components/family-tree-columns';
 import { Icon } from '@/components/Icon';
 import type { TileWeapon } from '@/components/parts/ArsenalTile';
 import { CodexFrame } from '@/components/parts/CodexFrame';
@@ -24,7 +25,7 @@ import {
   versionCallouts,
   versionsOf,
 } from '@/data/weapons';
-import { createEvaluator, explain, familyTree, type TreeNode } from '@/engine';
+import { createEvaluator, explain, familyTree } from '@/engine';
 import { shortTime } from '@/format/time';
 
 type Params = { slug: string };
@@ -61,57 +62,6 @@ const toTile = (weapon: Weapon): TileWeapon => ({
   thumb: weapon.thumb,
   mr: weapon.masteryReq,
 });
-
-/** The id of the weapon's own box in the tree, which every first-generation wire meets. */
-const SELF = 'self';
-
-/**
- * Flatten one direction of the engine's tree into generation columns, and the wires between them.
- * A weapon reached along two branches (a diamond) appears once per column, with both captions
- * joined and a wire to each parent. Wires always run the way materials flow: ingredient to product.
- */
-function generations(
-  roots: readonly TreeNode[],
-  side: 'before' | 'after',
-  caption: (node: TreeNode, parent: string | null) => string,
-  labels: (generation: number) => string
-): { columns: TreeColumn[]; edges: TreeEdge[] } {
-  const columns: TreeColumn[] = [];
-  const edges = new Map<string, TreeEdge>();
-  type Step = { node: TreeNode; parentId: string; parentName: string | null };
-  let frontier: Step[] = roots.map((node) => ({ node, parentId: SELF, parentName: null }));
-  for (let generation = 1; frontier.length > 0; generation++) {
-    const idOf = (slug: string) => `${side}-${generation}-${slug}`;
-    const merged = new Map<string, { id: string; weapon: TileWeapon; captions: string[] }>();
-    for (const { node, parentId, parentName } of frontier) {
-      const id = idOf(node.slug);
-      const entry = merged.get(node.slug) ?? { id, weapon: toTile(resolve(node.slug)), captions: [] };
-      entry.captions.push(caption(node, parentName));
-      merged.set(node.slug, entry);
-      const edge: TreeEdge =
-        side === 'before'
-          ? { from: id, to: parentId, copies: node.copies, far: 'from' }
-          : { from: parentId, to: id, copies: node.copies, far: 'to' };
-      edges.set(`${edge.from}>${edge.to}`, edge);
-    }
-    columns.push({
-      label: labels(generation),
-      boxes: [...merged.values()].map(({ id, weapon, captions }) => ({
-        id,
-        weapon,
-        caption: [...new Set(captions)].join(', '),
-      })),
-    });
-    frontier = frontier.flatMap(({ node }) =>
-      node.children.map((child) => ({
-        node: child,
-        parentId: idOf(node.slug),
-        parentName: resolve(node.slug).name,
-      }))
-    );
-  }
-  return { columns, edges: [...edges.values()] };
-}
 
 // Pages are pre-rendered with the empty-arsenal verdict: Check for the 46 ingredients, Safe for the
 // rest. PersonalVerdict re-renders the card in the browser once the player has an arsenal.
@@ -183,18 +133,17 @@ export default async function WeaponPage({ params }: { params: Promise<Params> }
 
   // The full depth, at most three steps each way in the current data.
   const tree = familyTree(recipeGraph, slug);
-  const before = generations(
-    tree.madeFrom,
-    'before',
-    (node, parent) => (parent ? `${node.copies} for ${parent}` : `${node.copies} needed`),
-    (generation) => (generation === 1 ? 'Made from' : 'Before that')
-  );
-  const after = generations(
-    tree.usedToBuild,
-    'after',
-    (node, parent) => (parent ? `uses ${node.copies} ${parent}` : `uses ${node.copies}`),
-    (generation) => (generation === 1 ? 'Used to build' : 'Then')
-  );
+  const tile = (s: string) => toTile(resolve(s));
+  const before = treeColumns(tree.madeFrom, 'before', {
+    self,
+    tile,
+    labels: (generation) => (generation === 1 ? 'Made from' : 'Before that'),
+  });
+  const after = treeColumns(tree.usedToBuild, 'after', {
+    self,
+    tile,
+    labels: (generation) => (generation === 1 ? 'Used to build' : 'Then'),
+  });
 
   return (
     <>

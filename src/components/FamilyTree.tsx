@@ -8,7 +8,8 @@ import { TreeWires } from './TreeWires';
  * is made from, the weapon itself framed in gold, and every generation it goes on to build, as
  * columns of Arsenal tiles that open each weapon's page. Each tile carries its mastery rank and,
  * once the arsenal is set up, the player's marks (owned, mastered, sold); under it, how it connects
- * to the column next to the weapon ("2 needed", "uses 1 Akbolto"). The deepest chain in the data is
+ * to the column next to it ("2 Lato needed for 2 Bolto", "1 Akbolto needed for Akjagara"; the
+ * counts are worked out in family-tree-columns.ts). The deepest chain in the data is
  * three steps each way, so at most seven columns; wide screens scroll sideways if they must,
  * phones read it top to bottom.
  *
