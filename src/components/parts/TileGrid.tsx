@@ -18,11 +18,14 @@ export function TileGrid({
   weapons,
   label,
   catalogue = [],
+  extra,
 }: {
   weapons: readonly TileWeapon[];
   label: string;
   /** Tile data for other weapons the panel may show, such as what these build. */
   catalogue?: readonly TileWeapon[];
+  /** More to show inside each tile, under its nameplate. Not interactive: the tile is one option. */
+  extra?: (weapon: TileWeapon) => React.ReactNode;
 }) {
   const router = useRouter();
   const { ready, arsenal } = useArsenal();
@@ -125,6 +128,7 @@ export function TileGrid({
               onClick={() => (selected === weapon.slug ? open(weapon.slug) : select(weapon.slug))}
             >
               <TileFace weapon={weapon} {...state} />
+              {extra && <span className="tile__extra">{extra(weapon)}</span>}
             </div>
           );
         })}

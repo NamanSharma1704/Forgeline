@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ScreenHeader, Telemetry } from '@/components/shell/ScreenHeader';
 import { IngredientIndex, type IngredientRow } from '@/components/IngredientIndex';
+import type { TileWeapon } from '@/components/parts/ArsenalTile';
 import { variantOf } from '@/data/variants';
 import { ingredientWeapons, resolve } from '@/data/weapons';
 
@@ -24,10 +25,33 @@ export default function IngredientsPage() {
       slot: weapon.slot,
       image: weapon.image,
       thumb: weapon.thumb,
+      mr: weapon.masteryReq,
+      // Made from weapons and used in a later recipe: a step in the middle of a chain.
+      intermediate: weapon.madeFrom.length > 0,
       builds,
       totalCopies: builds.reduce((n, build) => n + build.copies, 0),
     };
   });
+
+  // Tiles for what they build, for the inspect panel.
+  const catalogue: TileWeapon[] = [
+    ...new Map(
+      ingredientWeapons()
+        .flatMap((weapon) => weapon.usedToBuild)
+        .map((edge) => {
+          const target = resolve(edge.slug);
+          const tile: TileWeapon = {
+            slug: target.slug,
+            name: target.name,
+            slot: target.slot,
+            image: target.image,
+            thumb: target.thumb,
+            mr: target.masteryReq,
+          };
+          return [tile.slug, tile] as const;
+        })
+    ).values(),
+  ];
 
   return (
     <>
@@ -36,7 +60,7 @@ export default function IngredientsPage() {
         context={`${rows.length} weapons you should think twice about selling: each one goes into another weapon's recipe.`}
         telemetry={<Telemetry label="Weapons" value={rows.length} />}
       />
-      <IngredientIndex rows={rows} />
+      <IngredientIndex rows={rows} catalogue={catalogue} />
     </>
   );
 }

@@ -1,3 +1,4 @@
+import { SLOT_LABEL, type Slot } from '@/data/types';
 import { Icon } from './Icon';
 
 /**
@@ -87,5 +88,40 @@ export function FilterToggle({
     <button type="button" className="filter-toggle" aria-pressed={pressed} onClick={onToggle}>
       {children}
     </button>
+  );
+}
+
+/**
+ * The slot filter as the game's Arsenal picks a category: one drawn icon per slot in a compact
+ * segmented control, All first (design plan 7 and 10). Each icon carries its slot's name for
+ * assistive technology and as a tooltip; the pressed one is lit cyan, as active filters are.
+ */
+export function SlotTabs({
+  slots,
+  value,
+  onChange,
+}: {
+  slots: readonly Slot[];
+  value: Slot | 'all';
+  onChange: (value: Slot | 'all') => void;
+}) {
+  return (
+    <div className="slot-tabs" role="group" aria-label="Slot">
+      <button type="button" className="slot-tab slot-tab--all" aria-pressed={value === 'all'} onClick={() => onChange('all')}>
+        All
+      </button>
+      {slots.map((slot) => (
+        <button
+          key={slot}
+          type="button"
+          className="slot-tab"
+          aria-pressed={value === slot}
+          onClick={() => onChange(slot)}
+          title={SLOT_LABEL[slot]}
+        >
+          <Icon name={slot} size={20} label={SLOT_LABEL[slot]} />
+        </button>
+      ))}
+    </div>
   );
 }

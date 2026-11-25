@@ -2,42 +2,49 @@
 
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import type { RecipeSummary } from '@/data/recipe';
 import type { RecipeFile } from '@/data/recipe-file';
+import { DECAYING_RESOURCES, RARE_RESOURCES } from '@/data/resources';
 import { foundryTime, planBuild, totalResources, type PlanLine } from '@/engine';
 import { toEngineArsenal } from '@/store/arsenal';
 import { useArsenal } from '@/store/useArsenal';
 import { useRecipeGraph } from '@/store/useRecipeGraph';
 import { useStaticJson } from '@/store/useStaticJson';
-import { Icon } from './Icon';
+import type { TileWeapon } from './parts/ArsenalTile';
+import { FoundrySlot } from './parts/FoundrySlot';
+import { LiveTile } from './parts/LiveTile';
+import { RecipeSlots } from './parts/RecipeSlots';
 import { QtyStepper } from './QtyStepper';
+import { Telemetry } from './shell/ScreenHeader';
 import { StatusPicker } from './StatusPicker';
 import { longTime, shortTime } from '@/format/time';
-import { WeaponArt } from './WeaponArt';
 import { WeaponSearch } from './WeaponSearch';
 
 /**
- * The build planner (spec 5.6): pick a weapon you want, see every weapon needed down the whole
- * chain, what you already hold, and what is left in the order to do it. Each step carries its
- * status picker, so marking what you get shrinks the plan as you go. The target lives in the URL
- * (?w=akjagara), so a plan can be bookmarked or shared.
+ * The build planner (spec 5.6) as the Foundry (design plan 9): pick a weapon you want, and see
+ * every weapon needed down the whole chain as a queue of stage trays. A blueprint header with the
+ * target's tile and its Foundry times; each stage a tray of blueprint cards, each with the weapon's
+ * tile, its build time, the player's status and copies for it, and what that step takes as Foundry
+ * slots; then the materials for everything left, as slots too. Marking what you get shrinks the
+ * plan as you go. The target lives in the URL (?w=akjagara), so a plan can be bookmarked or shared.
  */
 
 const SUGGESTED = ['akjagara', 'redeemer', 'proboscis-cernos', 'dual-raza', 'lesion', 'twin-basolk'];
 
 const plural = (n: number, one: string, many: string) => (n === 1 ? one : many);
 
-/** What a stage heading says about when it can start. */
-function stageLabel(number: number, last: number) {
-  if (last === 1) return 'Start now';
-  if (number === 1) return 'Stage 1: start now';
-  if (number === last) return `Stage ${number}: the final build`;
-  return `Stage ${number}: once what it needs is built`;
+/** A stage tray's code and when it can start: "STAGE 01 // start now", "FINAL // the final build". */
+function stageLabel(number: number, last: number): [string, string] {
+  const code = last > 1 && number === last ? 'Final' : `Stage ${String(number).padStart(2, '0')}`;
+  if (number === 1) return [code, 'start now'];
+  if (number === last) return [code, 'the final build'];
+  return [code, `once stage ${String(number - 1).padStart(2, '0')} is built`];
 }
 
 export function BuildPlanner() {
   const [target, setTarget] = useState<string | null>(null);
   const { arsenal } = useArsenal();
-  const { graph, slots, status } = useRecipeGraph(true);
+  const { graph, slots, ranks, status } = useRecipeGraph(true);
   const recipes = useStaticJson<RecipeFile>('/materials.json', target !== null);
 
   // Read the target from the address once, after hydration (pages are pre-rendered without it).
@@ -68,25 +75,31 @@ export function BuildPlanner() {
   );
 
   const name = (slug: string) => graph?.get(slug).name ?? slug;
-  const art = (slug: string) => ({
+  const tile = (slug: string): TileWeapon => ({
+    slug,
     name: name(slug),
     slot: slots?.get(slug) ?? 'primary',
     thumb: `img/thumb/${slug}.webp`,
     image: `img/${slug}.webp`,
+    mr: ranks?.get(slug) ?? 0,
   });
 
-  /** What one build of this weapon takes: weapon ingredients first, then everything else. */
-  const recipeText = (line: PlanLine) => {
-    const parts = [
-      ...(graph?.get(line.slug).madeFrom ?? []).map(
-        (edge) => `${name(edge.slug)}${edge.copies > 1 ? ` ${edge.copies}` : ''}`
-      ),
-      ...(recipes?.[line.slug]?.materials ?? []).map(
-        (m) => `${m.name}${m.count > 1 ? ` ${m.count.toLocaleString('en-GB')}` : ''}`
-      ),
-    ];
-    return parts.length ? parts.join(', ') : null;
-  };
+  /** What one step takes, for every copy it makes: its weapons, then the rest. */
+  const stepRecipe = (line: PlanLine): RecipeSummary => ({
+    slug: line.slug,
+    name: name(line.slug),
+    weapons: (graph?.get(line.slug).madeFrom ?? []).map((edge) => ({
+      slug: edge.slug,
+      name: name(edge.slug),
+      copies: edge.copies * line.toMake,
+    })),
+    materials: (recipes?.[line.slug]?.materials ?? []).map((material) => ({
+      ...material,
+      count: material.count * line.toMake,
+    })),
+  });
+  const artFor = (line: PlanLine) =>
+    Object.fromEntries((graph?.get(line.slug).madeFrom ?? []).map((edge) => [edge.slug, tile(edge.slug)]));
 
   return (
     <>
@@ -122,109 +135,112 @@ export function BuildPlanner() {
 
       {plan && (
         <>
-          <section className="plan-head" aria-labelledby="plan-title">
-            <div className="plan-head__art shape">
-              <WeaponArt weapon={art(plan.target)} size="medium" />
+          <section className="blueprint-head shape shape--frame" aria-labelledby="plan-title">
+            <div className="blueprint-head__tile">
+              <LiveTile weapon={tile(plan.target)} href={`/w/${plan.target}/`} />
             </div>
-            <div>
-              <h2 id="plan-title" className="section-title plan-head__title">
-                Build {name(plan.target)}
+            <div className="blueprint-head__body">
+              <p className="blueprint-head__kicker">Target blueprint</p>
+              <h2 id="plan-title" className="blueprint-head__title">
+                {name(plan.target)}
               </h2>
               <p className="muted">
                 {plan.lines.length - 1 === 0
                   ? 'No other weapons go into it.'
-                  : `${plan.lines.length - 1} other ${plural(plan.lines.length - 1, 'weapon', 'weapons')} in the chain, ${plan.steps.length} ${plural(plan.steps.length, 'step', 'steps')} left.`}{' '}
-                <Link href={`/w/${plan.target}/`}>See {name(plan.target)}</Link>
+                  : `${plan.lines.length - 1} other ${plural(plan.lines.length - 1, 'weapon', 'weapons')} in the chain, ${plan.steps.length} ${plural(plan.steps.length, 'step', 'steps')} left.`}
               </p>
             </div>
-          </section>
-
-          <section className="section" aria-labelledby="plan-steps">
-            <h3 id="plan-steps" className="verdict__label">
-              Still to do, in order
-            </h3>
-
             {foundry && foundry.fastest > 0 && (
-              <div className="foundry">
-                <Icon name="clock" size={20} />
-                <div>
-                  <p>
-                    <strong>{longTime(foundry.fastest)}</strong> in the Foundry at best, over{' '}
-                    {foundry.stages.length} {plural(foundry.stages.length, 'stage', 'stages')}.
-                  </p>
-                  <p className="muted">
-                    That is starting each build as soon as what it needs is ready: the Foundry runs
-                    any number at once.
-                    {foundry.oneAtATime > foundry.fastest &&
-                      ` One build at a time, it would take ${longTime(foundry.oneAtATime)}.`}
-                    {foundry.unknown.length > 0 &&
-                      ` ${foundry.unknown.map(name).join(' and ')} ${plural(foundry.unknown.length, 'has', 'have')} no build time in the data, so ${plural(foundry.unknown.length, 'it is', 'they are')} not counted.`}
-                  </p>
-                </div>
+              <div className="blueprint-head__time">
+                <Telemetry label="Fastest" value={shortTime(foundry.fastest)} />
+                {foundry.oneAtATime > foundry.fastest && (
+                  <Telemetry label="One at a time" value={shortTime(foundry.oneAtATime)} />
+                )}
               </div>
             )}
+          </section>
+          {foundry && foundry.fastest > 0 && (
+            <p className="verdict__footnote">
+              {longTime(foundry.fastest)} in the Foundry at best, starting each build as soon as what it
+              needs is ready: the Foundry runs any number at once.
+              {foundry.unknown.length > 0 &&
+                ` ${foundry.unknown.map(name).join(' and ')} ${plural(foundry.unknown.length, 'has', 'have')} no build time in the data, so ${plural(foundry.unknown.length, 'it is', 'they are')} not counted.`}
+            </p>
+          )}
 
-            {(foundry ? foundry.stages : [{ number: 1, steps: plan.steps }]).map((stage) => (
-              <div key={stage.number} className="plan-stage">
-                {foundry && (
-                  <h4 className="plan-stage__label">
-                    {stageLabel(stage.number, foundry.stages.length)}
+          <section className="section" aria-labelledby="plan-steps">
+            <h3 id="plan-steps" className="section-title">
+              Foundry queue
+            </h3>
+
+            {(foundry ? foundry.stages : [{ number: 1, steps: plan.steps }]).map((stage, _, stages) => {
+              const [code, when] = stageLabel(stage.number, stages.length);
+              return (
+                <div key={stage.number} className="stage-tray">
+                  <h4 className="stage-tray__label">
+                    <span className="stage-tray__code">{code}</span>
+                    <span aria-hidden="true">{' // '}</span>
+                    <span className="sr-only">: </span>
+                    {when}
                   </h4>
-                )}
-                <ol className="plan-steps">
-                  {stage.steps.map((step) => {
-                    const recipe = recipeText(step);
-                    const verb = step.craftable ? 'Build' : 'Get';
-                    const isTarget = step.slug === plan.target;
-                    const seconds = recipes?.[step.slug]?.buildTime;
-                    return (
-                      <li key={step.slug} className="plan-step">
-                        <div className="plan-step__main">
-                          <WeaponArt weapon={art(step.slug)} />
-                          <div>
-                            <p className="plan-step__title">
-                              <strong>
-                                {verb} {step.toMake}
-                              </strong>{' '}
-                              <Link href={`/w/${step.slug}/`}>{name(step.slug)}</Link>
+                  <ol className="stage-tray__cards">
+                    {stage.steps.map((step) => {
+                      const verb = step.craftable ? 'Build' : 'Get';
+                      const isTarget = step.slug === plan.target;
+                      const seconds = recipes?.[step.slug]?.buildTime;
+                      const recipe = stepRecipe(step);
+                      const hasSlots = recipe.weapons.length > 0 || recipe.materials.length > 0;
+                      return (
+                        <li key={step.slug} className="blueprint blueprint--plan">
+                          <LiveTile weapon={tile(step.slug)} size="small" href={`/w/${step.slug}/`} />
+                          <div className="blueprint__body">
+                            <p className="blueprint__head">
+                              <span className="blueprint__name">
+                                {verb} {step.toMake > 1 ? `${step.toMake} ` : ''}
+                                {name(step.slug)}
+                              </span>
                               {recipes && (
-                                <span className="plan-step__time">
+                                <span className="blueprint__needs">
                                   {seconds
                                     ? `${shortTime(seconds)}${step.toMake > 1 ? ', all at once' : ''}`
-                                    : 'time unknown'}
+                                    : 'Time unknown'}
                                 </span>
                               )}
                             </p>
-                            <p className="plan-step__detail">
+                            <p className="blueprint__note">
                               {step.usedFor.length > 0 &&
                                 `For ${step.usedFor.map((u) => `${name(u.slug)} (${u.copies})`).join(', ')}. `}
-                              {step.have > 0 && `You have ${step.have} of the ${step.needed} needed. `}
-                              {recipe && `${step.toMake > 1 ? 'Each needs' : 'Needs'} ${recipe}.`}
+                              {step.have > 0 && `You have ${step.have} of the ${step.needed} needed.`}
                             </p>
+                            {!isTarget && (
+                              <div className="blueprint__controls">
+                                <StatusPicker slug={step.slug} name={name(step.slug)} size="small" />
+                                {step.needed > 1 && <QtyStepper slug={step.slug} name={name(step.slug)} />}
+                              </div>
+                            )}
                           </div>
-                        </div>
-                        {!isTarget && (
-                          <div className="plan-step__controls">
-                            <StatusPicker slug={step.slug} name={name(step.slug)} size="small" />
-                            <QtyStepper slug={step.slug} name={name(step.slug)} />
-                          </div>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ol>
-              </div>
-            ))}
+                          {hasSlots && (
+                            <div className="blueprint__slots">
+                              <RecipeSlots recipe={recipe} art={artFor(step)} />
+                            </div>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </div>
+              );
+            })}
             <p className="verdict__footnote">
-              Mark what you get as you go: copies you hold count towards the plan, and the steps
-              below them drop away. Times assume you build every step; a weapon bought ready-made
-              from the Market takes no Foundry time.
+              Mark what you get as you go: copies you hold count towards the plan, and the steps below
+              them drop away. Times assume you build every step; a weapon bought ready-made from the
+              Market takes no Foundry time.
             </p>
           </section>
 
           {plan.lines.length > 1 && (
             <section className="section" aria-labelledby="plan-all">
-              <h3 id="plan-all" className="verdict__label">
+              <h3 id="plan-all" className="section-title">
                 Every weapon in the chain
               </h3>
               <div className="table-wrap shape">
@@ -242,7 +258,7 @@ export function BuildPlanner() {
                       <tr key={line.slug}>
                         <th scope="row">
                           <Link href={`/w/${line.slug}/`} className="cell-weapon">
-                            <WeaponArt weapon={art(line.slug)} />
+                            <span className="cell-weapon__mr">MR {ranks?.get(line.slug) ?? 0}</span>
                             {name(line.slug)}
                           </Link>
                         </th>
@@ -259,14 +275,23 @@ export function BuildPlanner() {
 
           {totals && totals.length > 0 && (
             <section className="section" aria-labelledby="plan-resources">
-              <h3 id="plan-resources" className="verdict__label">
-                Resources for the steps left
+              <h3 id="plan-resources" className="section-title">
+                Materials for the steps left
               </h3>
-              <ul className="resource-list">
+              <ul className="recipe-slots materials">
                 {totals.map((total) => (
                   <li key={total.name}>
-                    <span>{total.name}</span>
-                    <span className="resource-list__count">{total.count.toLocaleString('en-GB')}</span>
+                    <FoundrySlot
+                      name={total.name}
+                      need={total.count}
+                      tag={
+                        DECAYING_RESOURCES.has(total.name)
+                          ? 'Decays daily'
+                          : RARE_RESOURCES.has(total.name)
+                            ? 'Rare'
+                            : undefined
+                      }
+                    />
                   </li>
                 ))}
               </ul>

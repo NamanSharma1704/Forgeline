@@ -112,8 +112,9 @@ describe('the browser graph file', () => {
     }
   });
 
+  // 50,000 since ranks joined the file (tiles show them): about 44,300 today, room for new weapons.
   it('stays small', () => {
-    expect(JSON.stringify(toGraphFile(graphWeapons())).length).toBeLessThan(45_000);
+    expect(JSON.stringify(toGraphFile(graphWeapons())).length).toBeLessThan(50_000);
   });
 });
 

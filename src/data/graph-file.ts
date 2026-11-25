@@ -19,6 +19,8 @@ export interface GraphFileNode {
   readonly t: Slot;
   /** max rank */
   readonly r: number;
+  /** mastery rank needed, when above 0: tiles show it (design plan 11.1) */
+  readonly m?: number;
   /** used to build: [slug, copies] */
   readonly u?: readonly (readonly [string, number])[];
   /** the Incarnon Genesis it can take */
@@ -51,7 +53,7 @@ export function decodeHard(code: string): HardToGet | null {
 }
 
 export function toGraphFile(
-  weapons: readonly (Pick<Weapon, 'slug' | 'name' | 'slot' | 'maxRank' | 'usedToBuild'> & {
+  weapons: readonly (Pick<Weapon, 'slug' | 'name' | 'slot' | 'maxRank' | 'masteryReq' | 'usedToBuild'> & {
     readonly incarnon?: string;
     readonly hardToGet?: HardToGet;
   })[]
@@ -61,6 +63,7 @@ export function toGraphFile(
     n: w.name,
     t: w.slot,
     r: w.maxRank,
+    ...(w.masteryReq > 0 ? { m: w.masteryReq } : {}),
     ...(w.usedToBuild.length ? { u: w.usedToBuild.map((e) => [e.slug, e.copies] as const) } : {}),
     ...(w.incarnon ? { i: w.incarnon } : {}),
     ...(w.hardToGet ? { h: encodeHard(w.hardToGet) } : {}),

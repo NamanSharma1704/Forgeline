@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useId, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { SLOT_LABEL, type OwnershipStatus, type Slot } from '@/data/types';
 import { VARIANT_LABEL, VARIANT_ORDER, type Variant } from '@/data/variants';
 import { normalise } from '@/search/rank';
@@ -17,12 +17,15 @@ import {
 } from '@/store/arsenal';
 import { arsenalActions, useArsenal } from '@/store/useArsenal';
 import { FavouriteToggle } from './FavouriteToggle';
-import { FilterSearch, FilterSelect } from './Filters';
+import { FilterSearch, FilterSelect, SlotTabs } from './Filters';
 import { useScreenActions } from './shell/actions';
 import { Icon } from './Icon';
 import { QtyStepper } from './QtyStepper';
 import { StatusPicker } from './StatusPicker';
+import type { TileWeapon } from './parts/ArsenalTile';
+import { TileGrid } from './parts/TileGrid';
 import { QuickSetup } from './QuickSetup';
+import { Telemetry } from './shell/ScreenHeader';
 import { WeaponArt, type ArtWeapon } from './WeaponArt';
 
 /**
@@ -55,25 +58,6 @@ const SCOPE_LABEL: Record<Scope, string> = {
 };
 
 const isIngredient = (row: ArsenalRow) => row.role === 'ingredient' || row.role === 'both';
-
-function StatusSelect({ slug, name }: { slug: string; name: string }) {
-  const { ready, arsenal } = useArsenal();
-  return (
-    <select
-      className="tile-select"
-      aria-label={`Your ${name}`}
-      value={ready ? statusIn(arsenal, slug) : ''}
-      onChange={(event) => arsenalActions.setStatus(slug, event.target.value as OwnershipStatus)}
-    >
-      {!ready && <option value="">Loading</option>}
-      {STATUSES.map((status) => (
-        <option key={status} value={status}>
-          {STATUS_LABEL[status]}
-        </option>
-      ))}
-    </select>
-  );
-}
 
 function Starters({ rows }: { rows: readonly ArsenalRow[] }) {
   const { ready, arsenal } = useArsenal();
@@ -207,6 +191,20 @@ export function ArsenalManager({
   };
 
   const slots = SLOT_ORDER.filter((candidate) => rows.some((row) => row.slot === candidate));
+
+  // Tiles for the grid, and for anything the inspect panel shows that the filters hide.
+  const toTile = (row: ArsenalRow): TileWeapon => ({ ...row, mr: row.masteryReq });
+  const catalogue = useMemo(() => rows.map(toTile), [rows]);
+  const visibleTiles = useMemo(() => visible.map(toTile), [visible]);
+
+  // Orbiter setup opens by itself only while nothing is marked; after that it is the player's to open.
+  const setupPanel = useRef<HTMLDetailsElement>(null);
+  const setupDecided = useRef(false);
+  useEffect(() => {
+    if (!ready || setupDecided.current || !setupPanel.current) return;
+    setupPanel.current.open = recipeMarked === 0;
+    setupDecided.current = true;
+  }, [ready, recipeMarked, setupOpen]);
   const filtered = slot !== 'all' || variant !== 'all' || status !== 'any' || text.trim() !== '';
   const clearFilters = () => {
     setSlot('all');
@@ -217,7 +215,28 @@ export function ArsenalManager({
 
   return (
     <>
-      <section className="arsenal-summary" aria-label="Progress">
+      <section className="mastery-header" aria-label="Progress">
+        <div className="mastery-header__figures">
+          <Telemetry
+            label="Mastered"
+            value={
+              <>
+                {ready ? totals.masteryDone : '…'}
+                <small>/{rows.length}</small>
+              </>
+            }
+          />
+          <Telemetry label="Owned" value={ready ? totals.owned : '…'} />
+          <Telemetry
+            label="Recipe weapons marked"
+            value={
+              <>
+                {ready ? recipeMarked : '…'}
+                <small>/{scopeCount.recipe}</small>
+              </>
+            }
+          />
+        </div>
         <div
           className="progress"
           role="progressbar"
@@ -228,13 +247,8 @@ export function ArsenalManager({
         >
           <span className="progress__fill" style={{ width: `${ready ? masteredShare * 100 : 0}%` }} />
         </div>
-        <p className="arsenal-summary__line">
-          <strong>{ready ? totals.masteryDone : '…'}</strong> of {rows.length} weapons mastered
-          {ready && totals.owned > 0 && <span className="muted"> · {totals.owned} owned, not mastered yet</span>}
-        </p>
-        <p className="arsenal-summary__line muted">
-          Recipe weapons marked: {ready ? recipeMarked : '…'} of {scopeCount.recipe}. These decide every
-          Keep or Safe verdict on the site.
+        <p className="mastery-header__note">
+          The recipe weapons decide every Keep or Safe verdict on the site.
           {ready && recipeMarked > 0 && !setupOpen && (
             <>
               {' '}
@@ -249,31 +263,37 @@ export function ArsenalManager({
       {setupOpen ? (
         <QuickSetup rows={recipeRows} onClose={() => setSetupOpen(false)} />
       ) : (
-        ready &&
-        recipeMarked === 0 && (
-          <section className="setup-banner panel" aria-labelledby="setup-banner-title">
-            <div>
-              <h2 id="setup-banner-title" className="setup__title">
-                Quick setup, about two minutes
-              </h2>
-              <p className="muted">
-                Mark the {scopeCount.recipe} weapons that decide every verdict, one mastery-rank group at
-                a time. A tap changes a weapon, and a whole group can be marked mastered at once.
-              </p>
+        ready && (
+          <details ref={setupPanel} className="setup-panel shape shape--frame">
+            <summary className="setup-panel__summary">
+              <Icon name="blueprint" size={20} />
+              <span className="setup-panel__title">Orbiter setup</span>
+              <span className="setup-panel__state">
+                {recipeMarked === 0 ? 'Start here' : `${recipeMarked} of ${scopeCount.recipe} marked`}
+              </span>
+              <Icon name="arrow-down" size={16} className="setup-panel__chevron" />
+            </summary>
+            <div className="setup-panel__body">
+              <div className="setup-panel__part">
+                <h2 className="setup-panel__heading">Quick setup, about two minutes</h2>
+                <p className="muted">
+                  Mark the {scopeCount.recipe} weapons that decide every verdict, one mastery-rank group at
+                  a time. A tap changes a weapon, and a whole group can be marked mastered at once.
+                </p>
+                <button type="button" className="button" onClick={() => setSetupOpen(true)}>
+                  Start quick setup
+                </button>
+              </div>
+              {starters.length > 0 && (
+                <div className="setup-panel__part">
+                  <h2 className="setup-panel__heading">Starting out?</h2>
+                  <p className="muted">Tap the starter weapons you picked to mark them Owned.</p>
+                  <Starters rows={starters} />
+                </div>
+              )}
             </div>
-            <button type="button" className="button" onClick={() => setSetupOpen(true)}>
-              Start quick setup
-            </button>
-          </section>
+          </details>
         )
-      )}
-
-      {starters.length > 0 && (
-        <details className="panel">
-          <summary className="panel__summary">Starting out? Mark your tutorial weapons</summary>
-          <p className="muted panel__intro">Tap the starter weapons you picked to mark them Owned.</p>
-          <Starters rows={starters} />
-        </details>
       )}
 
       <div className="arsenal-filters">
@@ -294,14 +314,7 @@ export function ArsenalManager({
 
         <div className="filter-bar">
           <FilterSearch id={`${id}-text`} label="Filter by name" value={text} placeholder="Filter by name" onChange={setText} />
-          <FilterSelect id={`${id}-slot`} label="Slot" value={slot} active={slot !== 'all'} onChange={(value) => setSlot(value as Slot | 'all')}>
-            <option value="all">Any slot</option>
-            {slots.map((candidate) => (
-              <option key={candidate} value={candidate}>
-                {SLOT_LABEL[candidate]}
-              </option>
-            ))}
-          </FilterSelect>
+          <SlotTabs slots={slots} value={slot} onChange={setSlot} />
           <FilterSelect
             id={`${id}-variant`}
             label="Variant"
@@ -384,34 +397,25 @@ export function ArsenalManager({
           ))}
         </ul>
       ) : (
-        <ul className="arsenal-grid">
-          {visible.map((row) => (
-            <li key={row.slug} className="arsenal-tile">
-              <Link href={`/w/${row.slug}/`} className="arsenal-tile__link">
-                <WeaponArt weapon={row} size="medium" />
-                <span className="arsenal-tile__name">{row.name}</span>
-              </Link>
-              <StatusSelect slug={row.slug} name={row.name} />
-            </li>
-          ))}
-        </ul>
+        <TileGrid weapons={visibleTiles} catalogue={catalogue} label="Weapons" />
       )}
 
-      <section className="section panel files" aria-labelledby={`${id}-files`}>
-        <h2 id={`${id}-files`} className="section-title">
-          Keep a copy
-        </h2>
-        <p className="muted">
-          Your arsenal lives in this browser only. Save it to a file to move it to another device, or
-          to get it back after clearing your browser data.
-        </p>
+      <section className="utility-bar" aria-labelledby={`${id}-files`}>
+        <div className="utility-bar__text">
+          <h2 id={`${id}-files`} className="utility-bar__title">
+            Arsenal data
+          </h2>
+          <p className="utility-bar__note">
+            Saved in this browser only. Save a file to move it to another device or keep it safe.
+          </p>
+        </div>
         <div className="files__actions">
-          <button type="button" className="button" onClick={download} disabled={!ready || totals.recorded === 0}>
-            <Icon name="download" size={20} />
+          <button type="button" className="button button--small" onClick={download} disabled={!ready || totals.recorded === 0}>
+            <Icon name="download" size={18} />
             Save to a file
           </button>
-          <button type="button" className="button" onClick={() => fileInput.current?.click()}>
-            <Icon name="upload" size={20} />
+          <button type="button" className="button button--small" onClick={() => fileInput.current?.click()}>
+            <Icon name="upload" size={18} />
             Load a file
           </button>
           <input
@@ -425,7 +429,7 @@ export function ArsenalManager({
           />
           <button
             type="button"
-            className="button button--quiet"
+            className="button button--small button--quiet"
             onClick={() => setFile({ kind: 'confirm-clear' })}
             disabled={!ready || totals.recorded === 0}
           >

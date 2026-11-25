@@ -5,12 +5,11 @@ import { sweep } from '@/engine';
 import { tally, toEngineArsenal } from '@/store/arsenal';
 import { useArsenal } from '@/store/useArsenal';
 import { useRecipeGraph } from '@/store/useRecipeGraph';
-import { Telemetry } from './shell/ScreenHeader';
 
 /**
- * The player's own figures, read from this browser: for the console's launchers (design plan 5)
- * and the Slot Sweep's header. Pages are pre-rendered with no arsenal, so each shows a prompt, or
- * nothing, until the arsenal is read: never a row of zeros presented as fact.
+ * The player's own figures, read from this browser, for the console's launchers (design plan 5).
+ * Pages are pre-rendered with no arsenal, so each shows a prompt until the arsenal is read: never a
+ * row of zeros presented as fact.
  */
 function useArsenalSummary() {
   const { ready, arsenal } = useArsenal();
@@ -20,13 +19,6 @@ function useArsenalSummary() {
   const { graph } = useRecipeGraph(ready && held > 0);
   const safe = useMemo(() => (graph && held > 0 ? sweep(graph, entries).safe.length : null), [graph, entries, held]);
   return { ready, counts, held, safe };
-}
-
-/** The Slot Sweep header's figure: slots that can be freed, once there is an arsenal to sweep. */
-export function FreeableTelemetry() {
-  const { ready, held, safe } = useArsenalSummary();
-  if (!ready || held === 0 || safe === null) return null;
-  return <Telemetry label="Freeable" value={safe} />;
 }
 
 /** The Sweep launcher's figure: how many held weapons can go, or a prompt before there are any. */

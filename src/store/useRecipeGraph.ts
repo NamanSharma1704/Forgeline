@@ -15,6 +15,8 @@ import { createGraph, type RecipeGraph } from '@/engine';
 interface Loaded {
   readonly graph: RecipeGraph;
   readonly slots: ReadonlyMap<string, Slot>;
+  /** Mastery rank needed per weapon, for tiles; 0 when the file leaves it out. */
+  readonly ranks: ReadonlyMap<string, number>;
 }
 
 let pending: Promise<Loaded> | null = null;
@@ -29,6 +31,7 @@ function loadGraph(): Promise<Loaded> {
       .then((nodes) => ({
         graph: createGraph(fromGraphFile(nodes)),
         slots: new Map(nodes.map((node) => [node.s, node.t])),
+        ranks: new Map(nodes.map((node) => [node.s, node.m ?? 0])),
       }));
     pending.catch(() => {
       pending = null;
@@ -38,19 +41,19 @@ function loadGraph(): Promise<Loaded> {
 }
 
 export type GraphState =
-  | { status: 'idle' | 'loading' | 'error'; graph: null; slots: null }
-  | { status: 'ready'; graph: RecipeGraph; slots: ReadonlyMap<string, Slot> };
+  | { status: 'idle' | 'loading' | 'error'; graph: null; slots: null; ranks: null }
+  | { status: 'ready'; graph: RecipeGraph; slots: ReadonlyMap<string, Slot>; ranks: ReadonlyMap<string, number> };
 
 export function useRecipeGraph(enabled = true): GraphState {
-  const [state, setState] = useState<GraphState>({ status: 'idle', graph: null, slots: null });
+  const [state, setState] = useState<GraphState>({ status: 'idle', graph: null, slots: null, ranks: null });
 
   useEffect(() => {
     if (!enabled || state.status === 'ready' || state.status === 'loading') return;
     let live = true;
-    setState({ status: 'loading', graph: null, slots: null });
+    setState({ status: 'loading', graph: null, slots: null, ranks: null });
     loadGraph().then(
       (loaded) => live && setState({ status: 'ready', ...loaded }),
-      () => live && setState({ status: 'error', graph: null, slots: null })
+      () => live && setState({ status: 'error', graph: null, slots: null, ranks: null })
     );
     return () => {
       live = false;

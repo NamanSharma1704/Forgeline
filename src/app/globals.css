@@ -2352,113 +2352,102 @@ a.variant-tab:hover {
   text-decoration-color: currentColor;
 }
 
-.plan-head {
-  display: flex;
-  align-items: center;
-  gap: 16px 20px;
-  margin-top: 40px;
-}
-
-.plan-head__art {
-  --cut: 14px;
-  padding: 10px;
-}
-
-.plan-head__title {
-  margin-bottom: 4px;
-}
-
-.plan-steps {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--edge-soft);
-  counter-reset: step;
-}
-
-.plan-step {
+/*
+ * The Foundry (design plan 9): a blueprint header with the target's tile and its Foundry times,
+ * then stage trays of blueprint cards, then the materials as Foundry slots.
+ */
+.blueprint-head {
+  --cut: var(--chamfer-md);
+  --shape-fill: var(--surface-1);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: 150px minmax(0, 1fr) auto;
   align-items: center;
-  gap: 10px 20px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--edge-soft);
+  gap: 16px 24px;
+  margin-top: 28px;
+  padding: 16px 20px;
 }
 
-.plan-step__main {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.plan-step__title strong {
-  font-weight: 700;
-}
-
-.plan-step__detail {
-  margin-top: 2px;
-  color: var(--text-2);
-  font-size: var(--step--1);
-  max-width: var(--measure);
-}
-
-.plan-step__time {
-  margin-left: 10px;
+.blueprint-head__kicker {
   color: var(--text-3);
-  font-size: var(--step--1);
-  font-variant-numeric: tabular-nums;
+  font: 600 0.6875rem / 1.2 var(--font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
-/* Foundry time: one line of answer, one of how it was worked out. */
-.foundry {
+.blueprint-head__title {
+  margin: 4px 0 6px;
+  font: 700 clamp(1.5rem, 3vw, 2rem) / 1.1 var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.blueprint-head__time {
   display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  max-width: calc(var(--measure) + 32px);
-  margin-bottom: 20px;
-  padding: 14px 16px;
-  border: 1px solid var(--edge-soft);
-  border-left: 2px solid var(--focus);
-  background: var(--surface-1);
-}
-
-.foundry .icon {
-  color: var(--focus);
-  margin-top: 1px;
-}
-
-.foundry p + p {
-  margin-top: 4px;
-  font-size: var(--step--1);
-}
-
-.plan-stage + .plan-stage {
-  margin-top: 22px;
-}
-
-.plan-stage__label {
-  margin: 0 0 8px;
-  color: var(--text-2);
-  font: 600 var(--step--1) / 1.2 var(--font-body);
-  letter-spacing: 0.06em;
-}
-
-.plan-step__controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px 14px;
+  gap: 24px;
 }
 
 @media (max-width: 759px) {
-  .plan-step {
-    grid-template-columns: 1fr;
+  .blueprint-head {
+    grid-template-columns: 110px minmax(0, 1fr);
   }
 
-  .plan-step__controls {
+  .blueprint-head__time {
+    grid-column: 1 / -1;
     justify-content: flex-start;
   }
+
+  .blueprint-head__time .telemetry-figure {
+    align-items: flex-start;
+  }
+}
+
+/* A stage tray: its code and when it starts, then its blueprint cards. */
+.stage-tray + .stage-tray {
+  margin-top: 28px;
+}
+
+.stage-tray__label {
+  margin-bottom: 12px;
+  color: var(--text-2);
+  font: 600 0.75rem / 1.3 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.stage-tray__code {
+  color: var(--gold);
+}
+
+.stage-tray__cards {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.blueprint--plan .blueprint__slots {
+  grid-column: 1 / -1;
+}
+
+.blueprint__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  margin-top: 2px;
+}
+
+@media (max-width: 559px) {
+  .blueprint__controls {
+    grid-column: 1 / -1;
+  }
+}
+
+.cell-weapon__mr {
+  margin-right: 10px;
+  color: var(--gold);
+  font: 700 0.6875rem / 1 var(--font-mono);
 }
 
 /* ------------------------------------------------------------------ ingredient index */
@@ -2819,9 +2808,141 @@ a.variant-tab:hover {
 
 /* ------------------------------------------------------------------ my arsenal */
 
-.arsenal-summary {
-  margin-top: 28px;
-  max-width: 640px;
+/* The mastery header (design plan 10): three figures over a gold bar, and what the recipe weapons do. */
+.mastery-header {
+  margin-top: 24px;
+}
+
+.mastery-header__figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  margin-bottom: 12px;
+}
+
+.mastery-header .telemetry-figure {
+  align-items: flex-start;
+}
+
+.telemetry-figure__value small {
+  color: var(--text-3);
+  font-size: 0.6em;
+  font-weight: 500;
+}
+
+.mastery-header__note {
+  margin-top: 10px;
+  color: var(--text-2);
+  font-size: var(--step--1);
+}
+
+/*
+ * Orbiter setup: quick setup and the starter weapons in one panel, open only while nothing is
+ * marked (the component decides once).
+ */
+.setup-panel {
+  --cut: var(--chamfer-md);
+  --shape-fill: var(--surface-1);
+  margin-top: 20px;
+}
+
+.setup-panel__summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  padding: 0 18px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.setup-panel__summary::-webkit-details-marker {
+  display: none;
+}
+
+.setup-panel__summary .icon:first-child {
+  color: var(--gold);
+}
+
+.setup-panel__title {
+  font: 700 0.9375rem / 1.2 var(--font-display);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.setup-panel__state {
+  margin-left: auto;
+  color: var(--text-2);
+  font: 600 0.6875rem / 1 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.setup-panel__chevron {
+  color: var(--text-2);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.setup-panel[open] .setup-panel__chevron {
+  transform: rotate(180deg);
+}
+
+.setup-panel__body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px 32px;
+  padding: 4px 18px 20px;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.setup-panel__part {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding-top: 16px;
+}
+
+/* The button keeps its own width; the starters grid takes the part's. */
+.setup-panel__part > .button {
+  justify-self: start;
+}
+
+.setup-panel__heading {
+  font: 700 var(--step-0) / 1.2 var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+/* The data tools at the foot: one slim bar. */
+.utility-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-top: 48px;
+  padding: 14px 18px;
+  border: 1px solid var(--border-hairline);
+  background: var(--surface-1);
+}
+
+.utility-bar__title {
+  font: 600 0.6875rem / 1.2 var(--font-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.utility-bar__note {
+  margin-top: 4px;
+  color: var(--text-2);
+  font-size: var(--step--1);
+}
+
+.utility-bar .files__status {
+  flex-basis: 100%;
+}
+
+.utility-bar .files__status:empty {
+  display: none;
 }
 
 .progress {
@@ -2838,24 +2959,11 @@ a.variant-tab:hover {
   transition: width 240ms var(--ease-out);
 }
 
-.arsenal-summary__line {
-  margin-top: 8px;
-}
-
 .panel {
   margin-top: 24px;
   padding: 16px 20px;
   border: 1px solid var(--edge-soft);
   background: var(--surface-1);
-}
-
-.panel__summary {
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.panel__intro {
-  margin-top: 8px;
 }
 
 .starters {
@@ -3075,9 +3183,89 @@ a.variant-tab:hover {
   margin-top: 28px;
 }
 
-/* The sort order, at the far end of the bar where the view switch sits on My Arsenal. */
-.filter-bar__end {
-  margin-left: auto;
+/* The slot filter: one drawn icon per slot in a segmented control, All first. */
+.slot-tabs {
+  display: inline-flex;
+  border: 1px solid var(--edge-soft);
+}
+
+.slot-tab {
+  display: grid;
+  place-items: center;
+  min-width: 40px;
+  height: 36px;
+  padding: 0 8px;
+  border: 0;
+  background: var(--surface-1);
+  color: var(--text-2);
+  font: 600 0.75rem / 1 var(--font-body);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.slot-tab + .slot-tab {
+  border-left: 1px solid var(--edge-soft);
+}
+
+.slot-tab:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.slot-tab[aria-pressed='true'] {
+  background: var(--selected);
+  box-shadow: inset 0 0 0 1px var(--focus);
+  color: var(--focus);
+}
+
+.slot-tab:focus-visible {
+  outline-offset: -2px;
+}
+
+/* The demand under an ingredient's nameplate: copies needed, Intermediate, what it builds. */
+.tile__extra {
+  order: 3;
+  align-self: stretch;
+  margin: 0 calc(var(--shape-inset) - 10px) var(--shape-inset);
+  padding: 6px 10px 9px;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.tile:has(.tile__extra) .tile__nameplate {
+  margin-bottom: 0;
+}
+
+.demand {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+}
+
+.demand__needed {
+  color: var(--text-2);
+  font: 600 0.625rem / 1.2 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.demand__needed strong {
+  color: var(--text);
+  font-size: 0.75rem;
+}
+
+.demand__builds {
+  width: 100%;
+  overflow: hidden;
+  color: var(--text-3);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .filter-select {
@@ -3181,21 +3369,19 @@ a.variant-tab:hover {
     justify-self: end;
   }
 
-  .filter-select {
-    grid-column: span 2;
-  }
 
-  .index-filters .filter-search {
+  .filter-bar .slot-tabs {
     grid-column: 1 / -1;
+    display: flex;
   }
 
-  .index-filters .filter-select,
+  .filter-bar .slot-tab {
+    flex: 1;
+  }
+
+  .filter-bar .filter-select,
   .index-filters .filter-toggle {
     grid-column: span 3;
-  }
-
-  .filter-bar__end {
-    margin-left: 0;
   }
 
   /* Room for "Any variant" in a third of the row. */
@@ -3218,19 +3404,6 @@ a.variant-tab:hover {
 
 /* ------------------------------------------------------------------ quick setup */
 
-.setup-banner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px 24px;
-  border-left: 2px solid var(--focus);
-}
-
-.setup-banner > div {
-  flex: 1 1 320px;
-}
-
 .setup__title {
   font: 700 var(--step-1) / 1.2 var(--font-display);
   letter-spacing: 0.02em;
@@ -3238,10 +3411,6 @@ a.variant-tab:hover {
 
 .setup__title:focus {
   outline: none;
-}
-
-.setup-banner .setup__title {
-  margin-bottom: 4px;
 }
 
 .setup__head {
@@ -3431,48 +3600,6 @@ a.variant-tab:hover {
   }
 }
 
-.arsenal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 12px;
-  margin: 12px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.arsenal-tile {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 12px;
-  border: 1px solid var(--edge-soft);
-  background: var(--surface-1);
-}
-
-.arsenal-tile__link {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  text-align: center;
-  text-decoration: none;
-}
-
-.arsenal-tile__name {
-  font-weight: 600;
-  line-height: 1.25;
-}
-
-.tile-select {
-  width: 100%;
-  min-height: 36px;
-  padding: 0 8px;
-  border: 1px solid var(--edge-soft);
-  background: var(--surface-2);
-  color: var(--text);
-  font: 500 var(--step--1) / 1 var(--font-body);
-}
-
 .files__actions {
   display: flex;
   flex-wrap: wrap;
@@ -3511,80 +3638,195 @@ a.variant-tab:hover {
 
 /* ------------------------------------------------------------------ slot sweep */
 
-.sweep__title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/*
+ * The inventory sell screen (design plan 8): the inventory bar, then Safe to sell, Keep and
+ * Protected favourites as grids of tiles, each with its reason; safe tiles carry Mark sold.
+ */
+.inventory-bar {
+  margin-top: 24px;
+  padding: 18px 20px;
+  border: 1px solid var(--border-hairline);
+  background: var(--surface-1);
 }
 
-.sweep--safe .sweep__title .icon {
+.inventory-bar__readout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  font: 700 0.875rem / 1.2 var(--font-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.inventory-bar__readout strong {
   color: var(--safe);
+  font: 700 2rem / 1 var(--font-mono);
+  letter-spacing: 0;
 }
 
-.sweep--keep .sweep__title .icon {
-  color: var(--keep);
+.inventory-bar__held {
+  color: var(--text-3);
+  font: 600 0.6875rem / 1 var(--font-mono);
+  letter-spacing: 0.12em;
 }
 
-.sweep--favourites .sweep__title .icon {
-  color: var(--gold);
-}
-
-/* The verdict icon stands in for the lit rule. */
-.sweep__title::before {
-  display: none;
-}
-
-.sweep-row__actions {
+.inventory-bar__meter {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
+  gap: 2px;
+  height: 8px;
+  margin-top: 14px;
+  background: var(--surface-3);
+}
+
+.inventory-bar__meter span {
+  min-width: 4px;
+}
+
+.inventory-bar__meter [data-tone='safe'] {
+  background: var(--safe);
+}
+
+.inventory-bar__meter [data-tone='keep'] {
+  background: var(--keep);
+}
+
+.inventory-bar__meter [data-tone='favourite'] {
+  background: var(--gold);
+}
+
+.inventory-bar__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--text-2);
+  font: 600 0.6875rem / 1.2 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.inventory-bar__legend li::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  transform: rotate(45deg);
+}
+
+.inventory-bar__legend [data-tone='safe']::before {
+  background: var(--safe);
+}
+
+.inventory-bar__legend [data-tone='keep']::before {
+  background: var(--keep);
+}
+
+.inventory-bar__legend [data-tone='favourite']::before {
+  background: var(--gold);
+}
+
+.inventory-bar__legend strong {
+  color: var(--text);
+}
+
+.sweep__title .icon {
+  color: var(--tone, var(--text-2));
+}
+
+.sweep[data-tone='safe'] {
+  --tone: var(--safe);
+}
+
+.sweep[data-tone='keep'] {
+  --tone: var(--keep);
+}
+
+.sweep[data-tone='favourite'] {
+  --tone: var(--gold);
+}
+
+.sweep__title:focus {
+  outline: none;
 }
 
 .sweep__count {
   color: var(--text-2);
-  font-weight: 500;
+  font: 600 var(--step-0) / 1 var(--font-mono);
 }
 
-.sweep__list {
-  list-style: none;
+.sweep-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 14px;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--edge-soft);
+  list-style: none;
 }
 
-.sweep-row {
+/* A sell card: the tile, its reason in a banner, and Mark sold across the foot on safe ones. */
+.sweep-card {
   display: grid;
-  grid-template-columns: minmax(0, 14rem) minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 6px 16px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--edge-soft);
+  grid-template-rows: auto 1fr auto;
+  border: 1px solid var(--border-hairline);
+  border-top: 2px solid var(--tone);
+  background: var(--surface-1);
 }
 
-.sweep-row__weapon {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
+.sweep-card .tile {
+  --cut: 0px;
 }
 
-.sweep-row__name {
-  font-weight: 600;
-}
-
-.sweep-row__reason {
+.sweep-card__reason {
+  padding: 8px 10px 10px;
   color: var(--text-2);
+  font-size: 0.8125rem;
+  line-height: 1.35;
 }
 
-@media (max-width: 759px) {
-  .sweep-row {
-    grid-template-columns: 1fr;
-  }
+.sweep-card__sell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--safe) 45%, transparent);
+  background: color-mix(in srgb, var(--safe) 10%, var(--surface-1));
+  color: var(--safe);
+  font: 600 0.75rem / 1 var(--font-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
 
-  .sweep-row__actions {
-    justify-content: flex-start;
-  }
+.sweep-card__sell:hover {
+  background: color-mix(in srgb, var(--safe) 18%, var(--surface-1));
+}
+
+.sweep-card__sell:focus-visible {
+  outline-offset: -2px;
+}
+
+.sweep-card__lock {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  border-top: 1px solid var(--border-orokin);
+  color: var(--gold);
+  font: 600 0.6875rem / 1 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sweep-card__lock .icon path {
+  fill: currentColor;
 }
 
 /* ------------------------------------------------------------------ new build available */
@@ -4340,7 +4582,6 @@ a.variant-tab:hover {
 kbd,
 .search__kbd,
 .chip__count,
-.plan-step__time,
 .setup-tile__meta,
 .tag,
 .resource-list__count {

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { FreeableTelemetry } from '@/components/HomeArsenalStats';
 import { ScreenHeader } from '@/components/shell/ScreenHeader';
 import { SlotSweep } from '@/components/SlotSweep';
 
@@ -15,7 +14,6 @@ export default function SweepPage() {
       <ScreenHeader
         title="Slot Sweep"
         context="Out of slots? What you hold, sorted into what can go and what must stay."
-        telemetry={<FreeableTelemetry />}
       />
       <SlotSweep />
     </>
