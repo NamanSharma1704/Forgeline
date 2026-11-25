@@ -1,13 +1,17 @@
 'use client';
 
 import { useLayoutEffect, useRef, useState } from 'react';
+import { isArsenalSetUp } from '@/engine';
+import { statusIn } from '@/store/arsenal';
+import { useArsenal } from '@/store/useArsenal';
 import type { TreeEdge } from './FamilyTree';
 
 /**
- * The schematic's circuit (design plan 4.4): orthogonal wires from each ingredient's box to the box
- * it goes into, measured from the laid-out boxes and drawn in one SVG behind them. Pointing at or
- * focusing a box lights its wires. Each wire carries its copy count at the end away from the
- * weapon, where that box's caption says the same in words.
+ * The star chart's traces (design plan 6.3): orthogonal 1 px wires from each ingredient's tile to
+ * the tile it goes into, measured from the laid-out tiles and drawn in one SVG behind them. A
+ * diamond marks each end; the copy count sits in a diamond badge on the wire, at the end away from
+ * the weapon, where that tile's caption says the same in words. A wire is gold where the player
+ * holds both its ends, steel elsewhere; pointing at or focusing a tile lights its wires cyan.
  *
  * Wires are drawn only while the columns sit side by side. When they stack (phones), or before the
  * page is hydrated, the arrow icons between columns do the job instead.
@@ -17,6 +21,8 @@ interface Wire {
   readonly key: string;
   readonly from: string;
   readonly to: string;
+  /** The weapons at each end, for the owned colour. */
+  readonly ends: readonly [string, string];
   readonly d: string;
   readonly start: readonly [number, number];
   readonly end: readonly [number, number];
@@ -39,6 +45,9 @@ function trace(x1: number, y1: number, xm: number, y2: number, x2: number): stri
   ].join('');
 }
 
+/** A diamond of half-diagonal `r` centred on (x, y). */
+const diamond = (x: number, y: number, r: number) => `M${x} ${y - r}L${x + r} ${y}L${x} ${y + r}L${x - r} ${y}Z`;
+
 export function TreeWires({ edges, children }: { edges: readonly TreeEdge[]; children: React.ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
   const [wires, setWires] = useState<readonly Wire[]>([]);
@@ -58,8 +67,10 @@ export function TreeWires({ edges, children }: { edges: readonly TreeEdge[]; chi
     const measure = () => {
       const base = element.getBoundingClientRect();
       const boxes = new Map<string, DOMRect>();
+      const slugs = new Map<string, string>();
       element.querySelectorAll<HTMLElement>('[data-box]').forEach((box) => {
         boxes.set(box.dataset.box!, box.getBoundingClientRect());
+        slugs.set(box.dataset.box!, box.dataset.slug ?? '');
       });
       const next: Wire[] = [];
       for (const edge of edges) {
@@ -80,13 +91,14 @@ export function TreeWires({ edges, children }: { edges: readonly TreeEdge[]; chi
         const label =
           farCount.get(far) === 1
             ? edge.far === 'from'
-              ? { x: (x1 + xm) / 2, y: y1 - 7, text: `×${edge.copies}` }
-              : { x: (xm + x2) / 2, y: y2 - 7, text: `×${edge.copies}` }
+              ? { x: (x1 + xm) / 2, y: y1, text: String(edge.copies) }
+              : { x: (xm + x2) / 2, y: y2, text: String(edge.copies) }
             : null;
         next.push({
           key: `${edge.from}>${edge.to}`,
           from: edge.from,
           to: edge.to,
+          ends: [slugs.get(edge.from) ?? '', slugs.get(edge.to) ?? ''],
           d: trace(x1, y1, xm, y2, x2),
           start: [x1, y1],
           end: [x2, y2],
@@ -102,6 +114,14 @@ export function TreeWires({ edges, children }: { edges: readonly TreeEdge[]; chi
     element.querySelectorAll('[data-box]').forEach((box) => observer.observe(box));
     return () => observer.disconnect();
   }, [edges]);
+
+  // Gold along paths the player holds: both ends owned or mastered, once the arsenal is set up.
+  const { ready, arsenal } = useArsenal();
+  const known = ready && isArsenalSetUp(arsenal.entries);
+  const held = (slug: string) => {
+    const status = known && slug ? statusIn(arsenal, slug) : null;
+    return status === 'owned' || status === 'mastered';
+  };
 
   const boxOf = (target: EventTarget | null) =>
     target instanceof Element ? (target.closest<HTMLElement>('[data-box]')?.dataset.box ?? null) : null;
@@ -120,16 +140,20 @@ export function TreeWires({ edges, children }: { edges: readonly TreeEdge[]; chi
         <svg className="tree-wires" aria-hidden="true" focusable="false">
           {wires.map((wire) => {
             const on = lit !== null && (wire.from === lit || wire.to === lit);
-            const [x2, y2] = wire.end;
+            const owned = held(wire.ends[0]) && held(wire.ends[1]);
+            const className = ['tree-wire', owned && 'is-owned', on && 'is-lit'].filter(Boolean).join(' ');
             return (
-              <g key={wire.key} className={on ? 'tree-wire is-lit' : 'tree-wire'}>
+              <g key={wire.key} className={className}>
                 <path className="tree-wire__trace" d={wire.d} />
-                <circle className="tree-wire__pad" cx={wire.start[0]} cy={wire.start[1]} r={2.5} />
-                <path className="tree-wire__head" d={`M${x2 - 6} ${y2 - 4}L${x2 - 1} ${y2}L${x2 - 6} ${y2 + 4}`} />
+                <path className="tree-wire__pad" d={diamond(wire.start[0], wire.start[1], 3.5)} />
+                <path className="tree-wire__pad" d={diamond(wire.end[0], wire.end[1], 3.5)} />
                 {wire.label && (
-                  <text className="tree-wire__count" x={wire.label.x} y={wire.label.y} textAnchor="middle">
-                    {wire.label.text}
-                  </text>
+                  <g className="tree-wire__badge">
+                    <path d={diamond(wire.label.x, wire.label.y, 10)} />
+                    <text x={wire.label.x} y={wire.label.y + 3.5} textAnchor="middle">
+                      {wire.label.text}
+                    </text>
+                  </g>
                 )}
               </g>
             );

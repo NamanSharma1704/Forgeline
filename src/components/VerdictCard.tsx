@@ -2,25 +2,27 @@ import Link from 'next/link';
 import type { RecipeSummary } from '@/data/recipe';
 import type { Explanation, Tone, Verdict } from '@/engine';
 import { Icon, type IconName } from './Icon';
-import { RecipeList } from './RecipeList';
+import type { TileWeapon } from './parts/ArsenalTile';
+import { LiveTile } from './parts/LiveTile';
+import { DiamondNode } from './parts/marks';
+import { RecipeSlots } from './parts/RecipeSlots';
 import { StatusPicker } from './StatusPicker';
-import { WeaponArt, type ArtWeapon } from './WeaponArt';
 
 /**
- * The Sell Check result (spec 5.1 and 5.2), as the dossier's right column (design plan 4.3): the
- * verdict in crest, word and colour with the reason under it, one card per weapon it builds with
- * picture, copies per build and the player's status, the chain beyond with mastery ranks, and the
- * notes. Copy for clan chat and Plan a build live in the action bar (design plan 4.4), registered
- * by PersonalVerdict.
+ * The Sell Check result (spec 5.1 and 5.2) as the dossier's verdict panel (design plan 6.2): a flat
+ * panel with a 3 px edge in the verdict's colour, the crest, the engine's headline in capitals
+ * (its words and counts unchanged) and the reason. Then each weapon it builds as a Foundry
+ * blueprint row: its tile, NEEDS ×2, the reason, the player's status for it, and what one build
+ * takes in Foundry slots. Then the chain beyond as small tiles joined by diamonds, the weapon itself
+ * in gold, and the notes. Copy for clan chat and Plan a build live in the action bar.
  *
- * With `controls`, each card also carries the player's status for that weapon, so a Check resolves
- * into Keep or Safe on the card itself (docs/verdict-rules.md, rule 2). PersonalVerdict renders it
- * that way, recomputing the verdict in the browser as the statuses change.
+ * With `controls`, each row carries the player's status for that weapon, so a Check resolves into
+ * Keep or Safe on the card itself (docs/verdict-rules.md, rule 2). PersonalVerdict renders it that
+ * way, recomputing the verdict in the browser as the statuses change.
  */
 
-export interface CardTarget extends ArtWeapon {
-  readonly slug: string;
-  /** What one build of it takes, for the card's peek. */
+export interface CardTarget extends TileWeapon {
+  /** What one build of it takes, for the row's Foundry slots. */
   readonly recipe?: RecipeSummary;
 }
 
@@ -66,8 +68,7 @@ export function VerdictCard({
   verdict,
   explanation,
   targets,
-  names,
-  ranks,
+  tiles,
   controls = false,
   footnote,
   favourite = false,
@@ -76,10 +77,8 @@ export function VerdictCard({
   explanation: Explanation;
   /** The weapons it builds, in verdict order. */
   targets: readonly CardTarget[];
-  /** Display names for every slug that appears in a chain. */
-  names: Readonly<Record<string, string>>;
-  /** Mastery ranks for the same slugs, shown on the chain's steps. */
-  ranks?: Readonly<Record<string, number>>;
+  /** Tiles for every weapon a chain or a recipe on the card can show, by slug. */
+  tiles: Readonly<Record<string, TileWeapon>>;
   /** Show a status picker on each card. */
   controls?: boolean;
   /** One line under the cards: where the verdict comes from, or how to make it personal. */
@@ -138,33 +137,32 @@ export function VerdictCard({
       {targets.length > 0 && (
         <div className="verdict__section">
           <h3 className="verdict__label">Used to build</h3>
-          <ul className="target-cards">
+          <ul className="blueprints">
             {targets.map((target, index) => {
               const copies = perBuild(verdict, index);
               return (
-                <li key={target.slug} className="target-card" data-tone={lineTone(verdict, index)}>
-                  <Link href={`/w/${target.slug}/`} className="target-card__target">
-                    <WeaponArt weapon={target} />
-                    <span className="target-card__name">{target.name}</span>
-                  </Link>
-                  <span className="target-card__copies">
-                    <strong>×{copies}</strong> per build
-                  </span>
-                  <span className="target-card__note">{e.notes[index]}</span>
-                  {controls && (
-                    <span className="target-card__control">
-                      <StatusPicker slug={target.slug} name={target.name} size="small" />
-                    </span>
-                  )}
+                <li key={target.slug} className="blueprint" data-tone={lineTone(verdict, index)}>
+                  <LiveTile weapon={target} size="small" href={`/w/${target.slug}/`} />
+                  <div className="blueprint__body">
+                    <p className="blueprint__head">
+                      <span className="blueprint__name">{target.name}</span>
+                      <span className="blueprint__needs">
+                        Needs <strong>×{copies}</strong>
+                        <span className="sr-only"> per build</span>
+                      </span>
+                    </p>
+                    <p className="blueprint__note">{e.notes[index]}</p>
+                    {controls && <StatusPicker slug={target.slug} name={target.name} size="small" />}
+                  </div>
                   {target.recipe && (
-                    <details className="recipe-peek">
+                    <details className="blueprint__peek">
                       <summary>
-                        <Icon name="arrow-right" size={14} className="recipe-peek__chevron" />
+                        <Icon name="arrow-right" size={14} className="blueprint__chevron" />
                         What {target.name} takes
                       </summary>
-                      <div className="recipe-peek__body">
-                        <RecipeList recipe={target.recipe} compact />
-                        <Link href={`/plan/?w=${target.slug}`} className="recipe-peek__plan">
+                      <div className="blueprint__slots">
+                        <RecipeSlots recipe={target.recipe} art={tiles} />
+                        <Link href={`/plan/?w=${target.slug}`} className="blueprint__plan">
                           Plan a full build of {target.name}
                           <Icon name="arrow-right" size={16} />
                         </Link>
@@ -182,26 +180,23 @@ export function VerdictCard({
       {chains.length > 0 && (
         <div className="verdict__section">
           <h3 className="verdict__label">Down the chain</h3>
-          <ul className="verdict__chains">
+          <ul className="lineages">
             {chains.map((chain) => (
               <li key={chain.join('>')}>
-                <ol className="chain" aria-label={chain.map((slug) => names[slug] ?? slug).join(', then ')}>
+                <ol className="lineage" aria-label={chain.map((slug) => tiles[slug]?.name ?? slug).join(', then ')}>
                   {chain.map((slug, step) => {
-                    const body = (
-                      <>
-                        <span className="chain__name">{names[slug] ?? slug}</span>
-                        {ranks?.[slug] !== undefined && <span className="chain__mr">MR {ranks[slug]}</span>}
-                      </>
-                    );
+                    const tile = tiles[slug];
                     return (
-                      <li key={slug} className="chain__step">
-                        {step > 0 && <Icon name="arrow-right" size={16} className="chain__arrow" />}
-                        {step === 0 ? (
-                          <span className="chain__node chain__node--self shape">{body}</span>
+                      <li key={slug} className="lineage__step">
+                        {step > 0 && (
+                          <span className="lineage__link" aria-hidden="true">
+                            <DiamondNode tone="steel" />
+                          </span>
+                        )}
+                        {tile ? (
+                          <LiveTile weapon={tile} size="small" href={step === 0 ? undefined : `/w/${slug}/`} selected={step === 0} />
                         ) : (
-                          <Link href={`/w/${slug}/`} className="chain__node shape">
-                            {body}
-                          </Link>
+                          <span>{slug}</span>
                         )}
                       </li>
                     );

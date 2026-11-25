@@ -1341,96 +1341,15 @@ main {
   color: var(--text-2);
 }
 
-/* ------------------------------------------------------------------ home */
+/* ------------------------------------------------------------------ home: the Orbiter console */
 
-/* The terminal deck (design plan 3): centred, with the search console as its widest control. */
-.home {
-  max-width: 920px;
-  margin: 8px auto 0;
-}
-
-.home-hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/* Telemetry eyebrow: mono, tracked capitals, behind a drawn marker that breathes. */
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--text-2);
-  font: 600 0.6875rem / 1.2 var(--font-mono);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.eyebrow--inline {
-  gap: 6px;
-  letter-spacing: 0.14em;
-}
-
-.eyebrow__sep {
-  color: var(--text-3);
-}
-
-/* A still gold diamond: the marker no longer pulses. */
-.eyebrow__pulse {
-  flex: none;
-  width: 7px;
-  height: 7px;
-  background: var(--gold);
-  transform: rotate(45deg);
-}
-
-/* Capitals in the chamfered display face; tracking opens up rather than tightening for capitals. */
-.home-hero__title {
-  margin-top: 16px;
-  font-size: clamp(2.5rem, 6vw, 3.75rem);
-  line-height: 1;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-}
-
-.home-hero__lede {
-  max-width: 580px;
-  margin-top: 14px;
-}
-
-.home-hero__rule {
-  position: relative;
-  width: 320px;
-  max-width: 80%;
-  height: 1px;
-  margin-top: 28px;
-  background: var(--edge-medium);
-}
-
-.home-hero__rule::before,
-.home-hero__rule::after {
-  content: '';
-  position: absolute;
-  top: -3px;
-  width: 7px;
-  height: 7px;
-  background: var(--gold);
-  transform: rotate(45deg);
-}
-
-.home-hero__rule::before {
-  left: 0;
-}
-
-.home-hero__rule::after {
-  right: 0;
-}
-
-/* The search console: the field, the category strip, the quick picks. */
+/*
+ * Home as the console (design plan 5): the question as the screen's title, the search under it,
+ * then the quick-check grid beside the four launchers.
+ */
 .console {
-  max-width: 660px;
-  margin: 28px auto 0;
+  max-width: 760px;
+  margin-top: 24px;
 }
 
 .console .search--hero .search__field {
@@ -1438,205 +1357,111 @@ main {
 }
 
 .console__scopes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
-.console__quick {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 8px 12px;
-  margin-top: 18px;
-}
-
-.console__quick-label {
+.scope-tab .icon {
+  align-self: center;
   color: var(--text-3);
-  font: 600 0.6875rem / 1 var(--font-mono);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
 }
 
-.quick-picks {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
+.scope-tab[aria-pressed='true'] .icon {
+  color: var(--gold);
+}
+
+.console-grid {
+  display: grid;
+  align-items: start;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+@media (min-width: 1024px) {
+  .console-grid {
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+}
+
+.console__shelf + .console__shelf {
+  margin-top: 36px;
+}
+
+/* A shelf of Arsenal tiles, as many across as fit. */
+.tile-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* A weapon's own picture, with an edge lit in its slot's colour (design plan 3.3). */
-.quick-pick {
-  --cut: var(--chamfer-sm);
-  --shape-fill: var(--surface-2);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 14px 4px 6px;
-  color: var(--text-2);
-  font-size: var(--step--1);
-  font-weight: 600;
-  text-decoration: none;
-  transition:
-    transform var(--dur-fast) var(--ease-out),
-    color var(--dur-fast) var(--ease-out),
-    filter var(--dur-fast) var(--ease-out);
-}
-
-.quick-pick:hover {
-  --shape-fill: var(--surface-3);
-  color: var(--text);
-}
-
-.quick-pick .weapon-art {
-  width: 32px;
-  height: 32px;
-}
-
-/* The three tools. Each card is one link; pointed at, its edge brightens and nothing moves. */
-.tool-cards {
+/* The launchers: one panel per screen, its figure live, the whole panel the link. */
+.launchers {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-4);
-  margin-top: 56px;
+  align-content: start;
+  gap: 12px;
 }
 
-.tool-card {
+.launcher {
   --cut: var(--chamfer-md);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 20px;
+  --shape-fill: var(--surface-1);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 14px;
+  padding: 16px 18px;
   color: var(--text);
   text-decoration: none;
-  transition:
-    transform var(--dur-normal) var(--ease-out),
-    filter var(--dur-fast) var(--ease-out);
 }
 
-.tool-card:hover {
-  --shape-fill: var(--surface-2);
+.launcher__icon {
+  grid-row: span 2;
+  color: var(--gold);
 }
 
-.tool-card__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.tool-card__icon {
-  color: var(--focus);
-}
-
-.tool-card__title {
-  font: 700 1.375rem / 1.15 var(--font-display);
-  letter-spacing: -0.01em;
-}
-
-.tool-card__lede {
-  flex: 1;
-  color: var(--text-2);
-  font-size: var(--step--1);
-}
-
-.tool-card__figure {
-  color: var(--focus);
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.tool-card__figure small {
-  margin-left: 4px;
-  color: var(--text-2);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-}
-
-.tool-card__figure--quiet {
-  color: var(--text-2);
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.tool-card__cta {
-  display: inline-flex;
-  align-items: center;
-  align-self: flex-end;
-  gap: 6px;
-  color: var(--focus);
-  font-size: var(--step--1);
-  font-weight: 600;
-  transition: gap var(--dur-fast) var(--ease-out);
-}
-
-@media (max-width: 759px) {
-  .tool-cards {
-    grid-template-columns: 1fr;
-    margin-top: 40px;
-  }
-}
-
-/* Numbers in the telemetry face, which never shift width. */
-.telemetry {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
-}
-
-/* The player's own numbers (design plan 3.5); not rendered at all until there are some. */
-.arsenal-strip {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 6px 10px;
-  margin-top: 28px;
-  color: var(--text-2);
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-}
-
-.arsenal-strip strong {
-  color: var(--text);
-  font-weight: 700;
-}
-
-.arsenal-strip__label {
-  color: var(--focus);
-  font-weight: 600;
-  letter-spacing: 0.18em;
+.launcher__title {
+  font: 700 0.9375rem / 1.2 var(--font-display);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.arsenal-strip__sep {
-  color: var(--text-3);
+.launcher__figure {
+  grid-column: 2;
+  color: var(--text-2);
+  font: 500 0.75rem / 1.3 var(--font-mono);
 }
 
-.strip {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  list-style: none;
-  margin: 0;
-  padding-left: 0;
+.launcher__figure strong {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.launcher__open {
+  display: inline-flex;
+  grid-row: 1 / span 2;
+  grid-column: 3;
+  align-items: center;
+  gap: 6px;
+  color: var(--focus);
+  font: 600 0.6875rem / 1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 /* ------------------------------------------------------------------ verdict card */
 
-/* The verdict: a flat panel with corner brackets. Its colour is in the crest and the headline, never as light. */
+/*
+ * The verdict panel (design plan 6.2): flat, bracketed, with a 3 px edge in the verdict's colour down
+ * its left side, drawn as the first layer of the face. Its colour is in the edge, the crest and the
+ * headline, never as light.
+ */
 .verdict {
   --cut: var(--chamfer-lg);
   --tone: var(--text);
+  --shape-fill: linear-gradient(90deg, var(--tone) 0 3px, transparent 3px), var(--surface-1);
   margin-top: 28px;
-  padding: 28px;
+  padding: 28px 28px 28px 31px;
 }
 
 .verdict--safe,
@@ -1690,10 +1515,12 @@ main {
   }
 }
 
+/* The engine's words and counts, unchanged; only set in capitals. */
 .verdict__headline {
   color: var(--tone);
   font: 700 var(--step-3) / 1.05 var(--font-display);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .verdict__summary {
@@ -1750,8 +1577,12 @@ main {
   text-transform: uppercase;
 }
 
-/* The weapons it builds (design plan 4.3.2): raised cards, each topped by what it means for the verdict. */
-.target-cards {
+/*
+ * "Used to build" as Foundry blueprint rows (design plan 6.2): the target's tile, its name and
+ * NEEDS ×2, the reason, the player's status for it, and what one build takes in Foundry slots. A
+ * 2 px edge in what the row means for the verdict: copies spoken for (keep), done (safe), unknown.
+ */
+.blueprints {
   display: grid;
   gap: 10px;
   margin: 0;
@@ -1759,107 +1590,123 @@ main {
   list-style: none;
 }
 
-.target-card {
-  --line: var(--edge-medium);
+.blueprint {
+  --line: var(--border-steel);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas:
-    'target copies'
-    'note note'
-    'control control'
-    'peek peek';
-  align-items: center;
-  gap: 4px 12px;
-  padding: 12px 14px 6px;
-  border: 1px solid var(--edge-subtle);
-  border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--surface-2) 70%, transparent);
-  box-shadow: inset 0 2px 0 var(--line);
-  transition:
-    background-color var(--dur-fast) var(--ease-out),
-    border-color var(--dur-fast) var(--ease-out);
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 12px 16px;
+  padding: 12px;
+  border: 1px solid var(--border-hairline);
+  border-left: 2px solid var(--line);
+  background: var(--surface-2);
 }
 
-.target-card[data-tone='safe'] {
+.blueprint[data-tone='safe'] {
   --line: var(--safe);
 }
 
-.target-card[data-tone='check'] {
+.blueprint[data-tone='check'] {
   --line: var(--check);
 }
 
-.target-card[data-tone='keep'] {
+.blueprint[data-tone='keep'] {
   --line: var(--keep);
 }
 
-/* No nudge on hover: the card holds a status picker, and a target that moves gets mis-clicked. */
-.target-card:hover {
-  border-color: var(--edge-medium);
-  background: var(--surface-2);
-}
-
-.target-card__target {
-  grid-area: target;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.blueprint__body {
+  display: grid;
+  align-content: start;
+  gap: 6px;
   min-width: 0;
-  text-decoration: none;
 }
 
-.target-card__name {
-  font: 600 1.0625rem / 1.2 var(--font-display);
-  letter-spacing: 0.01em;
+.blueprint__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
 }
 
-.target-card__target:hover .target-card__name {
-  text-decoration: underline;
-  text-decoration-color: var(--text-3);
-  text-underline-offset: 0.2em;
+.blueprint__name {
+  font: 700 1rem / 1.2 var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-/* Copies one build takes: a fact of the recipe, whatever the player holds. */
-.target-card__copies {
-  grid-area: copies;
-  padding: 4px 8px;
-  border: 1px solid var(--edge-medium);
-  border-radius: var(--radius-sm);
-  background: var(--surface-2);
+.blueprint__needs {
   color: var(--text-2);
-  font: 500 0.75rem / 1.2 var(--font-mono);
-  white-space: nowrap;
+  font: 600 0.6875rem / 1 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
-.target-card__copies strong {
+.blueprint__needs strong {
   color: var(--text);
-  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0;
 }
 
-/* Note, picker and peek line up under the name, past the picture. */
-.target-card__note,
-.target-card__control,
-.target-card .recipe-peek {
-  padding-left: 56px;
-}
-
-.target-card__note {
-  grid-area: note;
+.blueprint__note {
   color: var(--text-2);
   font-size: 0.9375rem;
 }
 
-.target-card__control {
-  grid-area: control;
-  margin-top: 6px;
+/* The picker keeps its own width rather than stretching across the row. */
+.blueprint__body > .status-picker {
+  justify-self: start;
 }
 
-.target-card .recipe-peek {
-  grid-area: peek;
+.blueprint__peek {
+  grid-column: 1 / -1;
+}
+
+.blueprint__peek summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  color: var(--text-2);
+  font-size: var(--step--1);
+  cursor: pointer;
+  list-style: none;
+}
+
+.blueprint__peek summary::-webkit-details-marker {
+  display: none;
+}
+
+.blueprint__peek summary:hover {
+  color: var(--text);
+}
+
+.blueprint__chevron {
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.blueprint__peek[open] .blueprint__chevron {
+  transform: rotate(90deg);
+}
+
+.blueprint__slots {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.blueprint__plan {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  color: var(--focus);
+  font-size: var(--step--1);
+  font-weight: 600;
 }
 
 @media (max-width: 559px) {
   .verdict {
-    padding: 20px 16px;
+    padding: 20px 16px 20px 19px;
   }
 
   .verdict__crest {
@@ -1872,77 +1719,75 @@ main {
     height: 36px;
   }
 
-  .target-card {
-    padding: 12px 12px 6px;
+  /*
+   * Phones: the tile beside the name and note, and the status picker across the full row beneath,
+   * where its four options fit.
+   */
+  .blueprint {
+    grid-template-columns: 80px minmax(0, 1fr);
+    padding: 10px;
   }
 
-  .target-card__note,
-  .target-card__control,
-  .target-card .recipe-peek {
-    padding-left: 0;
+  .blueprint > .tile {
+    grid-row: span 2;
+  }
+
+  .blueprint__body {
+    display: contents;
+  }
+
+  .blueprint__body > .status-picker {
+    grid-column: 1 / -1;
   }
 }
 
-.verdict__chains {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+/* The chain beyond as small tiles joined by diamonds; the weapon itself in gold (design plan 6.2). */
+.lineages {
   display: grid;
-  gap: 10px;
-}
-
-.chain {
-  list-style: none;
+  gap: 14px;
   margin: 0;
   padding: 0;
+  list-style: none;
+}
+
+.lineage {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 8px 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.chain__step {
-  display: inline-flex;
+.lineage__step {
+  display: flex;
   align-items: center;
-  gap: 8px;
 }
 
-.chain__arrow {
-  color: var(--text-3);
+.lineage__step .tile {
+  width: 96px;
 }
 
-/* Each step a small chamfered chip with its mastery rank; the weapon itself in Orokin gold. */
-.chain__node {
-  --cut: 7px;
-  --shape-fill: var(--surface-2);
-  --shape-edge: var(--edge-medium);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 32px;
-  padding: 4px 10px;
-  color: var(--text);
-  text-decoration: none;
+.lineage__link {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 28px;
 }
 
-a.chain__node:hover {
-  --shape-fill: var(--surface-3);
+.lineage__link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--border-steel);
 }
 
-.chain__node--self {
-  --shape-fill: color-mix(in srgb, var(--gold) 10%, var(--surface-2));
-  --shape-edge: var(--edge-gold);
-}
-
-.chain__name {
-  font-size: var(--step--1);
-  font-weight: 600;
-}
-
-.chain__mr {
-  color: var(--gold);
-  font: 700 0.6875rem / 1 var(--font-mono);
-  letter-spacing: 0.04em;
+.lineage__link .diamond-node {
+  position: relative;
 }
 
 .verdict__mastery {
@@ -2021,9 +1866,9 @@ a.chain__node:hover {
 /* ------------------------------------------------------------------ weapon dossier */
 
 /*
- * Design plan 4.1: identity on the left (40%), the verdict on the right (60%) from 1024 px. Below
- * that one column, where the verdict follows the name and picture, and the notes and the player's
- * own controls come after it, so a phone reaches the answer first.
+ * The dossier (design plan 6): the Codex frame and name, the verdict, the ledger, field notes, the
+ * player's status. Two columns from 1024 px (left 42%, the verdict on the right); one column below,
+ * where the verdict comes straight after the frame and name.
  */
 .dossier {
   display: grid;
@@ -2031,6 +1876,7 @@ a.chain__node:hover {
   grid-template-areas:
     'id'
     'verdict'
+    'facts'
     'notes'
     'own';
   gap: 24px;
@@ -2039,13 +1885,7 @@ a.chain__node:hover {
 .dossier__id {
   grid-area: id;
   display: grid;
-  /* A set width: the drawn base under the picture would otherwise size the column to itself. */
-  grid-template-columns: 272px minmax(0, 1fr);
-  grid-template-areas:
-    'art identity'
-    'art matrix';
-  align-items: end;
-  gap: 16px 28px;
+  gap: 16px;
 }
 
 .dossier__verdict {
@@ -2057,138 +1897,121 @@ a.chain__node:hover {
   margin-top: 0;
 }
 
+.dossier__facts {
+  grid-area: facts;
+}
+
 .dossier__notes {
   grid-area: notes;
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
 .dossier__own {
   grid-area: own;
   padding-top: 20px;
-  border-top: 1px solid var(--edge-soft);
+  border-top: 1px solid var(--border-hairline);
 }
 
 @media (min-width: 1024px) {
   .dossier {
-    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-    grid-template-rows: auto auto 1fr;
+    grid-template-columns: minmax(0, 42fr) minmax(0, 58fr);
+    grid-template-rows: auto auto auto 1fr;
     grid-template-areas:
       'id verdict'
+      'facts verdict'
       'notes verdict'
       'own verdict';
     column-gap: var(--space-8);
     row-gap: 20px;
     align-items: start;
   }
+}
 
+/* From 560 px to 1023 px: the frame beside the name. */
+@media (min-width: 560px) and (max-width: 1023px) {
   .dossier__id {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas:
-      'art'
-      'identity'
-      'matrix';
-    align-items: stretch;
-  }
-}
-
-/*
- * Phones: the picture beside the slot tag and name, then the versions and the matrix across the
- * full width, so a long name or a four-chip ribbon never wraps a letter at a time.
- */
-@media (max-width: 559px) {
-  .dossier__id {
-    grid-template-columns: 140px minmax(0, 1fr);
-    grid-template-areas:
-      'art eyebrow'
-      'art name'
-      'versions versions'
-      'matrix matrix';
-    gap: 0 16px;
-  }
-
-  .dossier__identity {
-    display: contents;
-  }
-
-  .dossier__eyebrow {
-    grid-area: eyebrow;
-    align-self: end;
-  }
-
-  .dossier__name {
-    grid-area: name;
-    align-self: start;
-  }
-
-  .dossier__id .versions {
-    grid-area: versions;
-    margin-top: 16px;
-  }
-
-  .dossier__id .telemetry-matrix {
-    margin-top: 16px;
-  }
-}
-
-/* The weapon's frame: flat, steel-edged, bracketed. Phase 3 turns it into the Codex frame. */
-.pedestal {
-  grid-area: art;
-  --cut: var(--chamfer-lg);
-  --shape-fill: var(--surface-1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 24px;
-}
-
-/* It rises into the frame once, from an already visible start. */
-.pedestal__art {
-  animation: pedestal-rise 400ms var(--ease-out);
-}
-
-@keyframes pedestal-rise {
-  from {
-    opacity: 0.4;
-    transform: translateY(8px);
+    grid-template-columns: 300px minmax(0, 1fr);
+    align-items: end;
+    gap: 16px 24px;
   }
 }
 
 @media (max-width: 559px) {
-  .pedestal {
-    padding: 14px 12px;
+  .dossier__id .codex-frame {
+    padding: 40px 16px 20px;
   }
 
-  .pedestal .weapon-art--large {
-    width: 112px;
-    height: 112px;
+  .dossier__id .codex-frame .weapon-art--large {
+    width: 150px;
+    height: 150px;
   }
 }
 
-/* The identity header: slot tag, name, versions. Slots are words (icons in Phase 3), never colours. */
 .dossier__identity {
-  grid-area: identity;
   min-width: 0;
 }
 
-.dossier__eyebrow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px 14px;
+.dossier__name {
+  font: 700 clamp(2rem, 3.4vw, 2.75rem) / 1.05 var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
 }
 
-.slot-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  color: var(--text-2);
-  font: 700 0.6875rem / 1.2 var(--font-mono);
-  letter-spacing: 0.16em;
+@media (max-width: 559px) {
+  .dossier__name {
+    font-size: var(--step-3);
+  }
+}
+
+.dossier__new {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 3px 8px;
+  border: 1px solid var(--border-orokin);
+  color: var(--gold);
+  font: 600 0.6875rem / 1.2 var(--font-mono);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.slot-tag::before {
+/* The weapon's versions as Arsenal tabs: a gold underline and diamond on the one shown. */
+.variant-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-top: 14px;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.variant-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 36px;
+  padding: 0 12px;
+  color: var(--text-2);
+  font: 600 0.75rem / 1 var(--font-display);
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+a.variant-tab:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.variant-tab[aria-current='page'] {
+  color: var(--text);
+  box-shadow: inset 0 -2px 0 var(--gold);
+}
+
+.variant-tab[aria-current='page']::before {
   content: '';
   width: 6px;
   height: 6px;
@@ -2196,168 +2019,36 @@ a.chain__node:hover {
   transform: rotate(45deg);
 }
 
-.dossier__variant,
-.badge-new {
-  font: 600 0.6875rem / 1.2 var(--font-mono);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.dossier__variant {
+/* Field notes (design plan 6.1): short, with a 2 px gold edge; version notes in steel. */
+.field-note {
+  display: grid;
+  gap: 4px;
+  padding: 10px 14px;
+  border-left: 2px solid var(--gold);
+  background: var(--surface-1);
   color: var(--text-2);
+  font-size: var(--step--1);
 }
 
-.badge-new {
-  color: var(--check);
+.field-note--steel {
+  border-left-color: var(--border-control);
 }
 
-.dossier__name {
-  margin-top: 10px;
-  font-size: clamp(2rem, 3.6vw, 2.75rem);
-  letter-spacing: -0.03em;
-  overflow-wrap: break-word;
-}
-
-@media (max-width: 559px) {
-  .dossier__name {
-    margin-top: 6px;
-    font-size: var(--step-3);
-  }
-}
-
-/* Versions ribbon: the weapon's family as chips, the current one lit. */
-.versions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px 12px;
-  margin-top: 14px;
-}
-
-.versions__label {
-  color: var(--text-2);
-  font: 600 var(--step--1) / 1.2 var(--font-body);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.versions .chips {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.chip--link {
+.field-note__label {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
-  text-decoration: none;
-}
-
-/* The current version: gold, as the current screen is. */
-.chip[aria-current='page'] {
-  background: var(--gold-dim);
-  border-color: var(--gold);
-  color: var(--text);
-}
-
-/* The telemetry matrix (design plan 4.2.3): the weapon's numbers in the telemetry face, two by two. */
-.telemetry-matrix {
-  grid-area: matrix;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 0;
-  border: 1px solid var(--edge-subtle);
-  border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--surface-1) 72%, transparent);
-}
-
-.telemetry-matrix__cell {
-  padding: 10px 14px;
-}
-
-.telemetry-matrix__cell:nth-child(odd) {
-  border-right: 1px solid var(--edge-subtle);
-}
-
-.telemetry-matrix__cell:nth-child(-n + 2) {
-  border-bottom: 1px solid var(--edge-subtle);
-}
-
-.telemetry-matrix dt {
-  color: var(--text-3);
+  gap: 6px;
+  color: var(--gold);
   font: 600 0.6875rem / 1.2 var(--font-mono);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-.telemetry-matrix dd {
-  margin: 4px 0 0;
-  color: var(--text);
-  font: 700 0.9375rem / 1.3 var(--font-mono);
-  font-variant-numeric: tabular-nums;
-}
-
-.telemetry-matrix .telemetry-matrix__mr {
-  color: var(--gold);
-}
-
-/* Incarnon Genesis (design plan 4.2.3): Void cyan, the one place the focus colour also carries meaning. */
-.incarnon-strip {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 10px 14px;
-  border: 1px solid var(--border-cyan);
-  border-radius: var(--radius-sm);
-  background: var(--tenno-cyan-dim);
-}
-
-.incarnon-strip__icon {
-  margin-top: 1px;
-  color: var(--focus);
-}
-
-.incarnon-strip__label {
-  display: block;
-  color: var(--focus);
-  font: 700 0.75rem / 1.3 var(--font-mono);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.incarnon-strip__text {
-  display: block;
-  margin-top: 2px;
+.field-note--steel .field-note__label {
   color: var(--text-2);
-  font-size: var(--step--1);
 }
 
-/* Which version a recipe takes, when it matters. */
-.version-callouts {
-  display: grid;
-  gap: 6px;
-  max-width: var(--measure);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  color: var(--text-2);
-  font-size: var(--step--1);
-}
-
-.version-callouts li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
-
-.version-callouts .icon {
-  flex: none;
-  margin-top: 1px;
-  color: var(--focus);
-}
-
-/* Community intel (design plan 4.2.6): quiet buttons, marked as leaving the site. */
+/* Community intel: quiet buttons, marked as leaving the site. */
 .weapon-links {
   display: flex;
   flex-wrap: wrap;
@@ -2392,11 +2083,29 @@ a.chain__node:hover {
   color: var(--text);
 }
 
-/* ------------------------------------------------------------------ family tree */
-
-.schematic__eyebrow {
-  margin-bottom: 10px;
+/* A recipe as Foundry slots, with its credits and Foundry time beneath. */
+.recipe-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
+
+/* Slots in a row share one height, tagged or not. */
+.recipe-slots > li {
+  display: flex;
+}
+
+.foundry-slot__tag {
+  color: var(--check);
+  font: 600 0.625rem / 1.2 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------ family tree */
 
 /* The schematic's slate (design plan 6.3): a flat panel in a 1 px frame, no grid, no light. */
 .tree-scroll {
@@ -2409,7 +2118,7 @@ a.chain__node:hover {
 
 .tree {
   /* Two boxes side by side on a 375 px phone, inside the canvas, never wider than 168 px. */
-  --tree-box: min(168px, calc(50vw - 40px));
+  --tree-box: min(150px, calc(50vw - 40px));
   position: relative;
   display: flex;
   flex-direction: column;
@@ -2500,7 +2209,10 @@ a.chain__node:hover {
   }
 }
 
-/* The circuit (design plan 4.4): dim cyan traces that light up with the box they touch. */
+/*
+ * The star chart's traces (design plan 6.3): steel, gold along paths the player holds, cyan while
+ * a tile at either end is pointed at. Diamonds mark the ends; the copy count rides in a diamond badge.
+ */
 .tree-wires {
   position: absolute;
   inset: 0;
@@ -2510,119 +2222,54 @@ a.chain__node:hover {
   pointer-events: none;
 }
 
-.tree-wire__trace,
-.tree-wire__head {
+.tree-wire {
+  --wire: var(--border-steel);
+}
+
+.tree-wire.is-owned {
+  --wire: var(--gold);
+}
+
+.tree-wire.is-lit {
+  --wire: var(--focus);
+}
+
+.tree-wire__trace {
   fill: none;
-  stroke: color-mix(in srgb, var(--focus) 32%, transparent);
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke: var(--wire);
+  stroke-width: 1;
   transition: stroke var(--dur-fast) var(--ease-out);
 }
 
 .tree-wire__pad {
-  fill: color-mix(in srgb, var(--focus) 45%, transparent);
-  transition: fill var(--dur-fast) var(--ease-out);
+  fill: var(--surface-1);
+  stroke: var(--wire);
+  stroke-width: 1;
 }
 
-.tree-wire__count {
-  fill: var(--text-2);
-  font: 700 11px var(--font-mono);
-  transition: fill var(--dur-fast) var(--ease-out);
+.tree-wire__badge path {
+  fill: var(--surface-1);
+  stroke: var(--wire);
+  stroke-width: 1;
 }
 
-.tree-wire.is-lit .tree-wire__trace,
-.tree-wire.is-lit .tree-wire__head {
-  stroke: color-mix(in srgb, var(--focus) 90%, transparent);
+.tree-wire__badge text {
+  fill: var(--text);
+  font: 700 10px var(--font-mono);
 }
 
-.tree-wire.is-lit .tree-wire__pad {
-  fill: var(--focus);
-}
-
-.tree-wire.is-lit .tree-wire__count {
-  fill: var(--focus);
-}
-
-/* A node: name in the display face, mastery rank in the telemetry face, the picture in its status ring. */
-.tree-box {
-  --cut: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  width: var(--tree-box, 168px);
-  padding: 14px 12px 12px;
-  text-align: center;
-  text-decoration: none;
-}
-
-a.tree-box:hover {
-  --shape-fill: var(--surface-hover);
-}
-
-/* The current weapon: the Orokin gold chassis (design plan 4.4). */
-.tree-box--self {
-  --shape-edge: var(--gold);
-  --shape-fill: color-mix(in srgb, var(--gold) 8%, var(--surface-1));
-  --shape-inset: 2px;
-}
-
-.tree-box__mr {
-  position: absolute;
-  top: 9px;
-  right: 10px;
-  color: var(--gold);
-  font: 700 0.6875rem / 1 var(--font-mono);
-  letter-spacing: 0.04em;
-}
-
-.tree-box__art {
-  position: relative;
+/* A node: an Arsenal tile, and under it how it connects to the column next to the weapon. */
+.star-node {
   display: grid;
-  place-items: center;
-  width: 84px;
-  height: 84px;
-  margin-top: 6px;
+  justify-items: center;
+  gap: 6px;
+  width: var(--tree-box, 150px);
 }
 
-.tree-box__art::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border: 1px solid var(--edge-medium);
-  border-radius: 50%;
-}
-
-.tree-box__art .weapon-art {
-  position: relative;
-}
-
-/* The player's status as the ring's colour, once the arsenal is set up; the tag below says it in words. */
-.status-ring {
-  position: absolute;
-  inset: -1px;
-  border: 2px solid var(--edge-strong);
-  border-radius: 50%;
-}
-
-.status-ring[data-status='owned'] {
-  border-color: var(--focus);
-}
-
-/* Mastered is gold, the Orokin colour, as it is everywhere. */
-.status-ring[data-status='mastered'] {
-  border-color: var(--gold);
-}
-
-.tree-box__name {
-  margin-top: 6px;
-  font: 600 0.9375rem / 1.25 var(--font-display);
-}
-
-.tree-box__caption {
+.star-node__caption {
   color: var(--text-2);
   font-size: var(--step--1);
+  text-align: center;
 }
 
 /* ------------------------------------------------------------------ recipe and resources */
@@ -2681,68 +2328,6 @@ a.tree-box:hover {
   color: var(--check);
 }
 
-
-.recipe-peek summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 32px;
-  color: var(--text-2);
-  font-size: var(--step--1);
-  cursor: pointer;
-  list-style: none;
-}
-
-.recipe-peek summary::-webkit-details-marker {
-  display: none;
-}
-
-.recipe-peek summary:hover {
-  color: var(--text);
-}
-
-.recipe-peek__chevron {
-  transition: transform 160ms var(--ease-out);
-}
-
-.recipe-peek[open] .recipe-peek__chevron {
-  transform: rotate(90deg);
-}
-
-.recipe-peek__body {
-  margin: 4px 0 4px 6px;
-  padding: 10px 0 4px 16px;
-  border-left: 1px solid var(--border-cyan);
-}
-
-.recipe-peek__list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 18px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: var(--step--1);
-}
-
-.recipe-peek__list li[data-kind='weapon'] {
-  font-weight: 600;
-}
-
-.recipe-peek__count {
-  color: var(--text-2);
-  font-variant-numeric: tabular-nums;
-}
-
-.recipe-peek__plan {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 10px;
-  color: var(--focus);
-  font-size: var(--step--1);
-  font-weight: 600;
-}
 
 /* ------------------------------------------------------------------ build planner */
 
@@ -3200,10 +2785,6 @@ a.tree-box:hover {
 .status-tag[data-status='sold'],
 .status-tag[data-status='notOwned'] {
   color: var(--text-3);
-}
-
-.tree-box .status-tag {
-  margin: 6px 0 0;
 }
 
 /* ------------------------------------------------------------------ weapon page: own status */
@@ -4165,6 +3746,18 @@ a.tree-box:hover {
   font: 700 0.6875rem / 1 var(--font-mono);
 }
 
+/* Owned: a small cyan diamond, cyan being the owned colour (design plan 3.1). */
+.tile__owned {
+  display: inline-grid;
+}
+
+.tile__owned-mark {
+  width: 7px;
+  height: 7px;
+  background: var(--focus);
+  transform: rotate(45deg);
+}
+
 .tile__laurel,
 .tile__star {
   display: inline-grid;
@@ -4696,7 +4289,6 @@ a.tree-box:hover {
 
 /* Panels that scroll inside the page take a slimmer rail on their own surface. */
 .search__list::-webkit-scrollbar,
-.strip::-webkit-scrollbar,
 .tree-scroll::-webkit-scrollbar,
 .table-wrap::-webkit-scrollbar {
   width: 8px;
@@ -4704,7 +4296,6 @@ a.tree-box:hover {
 }
 
 .search__list::-webkit-scrollbar-track,
-.strip::-webkit-scrollbar-track,
 .tree-scroll::-webkit-scrollbar-track,
 .table-wrap::-webkit-scrollbar-track {
   background: transparent;
@@ -4712,7 +4303,6 @@ a.tree-box:hover {
 }
 
 .search__list::-webkit-scrollbar-thumb,
-.strip::-webkit-scrollbar-thumb,
 .tree-scroll::-webkit-scrollbar-thumb,
 .table-wrap::-webkit-scrollbar-thumb {
   min-height: 24px;
@@ -4725,7 +4315,6 @@ a.tree-box:hover {
   }
 
   .search__list,
-  .strip,
   .tree-scroll,
   .table-wrap {
     scrollbar-width: thin;
@@ -4754,8 +4343,7 @@ kbd,
 .plan-step__time,
 .setup-tile__meta,
 .tag,
-.resource-list__count,
-.recipe-peek__count {
+.resource-list__count {
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }

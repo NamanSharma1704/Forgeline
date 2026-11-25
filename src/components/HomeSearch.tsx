@@ -1,26 +1,24 @@
 'use client';
 
-import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import type { Slot } from '@/data/types';
 import type { SearchEntry } from '@/search/rank';
-import { WeaponArt, type ArtWeapon } from './WeaponArt';
+import { Icon, type IconName } from './Icon';
 import { WeaponSearch } from './WeaponSearch';
 
 /**
- * The home page's search console (design plan 3.2 and 3.3): the search itself, a category strip
- * that narrows what it finds, and quick picks underneath. The strip filters as the player types;
- * it never hides the field or changes the page.
+ * The console's search (design plan 5): the field, then tabs that narrow what it finds, each with
+ * its slot's drawn icon and its count. The tabs filter as the player types; they never hide the
+ * field or change the page.
  */
 
 type Scope = 'all' | 'ingredients' | 'primary' | 'secondary' | 'melee';
 
-const SCOPES: readonly { scope: Scope; label: string; noun: string }[] = [
-  { scope: 'all', label: 'All weapons', noun: 'weapons' },
-  { scope: 'ingredients', label: 'Core ingredients', noun: 'ingredients' },
-  { scope: 'primary', label: 'Primary', noun: 'primaries' },
-  { scope: 'secondary', label: 'Secondary', noun: 'secondaries' },
-  { scope: 'melee', label: 'Melee', noun: 'melee weapons' },
+const SCOPES: readonly { scope: Scope; label: string; noun: string; icon: IconName }[] = [
+  { scope: 'all', label: 'All', noun: 'weapons', icon: 'diamond' },
+  { scope: 'ingredients', label: 'Ingredients', noun: 'ingredients', icon: 'blueprint' },
+  { scope: 'primary', label: 'Primary', noun: 'primaries', icon: 'primary' },
+  { scope: 'secondary', label: 'Secondary', noun: 'secondaries', icon: 'secondary' },
+  { scope: 'melee', label: 'Melee', noun: 'melee weapons', icon: 'melee' },
 ];
 
 const FILTERS: Record<Scope, ((entry: SearchEntry) => boolean) | undefined> = {
@@ -31,18 +29,7 @@ const FILTERS: Record<Scope, ((entry: SearchEntry) => boolean) | undefined> = {
   melee: (entry) => entry.t === 'melee',
 };
 
-export interface QuickPick extends ArtWeapon {
-  readonly slug: string;
-  readonly slot: Slot;
-}
-
-export function HomeSearch({
-  counts,
-  quick,
-}: {
-  counts: Readonly<Record<Scope, number>>;
-  quick: readonly QuickPick[];
-}) {
+export function HomeSearch({ counts }: { counts: Readonly<Record<Scope, number>> }) {
   const [scope, setScope] = useState<Scope>('all');
   const current = SCOPES.find((s) => s.scope === scope)!;
   const filter = useMemo(() => FILTERS[scope], [scope]);
@@ -52,36 +39,23 @@ export function HomeSearch({
       <WeaponSearch
         variant="hero"
         filter={filter}
-        placeholder={`Search ${counts[scope]} ${current.noun}`}
+        placeholder={`Type a weapon name: ${counts[scope]} ${current.noun}`}
         label={`Search ${current.noun}`}
       />
-
-      <div className="console__scopes" role="group" aria-label="What to search">
-        {SCOPES.map(({ scope: candidate, label }) => (
+      <div className="scope-tabs console__scopes" role="group" aria-label="What to search">
+        {SCOPES.map(({ scope: candidate, label, icon }) => (
           <button
             key={candidate}
             type="button"
-            className="chip"
+            className="scope-tab"
             aria-pressed={scope === candidate}
             onClick={() => setScope(candidate)}
           >
-            {label} <span className="chip__count telemetry">{counts[candidate]}</span>
+            <Icon name={icon} size={16} />
+            {label}
+            <span className="scope-tab__count">{counts[candidate]}</span>
           </button>
         ))}
-      </div>
-
-      <div className="console__quick">
-        <span className="console__quick-label">Quick check</span>
-        <ul className="quick-picks">
-          {quick.map((weapon) => (
-            <li key={weapon.slug}>
-              <Link href={`/w/${weapon.slug}/`} className="quick-pick shape" data-slot={weapon.slot}>
-                <WeaponArt weapon={weapon} />
-                <span>{weapon.name}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );

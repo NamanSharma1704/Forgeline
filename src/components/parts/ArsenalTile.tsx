@@ -6,8 +6,8 @@ import { WeaponArt, type ArtSize, type ArtWeapon } from '../WeaponArt';
 /**
  * The Arsenal tile (design plan 11.1): the one way a weapon is shown in a grid, on every screen.
  * A dark chamfered tile, the art centred, a translucent nameplate along the bottom with the name in
- * capitals, the mastery rank top right, and the state marks top left: copies held, the laurel once
- * mastered, the gold star for a favourite, New in its first month, Sold.
+ * capitals, the mastery rank top right, and the state marks top left: copies held, a cyan diamond
+ * while owned, the laurel once mastered, the gold star for a favourite, New in its first month, Sold.
  *
  * The face is written in reading order (name, rank, marks) and the art is decorative, so a screen
  * reader hears "Bolto, mastery rank 7, 2 held, mastered" once, not the name twice.
@@ -53,6 +53,12 @@ export function TileFace({
           <span className="tile__count">
             <span aria-hidden="true">×{count}</span>
             <span className="sr-only">, {count} held</span>
+          </span>
+        )}
+        {status === 'owned' && (
+          <span className="tile__owned">
+            <span className="tile__owned-mark" aria-hidden="true" />
+            <span className="sr-only">, owned</span>
           </span>
         )}
         {status === 'mastered' && (
@@ -101,12 +107,23 @@ export function ArsenalTile({
   size = 'medium',
   href,
   selected = false,
+  box,
   ...state
-}: { weapon: TileWeapon; size?: TileSize; href?: string; selected?: boolean } & TileState) {
+}: {
+  weapon: TileWeapon;
+  size?: TileSize;
+  href?: string;
+  selected?: boolean;
+  /** An id for the family tree's wires to find this tile by. */
+  box?: string;
+} & TileState) {
   const face = <TileFace weapon={weapon} size={size} {...state} />;
   const attributes = {
     className: 'tile shape shape--frame',
     'data-selected': selected ? '' : undefined,
+    'data-box': box,
+    'data-slug': box ? weapon.slug : undefined,
+    'aria-current': selected && href ? ('page' as const) : undefined,
     ...tileAttributes(size, state),
   };
   return href ? (

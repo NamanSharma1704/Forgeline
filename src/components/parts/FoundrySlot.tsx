@@ -18,6 +18,7 @@ export function FoundrySlot({
   art,
   icon = 'diamond',
   href,
+  tag,
 }: {
   name: string;
   need: number;
@@ -27,6 +28,8 @@ export function FoundrySlot({
   art?: ArtWeapon;
   icon?: IconName;
   href?: string;
+  /** A short tag under the name: "Rare", "Decays daily". */
+  tag?: string;
 }) {
   const state = have === undefined ? 'neutral' : have >= need ? 'ready' : 'short';
   const body = (
@@ -35,6 +38,7 @@ export function FoundrySlot({
         {art ? <WeaponArt weapon={art} decorative /> : <Icon name={icon} size={22} />}
       </span>
       <span className="foundry-slot__name">{name}</span>
+      {tag && <span className="foundry-slot__tag">{tag}</span>}
       <span className="foundry-slot__count">
         <span aria-hidden="true">{have === undefined ? `×${count(need)}` : `${count(have)}/${count(need)}`}</span>
         <span className="sr-only">

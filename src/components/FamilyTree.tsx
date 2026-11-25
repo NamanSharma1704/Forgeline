@@ -1,32 +1,27 @@
-import Link from 'next/link';
 import { Icon } from './Icon';
-import { StatusRing, StatusTag } from './StatusTag';
+import type { TileWeapon } from './parts/ArsenalTile';
+import { LiveTile } from './parts/LiveTile';
 import { TreeWires } from './TreeWires';
-import { WeaponArt, type ArtWeapon } from './WeaponArt';
 
 /**
- * The family tree on a weapon page (spec 5.3), drawn as the Foundry schematic (design plan 4.4):
- * every generation it is made from, the weapon itself in gold, and every generation it goes on to
- * build, as columns of boxes that open each weapon's page. The deepest chain in the data is three
- * steps each way, so at most seven columns; wide screens scroll sideways if they must, phones read
- * it top to bottom.
+ * The family tree on a weapon page (spec 5.3) as a star chart (design plan 6.3): every generation it
+ * is made from, the weapon itself framed in gold, and every generation it goes on to build, as
+ * columns of Arsenal tiles that open each weapon's page. Each tile carries its mastery rank and,
+ * once the arsenal is set up, the player's marks (owned, mastered, sold); under it, how it connects
+ * to the column next to the weapon ("2 needed", "uses 1 Akbolto"). The deepest chain in the data is
+ * three steps each way, so at most seven columns; wide screens scroll sideways if they must,
+ * phones read it top to bottom.
  *
- * Each box carries its mastery rank, says how it connects to the column next to the weapon
- * ("2 needed", "uses 1 Akbolto"), and rings its picture with the player's status once their arsenal
- * is set up. On wide screens TreeWires draws the circuit between the boxes; the arrows stay as the
- * fallback until it has, and on phones.
+ * On wide screens TreeWires draws the traces between tiles, gold where the player holds both ends;
+ * the arrows stay as the fallback until it has, and on phones.
  */
 
-export interface TreeWeapon extends ArtWeapon {
-  readonly slug: string;
-  /** Mastery rank needed to build it. */
-  readonly mr: number;
-}
+export type TreeWeapon = TileWeapon;
 
 export interface TreeBoxData {
   /** Unique within the tree: the same weapon can sit in two columns. */
   readonly id: string;
-  readonly weapon: TreeWeapon;
+  readonly weapon: TileWeapon;
   readonly caption: string;
 }
 
@@ -35,7 +30,7 @@ export interface TreeColumn {
   readonly boxes: readonly TreeBoxData[];
 }
 
-/** One wire, from the ingredient's box to the product's. */
+/** One wire, from the ingredient's tile to the product's. */
 export interface TreeEdge {
   readonly from: string;
   readonly to: string;
@@ -44,40 +39,12 @@ export interface TreeEdge {
   readonly far: 'from' | 'to';
 }
 
-function TreeBox({
-  id,
-  weapon,
-  caption,
-  self = false,
-}: {
-  id: string;
-  weapon: TreeWeapon;
-  caption?: string;
-  self?: boolean;
-}) {
-  const body = (
-    <>
-      <span className="tree-box__mr">MR {weapon.mr}</span>
-      <span className="tree-box__art">
-        <WeaponArt weapon={weapon} size="medium" />
-        <StatusRing slug={weapon.slug} />
-      </span>
-      <span className="tree-box__name">{weapon.name}</span>
-      {caption && <span className="tree-box__caption">{caption}</span>}
-      <StatusTag slug={weapon.slug} />
-    </>
-  );
-  if (self) {
-    return (
-      <div className="tree-box tree-box--self shape" aria-current="page" data-box={id}>
-        {body}
-      </div>
-    );
-  }
+function Node({ id, weapon, caption, self = false }: { id: string; weapon: TileWeapon; caption?: string; self?: boolean }) {
   return (
-    <Link href={`/w/${weapon.slug}/`} className="tree-box shape" data-box={id}>
-      {body}
-    </Link>
+    <div className="star-node">
+      <LiveTile weapon={weapon} href={self ? undefined : `/w/${weapon.slug}/`} selected={self} box={id} />
+      {caption && <span className="star-node__caption">{caption}</span>}
+    </div>
   );
 }
 
@@ -97,7 +64,7 @@ function Column({ column }: { column: TreeColumn }) {
       <ul className="tree__boxes">
         {column.boxes.map((box) => (
           <li key={box.id}>
-            <TreeBox id={box.id} weapon={box.weapon} caption={box.caption} />
+            <Node id={box.id} weapon={box.weapon} caption={box.caption} />
           </li>
         ))}
       </ul>
@@ -111,12 +78,12 @@ export function FamilyTree({
   after,
   edges,
 }: {
-  self: TreeWeapon;
+  self: TileWeapon;
   /** Generations it is made from, farthest first. */
   before: readonly TreeColumn[];
   /** Generations it builds, nearest first. */
   after: readonly TreeColumn[];
-  /** Every wire between neighbouring columns; the weapon's own box is "self". */
+  /** Every wire between neighbouring columns; the weapon's own tile is "self". */
   edges: readonly TreeEdge[];
 }) {
   return (
@@ -130,7 +97,7 @@ export function FamilyTree({
         ))}
         <div className="tree__group">
           <h3 className="tree__label">This weapon</h3>
-          <TreeBox id="self" weapon={self} self />
+          <Node id="self" weapon={self} self />
         </div>
         {after.map((column) => (
           <div key={`after-${column.label}`} className="tree__step">

@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useArsenal } from '@/store/useArsenal';
 import { useRecipeGraph } from '@/store/useRecipeGraph';
 import { hasMovedInApp, useScreenActions, type ScreenAction } from './shell/actions';
+import type { TileWeapon } from './parts/ArsenalTile';
 import { useCopyText } from './useCopyText';
 import { VerdictCard, type CardTarget } from './VerdictCard';
 
@@ -22,16 +23,14 @@ export function PersonalVerdict({
   initialVerdict,
   initialExplanation,
   targets,
-  names,
-  ranks,
+  tiles,
   plan,
 }: {
   slug: string;
   initialVerdict: Verdict;
   initialExplanation: Explanation;
   targets: readonly CardTarget[];
-  names: Readonly<Record<string, string>>;
-  ranks?: Readonly<Record<string, number>>;
+  tiles: Readonly<Record<string, TileWeapon>>;
   plan?: { readonly href: string; readonly label: string };
 }) {
   const { ready, arsenal } = useArsenal();
@@ -93,8 +92,7 @@ export function PersonalVerdict({
         verdict={verdict}
         explanation={explanation}
         targets={targets}
-        names={names}
-        ranks={ranks}
+        tiles={tiles}
         controls={targets.length > 0}
         footnote={footnote}
         favourite={ready && favouriteIn(arsenal, slug)}

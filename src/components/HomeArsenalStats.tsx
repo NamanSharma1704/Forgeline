@@ -8,9 +8,9 @@ import { useRecipeGraph } from '@/store/useRecipeGraph';
 import { Telemetry } from './shell/ScreenHeader';
 
 /**
- * The home page's live arsenal figures (design plan 3.4 and 3.5), read from this browser. Pages are
- * pre-rendered with no arsenal, so both pieces render nothing until it is read, and the strip stays
- * hidden for a player who has marked nothing: no row of zeros.
+ * The player's own figures, read from this browser: for the console's launchers (design plan 5)
+ * and the Slot Sweep's header. Pages are pre-rendered with no arsenal, so each shows a prompt, or
+ * nothing, until the arsenal is read: never a row of zeros presented as fact.
  */
 function useArsenalSummary() {
   const { ready, arsenal } = useArsenal();
@@ -22,35 +22,6 @@ function useArsenalSummary() {
   return { ready, counts, held, safe };
 }
 
-/** "Your arsenal // 12 owned · 30 mastered · 4 safe to sell", once there is something to say. */
-export function HomeArsenalStats() {
-  const { ready, counts, safe } = useArsenalSummary();
-  if (!ready || counts.recorded === 0) return null;
-  return (
-    <p className="arsenal-strip telemetry">
-      <span className="arsenal-strip__label">Your arsenal</span>
-      <span className="arsenal-strip__sep" aria-hidden="true">
-        {'//'}
-      </span>
-      <span>
-        <strong>{counts.owned}</strong> owned
-      </span>
-      <span aria-hidden="true">·</span>
-      <span>
-        <strong>{counts.masteryDone}</strong> mastered
-      </span>
-      {safe !== null && (
-        <>
-          <span aria-hidden="true">·</span>
-          <span>
-            <strong>{safe}</strong> safe to sell
-          </span>
-        </>
-      )}
-    </p>
-  );
-}
-
 /** The Slot Sweep header's figure: slots that can be freed, once there is an arsenal to sweep. */
 export function FreeableTelemetry() {
   const { ready, held, safe } = useArsenalSummary();
@@ -58,15 +29,24 @@ export function FreeableTelemetry() {
   return <Telemetry label="Freeable" value={safe} />;
 }
 
-/** The sweep card's figure: how many held weapons can go, or a prompt before there are any. */
+/** The Sweep launcher's figure: how many held weapons can go, or a prompt before there are any. */
 export function SweepFigure() {
   const { ready, held, safe } = useArsenalSummary();
-  if (!ready || held === 0 || safe === null) {
-    return <span className="tool-card__figure tool-card__figure--quiet telemetry">Sort what you hold</span>;
-  }
+  if (!ready || held === 0 || safe === null) return <span className="launcher__figure">Sort what you hold</span>;
   return (
-    <span className="tool-card__figure telemetry">
-      {safe} <small>{safe === 1 ? 'slot can be freed' : 'slots can be freed'}</small>
+    <span className="launcher__figure">
+      <strong>{safe}</strong> {safe === 1 ? 'slot can be freed' : 'slots can be freed'}
+    </span>
+  );
+}
+
+/** The Arsenal launcher's figure: mastery so far, or a prompt before anything is marked. */
+export function MasteredFigure({ total }: { total: number }) {
+  const { ready, counts } = useArsenalSummary();
+  if (!ready || counts.recorded === 0) return <span className="launcher__figure">Mark what you own</span>;
+  return (
+    <span className="launcher__figure">
+      <strong>{counts.masteryDone}</strong>/{total} mastered
     </span>
   );
 }
