@@ -20,11 +20,15 @@ export const normalisePath = (path: string | null | undefined) => {
 
 export const isCurrent = (path: string, href: string) => normalisePath(path).startsWith(href);
 
-/** The screen title the top bar shows beside the emblem. A weapon's page is its Codex entry. */
-export function screenOf(path: string): string {
+/**
+ * The screen title the top bar shows beside the emblem. A weapon's page is its Codex entry. A page
+ * that is not a screen (a missing page) gets none, rather than the wordmark repeated.
+ */
+export function screenOf(path: string): string | null {
   const here = normalisePath(path);
   if (here === '/') return 'Console';
   if (here.startsWith('/w/')) return 'Codex';
   if (here.startsWith('/about/')) return 'About';
-  return SEGMENTS.find((segment) => here.startsWith(segment.href))?.label ?? 'Forgeline';
+  if (here.startsWith('/lab/')) return 'Lab';
+  return SEGMENTS.find((segment) => here.startsWith(segment.href))?.label ?? null;
 }

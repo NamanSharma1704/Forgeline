@@ -355,17 +355,31 @@ button.shape:focus-visible,
 /*
  * Corner brackets (design plan 3.3): 8 px L-brackets in the two square corners, top left and
  * bottom right, drawn as layers of the face so they cost no markup. Steel at rest; gold when the
- * frame is selected; cyan while the search field it frames is in use.
+ * frame is selected; cyan while the search field it frames is in use. Offset and colour are
+ * registered properties, so a selected tile's brackets close in on it (design plan 3.6).
  */
+@property --bracket-offset {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 5px;
+}
+
+@property --bracket-colour {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+
 .shape--frame,
 .verdict,
 .search--hero .search__field {
   --bracket-colour: var(--bracket);
+  --bracket-offset: 5px;
   --shape-brackets:
-    linear-gradient(var(--bracket-colour) 0 0) left 5px top 5px / 8px 1px no-repeat,
-    linear-gradient(var(--bracket-colour) 0 0) left 5px top 5px / 1px 8px no-repeat,
-    linear-gradient(var(--bracket-colour) 0 0) right 5px bottom 5px / 8px 1px no-repeat,
-    linear-gradient(var(--bracket-colour) 0 0) right 5px bottom 5px / 1px 8px no-repeat;
+    linear-gradient(var(--bracket-colour) 0 0) left var(--bracket-offset) top var(--bracket-offset) / 8px 1px no-repeat,
+    linear-gradient(var(--bracket-colour) 0 0) left var(--bracket-offset) top var(--bracket-offset) / 1px 8px no-repeat,
+    linear-gradient(var(--bracket-colour) 0 0) right var(--bracket-offset) bottom var(--bracket-offset) / 8px 1px no-repeat,
+    linear-gradient(var(--bracket-colour) 0 0) right var(--bracket-offset) bottom var(--bracket-offset) / 1px 8px no-repeat;
 }
 
 .shape--frame[aria-selected='true'],
@@ -4032,6 +4046,593 @@ a.tree-box:hover {
   .update-bar {
     bottom: calc(68px + env(safe-area-inset-bottom));
   }
+}
+
+/* ------------------------------------------------------------------ parts: the Arsenal tile */
+
+/*
+ * The Arsenal tile (design plan 11.1). The tile is clipped to its chamfer so the nameplate's strip
+ * follows the cut. At rest it has no brackets; selected, gold brackets close in from 14 px to 5 px,
+ * the edge turns gold and the face takes a gold wash. Hover brightens the edge; focus turns it cyan.
+ */
+.tile {
+  --cut: var(--chamfer-sm);
+  --shape-fill: var(--surface-2);
+  --bracket-colour: transparent;
+  --bracket-offset: 14px;
+  --tile-art: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  padding: 28px 10px 0;
+  color: var(--text);
+  text-decoration: none;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut))
+  );
+  transition:
+    --bracket-offset var(--dur-fast) var(--ease-sharp),
+    --bracket-colour var(--dur-fast) var(--ease-sharp);
+}
+
+.tile[role='option'] {
+  cursor: pointer;
+}
+
+.tile[role='option']:hover {
+  --shape-edge: var(--border-control);
+}
+
+.tile[aria-selected='true'],
+.tile[data-selected] {
+  --shape-edge: var(--gold);
+  --shape-fill: color-mix(in srgb, var(--gold) 10%, var(--surface-2));
+  --bracket-colour: var(--gold);
+  --bracket-offset: 5px;
+}
+
+.tile[role='option']:focus-visible {
+  outline: none;
+  --shape-edge: var(--focus);
+  --shape-inset: 2px;
+}
+
+.tile__art {
+  order: 1;
+  display: grid;
+  place-items: center;
+  height: var(--tile-art);
+  margin-bottom: 10px;
+}
+
+.tile__art .weapon-art {
+  width: var(--tile-art);
+  height: var(--tile-art);
+  object-fit: contain;
+}
+
+.tile[data-status='sold'] .tile__art {
+  opacity: 0.4;
+}
+
+/* The nameplate: a translucent strip along the bottom, the name in capitals, two lines at most. */
+.tile__nameplate {
+  order: 2;
+  display: -webkit-box;
+  align-self: stretch;
+  /* Inside the edge, so the strip never paints over the border. */
+  margin: auto calc(var(--shape-inset) - 10px) var(--shape-inset);
+  padding: 7px 10px 8px;
+  overflow: hidden;
+  border-top: 1px solid var(--border-hairline);
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
+  font: 600 0.75rem / 1.3 var(--font-display);
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.tile__mr {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  color: var(--gold);
+  font: 700 0.6875rem / 1 var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.tile__marks {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tile__count {
+  color: var(--text);
+  font: 700 0.6875rem / 1 var(--font-mono);
+}
+
+.tile__laurel,
+.tile__star {
+  display: inline-grid;
+  color: var(--gold);
+}
+
+.tile__star path {
+  fill: currentColor;
+}
+
+.tile__tag {
+  padding: 2px 5px;
+  border: 1px solid var(--border-orokin);
+  color: var(--gold);
+  font: 600 0.625rem / 1.2 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tile__tag--sold {
+  border-color: var(--border-steel);
+  color: var(--text-2);
+}
+
+.tile[data-size='large'] {
+  --cut: var(--chamfer-md);
+  --tile-art: 200px;
+  padding-top: 34px;
+}
+
+.tile[data-size='large'] .tile__nameplate {
+  padding: 10px 12px 11px;
+  font-size: 1rem;
+}
+
+.tile[data-size='large'] .tile__mr {
+  top: 10px;
+  right: 18px;
+  font-size: 0.8125rem;
+}
+
+.tile[data-size='large'] .tile__marks {
+  top: 8px;
+  left: 10px;
+}
+
+.tile[data-size='small'] {
+  --cut: 8px;
+  --tile-art: 44px;
+  padding-top: 24px;
+}
+
+.tile[data-size='small'] .tile__art {
+  margin-bottom: 6px;
+}
+
+.tile[data-size='small'] .tile__nameplate {
+  padding: 5px 8px 6px;
+  font-size: 0.6875rem;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.tile[data-size='small'] .tile__mr {
+  top: 7px;
+  right: 11px;
+}
+
+/* ------------------------------------------------------------------ parts: Codex frame, ledger, slots */
+
+/* The Codex frame (design plan 11.2): bracketed, a faint blueprint crosshair, slot and rank in its corners. */
+.codex-frame {
+  --cut: var(--chamfer-lg);
+  --shape-fill: var(--surface-1);
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 48px 24px 32px;
+}
+
+.codex-frame__blueprint {
+  position: absolute;
+  inset: 20px;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  fill: none;
+  stroke: var(--border-steel);
+  stroke-width: 0.6;
+  pointer-events: none;
+}
+
+.codex-frame .weapon-art {
+  position: relative;
+}
+
+.codex-frame__slot {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-2);
+  font: 600 0.6875rem / 1 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.codex-frame__mr {
+  position: absolute;
+  top: 14px;
+  right: 28px;
+  color: var(--gold);
+  font: 700 0.8125rem / 1 var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.codex-frame__laurel {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+}
+
+.mastered-mark {
+  display: inline-grid;
+  color: var(--gold);
+}
+
+/* The ledger (design plan 11.3): capitals label left, telemetry value right, hairlines between. */
+.ledger {
+  margin: 0;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.ledger__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.ledger dt {
+  color: var(--text-2);
+  font: 600 0.6875rem / 1.3 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ledger dd {
+  margin: 0;
+  color: var(--text);
+  font: 700 0.9375rem / 1.3 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.ledger dd[data-tone='gold'] {
+  color: var(--gold);
+}
+
+/* A Foundry slot (design plan 11.4): a square well, the name, and have/need in its colour and number. */
+.foundry-slot {
+  --cut: 8px;
+  --shape-fill: var(--surface-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 108px;
+  padding: 12px 8px 10px;
+  color: var(--text);
+  text-align: center;
+  text-decoration: none;
+}
+
+.foundry-slot[data-state='ready'] {
+  --shape-edge: color-mix(in srgb, var(--safe) 50%, transparent);
+}
+
+.foundry-slot[data-state='short'] {
+  --shape-edge: color-mix(in srgb, var(--keep) 55%, transparent);
+}
+
+.foundry-slot__well {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--border-hairline);
+  background: var(--surface-1);
+  color: var(--text-2);
+}
+
+.foundry-slot__name {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--text-2);
+  font-size: 0.75rem;
+  line-height: 1.25;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.foundry-slot__count {
+  font: 700 0.8125rem / 1 var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.foundry-slot[data-state='ready'] .foundry-slot__count {
+  color: var(--safe);
+}
+
+.foundry-slot[data-state='short'] .foundry-slot__count {
+  color: var(--keep);
+}
+
+.diamond-node {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.diamond-node[data-tone='steel'] {
+  background: var(--border-control);
+}
+
+/* ------------------------------------------------------------------ parts: select, then inspect */
+
+/* A grid of tiles, and the inspect panel beside it once one is selected (design plan 11.6). */
+.inspect-layout {
+  display: grid;
+  align-items: start;
+  gap: 20px;
+}
+
+@media (min-width: 760px) {
+  .inspect-layout[data-inspecting] {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .inspect-layout[data-inspecting] {
+    grid-template-columns: minmax(0, 1fr) 340px;
+  }
+}
+
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.inspect {
+  --cut: var(--chamfer-md);
+  --shape-fill: var(--surface-3);
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+}
+
+@media (min-width: 760px) {
+  .inspect {
+    position: sticky;
+    top: 72px;
+  }
+}
+
+.inspect__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: -4px;
+}
+
+.inspect__title {
+  min-width: 0;
+  color: var(--text-2);
+  font: 600 0.6875rem / 1.3 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.inspect__close {
+  width: 36px;
+  height: 36px;
+  margin: -6px -6px -6px 0;
+}
+
+/* The verdict in brief: its colour as a 3 px edge and a wash, always with its icon and word. */
+.inspect__verdict {
+  --tone: var(--text);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 6px 10px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--tone);
+  background: color-mix(in srgb, var(--tone) 9%, transparent);
+  color: var(--tone);
+}
+
+.inspect__verdict[data-tone='safe'],
+.inspect__verdict[data-tone='safe-soft'] {
+  --tone: var(--safe);
+}
+
+.inspect__verdict[data-tone='check'] {
+  --tone: var(--check);
+}
+
+.inspect__verdict[data-tone='keep'] {
+  --tone: var(--keep);
+}
+
+.inspect__headline {
+  font: 700 1.25rem / 1.1 var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.inspect__reason {
+  grid-column: 1 / -1;
+  color: var(--text-2);
+  font-size: var(--step--1);
+}
+
+.inspect__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.inspect__label {
+  margin-bottom: 8px;
+  color: var(--text-3);
+  font: 600 0.6875rem / 1.2 var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.inspect__builds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.inspect__builds li {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  width: 104px;
+}
+
+.inspect__copies {
+  color: var(--text-2);
+  font: 600 0.6875rem / 1 var(--font-mono);
+}
+
+.inspect__open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  border: 1px solid var(--border-cyan);
+  color: var(--focus);
+  font: 600 0.75rem / 1 var(--font-body);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.inspect__open:hover {
+  border-color: var(--focus);
+}
+
+/* Phones: a bottom sheet over a dimmed screen. */
+.inspect--sheet {
+  width: 100%;
+  max-width: none;
+  max-height: 86vh;
+  margin: auto 0 0;
+  padding: 16px 16px calc(16px + env(safe-area-inset-bottom));
+  overflow: auto;
+  border: 0;
+  border-top: 1px solid var(--border-orokin);
+  background: var(--surface-1);
+  color: var(--text);
+}
+
+.inspect--sheet::backdrop {
+  background: color-mix(in srgb, var(--bg) 80%, transparent);
+}
+
+.inspect--sheet .tile[data-size='large'] {
+  --tile-art: 140px;
+}
+
+/* ------------------------------------------------------------------ parts: the lab page */
+
+.lab__note {
+  max-width: var(--measure);
+  margin: -6px 0 16px;
+  color: var(--text-2);
+  font-size: var(--step--1);
+}
+
+.lab__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.lab__row + .lab__row {
+  margin-top: 24px;
+}
+
+.lab__cell {
+  margin: 0;
+}
+
+.lab__cell figcaption {
+  margin-top: 8px;
+  color: var(--text-3);
+  font: 600 0.6875rem / 1.2 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lab__pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: start;
+  gap: 24px;
+}
+
+.lab__slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lab__marks {
+  align-items: center;
+}
+
+.lab__rule {
+  width: 200px;
+}
+
+.lab__frame {
+  padding: 20px 28px;
+  color: var(--text-2);
 }
 
 /* ------------------------------------------------------------------ scrolling */

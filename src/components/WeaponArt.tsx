@@ -33,10 +33,13 @@ export function WeaponArt({
   weapon,
   size = 'thumb',
   priority = false,
+  decorative = false,
 }: {
   weapon: ArtWeapon;
   size?: ArtSize;
   priority?: boolean;
+  /** Beside the weapon's name already (a tile's nameplate): no alt text, so it is not read twice. */
+  decorative?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
   const ref = useRef<HTMLImageElement>(null);
@@ -51,8 +54,9 @@ export function WeaponArt({
     return (
       <span
         className={`weapon-art weapon-art--${size} weapon-art--fallback`}
-        role="img"
-        aria-label={weapon.name}
+        role={decorative ? undefined : 'img'}
+        aria-label={decorative ? undefined : weapon.name}
+        aria-hidden={decorative ? true : undefined}
         style={{ width: px, height: px }}
       >
         <Silhouette slot={weapon.slot} />
@@ -65,7 +69,7 @@ export function WeaponArt({
       ref={ref}
       className={`weapon-art weapon-art--${size}`}
       src={`/${size === 'large' ? weapon.image : weapon.thumb}`}
-      alt={weapon.name}
+      alt={decorative ? '' : weapon.name}
       width={px}
       height={px}
       loading={priority ? 'eager' : 'lazy'}

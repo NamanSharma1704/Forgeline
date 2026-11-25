@@ -43,7 +43,7 @@ export function OrbiterBar({ weaponCount }: { weaponCount: number }) {
             <Emblem />
             <span className="wordmark__name">Forgeline</span>
           </Link>
-          <span className="orbiter-bar__screen">{screenOf(path)}</span>
+          {screenOf(path) && <span className="orbiter-bar__screen">{screenOf(path)}</span>}
         </div>
 
         <nav className="segment-tabs" aria-label="Screens">
