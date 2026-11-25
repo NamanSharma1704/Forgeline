@@ -7,6 +7,7 @@ import { BottomBar } from '@/components/shell/BottomBar';
 import { OrbiterBar } from '@/components/shell/OrbiterBar';
 import { SearchOverlay } from '@/components/shell/SearchOverlay';
 import { THEME_SCRIPT } from '@/components/theme';
+import { COPYRIGHT_YEAR, SITE_URL, shareMetadata } from '@/data/site';
 import { allWeapons, weaponIndex } from '@/data/weapons';
 import './globals.css';
 
@@ -43,6 +44,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  // Share cards need absolute URLs; this turns /og-image.png and each page's path into them.
+  metadataBase: SITE_URL,
   title: {
     default: 'Forgeline',
     template: '%s | Forgeline',
@@ -51,6 +54,13 @@ export const metadata: Metadata = {
     'See what every Warframe weapon becomes before you sell it: what it builds, how many copies the recipe needs, and whether you can let it go.',
   applicationName: 'Forgeline',
   appleWebApp: { title: 'Forgeline', statusBarStyle: 'black' },
+  // The home page's card. Pages with their own title pass their own (src/data/site.ts).
+  ...shareMetadata({
+    title: 'Forgeline: Can I sell this Warframe weapon?',
+    description:
+      'Instant Warframe sell-check verdicts, ingredient chains, slot sweeps, and staged Foundry build plans.',
+    path: '/',
+  }),
 };
 
 export const viewport: Viewport = {
@@ -60,13 +70,15 @@ export const viewport: Viewport = {
 };
 
 /**
- * The status strip (design plan 4.5): one low line, like the game's menu bar. The data version, the
- * fan-made notice as readable text, and About, which carries the full attribution.
+ * The status strip (design plan 4.5): one low line, like the game's menu bar. The site's copyright,
+ * the data version, the fan-made notice as readable text, and About, which carries the full
+ * attribution.
  */
 function StatusStrip() {
   return (
     <footer className="status-strip">
       <div className="container status-strip__inner">
+        <span>&copy; {COPYRIGHT_YEAR} Forgeline</span>
         <span>
           Data <code>@wfcd/items</code> {weaponIndex.sourceVersion},{' '}
           <time dateTime={weaponIndex.generatedAt}>{weaponIndex.generatedAt.slice(0, 10)}</time>

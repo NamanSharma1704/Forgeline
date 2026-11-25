@@ -1,14 +1,19 @@
 import type { Metadata } from 'next';
 import { ScreenHeader } from '@/components/shell/ScreenHeader';
 import { ArsenalManager, type ArsenalRow, type RecipeRole } from '@/components/ArsenalManager';
+import { shareMetadata } from '@/data/site';
 import type { Weapon } from '@/data/types';
 import { variantOf } from '@/data/variants';
 import { allWeapons, getWeapon } from '@/data/weapons';
 
+const title = 'My Arsenal';
+const description =
+  'Mark the Warframe weapons you own and have mastered, so every sell check on Forgeline is about your own arsenal. Saved in your browser, no account needed.';
+
 export const metadata: Metadata = {
-  title: 'My Arsenal',
-  description:
-    'Mark the Warframe weapons you own and have mastered, so every sell check on Forgeline is about your own arsenal. Saved in your browser, no account needed.',
+  title,
+  description,
+  ...shareMetadata({ title, description, path: '/arsenal/' }),
 };
 
 /**

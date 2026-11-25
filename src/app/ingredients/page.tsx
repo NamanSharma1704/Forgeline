@@ -2,13 +2,18 @@ import type { Metadata } from 'next';
 import { ScreenHeader, Telemetry } from '@/components/shell/ScreenHeader';
 import { IngredientIndex, type IngredientRow } from '@/components/IngredientIndex';
 import type { TileWeapon } from '@/components/parts/ArsenalTile';
+import { shareMetadata } from '@/data/site';
 import { variantOf } from '@/data/variants';
 import { ingredientWeapons, resolve } from '@/data/weapons';
 
+const title = 'Ingredient weapons';
+const description =
+  'Every Warframe weapon that is an ingredient in another weapon recipe, with what it builds and how many copies each recipe needs.';
+
 export const metadata: Metadata = {
-  title: 'Ingredient weapons',
-  description:
-    'Every Warframe weapon that is an ingredient in another weapon recipe, with what it builds and how many copies each recipe needs.',
+  title,
+  description,
+  ...shareMetadata({ title, description, path: '/ingredients/' }),
 };
 
 export default function IngredientsPage() {

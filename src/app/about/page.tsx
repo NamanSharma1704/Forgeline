@@ -1,11 +1,16 @@
 import type { Metadata } from 'next';
 import { ScreenHeader } from '@/components/shell/ScreenHeader';
+import { COPYRIGHT_YEAR, shareMetadata } from '@/data/site';
 import { weaponIndex } from '@/data/weapons';
 
+const title = 'About the data';
+const description =
+  'Where Forgeline gets its weapon recipes and pictures, how often they refresh, and how to report a mistake.';
+
 export const metadata: Metadata = {
-  title: 'About the data',
-  description:
-    'Where Forgeline gets its weapon recipes and pictures, how often they refresh, and how to report a mistake.',
+  title,
+  description,
+  ...shareMetadata({ title, description, path: '/about/' }),
 };
 
 export default function AboutPage() {
@@ -61,6 +66,9 @@ export default function AboutPage() {
         Extremes. Warframe is a trademark of Digital Extremes Ltd. Weapon pictures are Digital
         Extremes&apos; game assets, used here under the non-commercial terms of the Warframe
         Content Policy.
+      </p>
+      <p>
+        Forgeline&apos;s own code, design, crest and artwork are &copy; {COPYRIGHT_YEAR} Forgeline.
       </p>
       <p>
         Weapon pages link to the Warframe Wiki and to warframe.market. Both are community sites,

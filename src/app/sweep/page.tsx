@@ -1,11 +1,16 @@
 import type { Metadata } from 'next';
 import { ScreenHeader } from '@/components/shell/ScreenHeader';
 import { SlotSweep } from '@/components/SlotSweep';
+import { shareMetadata } from '@/data/site';
+
+const title = 'Slot sweep';
+const description =
+  'Out of weapon slots? Forgeline sorts the Warframe weapons you hold into safe to sell and keep, with the reason for each.';
 
 export const metadata: Metadata = {
-  title: 'Slot sweep',
-  description:
-    'Out of weapon slots? Forgeline sorts the Warframe weapons you hold into safe to sell and keep, with the reason for each.',
+  title,
+  description,
+  ...shareMetadata({ title, description, path: '/sweep/' }),
 };
 
 export default function SweepPage() {

@@ -13,6 +13,7 @@ import { PersonalVerdict } from '@/components/PersonalVerdict';
 import { WeaponStatus } from '@/components/WeaponStatus';
 import { recipeGraph } from '@/data/engine';
 import type { RecipeSummary } from '@/data/recipe';
+import { shareMetadata } from '@/data/site';
 import { SLOT_LABEL, type Weapon } from '@/data/types';
 import { variantOf } from '@/data/variants';
 import {
@@ -46,12 +47,11 @@ export async function generateMetadata({
   const weapon = getWeapon(slug);
   if (!weapon) return { title: 'Unknown weapon' };
   const builds = weapon.usedToBuild.map((edge) => resolve(edge.slug).name);
-  return {
-    title: `${weapon.name}: can I sell it?`,
-    description: builds.length
-      ? `${weapon.name} is used to build ${builds.join(' and ')}. Check before you sell it.`
-      : `${weapon.name} is not used in any weapon recipe, so selling it costs no future build.`,
-  };
+  const title = `${weapon.name}: can I sell it?`;
+  const description = builds.length
+    ? `${weapon.name} is used to build ${builds.join(' and ')}. Check before you sell it.`
+    : `${weapon.name} is not used in any weapon recipe, so selling it costs no future build.`;
+  return { title, description, ...shareMetadata({ title, description, path: `/w/${weapon.slug}/` }) };
 }
 
 const toTile = (weapon: Weapon): TileWeapon => ({

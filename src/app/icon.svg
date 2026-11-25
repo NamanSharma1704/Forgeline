@@ -1,8 +1,56 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <polygon points="96,16 496,16 496,416 416,496 16,496 16,96" fill="#f3f3f5"/>
-  <polygon points="100.968,28 484,28 484,411.032 411.032,484 28,484 28,100.968" fill="#0c0c0e"/>
-  <rect x="128" y="144" width="72" height="72" fill="#f3f3f5"/>
-  <rect x="128" y="296" width="72" height="72" fill="#f3f3f5"/>
-  <path d="M200 180 H244 V332 H200 M244 256 H290" fill="none" stroke="#f3f3f5" stroke-width="16" stroke-linecap="square"/>
-  <polygon points="314,206 384,206 384,282 360,306 290,306 290,230" fill="#f3f3f5"/>
+  <defs>
+  <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#131722"/>
+    <stop offset="55%" stop-color="#0A0D13"/>
+    <stop offset="100%" stop-color="#05070A"/>
+  </linearGradient>
+  <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#F7E5B2"/>
+    <stop offset="42%" stop-color="#D4B06E"/>
+    <stop offset="100%" stop-color="#876832"/>
+  </linearGradient>
+  <linearGradient id="goldLight" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#FFF2CC"/>
+    <stop offset="50%" stop-color="#D9B675"/>
+    <stop offset="100%" stop-color="#96753B"/>
+  </linearGradient>
+  <linearGradient id="cyanGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#B8F7FF"/>
+    <stop offset="50%" stop-color="#4DD4E8"/>
+    <stop offset="100%" stop-color="#1D8DA1"/>
+  </linearGradient>
+  <linearGradient id="bladeGrad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#FFFFFF"/>
+    <stop offset="100%" stop-color="#B8C4D4"/>
+  </linearGradient>
+</defs>
+  <polygon points="94,14 418,14 498,94 498,418 418,498 94,498 14,418 14,94" fill="url(#goldGrad)"/>
+  <polygon points="101,26 411,26 486,101 486,411 411,486 101,486 26,411 26,101" fill="#090B0E"/>
+  <polygon points="106,34 406,34 478,106 478,406 406,478 106,478 34,406 34,106" fill="url(#bgGrad)"/>
+  <polygon points="116,48 396,48 464,116 464,396 396,464 116,464 48,396 48,116" fill="none" stroke="#C9A66B" stroke-opacity="0.24" stroke-width="2"/>
+  
+  <!-- Subtle Vitruvian Ring -->
+  <circle cx="256" cy="264" r="168" fill="none" stroke="#C9A66B" stroke-opacity="0.16" stroke-width="2" stroke-dasharray="10 8"/>
+
+  <!-- Sweeping Outer Orokin Crescent Wings -->
+  <path d="M256,418 C148,392 84,302 88,186 C116,246 164,296 226,324 L214,360 C178,342 150,316 130,284 C144,340 192,380 256,396 Z" fill="url(#goldGrad)"/>
+  <path d="M256,418 C364,392 428,302 424,186 C396,246 348,296 286,324 L298,360 C334,342 362,316 382,284 C368,340 320,380 256,396 Z" fill="url(#goldGrad)"/>
+
+  <!-- Inner Upper Sweeping Tenno Petals -->
+  <path d="M196,294 C156,248 142,188 164,126 C176,174 198,214 228,246 Z" fill="url(#goldLight)"/>
+  <path d="M316,294 C356,248 370,188 348,126 C336,174 314,214 284,246 Z" fill="url(#goldLight)"/>
+
+  <!-- Central Tenno Split Spear / Forge Blade -->
+  <polygon points="256,76 292,168 272,332 256,356 240,332 220,168" fill="url(#bladeGrad)"/>
+  <polygon points="256,76 292,168 272,332 256,356" fill="#000000" fill-opacity="0.14"/>
+
+  <!-- Central Tenno Cyan Energy Core -->
+  <polygon points="256,172 282,220 256,268 230,220" fill="#090B0E" stroke="url(#goldGrad)" stroke-width="5"/>
+  <polygon points="256,184 272,220 256,256 240,220" fill="url(#cyanGrad)"/>
+
+  <!-- Lower Foundry Convergence Diamond & Base Finial -->
+  <polygon points="256,386 274,408 256,430 238,408" fill="url(#goldGrad)"/>
+  <polygon points="256,397 265,408 256,419 247,408" fill="url(#cyanGrad)"/>
+
 </svg>
